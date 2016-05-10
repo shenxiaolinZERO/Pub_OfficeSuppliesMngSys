@@ -1,0 +1,75 @@
+
+/*---------------------------------------关于审核员的所有页面中投诉单的样式---------------------*/
+.position .wait_assess{
+    /*position: relative;*/
+}
+/*----------投诉单顶部标题部分-------------*/
+.order_title  {
+    border: 1px solid #e5e5e5;
+    background-color: #FAFAFA;
+    position: relative;
+    text-align: center;
+    height: 75px;
+    line-height: 70px;
+    color: #333;
+    font-family: "Microsoft YaHei";
+    font-size: x-large;
+    margin-bottom: 30px;
+    /*margin-top: 30px;*/
+}
+/*----------投诉单详细信息部分-----------*/
+.order_detail {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #EEEEEE;
+    overflow:auto;
+    text-align: center;
+}
+.order_list{
+    width: auto;
+}
+/*/!*-----审核按钮-----*!/*/
+/*.assess_btn,.sendToDeal_btn {*/
+    /*alignment: center;*/
+    /*width: 80px;*/
+    /*height: 31px;*/
+    /*font-size: 16px;*/
+    /*font-family: Arial;*/
+    /*background-color:#bce8f1;*/
+    /*color: #000000;*/
+    /*border: none;*/
+/*}*/
+/*---------------分页-------------*/
+.pagination{
+    margin-left:50%;
+}
+/*---------------模态框-------------*/
+.btn {
+    cursor: pointer;//cursor规则是设定网页浏览时用户鼠标指针的样式,也就是鼠标的图形形状cursor:pointer设定鼠标的形状为一只伸出食指的手
+    color: #0066FF;
+}
+.exp {
+    font-family: "Courier New","宋体";
+    font-size: 12px;
+    color: gray;
+}
+
+#assess .modal-body table,thead,tr,th {
+    text-align: center;
+    font-family: Arial;
+    font-size: large;
+}
+#reject .modal-body  label,select{
+   float:left;
+}
+#assign .modal-body  label,select{
+    float:left;
+}
+
+
+#urgent .modal-body span{
+    color: blue;
+}
+/*#urgent .modal-body #department div{*/
+
+/*}*/

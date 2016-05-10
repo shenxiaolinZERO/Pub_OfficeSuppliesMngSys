@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="css/order_detail.css">-->
+
+    <!--assessorAndProcessor.css只对[页头页尾]起作用 -->
+    <link rel="stylesheet" href="css/assessorAndProcessor.css">
+    <!-- superAdministrator.css 对[页中]样式的详细-->
+    <link rel="stylesheet" href="css/superAdministrator.css">
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/login.js"></script>
+
+
+</head>
+<body>
+
+       <!-- 页头部分--->
+       <div class="page-header">
+          <div class="container">
+              <div class="page-header-left">
+                  市政管理后台管理
+                  <!--<p><i class="icon-globe icon-3x"></i>市政管理后台管理</p>-->
+                  <!--<img class="logo" src="image/top_logo.jpg">-->
+
+              </div>
+              <div class="page-header-right">
+                  <span>欢迎您！<a class="login_link" href="login.html">请登录</a></span><br/>
+                  <span>当前时间是：XXXX年XX月XX日</span>
+              </div>
+          </div>
+       </div>
+<br>
+       <!-- 页中部分---->
+       <br>
+
+       <div class="loginbody">
+           <div class="container">
+               <div class="login">
+                   <div class="col-md-6 login-left">
+                       <img src="image/top_logo.jpg">
+                       <h3>市政管理通</h3>
+                   </div>
+                   <div class="col-md-6 login-right">
+                       <h3>请登录</h3>
+                       <form class="login-form">
+                           <div class="">
+                               <label>工号：</label>
+                               <input id="number" type="text" placeholder="请输入您的工号" data-toggle="popover-phnum"
+                                      data-placement="right"
+                                      data-content="请输入正确的工号">
+                               <div class="fr" style="margin-right: 10%"><span class=" usermsg msg"></span></div>
+
+                           </div>
+                           <div class="">
+                               <label>密码：</label>
+                               <input id="psw" type="password" placeholder="请输入您的密码" data-toggle="popover-psw"
+                                      data-placement="right"
+                                      data-content="密码不能为空">
+                               <div class="fr" style="margin-right: 10%"><span class=" pswmsg msg"></span></div>
+                           </div>
+                           <a class="forgot" href="#">忘记密码?</a><br/><br/>
+                          <div class="radio_status">
+                           <input type="radio" name="role" value="superAdministrator" checked="checked"><span>超级管理员</span>
+                           <input type="radio" name="role" value="审核员"><span>审核员</span><br/>
+                           <!--<input type="radio" name="myStatus" value="processor">接单员-->
+                          </div>
+                           <input id="login_btn" type="button" value="登录" onclick="login_submit();">
+                       </form>
+                   </div>
+
+               </div>
+           </div>
+       </div>
+
+        <!-- 页尾底部-->
+        <div class=" page-footer">
+            <!--<img src="images/pay.png" class="img-responsive" alt=""/>-->
+            <ul class="footer_nav">
+                <a href="#">首页</a>
+                <a href="#">投诉建议</a>
+                <a href="#">联系我们</a><br></li>
+            </ul>
+            <p class="copy">Copyright &copy; 2015.市政管理  &nbsp;&nbsp;&nbsp; All Rights Reserved.</p>
+        </div>
+</body>
+</html>

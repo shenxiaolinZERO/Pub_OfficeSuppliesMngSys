@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>待审核的投诉单</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/order_detail.css">
+    <link rel="stylesheet" href="css/jquery.lightTreeview.css">
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <!--<script src="js/bootstrap.min.js"></script>-->
+    <script src="js/bootstrap.js"></script>
+
+    <!--树形插件 -->
+    <!--<script src="js/jquery.lightTreeview.js"></script>-->
+    <!--<script src="js/jquery.lightTreeview.min.js"></script>-->
+    <script src="js/jquery.lightTreeview.pack.js"></script>
+    <script src="js/waiting_assess.js"></script>
+    <!--<script >-->
+        <!--var Modal = function (element, options) {-->
+            <!--this.options = options;-->
+            <!--this.$element = $(element).delegate(&#39;[data-dismiss="modal"]:first&#39;, &#39;click.dismiss.modal&#39;, $.proxy(this.hide, this))-->
+            <!--this.options.remote && this.$element.find(&#39;.modal-body&#39;).load(this.options.remote)-->
+        <!--}-->
+    <!--</script>-->
+
+</head>
+<body>
+<div class="position">
+    <div class="wait_assess">
+        <div class="order_title">
+        <span class="col-md-2">报料单号</span>
+        <span class="col-md-2">照片</span>
+        <span class="col-md-2">内容</span>
+        <span class="col-md-2">故障地点</span>
+        <span class="col-md-1">上报人</span>
+        <span class="col-md-2">上报时间</span>
+        <span class="col-md-1">操作</span>
+        </div>
+    <ul class="order_list">
+        <li class="order_detail">
+        <div class="col-md-2">
+               Q100001
+        </div>
+        <div class="col-md-2 table-hover">
+          <a class="pic" onclick="" href="#"><img src="image/0.jpg"></a>
+        </div>
+
+        <div class="col-md-2">
+          井盖被盗，路人险些掉坑！
+        </div>
+        <div class="col-md-2">
+           XX小区五一路
+        </div>
+        <div class="col-md-1">
+             <strong>用户18112345678</strong>
+        </div>
+        <div class="col-md-2">
+                时间：2016-01-12 13:20:12
+        </div>
+        <div class="col-md-1">
+            <!-- 按钮触发模态框 -->
+            <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#assess">
+                审核
+            </button>
+            <div class="modal fade" id="assess" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="width:1000px ;height: 2000px;">
+                    <div class="modal-content">
+                        <div class="modal-header" style="height: 50px">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: red;">
+                                &times;
+                          </button>
+                            <h3 class="modal-title" id="myModalLabel" style="text-align: left;">
+                                报料详情
+                            </h3>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>图片</th>
+                                    <th>内容</th>
+                                    <th>确定故障处理部门</th>
+                                    <th>附加信息</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><img src="image/0.jpg"></td>
+                                    <td>井盖被盗</td>
+                                    <td>
+                                    <select id="depart" >
+                                        <option value="环境部">环境部</option>
+                                        <option value="住房部">住房部</option>
+                                        <option value="园林部">园林部</option>
+                                        <option value="卫生部">卫生部</option>
+                                    </select>
+                                    </td>
+                                    <td><input type="text" placeholder="请输入需要反馈的信息" style="height: 110%"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#urgent">紧急下派</button>
+                            <div class="modal fade" id="urgent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_urgent" aria-hidden="true">
+                                <div class="modal-dialog" style="width:500px;height: 600px ">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="height: 50px">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: red;">×</button>
+                                            <h4 class="modal-title" id="myModalLabel_urgent" style="text-align: left">
+                                                紧急下派
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <span class="btn" onclick="$.lightTreeview.open('#department ol,#department ul')">展开全部</span> |
+                                            <span class="btn" onclick="$.lightTreeview.close('#department ol,#department ul')">收缩全部</span> |
+                                            <span class="btn" onclick="$.lightTreeview.toggle('#department ol,#department ul')">切换全部</span> |
+                                            <span class="btn" onclick="$.lightTreeview.toggle('#department ul:last')">切换园林部节点</span>
+
+                                            <ul id="department" class="lightTreeview" style="text-align: left" >
+                                                <li><div>卫生部</div></li>
+                                                <li>
+                                                    <div>环境部</div>
+                                                    <ol>
+                                                        <li>
+                                                            <div>环1</div>
+                                                            <ul style="display:none">
+                                                                <li><div><input type="radio" name="depart">子1</div></li>
+                                                                <li><div><input type="radio" name="depart">子2</div></li>
+                                                                <li><div><input type="radio" name="depart">子3</div></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><div>环2</div></li>
+                                                        <li><div>环3</div></li>
+                                                    </ol>
+                                                </li>
+                                                <li>
+                                                    <div>园林部</div>
+                                                    <ul style="display:none">
+                                                        <li><div>园1</div></li>
+                                                        <li><div>园2</div></li>
+                                                        <li><div>园3</div></li>
+                                                    </ul>
+                                                </li>
+                                                <li><div>城建部</div></li>
+                                            </ul>
+                                            <script type="text/javascript">
+                                                $(function() {
+                                                    $('#department').lightTreeview({
+                                                        collapse: true,
+                                                        line: true,
+                                                        nodeEvent: true,
+                                                        unique: false,
+                                                        style: 'gray',
+                                                        animate: 100,
+                                                        fileico: true,
+                                                        folderico: true
+                                                    });
+                                                });
+                                            </script>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary">
+                                                保存修改
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal -->
+                            </div>
+
+                            <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#reject">拒收任务</button>
+                            <div class="modal fade" id="reject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                                <div class="modal-dialog" style="width:500px ">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="height: 50px">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: red;">×</button>
+                                            <h4 class="modal-title" id="myModalLabel1" style="text-align: left">
+                                                拒收原因
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <label>该报料属于：</label>
+                                             <select id="rejectReason" >
+                                                  <option value="报料不实">报料不实</option>
+                                                  <option value="上级分派错误">上级分派错误</option>
+                                             </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary">
+                                                保存修改
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                            </button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal  。。。。。。。-->
+                            </div>
+
+
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#assign">下派任务</button>
+                            <div class="modal fade" id="assign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+                                <div class="modal-dialog" style="width:500px ">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="height: 50px">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: red;">×</button>
+                                            <h4 class="modal-title" id="myModalLabel2" style="text-align: left">
+                                                下派单位
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <label>下派单位为：</label>
+                                            <select id="assignment" >
+                                                <option value="报料不实">环境部</option>
+                                                <option value="上级分派错误">城建部</option>
+                                            </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary">
+                                                保存修改
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                            </button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal -->
+                            </div>
+                            <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">关闭
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+
+        </div>
+        </li>
+
+    </ul>
+    <!--分页-->
+    <ul class="pagination pagination-lg " style="margin-left:50%;" >
+               <li><a href="#">&laquo;</a></li>
+               <li ><a href="#">1</a></li>
+               <li class="active"><a href="#">2</a></li>
+               <li><a href="#">3</a></li>
+               <li><a href="#">4</a></li>
+               <li><a href="#">5</a></li>
+               <li><a href="#">&raquo;</a></li>
+    </ul>
+       <!--</div>-->
+
+</div>
+
+</div>
+
+</body>
+</html>
