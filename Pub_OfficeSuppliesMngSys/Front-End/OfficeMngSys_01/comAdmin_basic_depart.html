@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <title>基本资料管理-部门管理</title>
+</head>
+<body>
+
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active">
+            <a href="#depart-info" data-toggle="tab">
+                查看部门
+            </a>
+        </li>
+        <li><a href="#addAssessor" data-toggle="tab">添加部门</a></li>
+    </ul>
+
+        <!------------ 标签内容-------------------->
+
+        <div id="myTabContent" class="tab-content">
+            <!-- 查看部门-->
+            <table id="depart-info" class="display" cellspacing="0"  width="100%">
+                <thead>
+                <tr>
+                    <th>部门编号</th>
+                    <th>部门名称</th>
+                    <th>备注</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>001</th>
+                    <th>采购部</th>
+                    <th>--</th>
+
+                <tr>
+                    <th>001</th>
+                    <th>采购部</th>
+                    <th>--</th>
+                </tr>
+                <tr>
+                    <th>001</th>
+                    <th>采购部</th>
+                    <th>--</th>
+                </tr>
+                </tbody>
+            </table>
+
+            <!-- 添加部门-->
+            <div class="tab-pane fade" id="addAssessor">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="ass_number" class="col-sm-2 control-label">编号：</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="ass_number"
+                                   placeholder="请输入部门编号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ass_name" class="col-sm-2 control-label">名称：</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="ass_name"
+                                   placeholder="请输入部门名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="ass_sex" class="col-sm-2 control-label">备注：</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ass_sex"
+                               placeholder="请输入备注">
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn  btn-success ass_add_btn">添加至部门列表</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+      <script src="js/jquery-2.1.4.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script type="text/javascript">
+        $(document).ready(function() {
+            // DataTable
+            var table = $('#depart-info').dataTable();
+        } );
+      </script>
+</body>
+</html>
