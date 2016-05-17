@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/jquery.dataTables.css" type="text/css" rel="stylesheet">
+    <title>普通管理员-审核-领用申请-未审核</title>
+</head>
+<body>
+    <table id="claimassess_not-info" class="display" cellspacing="0"  width="100%">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>类型</th>
+            <th>规格型号</th>
+            <th>数量</th>
+            <th>申请人</th>
+            <th>申请时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>001</th>
+            <th>复印纸</th>
+            <th>办公纸</th>
+            <th>套</th>
+            <th>4</th>
+            <th>约翰</th>
+            <th>2016年4月23日</th>
+            <th><button>通过</button><button>不通过</button></th>
+        </tr>
+        <tr>
+            <th>001</th>
+            <th>复印纸</th>
+            <th>办公纸</th>
+            <th>套</th>
+            <th>4</th>
+            <th>约翰</th>
+            <th>2016年4月23日</th>
+            <th><button>通过</button><button>不通过</button></th>
+        </tr>
+        <tr>
+            <th>001</th>
+            <th>复印纸</th>
+            <th>办公纸</th>
+            <th>套</th>
+            <th>4</th>
+            <th>约翰</th>
+            <th>2016年4月23日</th>
+            <th><button>通过</button><button>不通过</button></th>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // DataTable
+            var table = $('#claimassess_not-info').dataTable();
+        } );
+    </script>
+</body>
+</html>

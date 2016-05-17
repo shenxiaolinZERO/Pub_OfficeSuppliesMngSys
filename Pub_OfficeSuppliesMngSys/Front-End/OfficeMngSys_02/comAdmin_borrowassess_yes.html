@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/jquery.dataTables.css" type="text/css" rel="stylesheet">
+    <title>普通管理员-审核-借用申请-已审核</title>
+</head>
+<body>
+   <table id="borrowassess_yes-info" class="display" cellspacing="0"  width="100%">
+    <thead>
+    <tr>
+        <th>编号</th>
+        <th>名称</th>
+        <th>类型</th>
+        <th>规格型号</th>
+        <th>数量</th>
+        <th>借用人</th>
+        <th>申请时间</th>
+        <th>审核结果</th>
+        <th>审核时间</th>
+        <th>借用状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>001</th>
+        <th>复印纸</th>
+        <th>办公纸</th>
+        <th>套</th>
+        <th>4</th>
+        <th>约翰</th>
+        <th>2016年4月23日</th>
+        <th>审核通过</th>
+        <th>2016年4月24日</th>
+        <th>已借出</th>
+        <th><a href="#">[删除]</a></th>
+    </tr>
+    <tr>
+        <th>001</th>
+        <th>复印纸</th>
+        <th>办公纸</th>
+        <th>套</th>
+        <th>4</th>
+        <th>约翰</th>
+        <th>2016年4月23日</th>
+        <th>审核通过</th>
+        <th>2016年4月24日</th>
+        <th>已借出</th>
+        <th><a href="#">[删除]</a></th>
+    </tr>
+    <tr>
+        <th>001</th>
+        <th>复印纸</th>
+        <th>办公纸</th>
+        <th>套</th>
+        <th>4</th>
+        <th>约翰</th>
+        <th>2016年4月23日</th>
+        <th>审核通过</th>
+        <th>2016年4月24日</th>
+        <th>已借出</th>
+        <th><a href="#">[删除]</a></th>
+    </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+       $(document).ready(function() {
+           // DataTable
+           var table = $('#borrowassess_yes-info').dataTable();
+       } );
+</script>
+</body>
+</html>
