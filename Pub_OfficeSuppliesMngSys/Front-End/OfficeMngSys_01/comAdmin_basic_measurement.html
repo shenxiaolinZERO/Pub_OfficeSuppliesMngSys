@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <title>基本资料管理-部门管理</title>
+    <title>基本资料管理-计量单位</title>
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/ui-lightness/jquery-ui.css" />
     <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.18.0.css" />
@@ -19,14 +19,13 @@
         // Prepare common variables
         var gColumns = [
             { name: 'ID', type: 'hidden' },
-            { name: '部门编号', display: '部门编号', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px' } },
-            { name: '部门名称', display: '部门名称', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px' } },
+            { name: '单位编号', display: '单位编号', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px' } },
+            { name: '单位名称', display: '单位名称', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px' } },
         ], gData = [
-            { 'ID': 1, '部门编号': '001', '部门名称': '财务部'},
-            { 'ID': 2, '部门编号': '002', '部门名称': '办公室'},
-            { 'ID': 3, '部门编号': '003', '部门名称': '财务部'},
-            { 'ID': 4, '部门编号': '004', '部门名称': '外联部'},
-            { 'ID': 5, '部门编号': '005', '部门名称': '人资部'}
+            { 'ID': 1, '单位编号': '001', '单位名称': '包'},
+            { 'ID': 2, '单位编号': '002', '单位名称': '本'},
+            { 'ID': 3, '单位编号': '003', '单位名称': '只'},
+            { 'ID': 4, '单位编号': '004', '单位名称': '个'}
         ], gI18n = {
             append: '!append!',
             removeLast: '!removeLast!',
@@ -53,9 +52,9 @@
         // Start the test
         QUnit.test('appendGrid.basic01', function (assert) {
             // Declare variables for testing
-            var eValid = false, eValues, eInitRows = 2, eDataLoaded = false, eCaption = '部门管理', eIdPrefix = 'hello';
+            var eValid = false, eValues, eInitRows = 2, eDataLoaded = false, eCaption = '计量单位管理', eIdPrefix = 'hello';
             // Check isReady
-            var $grid = $('#tbl-depart');
+            var $grid = $('#tbl-measurement');
             assert.notOk($grid.appendGrid('isReady'), 'Method: isReady=false');
             // Create the grid
             $grid.appendGrid({
@@ -129,7 +128,7 @@
 </head>
 <body>
 
-    <table id="tbl-depart"></table>
+    <table id="tbl-measurement"></table>
 
 </body>
 </html>

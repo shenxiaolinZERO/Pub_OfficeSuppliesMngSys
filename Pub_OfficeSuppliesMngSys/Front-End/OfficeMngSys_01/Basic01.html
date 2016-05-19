@@ -2,15 +2,12 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <title>基本资料管理-部门管理</title>
+    <title>appendGrid Test Basic 01</title>
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/ui-lightness/jquery-ui.css" />
     <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.18.0.css" />
     <link href="css/jquery.appendGrid-development.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <script src="js/jquery-2.1.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/qunit/qunit-1.18.0.js"></script>
@@ -19,14 +16,18 @@
         // Prepare common variables
         var gColumns = [
             { name: 'ID', type: 'hidden' },
-            { name: '部门编号', display: '部门编号', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px' } },
-            { name: '部门名称', display: '部门名称', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px' } },
+            { name: 'Album', display: 'Album', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px' } },
+            { name: 'Artist', display: 'Artist', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '120px' } },
+            { name: 'Year', display: 'Year', type: 'text', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '50px' } },
+            { name: 'Origin', display: 'Origin', type: 'select', ctrlOptions: { 0: '{Choose}', 1: 'Hong Kong', 2: 'Taiwan', 3: 'Japan', 4: 'Korea', 5: 'US', 6: 'Others' } },
+            { name: 'Poster', display: 'With Poster?', type: 'checkbox' },
+            { name: 'Price', display: 'Price', type: 'text', ctrlAttr: { maxlength: 10 }, ctrlCss: { width: '60px', 'text-align': 'right' }, value: 0 },
         ], gData = [
-            { 'ID': 1, '部门编号': '001', '部门名称': '财务部'},
-            { 'ID': 2, '部门编号': '002', '部门名称': '办公室'},
-            { 'ID': 3, '部门编号': '003', '部门名称': '财务部'},
-            { 'ID': 4, '部门编号': '004', '部门名称': '外联部'},
-            { 'ID': 5, '部门编号': '005', '部门名称': '人资部'}
+            { 'ID': 1, 'Album': 'Dearest', 'Artist': 'Theresa Fu', 'Year': '2009', 'Origin': 1, 'Poster': true, 'Price': 168.9 },
+            { 'ID': 2, 'Album': 'To be Free', 'Artist': 'Arashi', 'Year': '2010', 'Origin': 3, 'Poster': true, 'Price': 152.6 },
+            { 'ID': 3, 'Album': 'Count On Me', 'Artist': 'Show Luo', 'Year': '2012', 'Origin': 2, 'Poster': false, 'Price': 306.8 },
+            { 'ID': 4, 'Album': 'Wonder Party', 'Artist': 'Wonder Girls', 'Year': '2012', 'Origin': 4, 'Poster': true, 'Price': 108.6 },
+            { 'ID': 5, 'Album': 'Reflection', 'Artist': 'Kelly Chen', 'Year': '2013', 'Origin': 1, 'Poster': false, 'Price': 138.2 }
         ], gI18n = {
             append: '!append!',
             removeLast: '!removeLast!',
@@ -53,9 +54,9 @@
         // Start the test
         QUnit.test('appendGrid.basic01', function (assert) {
             // Declare variables for testing
-            var eValid = false, eValues, eInitRows = 2, eDataLoaded = false, eCaption = '部门管理', eIdPrefix = 'hello';
+            var eValid = false, eValues, eInitRows = 2, eDataLoaded = false, eCaption = 'My CD Collections', eIdPrefix = 'hello';
             // Check isReady
-            var $grid = $('#tbl-depart');
+            var $grid = $('#tblAppendGrid');
             assert.notOk($grid.appendGrid('isReady'), 'Method: isReady=false');
             // Create the grid
             $grid.appendGrid({
@@ -129,7 +130,7 @@
 </head>
 <body>
 
-    <table id="tbl-depart"></table>
+    <table id="tblAppendGrid"></table>
 
 </body>
 </html>
