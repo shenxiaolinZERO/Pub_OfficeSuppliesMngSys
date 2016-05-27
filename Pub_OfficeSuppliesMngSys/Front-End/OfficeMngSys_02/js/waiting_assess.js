@@ -1,7 +1,8 @@
+
 /**
  * Created by lenovo on 2016/3/5.
  */
-//¼ÓÔØ¡°´ýÉóºË¡±
+//ï¿½ï¿½ï¿½Ø¡ï¿½ï¿½ï¿½ï¿½ï¿½Ë¡ï¿½
 $(document).ready(function(){
     load_wait_assess();
 
@@ -10,13 +11,13 @@ $(document).ready(function(){
 function load_wait_assess(){
 
     //$.ajax({
-    //    url : 'http://192.168.199.104:8080/cammatmana/login.mvc?account=1012013001&password=123456',//µÇÂ¼
-    //    //url : 'http://139.129.28.117:8080/cammatmana/executeHQL.mvc?hql=from tb_material',//²éÑ¯
+    //    url : 'http://192.168.199.104:8080/cammatmana/login.mvc?account=1012013001&password=123456',//ï¿½ï¿½Â¼
+    //    //url : 'http://139.129.28.117:8080/cammatmana/executeHQL.mvc?hql=from tb_material',//ï¿½ï¿½Ñ¯
     //    type : "get",
     //    async : false,
     //    dataType : "jsonp",
-    //    jsonp : "callBackParamName", //·þÎñ¶ËÓÃÓÚ½ÓÊÕcallbackµ÷ÓÃµÄfunctionÃûµÄ²ÎÊý
-    //    jsonpCallback : "callBackName", //callbackµÄfunctionÃû³Æ,·þÎñ¶Ë»á°ÑÃû³ÆºÍdataÒ»Æð´«µÝ»ØÀ´
+    //    jsonp : "callBackParamName", //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½callbackï¿½ï¿½ï¿½Ãµï¿½functionï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½
+    //    jsonpCallback : "callBackName", //callbackï¿½ï¿½functionï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½Æºï¿½dataÒ»ï¿½ð´«µÝ»ï¿½ï¿½ï¿½
     //    success : function() {
     //        alert("1323");
     //    },
@@ -26,13 +27,13 @@ function load_wait_assess(){
     //})
 
     $.ajax({
-        url: "http://192.168.199.104:8080/demo/test21.do",//µÇÂ¼
-        //url : 'http://127.0.0.1:8080/cammatmana/back/executeHql.mvc?hql=from Material',//²éÑ¯
+        url: "http://192.168.199.104:8080/demo/test21.do",//ï¿½ï¿½Â¼
+        //url : 'http://127.0.0.1:8080/cammatmana/back/executeHql.mvc?hql=from Material',//ï¿½ï¿½Ñ¯
         type: "get",
         async: false,
         dataType: "jsonp",
-        jsonp: "callBackParamName", //·þÎñ¶ËÓÃÓÚ½ÓÊÕcallbackµ÷ÓÃµÄfunctionÃûµÄ²ÎÊý
-        jsonpCallback:"callBackName", //callbackµÄfunctionÃû³Æ,·þÎñ¶Ë»á°ÑÃû³ÆºÍdataÒ»Æð´«µÝ»ØÀ´
+        jsonp: "callBackParamName", //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½callbackï¿½ï¿½ï¿½Ãµï¿½functionï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½
+        jsonpCallback:"callBackName", //callbackï¿½ï¿½functionï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½Æºï¿½dataÒ»ï¿½ð´«µÝ»ï¿½ï¿½ï¿½
         success:  function() {
                     alert("1323");
                 },
@@ -43,13 +44,13 @@ function load_wait_assess(){
 
 
     //$.ajax({
-    //    url : 'http://192.168.199.104:8080/cammatmana/login.mvc?account=1012013001&password=123456',//µÇÂ¼
-    //    //url : 'http://192.168.199.104:8080/cammatmana/executeHQL.mvc?hql=from tb_material',//²éÑ¯
+    //    url : 'http://192.168.199.104:8080/cammatmana/login.mvc?account=1012013001&password=123456',//ï¿½ï¿½Â¼
+    //    //url : 'http://192.168.199.104:8080/cammatmana/executeHQL.mvc?hql=from tb_material',//ï¿½ï¿½Ñ¯
     //    type : "get",
     //    async : false,
     //    dataType : "jsonp",
-    //    jsonp : "callBackParamName", //·þÎñ¶ËÓÃÓÚ½ÓÊÕcallbackµ÷ÓÃµÄfunctionÃûµÄ²ÎÊý
-    //    jsonpCallback : "callBackName", //callbackµÄfunctionÃû³Æ,·þÎñ¶Ë»á°ÑÃû³ÆºÍdataÒ»Æð´«µÝ»ØÀ´
+    //    jsonp : "callBackParamName", //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½callbackï¿½ï¿½ï¿½Ãµï¿½functionï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½
+    //    jsonpCallback : "callBackName", //callbackï¿½ï¿½functionï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½Æºï¿½dataÒ»ï¿½ð´«µÝ»ï¿½ï¿½ï¿½
     //    success : function(json) {
     //        alert(JSON.stringify(json));
     //    },
@@ -58,7 +59,7 @@ function load_wait_assess(){
     //    }
     //});
 
-   // var x={"id":"1", "password":"123" , "name":"ÓñÓñ"};
+   // var x={"id":"1", "password":"123" , "name":"ï¿½ï¿½ï¿½ï¿½"};
    //// var x={"state":"8", "stayDepartmentId":"1"};
    //  console.log(x);
    // $.ajax({
@@ -86,7 +87,7 @@ function load_wait_assess(){
    //         //    html1 +='<div class="product-bottom">';
    //         //    html1 +='<span class="price">'+'?'+' '+json.collection[i].item_sale_price+'</span>';
    //         //    html1 +='<p><a>'+json.collection[i].item_name+' '+json. collection[i].item_size+'*'+json.collection[i].item_pack+'/'+json.collection[i].item_unit_no+'</a></p>';
-   //         //    html1 +='<button type="button" class="btn">È¡ÏûÊÕ²Ø</button>';
+   //         //    html1 +='<button type="button" class="btn">È¡ï¿½ï¿½ï¿½Õ²ï¿½</button>';
    //         //    html1 +='</div>';
    //         //    html1 +='</div>';
    //         //}

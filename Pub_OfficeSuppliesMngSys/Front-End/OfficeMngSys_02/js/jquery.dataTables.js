@@ -11074,6 +11074,7 @@
 				 *      } );
 				 *    } );
 				 */
+				//"sNext": "Next",
 				"sNext": "Next",
 	
 	
@@ -11097,7 +11098,8 @@
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "Previous"
+				//"sPrevious": "Previous"
+				"sPrevious": "上一页"
 			},
 	
 			/**

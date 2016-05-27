@@ -19,15 +19,17 @@
 	<h2>办公用品管理系统</h2>
 	<div class="login-top">
 		<h1>请登录</h1>
-		<form>
-			<input type="text" value="请输入工号" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
-			<input type="password" value="请输入密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
+		<form id="loginform">
+			<!--<input type="text" value="请输入工号" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">-->
+			<!--<input type="password" value="请输入密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">-->
+			<input type="text" id="idnumber" placeholder="请输入工号">
+			<input type="password" id="password" placeholder="请输入密码">
 			<br/>
 			<br/>
-			<input type="radio" value="superAdmin" name="role" checked="checked" >超级管理员
-			<input type="radio" value="comAdmin" name="role" style="margin-left: 30px;">普通管理员
-			<input type="radio" value="purchaser" name="role" style="margin-left: 30px;" >采购员
-			<input type="radio" value="user" name="role" style="margin-left: 30px;">用户
+			<!--<input type="radio" value="superAdmin" name="role" checked="checked" >超级管理员-->
+			<!--<input type="radio" value="comAdmin" name="role" style="margin-left: 30px;">普通管理员-->
+			<!--<input type="radio" value="purchaser" name="role" style="margin-left: 30px;" >采购员-->
+			<!--<input type="radio" value="user" name="role" style="margin-left: 30px;">用户-->
 			<br/>
 			<br/>
 	    </form>
