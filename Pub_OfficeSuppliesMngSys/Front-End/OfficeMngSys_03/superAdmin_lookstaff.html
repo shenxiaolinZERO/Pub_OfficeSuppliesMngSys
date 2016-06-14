@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/jquery.dataTables.css" type="text/css" rel="stylesheet">
+    <title>管理员查看员工信息</title>
+
+</head>
+<body>
+    <table id="staff-info" class="display" cellspacing="0"  width="100%">
+       <thead>
+          <tr>
+             <th>编号</th>
+             <th>姓名</th>
+             <th>部门</th>
+             <th>手机号码</th>
+             <th>联系电话</th>
+             <th>Email</th>
+             <th>性别</th>
+             <th>籍贯</th>
+             <th>住址</th>
+             <th>出生年月</th>
+             <th>毕业院校</th>
+             <th>最高学历</th>
+             <th>在职状态</th>
+             <th>备注</th>
+             <th>操作</th>
+          </tr>
+       </thead>
+        <tfoot>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>部门</th>
+            <th>手机号码</th>
+            <th>联系电话</th>
+            <th>Email</th>
+            <th>性别</th>
+            <th>籍贯</th>
+            <th>住址</th>
+            <th>出生年月</th>
+            <th>毕业院校</th>
+            <th>最高学历</th>
+            <th>在职状态</th>
+            <th>备注</th>
+            <th>操作</th>
+        </tr>
+        </tfoot>
+       <tbody>
+          <tr>
+              <td>001</td>
+              <td>约翰</td>
+              <td>销售部</td>
+              <td>18123456789</td>
+              <td>22388907</td>
+              <td>john@163.com</td>
+              <td>男</td>
+              <td>北京海淀</td>
+              <td>中关村将军北路</td>
+              <td>1980-10-10</td>
+              <td>北京交通大学</td>
+              <td>硕士</td>
+              <td>在职</td>
+              <td>—</td>
+              <td>[编辑][设为无效]</td>
+          </tr>
+          <tr>
+              <td>002</td>
+              <td>乔丹</td>
+              <td>外联部</td>
+              <td>18023456789</td>
+              <td>2568907</td>
+              <td>Jodn@163.com</td>
+              <td>男</td>
+              <td>上海浦东</td>
+              <td>中关村将军北路</td>
+              <td>1985-10-10</td>
+              <td>上海交通大学</td>
+              <td>博士</td>
+              <td>在职</td>
+              <td>—</td>
+              <td>[编辑][设为无效]</td>
+          </tr>
+          <tr>
+              <td>003</td>
+              <td>朱莉</td>
+              <td>外联部</td>
+              <td>18023456789</td>
+              <td>2568907</td>
+              <td>Jodn@163.com</td>
+              <td>女</td>
+              <td>上海浦东</td>
+              <td>中关村将军北路</td>
+              <td>1985-10-10</td>
+              <td>上海交通大学</td>
+              <td>博士</td>
+              <td>在职</td>
+              <td>—</td>
+              <td>[编辑][设为无效]</td>
+          </tr>
+       </tbody>
+    </table>
+
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+//            // Setup - add a text input to each footer cell
+//            $('#staff-info tfoot th').each( function () {
+//                var title = $('#staff-info thead th').eq( $(this).index() ).text();
+//                $(this).html( '<input  type="text" placeholder="Search" />' );
+//            } );
+//
+//            // DataTable
+//            var table = $('#staff-info').dataTable();
+//
+//            // Apply the search
+//            table.columns().every( function () {
+//               var that = this;
+//
+//               $( 'input', this.footer() ).on( 'keyup change', function () {
+//                   that
+//                            .search( this.value )
+//                            .draw();
+//               } );
+//           } );
+            $('#staff-info').dataTable( {
+                initComplete: function () {
+                    this.api().columns().every( function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                                .appendTo( $(column.footer()).empty() )
+                                .on( 'change', function () {
+                                    var val = $.fn.dataTable.util.escapeRegex(
+                                            $(this).val()
+                                    );
+
+                                    column
+                                            .search( val ? '^'+val+'$' : '', true, false )
+                                            .draw();
+                                } );
+
+                        column.data().unique().sort().each( function ( d, j ) {
+                            select.append( '<option value="'+d+'">'+d+'</option>' )
+                        } );
+                    } );
+                }
+            } );
+        } );
+    </script>
+</body>
+</html>

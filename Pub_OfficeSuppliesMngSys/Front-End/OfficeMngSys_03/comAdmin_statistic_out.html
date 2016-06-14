@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/jquery.dataTables.css" type="text/css" rel="stylesheet">
+    <title>普通管理员-报表中心-出库统计</title>
+</head>
+<body>
+    <!--采购人员：-->
+    <!--<select>-->
+        <!--<option>请选择</option>-->
+        <!--<option>张三</option>-->
+        <!--<option>李四</option>-->
+        <!--<option>王五</option>-->
+    <!--</select>-->
+    出库类型：
+    <select>
+        <option>请选择</option>
+        <option>领用</option>
+        <option>借用</option>
+        <option>赠与</option>
+    </select>
+    <button>搜索</button>
+    <table id="statistic_out-info" class="display" cellspacing="0"  width="100%">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>类型</th>
+            <th>规格型号</th>
+            <th>出库数量</th>
+            <th>出库类型</th>
+            <th>出库时间</th>
+            <th>经办人</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>001</th>
+            <th>复印纸</th>
+            <th>办公纸</th>
+            <th>套</th>
+            <th>4</th>
+            <th>领用</th>
+            <th>2016年4月23日</th>
+            <th>约翰</th>
+            <th>--</th>
+        </tr>
+        <tr>
+            <th>002</th>
+            <th>复印纸</th>
+            <th>办公纸</th>
+            <th>套</th>
+            <th>4</th>
+            <th>借用</th>
+            <th>2016年4月23日</th>
+            <th>约翰</th>
+            <th>--</th>
+        </tr>
+        <tr>
+            <th>001</th>
+            <th>复印纸</th>
+            <th>办公纸</th>
+            <th>套</th>
+            <th>4</th>
+            <th>赠与</th>
+            <th>2016年4月23日</th>
+            <th>约翰</th>
+            <th>--</th>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // DataTable
+            var table = $('#statistic_out-info').dataTable();
+        } );
+    </script>
+</body>
+</html>

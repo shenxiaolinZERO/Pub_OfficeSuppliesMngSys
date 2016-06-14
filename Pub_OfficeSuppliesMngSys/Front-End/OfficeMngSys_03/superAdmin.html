@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="css/public.css" type="text/css" rel="stylesheet">
+        <link href="css/totalStyle.css" type="text/css" rel="stylesheet">
+        <link href="css/smartMenu.css" type="text/css" rel="stylesheet">
+        <title>办公用品管理系统-超级管理员</title>
+    </head>
+    <body onload="startTime()">
+    	<div id="admin">
+    		<div class="ad-menu" id="ad-menu">
+                <div class="ad-logo"><img src="image/top_logo.png" height="63" width="68"><br/>
+                    <div><label style="color: white;font-size: 1.1em;">办公用品管理系统<br/>
+                        OfficeSuppliesManageSystem</label></div>
+                </div>
+
+                <div class="ad-list">
+                    <ul>
+                        <li>
+                            <div class="li-item"><em class="scm li-ico ic1"></em>首页<span class="scm arrow"></span></div>
+                            <dl>
+                                <dd>
+                                    <a href="index_v1.html" class="dd-item" target="main-iframe">首页<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="index_v1.html" data-index="1">首页</li>-->
+                                    <!--</ul>-->
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <div class="li-item"><em class="scm li-ico ic2"></em>员工管理<span class="scm arrow"></span></div>
+                            <dl>
+                                <dd>
+                                    <a href="superAdmin_lookstaff.html" class="dd-item" target="main-iframe">查看员工<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="superAdmin_lookstaff.html" data-index="1">查看员工</li>-->
+                                    <!--</ul>-->
+                                </dd>
+                                <dd>
+                                    <a href="superAdmin_addstaff.html" class="dd-item" target="main-iframe">添加员工<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                    <!--<li class="J_menuItem" href="superAdmin_addstaff.html" data-index="1">添加员工</li>-->
+                                <!--</ul>-->
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <div class="li-item"><em class="scm li-ico ic3"></em>供应商管理<span class="scm arrow"></span></div>
+                            <dl>
+                                <dd>
+                                    <a href="superAdmin_looksupplier.html" class="dd-item" target="main-iframe">查看供应商<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="superAdmin_looksupplier.html" data-index="1">查看供应商</li>-->
+                                    <!--</ul>-->
+                                </dd>
+                                <dd>
+                                    <a href="superAdmin_addsupplier.html" class="dd-item" target="main-iframe">添加供应商<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="superAdmin_addsupplier.html" data-index="1">添加供应商</li>-->
+                                    <!--</ul>-->
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <div class="li-item"><em class="scm li-ico ic4"></em>权限分配<span class="scm arrow"></span></div>
+                            <dl>
+                                <dd>
+                                    <a href="index_v1.html" class="dd-item" target="main-iframe">查看权限<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="index_v1.html" data-index="1">查看现有角色及权限</li>-->
+                                    <!--</ul>-->
+                                </dd>
+                                <dd>
+                                    <a href="index_v1.html" class="dd-item" target="main-iframe">添加权限<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="index_v1.html" data-index="1">添加新角色及权限</li>-->
+                                    <!--</ul>-->
+                                </dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <div class="li-item"><em class="scm li-ico ic7"></em>个人中心<span class="scm arrow"></span></div>
+                            <dl>
+                                <dd>
+                                    <a href="personalCenter.html" class="dd-item" target="main-iframe">修改信息<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="personalCenter.html" data-index="1">我要修改信息</li>-->
+                                    <!--</ul>-->
+                                </dd>
+                                <dd>
+                                    <a href="index_v1.html" class="dd-item" target="main-iframe">修改**<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="index_v1.html" data-index="1">我要修改**</li>-->
+                                    <!--</ul>-->
+                                </dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    		<div class="ad-comment-box" id="ad-comment">
+                <div class="ad-top-comment">
+                    <div class="ad-message">
+                        <div class="ad-top-left">
+                            <div class="ad-change-btn"><a id="ad-list" href="javascript:;" class="scm ad-list-btn"></a></div>
+                            <div class="ad-search-box clear">
+                                <div class="ad-search-sel">
+                                    <select>
+                                        <option>办公室</option>
+                                        <option>财务部</option>
+                                        <option>人资部</option>
+                                        <option>文秘部</option>
+                                        <option>外联部</option>
+                                    </select>
+                                </div>
+                                <div class="ad-search-cha">
+                                    <input type="text" class="ad-search-input" placeholder="请输入你要查找的内容">
+                                    <input type="submit" class="scm ad-search-btn" value=""> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ad-top-right">
+                            <div class="ad-notice">
+                                <ul>
+                                    <li>
+                                        <a href="javascript:;" class="scm nt1"><span class="scm nt-count dot">6</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" class="scm nt2"><span class="scm nt-count dot">6</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" class="scm nt3"><span class="scm nt-count dot">6</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="ad-welcom">
+                                <div class="ad-wel-img"><img src="image/top_logo.png" height="36" width="36"></div>
+                                <div class="ad-wel-text">
+                                    <div class="font-wel">欢迎您！<strong>沈小0</strong><a href="javascript:;"><strong>【退出】</strong></a></div>
+                                    <div id="setDateTime"></div>
+                                    <script>
+                                        function startTime(){
+                                            var today=new Date();
+                                            var y=today.getFullYear();
+                                            var mon=today.getMonth();
+                                            var d=today.getDay();
+                                            var h=today.getHours();
+                                            var m=today.getMinutes();
+
+                                            var s=today.getSeconds();
+                                            m=checkTime(m);
+                                            s=checkTime(s);
+
+                                            document.getElementById("setDateTime").innerHTML="现在时间："+h+":"+m+":"+s;
+
+                                            t=setTimeout(function(){startTime();},1000);
+                                            //document.write(today);
+                                        };
+
+                                        function checkTime(i){
+                                            if(i<10) {
+                                                i="0"+i;
+                                            }
+                                            return i;
+                                        };
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ad-main-nav-box">
+                        <ul id="breadcrumbs-three">
+                            <li title="首页"><a href="javascript:;" class="dot">首页</a></li>
+                        </ul>
+                        <a href="javascript:;" class="scm jian-a J_mainLeft main-sel pre"></a>
+                        <div class="ad-main-wraper .J_menuItems">
+                            <ul class="ad-main-list" id="ad-main">
+                            </ul>
+                        </div>
+                        <a href="javascript:;" class="scm jian-a J_mainRight next"></a>
+                    </div>
+                    <div class="ad-sub-nav-box content-tabs">
+                        <!-- <div class="ad-sub-record">历史记录</div> -->
+                        <a href="javascript:;" class="scm jian-a sub-sel pre j_tabBg J_tabLeft"></a>
+                        <div class="ad-sub-wraper page-tabs J_menuTabs">
+                            <!--<ul class="ad-sub-list page-tabs-content">-->
+                                <!--<li class="active J_menuTab" data-id="index_v0.html">首页</li>-->
+                            <!--</ul>-->
+                        </div>
+                        <a href="javascript:;" class="scm jian-a next j_tabBg J_tabRight"></a>
+                    </div>
+                </div>
+                <div class="ad-main-comment J_mainContent" id="ad-iframe">
+
+                    <iframe  name="main-iframe" width="100%" height="100%" src="index_v0.html" frameborder="0" data-id="index_v0.html" seamless></iframe>
+                    <!--<iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="index_v0.html" frameborder="0" data-id="index_v0.html" seamless></iframe>-->
+                </div>
+    		</div>
+    	</div>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/contabs.js"></script>
+        <script type="text/javascript" src="js/maintabs.js"></script>
+        <script type="text/javascript" src="js/jquery-smartMenu-min.js"></script>
+        <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
+        <script type="text/javascript" src="js/setDateTime.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                $(".ad-menu").niceScroll({cursorborder:"0 none",cursorcolor:"#1a1a19",cursoropacitymin:"0",boxzoom:false});
+            })
+        </script>
+        <!--<div id="ascrail2000" class="nicescroll-rails-vr" style="width: 5px;z-index: auto;cursor: default;position: absolute;top:0px;left: 230px;height: 200px; display: block;opacity: 0;">-->
+            <!--<div class="nicescroll-cursors" style="position:relative;top: 0px;float: right;width: 5px;height: 1283px;border: 0px none; border-radius: 5px;background-color: rgb(26,26,25);background-clip: padding-box"></div>-->
+
+        <!--</div>-->
+
+    </body>
+</html>

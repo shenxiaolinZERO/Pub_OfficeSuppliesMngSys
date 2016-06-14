@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.css">
+    <title>普通管理员-入库-受赠</title>
+</head>
+<body>
+
+    <br>
+    <div class="search-wrap" style="display: block;">
+        <div class="search-content">
+            <form action="/jscss/admin/design/index" method="post">
+                <button class="btn btn-sm">批量入库</button>
+                   <span style="float:right; margin-right: 20px">物品分类ID:<select name="search-sort" id="">
+                       <option value="">全部</option>
+                       <option value="19">1</option>
+                       <option value="20">2</option>
+                   </select> 	&nbsp; 	&nbsp;
+                   <!--采购人工号：-->
+                   <button class="btn btn-sm">查询</button></span>
+            </form>
+        </div>
+    </div>
+    <br/>
+   <table id="gain-info" class="table-bordered table-hover table-striped" cellspacing="0"  width="100%">
+       <!--<caption>受赠清单</caption>-->
+       <thead>
+       <tr>
+           <td><input class="allChoose" type="checkbox"></td>
+           <th>物品名称</th>
+           <th>物品分类</th>
+           <th>规格型号</th>
+           <th>计量单位id</th>
+           <th>物品上限</th>
+           <th>物品下限</th>
+           <th>受赠数量</th>
+           <th>赠与人</th>
+           <th>赠与时间</th>
+           <th>备注</th>
+           <th>入库操作</th>
+       </tr>
+       </thead>
+
+       </tfoot>
+       <tbody id="return-item">
+       <tr>
+           <td><input type="checkbox"/></td>
+
+           <td><input type="text" name="itemName" id="itemName"></td>
+           <td><input type="text" name="itemTypeId" id="itemTypeId"></td>
+           <td><input type="text" name="spec" id="spec"></td>
+           <td><input type="text" name="spec" id="measureUnitId"></td>
+           <td><input type="text" name="maxInventory"></td>
+           <td><input type="text" name="minInventory"></td>
+           <td><input type="text" name="totalNumber" id="totalNumber"></td>
+
+           <td><input type="text" name="sender" id="sender"></td>
+           <td><input type="text" name="sendTime" id="sendTime"></td>
+           <td><input type="text" name="remark" id="remark"></td>
+           <td><button id="inStorage">入库</button></td>
+       </tr>
+       <tr>
+           <td><input type="checkbox"/></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><button>入库</button></td>
+       </tr>
+       <tr>
+           <td><input type="checkbox"/></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><input type="text"></td>
+           <td><button>入库</button></td>
+       </tr>
+       </tbody>
+
+   </table>
+    <div class="page pull-right">
+
+        第<input type="text" id="pageIndex" style="border:0;width: 20px;text-align: center;" class="page-current" readonly="readonly"/>页
+        共<input type="text" id="pageSize"  style="border:0;width: 20px;text-align: center;" class="page-total" readonly="readonly"/>页
+        <a class="btn" id="firstPage" onclick="firstPage()">首页</a>
+        <a class="btn" id="previous" onclick="previousPage()">上一页</a>
+        <a class="btn" id="next" onclick="nextPage()">下一页</a>
+        <a class="btn" id="lastPage" onclick="lastPage()">最后一页</a>
+        <input type="text" class="page-num" id="page-num" style="width: 20px;text-align: center"/>
+        <a class="btn" id="page-jump" onclick="jumpPage()">跳至此页</a>
+    </div>
+
+   <script type="text/javascript" src="js/jquery.js"></script>
+   <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+   <script type="text/javascript">
+       $(document).ready(function() {
+           // DataTable
+           //var table = $('#gain-info').dataTable();
+       } );
+   </script>
+   <script type="text/javascript" src="js/Encapsulated-Data/comAdmin_in_gain.js"></script>
+</body>
+</html>E

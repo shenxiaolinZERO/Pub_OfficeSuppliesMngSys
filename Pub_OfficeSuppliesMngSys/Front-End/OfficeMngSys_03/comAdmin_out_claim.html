@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/jquery.dataTables.css">
+    <title>普通管理员-出库-领用</title>
+</head>
+<body>
+   <h4>领用清单</h4>
+   <br>
+   <table id="claim-info" class="display" cellspacing="0"  width="100%">
+       <input type="checkbox"/>全选
+       <thead>
+       <tr>
+           <td></td>
+           <th>物品编号</th>
+           <th>物品名称</th>
+           <th>物品分类</th>
+           <th>规格型号</th>
+           <th>领用数量</th>
+           <th>领用人</th>
+           <th>审核时间</th>
+           <th>备注</th>
+           <th>出库操作</th>
+       </tr>
+       </thead>
+       <tfoot>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td><button>选择出库</button></td>
+       </tfoot>
+       <tbody>
+       <tr>
+           <td><input type="checkbox"/></td>
+           <td>001</td>
+           <td>真彩水性笔</td>
+           <td>文具</td>
+           <th>盒（12支）</th>
+           <th>3</th>
+           <th>小王</th>
+           <th>2016.04.19</th>
+           <th>无备注</th>
+           <td><button>出库</button></td>
+       </tr>
+       <tr>
+           <td><input type="checkbox"/></td>
+           <td>001</td>
+           <td>真彩水性笔</td>
+           <td>文具</td>
+           <th>盒（12支）</th>
+           <th>3</th>
+           <th>小王</th>
+           <th>2016.04.19</th>
+           <th>无备注</th>
+           <td><button>出库</button></td>
+       </tr>
+       <tr>
+           <td><input type="checkbox"/></td>
+           <td>001</td>
+           <td>真彩水性笔</td>
+           <td>文具</td>
+           <th>盒（12支）</th>
+           <th>3</th>
+           <th>小王</th>
+           <th>2016.04.19</th>
+           <th>无备注</th>
+           <td><button>出库</button></td>
+       </tr>
+       </tbody>
+   </table>
+
+
+
+   <script type="text/javascript" src="js/jquery.js"></script>
+   <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+   <script type="text/javascript">
+           $(document).ready(function() {
+               // DataTable
+               var table = $('#claim-info').dataTable();
+           } );
+   </script>
+</body>
+</html>
