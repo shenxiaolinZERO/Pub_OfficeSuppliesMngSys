@@ -10,7 +10,7 @@ function getOuttype(){
      $.ajax({
              type:"post",
              dataType:"json",
-             url:"http://192.168.35.111:8080/officeSystem/OutstorageCheckIn/ getOutstorageType.do",
+             url:"http://192.168.35.111:8080/officeSystem/OutstorageCheckIn/getOutstorageType.do",
              success:function(data){
                   var len=data.length;
 
@@ -18,7 +18,6 @@ function getOuttype(){
             for(var i=0;i<len;i++){
                 $("#select-out").append(('<option value='+data[i].id+'>'+data[i].name+'</option>'));
             }
-
         },
         error:function(data){
             console.log(data);

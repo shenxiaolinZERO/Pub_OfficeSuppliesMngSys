@@ -42,6 +42,8 @@ function loadInGain(){
 
     $.ajax({
         type:"post",
+        //这个URL该不该和return 以及purchase一样？
+        //url:"http://192.168.35.111:8080/officeSystem/InstorageCheckIn/getInstorageHome.do"
         url:"http://192.168.35.111:8080/officeSystem/InstorageCheckIn/sendInStorage.do",
         data:JSON.stringify(x),
         dataType:"json",
