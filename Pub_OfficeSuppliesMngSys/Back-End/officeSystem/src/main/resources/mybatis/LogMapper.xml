@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.LogDao">
+	<insert id="insertLog" parameterType="cn.fjnu.officeSystem.entity.Log">
+		insert into
+		t_log(id,department_id,staff_id,staff_role,staff_name,computer_name,computer_ip,oper_detail,oper_date,remark)
+		values(#{id},#{departmentId},#{staffId},#{staffRole},#{staffName},#{computernName},#{computerIp},
+		#{operDetail},#{operDate},#{remark})
+	</insert>
+	<select id="selectLogsByMap" resultType="cn.fjnu.officeSystem.entity.Log" parameterType="java.util.Map">
+		select * from t_log
+		<where>
+		<if test="departmentId!=null">
+		department_id=#{departmentId}
+		</if>
+		<if test="staffId!=null">
+		and staff_id=#{staffId}
+		
+		</if>
+		<if test="staffName!=null">
+		and staff_name=#{staffName}
+		</if>
+		<if test="computerIp!=null">
+		and computer_ip=#{computerIp}
+		</if>
+		<if test="startTime!=null">
+		and oper_date>=#{startTime}
+		</if>
+		<if test="endTime!=null">
+		and oper_date&lt;#{endTime}
+		</if>
+		</where>
+		order by oper_date desc
+	</select>
+
+	
+</mapper>

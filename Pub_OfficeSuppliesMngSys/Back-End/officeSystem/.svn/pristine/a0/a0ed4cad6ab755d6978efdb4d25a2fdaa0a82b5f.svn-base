@@ -1,0 +1,97 @@
+package cn.fjnu.officeSystem.serviceImpl;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import cn.fjnu.officeSystem.dao.BorrowApplyDao;
+import cn.fjnu.officeSystem.dao.InStorageTypeDao;
+import cn.fjnu.officeSystem.dao.ItemProcurementDao;
+import cn.fjnu.officeSystem.entity.BorrowApply;
+import cn.fjnu.officeSystem.entity.InStorageType;
+import cn.fjnu.officeSystem.entity.ItemProcurement;
+import cn.fjnu.officeSystem.extend.BorrowApplyExtend;
+import cn.fjnu.officeSystem.extend.ItemProcurementExtend;
+import cn.fjnu.officeSystem.utils.DateJsonValueProcessor;
+import cn.fjnu.officeSystem.utils.PageUtil;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+@Service
+public class InStorageService {
+	@Resource
+	InStorageTypeDao inStorageTypeDao;
+	@Resource
+	ItemProcurementDao itemProcurementDao;
+	@Resource
+	BorrowApplyDao borrowApplyDao;
+	//请选择入库类型(1、采购，2、归还，3、受赠)
+	public String getInstorageType(){
+		List<InStorageType> inStorageTypes=inStorageTypeDao.selectAllInStrorageTypes();
+		if (inStorageTypes.size()==0) {//先看看是否数据库中有数据
+			return "{\"message\":\"nothing\"}";
+			
+		}else{
+			String result=JSONArray.fromObject(inStorageTypes).toString();
+			return result;
+		}
+		
+	}
+	//根据选择的入库类型传回相应的首页
+	public String getInstorageHome(String json){
+		JSONObject jsonObject=JSONObject.fromObject(json);
+		String inStorageTypeId=jsonObject.optString("inStorageTypeId");
+		int pageIndex=jsonObject.optInt("pageIndex");
+		int pageCount=jsonObject.optInt("pageCount");
+		int count=0;//统计总记录条数
+		String result=null;
+		Map<String, Object> resultMap=new HashMap<>();
+		if (inStorageTypeId.equals("1")) {//采购入库
+			count=itemProcurementDao.selectUnInStorageItemProcurementCount();
+			if (count>0) {
+				PageUtil<ItemProcurementExtend> page=new PageUtil<>(pageIndex, count, pageCount);
+				List<ItemProcurementExtend> resultList=itemProcurementDao.selectUnInStorageItemProcurement(page.getDataStart(),page.getDataEnd());
+				resultMap.put("resultList", resultList);
+				resultMap.put("pageSize", page.getPageSize());
+				
+			}
+			
+		}else if(inStorageTypeId.equals("2")){//归还入库
+			count=borrowApplyDao.selectInStorageBorrowApplieCount();
+			if (count>0) {
+				PageUtil<BorrowApplyExtend> page=new PageUtil<>(pageIndex, count, pageCount);
+				List<BorrowApplyExtend> resultList=borrowApplyDao.selectInStorageBorrowApplies(page.getDataStart(), page.getDataEnd());
+				System.out.println(resultList);
+				resultMap.put("resultList", resultList);
+				resultMap.put("pageSize", page.getPageSize());
+			}
+			
+			
+		}else{
+			return "{\"message\":\"当前还未实现此功能的入库登记\"}";
+		}
+		if (count>0) {
+			 JsonConfig config = new JsonConfig(); 
+			 config.registerJsonValueProcessor(Date.class, new DateJsonValueProcessor("yyyy-MM-dd hh:mm:ss")); 
+			resultMap.put("pageIndex", pageIndex);
+			System.out.println(resultMap);
+			result=jsonObject.fromObject(resultMap, config).toString();
+			return result;
+			
+		}else{
+			return "{\"message\":\"该类型下无记录需登记\"}";
+		}
+		
+		
+	}
+	//根据物品采购清单，对物品进行分类汇总
+	
+	
+	
+
+}

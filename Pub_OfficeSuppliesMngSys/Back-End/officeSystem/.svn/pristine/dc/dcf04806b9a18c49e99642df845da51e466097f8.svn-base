@@ -1,0 +1,74 @@
+package cn.fjnu.officeSystem.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+import cn.fjnu.officeSystem.entity.BorrowApply;
+import cn.fjnu.officeSystem.extend.BrrowApplyExtend;
+
+@Repository
+public interface BorrowApplyDao {
+	
+	/**
+	 * 添加物品借用申请表记录
+	 * @param borrowApply
+	 * @return
+	 */
+	public int insertBorrowApply(BorrowApply borrowApply);
+	
+	/**
+	 * 根据id删除物品借用申请表记录
+	 * @param id
+	 * @return
+	 */
+	public int deleteBorrowApplyById(String id);
+	
+	/**
+	 * 动态更新物品借用申请表
+	 * @param borrowApply
+	 * @return
+	 */
+	public int updateBorrowApply(BorrowApply borrowApply);
+	
+	/**
+	 * 根据id查询物品借用表
+	 * @param id
+	 * @return
+	 */
+	public BorrowApply selectBorrowApplyById(String id);
+	/**
+	 * 查询出所有审核通过，并且还没有出库登记的借用申请表记录
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public List<BorrowApply> selectBorrowApplyAuditAndPass(@Param("start") int start,@Param("end") int end);
+	
+
+	/**
+	 * 查询出所有审核通过，并且还没有出库登记的借用申请表的总记录数
+	 * @return
+	 */
+	public int selectBorrowApplyAuditAndPassCount();
+	
+	/**
+	 * 查询出所有需要入库登记的借用申请（已借出但未归还的状态）
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public List<BrrowApplyExtend> selectInStorageBorrowApplies(@Param("start") int start,@Param("end") int end);
+	
+	/**
+	 * 查询出所有需要入库登记的借用申请（已借出但未归还的状态）总记录数
+	 * @return
+	 */
+	public int selectInStorageBorrowApplieCount();
+	
+	
+
+
+}

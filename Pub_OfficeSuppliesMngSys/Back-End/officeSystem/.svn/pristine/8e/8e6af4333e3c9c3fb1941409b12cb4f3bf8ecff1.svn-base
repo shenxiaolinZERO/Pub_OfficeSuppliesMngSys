@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.fjnu.officeSystem.dao.BorrowApplyDao">
+	<insert id="insertBorrowApply" parameterType="cn.fjnu.officeSystem.entity.BorrowApply">
+		insert into
+		t_borrow_apply(id,item_id,item_name,item_type_id,spec,borrow_num,price,monney,
+		borrow_time,borrow_department_id,borrower,audit_time,auditor,state,is_return,
+		return_time,is_display,is_valid,apply_time,reason,remark)
+		values(#{id},#{itemId},#{itemName},#{itemTypeId},#{spec},#{borrowNum},
+		#{price},#{monney},#{borrowTime},#{borrowDepartmentId},#{borrower},#{auditTime}
+		,#{auditor},#{state},#{isReturn},#{returnTime},#{isDisplay},#{isValid}
+		,#{applyTime},#{reason},#{remark})
+	</insert>
+
+	<delete id="deleteBorrowApplyById" parameterType="java.lang.String">
+		delete from t_borrow_apply
+		where id=#{id}
+
+	</delete>
+
+	<update id="updateBorrowApply" parameterType="cn.fjnu.officeSystem.entity.BorrowApply">
+		update t_borrow_apply
+		<set>
+			<if test="itemId!=null">
+				item_id=#{itemId},
+			</if>
+			<if test="itemName!=null">
+				item_name=#{itemName},
+			</if>
+			<if test="itemTypeId!=null">
+				item_type_id=#{itemTypeId},
+			</if>
+			<if test="spec!=null">
+				spec=#{spec},
+			</if>
+			<if test="borrowNum!=null">
+				borrow_num=#{borrowNum},
+			</if>
+			<if test="price!=null">
+				price=#{price},
+			</if>
+			<if test="monney!=null">
+				monney=#{monney},
+			</if>
+			<if test="borrowTime!=null">
+				borrow_time=#{borrowTime},
+			</if>
+			<if test="borrowDepartmentId!=null">
+				borrow_department_id=#{borrowDepartmentId},
+			</if>
+			<if test="borrower!=null">
+				borrower=#{borrower},
+			</if>
+			<if test="auditTime!=null">
+				audit_time=#{auditTime},
+			</if>
+			<if test="auditor!=null">
+				auditor=#{auditor},
+			</if>
+			<if test="state!=null">
+				state=#{state},
+			</if>
+			<if test="isReturn!=null">
+				is_return=#{isReturn},
+			</if>
+			<if test="returnTime!=null">
+				return_time=#{returnTime},
+			</if>
+			<if test="isDisplay!=null">
+				is_display=#{isDisplay},
+			</if>
+			<if test="isValid!=null">
+				is_valid=#{isValid},
+			</if>
+			<if test="applyTime!=null">
+				apply_time=#{applyTime},
+			</if>
+			<if test="isReturn!=null">
+				is_return=#{isReturn},
+			</if>
+			<if test="reason!=null">
+				reason=#{reason},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+
+		</set>
+		where id=#{id}
+	</update>
+
+	<select id="selectAllBorrowApplies" resultType="cn.fjnu.officeSystem.entity.BorrowApply">
+		SELECT * FROM t_borrow_apply
+	</select>
+
+	<select id="selectBorrowApplyByItemId" parameterType="java.lang.String"
+		resultType="cn.fjnu.officeSystem.entity.BorrowApply">
+		select * from t_borrow_apply where item_id=#{itemId}
+	</select>
+
+	<select id="selectBorrowApplyByItemName" parameterType="java.lang.String"
+		resultType="cn.fjnu.officeSystem.entity.BorrowApply">
+		select * from t_borrow_apply where item_name=#{itemName}
+	</select>
+
+	<select id="selectBorrowApplyByItemTypeId" parameterType="java.lang.String"
+		resultType="cn.fjnu.officeSystem.entity.BorrowApply">
+		select * from t_borrow_apply where item_type_id=#{itemTypeId}
+	</select>
+	
+	<select id="selectBorrowApplyByBorrowDepartmentId"
+		parameterType="java.lang.String" resultType="cn.fjnu.officeSystem.entity.BorrowApply">
+		select * from t_borrow_apply where
+		borrow_department_id=#{BorrowDepartmentId}
+	</select>
+
+	<select id="selectBorrowApplyByState" parameterType="int"
+		resultType="cn.fjnu.officeSystem.entity.BorrowApply">
+		select * from t_borrow_apply where state=#{state}
+	</select>
+
+	<select id="selectBorrowApplyByValidateState" parameterType="int"
+		resultType="cn.fjnu.officeSystem.entity.BorrowApply">
+		select * from t_borrow_apply where is_valid=#{isValid}
+	</select>
+	<select id="selectInStorageBorrowApplies" resultType="cn.fjnu.officeSystem.extend.BrrowApplyExtend" parameterType="java.util.Map">
+	select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName from t_borrow_apply,t_item_type,t_staff,t_department where borrow_time is not null and return_time is null
+	 and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id)
+	 order by borrow_time 
+	limit #{start},#{end}
+	</select>
+	<select id="selectInStorageBorrowApplieCount" resultType="java.lang.Integer">
+	select count(*) from t_borrow_apply where borrow_time is not null and return_time is null
+	</select>
+	
+	
+
+</mapper>

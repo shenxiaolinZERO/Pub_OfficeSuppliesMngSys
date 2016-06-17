@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.SupplierDao">
+	<insert id="insertSupplier" parameterType="cn.fjnu.officeSystem.entity.Supplier">
+		insert into
+		t_supplier(id,full_name,short_name,supplier_type_id,linkman,cell_phone_number,phone,fax,postcode,
+		address,is_valid,remark)values(#{id},#{fullName},#{shortName},#{supplierTypeId},#{linkman},#{cellPhoneNumber},
+		#{phone},#{fax},#{postcode},#{address},#{isValid},#{remark})
+
+	</insert>
+	<update id="updateSupplier">
+		update t_supplier
+		<set>
+			<if test="fullName!=null">
+				full_name=#{fullName},
+			</if>
+			<if test="shortName!=null">
+				short_name=#{shortName},
+			</if>
+			<if test="supplierTypeId!=null">
+				supplier_type_id=#{supplierTypeId}
+			</if>
+			<if test="linkman!=null">
+				linkman=#{linkman},
+			</if>
+			<if test="cellPhoneNumber!=null">
+				cell_phone_number=#{cellPhoneNumber},
+			</if>
+			<if test="phone!=null">
+				phone=#{phone},
+			</if>
+			<if test="fax!=null">
+				fax=#{fax},
+			</if>
+			<if test="postcode!=null">
+				postcode=#{postcode},
+			</if>
+			<if test="address!=null">
+				address=#{address},
+			</if>
+			<if test="isValid!=null">
+				is_valid=#{isValid},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	<select id="selectAllSupplier" resultType="cn.fjnu.officeSystem.entity.Supplier">
+	select * from t_supplier
+	</select>
+	<select id="selectValidSupplier" resultType="cn.fjnu.officeSystem.entity.Supplier">
+	select * from t_supplier where is_valid=1
+	</select>
+	<select id="selectUnValidSupplier" resultType="cn.fjnu.officeSystem.entity.Supplier">
+	select * from t_supplier where is_valid=0
+	</select>
+	<select id="selectSupplierByTypeAndState" resultType="cn.fjnu.officeSystem.entity.Supplier" parameterType="java.util.Map">
+	select * from t_supplier
+	<where> 
+	<if test="isValid!=null">
+	is_valid=#{isValid}
+	</if>
+	<if test="supplierTypeId">
+	and supplier_type_id=#{supplierTypeId}
+	</if>
+	</where>
+	</select>
+	
+</mapper>

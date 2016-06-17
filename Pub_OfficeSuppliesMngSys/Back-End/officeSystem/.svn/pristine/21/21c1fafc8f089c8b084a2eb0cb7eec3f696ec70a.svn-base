@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.entity.OutStorageCheckIn">
+	<sql id="query_isci_where">
+		<if test="outStorageDate!=null">
+			out_storage_date=#{outStorageDate}
+		</if>
+		<if test="outStorageTypeId!=null">
+			and out_storage_type_id=#{outStorageTypeId}
+		</if>
+		<if test="operaterId!=null">
+			and operater_id=#{operaterId}
+		</if>
+		<if test="recipienter!=null">
+			and recipienter=#{recipienter}
+		</if>
+		<if test="departmentId!=null">
+			and department_id=#{departmentId}
+		</if>
+		<if test="applyId!=null">
+			and apply_id=#{applyId}
+		</if>
+	</sql>
+	<insert id="insertOutStorageCheckInPl" parameterType="java.util.List">
+		insert into
+		t_out_storage_check_in(id,out_storage_date,out_storage_type_id,recipienter,department_id,operater_id,apply_id,total_number,total_monney,remark)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.id},#{item.outStorageDate},#{item.outStorageTypeId},#{item.recipienter},
+			#{item.departmentId},#{item.operaterId},#{item.applyId},#{item.totalNumber},#{item.totalMonney},#{item.remark})
+		</foreach>
+
+	</insert>
+
+	<select id="selectOutStorageCheckInByMap" parameterType="java.util.Map"
+		resultType="cn.fjnu.officeSystem.entity.OutStorageCheckIn">
+		select * from t_out_storage_check_in
+		<where>
+			<include refid="query_isci_where" />
+		</where>
+		limit #{start},#{end}
+
+
+	</select>
+
+	<select id="selectOutStorageCheckInByMapCount" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		select count(*) from t_out_storage_check_in
+		<where>
+			<include refid="query_isci_where" />
+		</where>
+	</select>
+
+
+
+
+
+</mapper>

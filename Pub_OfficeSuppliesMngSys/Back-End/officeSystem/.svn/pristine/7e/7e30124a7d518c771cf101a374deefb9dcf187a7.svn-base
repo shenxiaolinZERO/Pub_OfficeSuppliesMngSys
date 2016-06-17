@@ -1,0 +1,82 @@
+package cn.fjnu.officeSystem.dao;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import cn.fjnu.officeSystem.entity.BorrowApply;
+
+@Repository
+public interface BorrowApplyDao {
+	
+	/**
+	 * 添加物品借用申请表记录
+	 * @param borrowApply
+	 * @return
+	 */
+	public int insertBorrowApply(BorrowApply borrowApply);
+	
+	/**
+	 * 根据id删除物品借用申请表记录
+	 * @param id
+	 * @return
+	 */
+	public int deleteBorrowApplyById(String id);
+	
+	/**
+	 * 动态更新物品借用申请表
+	 * @param borrowApply
+	 * @return
+	 */
+	public int updateBorrowApply(BorrowApply borrowApply);
+	
+	/**
+	 * 查询所有的物品借用申请表
+	 * @return
+	 */
+	public List<BorrowApply> selectAllBorrowApplies();
+	
+	/**
+	 * 根据物品id查询物品借用申请表
+	 * @param itemId
+	 * @return
+	 */
+	public List<BorrowApply> selectBorrowApplyByItemId(String itemId);
+	
+	/**
+	 * 根据物品名称查询物品借用申请表
+	 * @param itemName
+	 * @return
+	 */
+	public List<BorrowApply> selectBorrowApplyByItemName(String itemName);
+	
+	/**
+	 * 根据物品类型Id查询物品借用申请表
+	 * @param itemTypeName
+	 * @return
+	 */
+	public List<BorrowApply> selectBorrowApplyByItemTypeId(String itemTypeId);
+	
+	/**
+	 * 根据借用部门查询物品借用申请表
+	 * @param departmentId
+	 * @return
+	 */
+	public List<BorrowApply> selectBorrowApplyByBorrowDepartmentId(String departmentId);
+	
+	/**
+	 * 根据借用表中记录审核状态查询物品借用申请表
+	 * @param state
+	 * @return
+	 */
+	public List<BorrowApply> selectBorrowApplyByState(int state);
+	
+	/**
+	 * 查询所有有效（未过期）或所有无效（过期）的借用记录
+	 * @param isValidate
+	 * @return
+	 */
+	public List<BorrowApply> selectBorrowApplyByValidateState(int isValidate);
+
+
+}

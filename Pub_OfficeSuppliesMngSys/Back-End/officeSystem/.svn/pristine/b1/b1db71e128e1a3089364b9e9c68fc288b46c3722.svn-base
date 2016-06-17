@@ -1,0 +1,32 @@
+package cn.fjnu.officeSystem.dao;
+
+import java.util.Date;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import cn.fjnu.officeSystem.entity.OutStorageCheckIn;
+
+public interface OutStorageCheckInDao {
+	
+	/**
+	 * 批量出库登记
+	 * @param outStorageCheckIns
+	 * @return
+	 */
+	public int insertOutStorageCheckInPl(List<OutStorageCheckIn> outStorageCheckIns);
+	
+	/**
+	 * 根据出库日期、领用部门、物品借用表id、物品领用表id、操作人员id查询出库登记
+	 * @param outStorageDate
+	 * @param departmentId
+	 * @param borrowApplyId
+	 * @param recipientApplyId
+	 * @param operaterId
+	 * @return
+	 */
+	public List<OutStorageCheckIn> selectOutStorageCheckInByMap(@Param("outStorageDate")Date outStorageDate,
+			@Param("departmentId")String departmentId,@Param("borrowApplyId")String borrowApplyId,
+			@Param("recipientApplyId")String recipientApplyId,@Param("operaterId")String operaterId);
+
+}

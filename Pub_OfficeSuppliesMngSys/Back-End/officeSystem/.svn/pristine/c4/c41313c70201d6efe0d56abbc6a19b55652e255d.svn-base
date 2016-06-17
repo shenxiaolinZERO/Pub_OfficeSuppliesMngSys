@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.ItemDao">
+
+
+	<insert id="insertItem" parameterType="cn.fjnu.officeSystem.entity.Item">
+		Insert into
+		t_item(item_id,item_name,item_type_name,spec,measure_unit_name,max_inventory,min_inventory,supplier_id,remark)
+		values(#{itemId},#{itemName},#{itemTypeName},#{spec},#{measureUnitName},#{maxInventory},#{minInventory},#{supplierId},#{remark})
+	</insert>
+
+	<delete id="deleteItemById" parameterType="java.lang.String">
+		delete from t_item where item_id=#{id}
+
+	</delete>
+
+	<update id="updateItem" parameterType="cn.fjnu.officeSystem.entity.Item">
+		update t_item
+		<set>
+			<if test="itemName!=null">
+				item_name=#{itemName},
+			</if>
+			<if test="itemTypeName!=null">
+				item_type_name=#{itemTypeName},
+			</if>
+			<if test="spec!=null">
+				spec=#{spec},
+			</if>
+			<if test="measureUnitName!=null">
+				measure_unit_name=#{measureUnitName},
+			</if>
+			<if test="maxInventory!=null">
+				max_inventory=#{maxInventory},
+			</if>
+			<if test="minInventory!=null">
+				min_inventory=#{minInventory},
+			</if>
+			<if test="supplierId!=null">
+				supplier_id=#{supplierId},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+		</set>
+		where item_id=#{itemId}
+
+	</update>
+	
+	<select id="selectItemById" parameterType="java.lang.String" resultType="cn.fjnu.officeSystem.entity.Item">
+	
+	 select * from t_item 
+	 where item_id=#{itemId}
+	
+	
+	</select>
+
+
+
+
+</mapper> 

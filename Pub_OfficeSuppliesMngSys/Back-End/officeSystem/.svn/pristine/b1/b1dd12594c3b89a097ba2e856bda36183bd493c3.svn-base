@@ -1,0 +1,107 @@
+10:45:50.024 [main] DEBUG c.f.o.d.B.selectBorrowApplyByIdList - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@4dde87a3]]]
+10:45:50.046 [main] DEBUG c.f.o.d.B.selectBorrowApplyByIdList - ==>  Preparing: select * from t_borrow_apply where id in ( ? ) 
+10:45:50.064 [main] DEBUG c.f.o.d.B.selectBorrowApplyByIdList - ==> Parameters: 1(String)
+10:45:50.323 [main] DEBUG c.f.o.d.B.selectBorrowApplyByIdList - <==      Total: 1
+10:45:50.340 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@4dde87a3]]]
+10:45:50.340 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==>  Preparing: select * from t_item where item_id=? 
+10:45:50.363 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==> Parameters: 1(String)
+10:45:50.390 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - <==      Total: 1
+10:45:50.394 [main] DEBUG c.f.o.d.I.insertInStorageCheckInPl - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@4dde87a3]]]
+10:45:50.394 [main] DEBUG c.f.o.d.I.insertInStorageCheckInPl - ==>  Preparing: insert into t_in_storage_check_in(id,in_storage_date,in_storage_type_id,supplier_id,agent_id,operater_id,item_procurement_id,total_number,total_monney,remark) values (?,?,?,?, ?,?,?,?,?,?) 
+10:45:50.395 [main] DEBUG c.f.o.d.I.insertInStorageCheckInPl - ==> Parameters: null, null, 2(Short), 111(String), 1(String), 1(String), 1(String), 1(Long), 1.0(Double), null
+10:45:50.497 [main] DEBUG c.f.o.d.I.insertInStorageCheckInPl - <==    Updates: 1
+10:51:35.235 [main] DEBUG c.f.o.d.B.selectBorrowApplyByIdList - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@37051ba3]]]
+10:51:35.239 [main] DEBUG c.f.o.d.B.selectBorrowApplyByIdList - ==>  Preparing: select * from t_borrow_apply where id in ( ? ) 
+10:51:35.254 [main] DEBUG c.f.o.d.B.selectBorrowApplyByIdList - ==> Parameters: 1(String)
+10:51:35.272 [main] DEBUG c.f.o.d.B.selectBorrowApplyByIdList - <==      Total: 1
+10:51:35.281 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@37051ba3]]]
+10:51:35.281 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==>  Preparing: select * from t_item where item_id=? 
+10:51:35.282 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==> Parameters: 1(String)
+10:51:35.286 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - <==      Total: 1
+10:51:35.300 [main] DEBUG c.f.o.d.I.insertInStorageCheckInPl - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@37051ba3]]]
+10:51:35.300 [main] DEBUG c.f.o.d.I.insertInStorageCheckInPl - ==>  Preparing: insert into t_in_storage_check_in(id,in_storage_date,in_storage_type_id,supplier_id,agent_id,operater_id,item_procurement_id,total_number,total_monney,remark) values (?,?,?,?, ?,?,?,?,?,?) 
+10:51:35.301 [main] DEBUG c.f.o.d.I.insertInStorageCheckInPl - ==> Parameters: null, null, 2(Short), 111(String), 1(String), 1(String), 1(String), 1(Long), 1.0(Double), null
+10:51:35.310 [main] DEBUG c.f.o.d.I.insertInStorageCheckInPl - <==    Updates: 1
+11:04:07.601 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@29876704]]]
+11:04:07.605 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and inventory <=min_inventory order by inventory and inventory>=max_inventory order by inventory desc and (item_name like CONCAT('%',?,'%') ) 
+11:04:07.621 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), 物品名称(String)
+11:08:38.886 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@29876704]]]
+11:08:38.891 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and inventory <=min_inventory and inventory>=max_inventory 
+11:08:38.909 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), 物品名称(String)
+11:08:38.918 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+11:09:52.771 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@29876704]]]
+11:09:52.775 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and inventory <=min_inventory and inventory>=max_inventory 
+11:09:52.791 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), 物品名称(String)
+11:09:52.801 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+11:10:19.063 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@29876704]]]
+11:10:19.068 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and inventory <=min_inventory and inventory>=max_inventory 
+11:10:19.089 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), 物品名称(String)
+11:10:19.097 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+11:10:51.287 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@29876704]]]
+11:10:51.292 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and inventory <=min_inventory and inventory>=max_inventory 
+11:10:51.310 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), 物品名称(String)
+11:10:51.320 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+11:11:32.799 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@29876704]]]
+11:11:32.804 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and inventory <=min_inventory and inventory>=max_inventory 
+11:11:32.826 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), 物品名称(String)
+11:11:32.840 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+11:12:27.259 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@19b30c92]]]
+11:12:27.263 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+11:12:27.282 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), 物品名称(String)
+11:12:27.297 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+11:14:19.663 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@19b30c92]]]
+11:14:19.666 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select if(count(*),0) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+11:14:19.683 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), 物品名称(String)
+11:15:02.399 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@19b30c92]]]
+11:15:02.404 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select ifnull(count(*),0) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+11:15:02.420 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), 物品名称(String)
+11:15:02.429 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+11:20:38.866 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@19b30c92]]]
+11:20:38.870 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+11:20:38.889 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), 物品名称(String)
+11:20:38.905 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+11:23:25.814 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@19b30c92]]]
+11:23:25.820 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+11:23:25.839 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), 物品名称(String)
+11:23:25.848 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+11:23:48.723 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@19b30c92]]]
+11:23:48.727 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+11:23:48.745 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), "null"(String)
+11:23:48.753 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+11:24:50.682 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@455351c4]]]
+11:24:50.691 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+11:24:50.711 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), null(String)
+11:24:50.720 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+11:35:17.169 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5dcbb60]]]
+11:35:17.177 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==>  Preparing: select * from t_item where item_id=? 
+11:35:17.354 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==> Parameters: 1(String)
+11:35:17.381 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - <==      Total: 1
+11:35:17.383 [main] DEBUG c.f.o.d.P.insertPreItemProcurement - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5dcbb60]]]
+11:35:17.383 [main] DEBUG c.f.o.d.P.insertPreItemProcurement - ==>  Preparing: insert into t_pre_item_procurement(id,item_id,item_type_id,item_name,num,staff_id, pre_time,audit_time,remark) values(?,?,?,?,?, ?,?,?,?) 
+11:35:17.384 [main] DEBUG c.f.o.d.P.insertPreItemProcurement - ==> Parameters: null, 1(String), typeName(String), 商品名(String), 1(Long), 1(String), null, null, 备注(String)
+11:41:06.524 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5dcbb60]]]
+11:41:06.528 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==>  Preparing: select * from t_item where item_id=? 
+11:41:06.545 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==> Parameters: 1(String)
+11:41:06.555 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - <==      Total: 1
+11:41:06.557 [main] DEBUG c.f.o.d.P.insertPreItemProcurement - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5dcbb60]]]
+11:41:06.557 [main] DEBUG c.f.o.d.P.insertPreItemProcurement - ==>  Preparing: insert into t_pre_item_procurement(id,item_id,item_type_id,item_name,num,staff_id, pre_time,audit_time,remark) values(?,?,?,?,?, ?,?,?,?) 
+11:41:06.558 [main] DEBUG c.f.o.d.P.insertPreItemProcurement - ==> Parameters: null, 1(String), typeName(String), 商品名(String), 1(Long), 1(String), null, null, 备注(String)
+11:42:56.078 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5dcbb60]]]
+11:42:56.084 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==>  Preparing: select * from t_item where item_id=? 
+11:42:56.101 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==> Parameters: 1(String)
+11:42:56.110 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - <==      Total: 1
+11:42:56.113 [main] DEBUG c.f.o.d.P.insertPreItemProcurement - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5dcbb60]]]
+11:42:56.113 [main] DEBUG c.f.o.d.P.insertPreItemProcurement - ==>  Preparing: insert into t_pre_item_procurement(id,item_id,item_type_id,item_name,num,staff_id, pre_time,audit_time,remark) values(?,?,?,?,?, ?,?,?,?) 
+11:42:56.113 [main] DEBUG c.f.o.d.P.insertPreItemProcurement - ==> Parameters: null, 1(String), 1(String), 物品名称(String), 1(Long), 1(String), null, null, 备注(String)
+11:42:56.120 [main] DEBUG c.f.o.d.P.insertPreItemProcurement - <==    Updates: 1
+13:35:59.633 [main] DEBUG c.f.o.d.I.selectInStorageCheckInsByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7a56812e]]]
+13:35:59.662 [main] DEBUG c.f.o.d.I.selectInStorageCheckInsByMapCount - ==>  Preparing: select count(*) from t_in_storage_check_in WHERE supplier_id=? and agent_id=? and operater_id=? and item_procurement_id=? 
+13:35:59.679 [main] DEBUG c.f.o.d.I.selectInStorageCheckInsByMapCount - ==> Parameters: 1(String), 1(String), 1(String), 1(String)
+13:35:59.791 [main] DEBUG c.f.o.d.I.selectInStorageCheckInsByMapCount - <==      Total: 1
+13:35:59.797 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7a56812e]]]
+13:35:59.798 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==>  Preparing: select t_item_procurement.*,name as itemTypeName,short_name as supplierName,staff_name as staffName from t_item_procurement,t_item_type,t_staff,t_supplier where is_in_storage=0 and name= (select name from t_item_type where id=item_type_id) and short_name=(select short_name from t_supplier where id=supplier_id)and staff_name=(select staff_name from t_staff where id=staff_id) order by time limit ?,? 
+13:35:59.798 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==> Parameters: 0(Integer), 1(Integer)
+13:35:59.896 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - <==      Total: 1
+21:30:26.199 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1d71006f]]]
+21:30:26.231 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ==>  Preparing: Insert into t_item(item_id,item_name,item_type_id,spec,measure_unit_id,max_inventory,min_inventory,supplier_id,remark) values(?,?,?,?,?,?,?,?,?) 
+21:30:26.249 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ==> Parameters: null, 商品名(String), typeId(String), spec(String), measureUnitId(String), 50(Integer), 10(Integer), 111(String), null

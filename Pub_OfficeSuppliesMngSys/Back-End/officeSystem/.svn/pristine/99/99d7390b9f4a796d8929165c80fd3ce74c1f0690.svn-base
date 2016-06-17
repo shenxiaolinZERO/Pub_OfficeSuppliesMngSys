@@ -1,0 +1,48 @@
+package cn.fjnu.officeSystem.serviceImpl;
+
+import static org.junit.Assert.*;
+
+import javax.annotation.Resource;
+
+import org.apache.commons.lang.ObjectUtils.Null;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+@ContextConfiguration(locations={"classpath*:springmvc.xml","classpath*:applicationContext.xml"})
+@ActiveProfiles("production")
+public class itemInventoryWarningServiceTest {
+	@Resource
+	itemInventoryWarningService iteminventorywarningService;
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testGetWarningInfo() {
+		String json="{\"pageIndex\":1,\"pageCount\":1,\"itemTypeId\":\"1\","
+				+ "\"state\":\"0\",\"itemName\":\"1\"}";
+		String result=iteminventorywarningService.getWarningInfo(json);
+		System.out.println(result);
+	}
+
+	@Test
+	public void testAddPreItemProcurement() {
+		String json="{\"itemId\":\"1\",\"staffId\":\"1\","
+				+ "\"num\":1,\"remark\":\"备注\"}";
+	    String result=iteminventorywarningService.addPreItemProcurement(json);
+	    System.out.println(result);
+	}
+
+}

@@ -1,0 +1,42 @@
+package cn.fjnu.officeSystem.serviceImpl;
+
+import static org.junit.Assert.*;
+
+import javax.annotation.Resource;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+@ContextConfiguration(locations={"classpath*:springmvc.xml","classpath*:applicationContext.xml"})
+@ActiveProfiles("production")
+public class InStorageServiceTest {
+	@Resource
+	InStorageService inStorageService;
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testGetInstorageType() {
+		
+	}
+
+	@Test
+	public void testGetInstorageHome() {
+		String json="{\"inStorageTypeId\":\"2\",\"pageIndex\": 1,\"pageCount\": 1}";
+		System.out.println(inStorageService.getInstorageHome(json));
+	}
+
+}

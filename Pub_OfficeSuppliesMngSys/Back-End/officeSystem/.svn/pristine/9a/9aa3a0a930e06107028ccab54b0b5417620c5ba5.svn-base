@@ -1,0 +1,8 @@
+20:35:00.320 [main] DEBUG c.f.o.d.S.selectMerchantsAvailabilityDetailBySupplierId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2484f433]]]
+20:35:00.345 [main] DEBUG c.f.o.d.S.selectMerchantsAvailabilityDetailBySupplierId - ==>  Preparing: select * from t_supplier where id=? 
+20:35:00.412 [main] DEBUG c.f.o.d.S.selectMerchantsAvailabilityDetailBySupplierId - ==> Parameters: 1(String)
+20:35:00.952 [main] DEBUG c.f.o.d.M.selectMerchantsAvailabilityBysupplierId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2484f433]]]
+20:35:00.953 [main] DEBUG c.f.o.d.M.selectMerchantsAvailabilityBysupplierId - ==>  Preparing: select * from t_merchants_availability_summary where supplier_id=? order by price,num desc 
+20:35:00.954 [main] DEBUG c.f.o.d.M.selectMerchantsAvailabilityBysupplierId - ==> Parameters: 1(String)
+20:35:01.392 [main] DEBUG c.f.o.d.M.selectMerchantsAvailabilityBysupplierId - <==      Total: 0
+20:35:01.393 [main] DEBUG c.f.o.d.S.selectMerchantsAvailabilityDetailBySupplierId - <==      Total: 1

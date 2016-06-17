@@ -1,0 +1,117 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.PreItemProcurementDao">
+	<insert id="insertPreItemProcurement" parameterType="cn.fjnu.officeSystem.entity.PreItemProcurement">
+		insert into
+		t_pre_item_procurement(id,item_id,item_type_id,item_name,num,staff_id,
+		pre_time,audit_time,remark)
+		values(#{id},#{itemId},#{itemTypeId},#{itemName},#{num},
+		#{staffId},#{preTime},#{auditTime},#{remark})
+	</insert>
+	<delete id="deletePreItemProcurementById" parameterType="java.lang.String">
+	delete from t_pre_item_procurement where id=#{id}
+	</delete>
+	<update id="updatePreItemProcurement" parameterType="cn.fjnu.officeSystem.entity.PreItemProcurement">
+	update t_pre_item_procurement
+	<set>
+	<if test="itemId!=null">
+	item_id=#{itemId},
+	</if>
+	<if test="itemTypeId!=null">
+	item_type_id=#{itemTypeId},
+	</if>
+	<if test="itemName!=null">
+	item_name=#{itemName},
+	</if>
+	<if test="num!=null">
+	num=#{num},
+	</if>
+	<if test="staffId!=null">
+	staff_id=#{staffId},
+	</if>
+	<if test="preTime!=null">
+	pre_time=#{preTime},
+	</if>
+	<if test="auditTime!=null">
+	audit_time=#{auditTime},
+	</if>
+	<if test="remark!=null">
+	remark=#{remark},
+	</if>
+	</set>
+	where id=#{id}
+	</update>
+	<select id="selectAuditPreItemProcurementByMap" parameterType="java.util.Map" resultType="cn.fjnu.officeSystem.entity.PreItemProcurement">
+	select * from t_pre_item_procurement
+	where audit_time is not null 
+	
+	<if test="staffId!=null">
+	and staff_id=#{staffId}
+	</if>
+	<if test="itemTypeId!=null">
+	 and item_type_id=#{itemTypeId}
+	</if>
+	<if test="itemName!=null">
+	and item_name=#{itemName}
+	</if>
+	<if test="itemId!=null">
+	and item_id=#{itemId}
+	</if>
+	<if test="preStartTime!=null">
+	and pre_time>=#{preStartTime}
+	</if>
+	<if test="preEndTime!=null">
+	and pre_time&lt;=#{preStartTime}
+	</if>
+	<if test="auditStartTime!=null">
+	and audit_time>=#{auditStartTime}
+	</if>
+	<if test="auditEndTime!=null">
+	and audit_time&lt;=#{auditStartTime}
+	</if>
+	
+	order by
+	<if test="preTimeSort=='1'.toString()">
+	pre_time desc,
+	</if>
+	<if test="auditTimeSort=='1'.toString()">
+	audit_time desc,
+	</if>
+	num desc
+	</select>
+	<select id="selectUnAuditPreItemProcurementByMap" parameterType="java.util.Map" resultType="cn.fjnu.officeSystem.entity.PreItemProcurement">
+	select * from t_pre_item_procurement
+	where audit_time is null 
+	
+	<if test="staffId!=null">
+	and staff_id=#{staffId}
+	</if>
+	<if test="itemTypeId!=null">
+	 and item_type_id=#{itemTypeId}
+	</if>
+	<if test="itemName!=null">
+	and item_name=#{itemName}
+	</if>
+	<if test="itemId!=null">
+	and item_id=#{itemId}
+	</if>
+	<if test="preStartTime!=null">
+	and pre_time>=#{preStartTime}
+	</if>
+	<if test="preEndTime!=null">
+	and pre_time&lt;=#{preStartTime}
+	</if>
+	<if test="auditStartTime!=null">
+	and audit_time>=#{auditStartTime}
+	</if>
+	<if test="auditEndTime!=null">
+	and audit_time&lt;=#{auditStartTime}
+	</if>
+	
+	order by
+	<if test="preTimeSort=='1'.toString()">
+	pre_time,
+	</if>
+	num desc
+	</select>
+</mapper>

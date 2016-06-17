@@ -1,0 +1,151 @@
+package cn.fjnu.officeSystem.serviceImpl;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import cn.fjnu.officeSystem.dao.BorrowApplyDao;
+import cn.fjnu.officeSystem.entity.BorrowApply;
+import cn.fjnu.officeSystem.extend.BorrowApplyExpireExtend;
+import cn.fjnu.officeSystem.extend.BrrowApplyExtend;
+import cn.fjnu.officeSystem.utils.CompareDate;
+import cn.fjnu.officeSystem.utils.DateJsonValueProcessor;
+import cn.fjnu.officeSystem.utils.PageUtil;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+
+@Service
+public class BorrowApplyService {
+    
+	@Resource
+	BorrowApplyDao borrowApplyDao;
+	@Resource
+	CompareDate compareDate;
+	
+	//获取所有已审核的借用申请记录
+	public String getAuditBorrowApplies(String json){
+		//json字符串转json对象
+		JSONObject jsonObject=JSONObject.fromObject(json);
+		//解析json中的数据
+		int pageIndex=jsonObject.optInt("pageIndex");
+		int pageCount=jsonObject.optInt("pageCount");
+		int count=0;
+		String result=null;
+		String borrowState=null;
+		String validateState=null;
+		Map<String, Object> resultMap=new HashMap<>();
+		count=borrowApplyDao.selectBorrowApplyAuditCount();
+		if(count>0){
+			PageUtil<BorrowApplyExpireExtend> page = new PageUtil<>(pageIndex, count, pageCount);
+			List<BorrowApplyExpireExtend> resultList = borrowApplyDao.selectBorrowApplyAudit(page.getDataStart(), page.getDataEnd());
+            for (BorrowApplyExpireExtend borrowApplyExpireExtend : resultList) {
+            	Date borrowTime=borrowApplyExpireExtend.getBorrowTime();
+            	Date returnTime=borrowApplyExpireExtend.getReturnTime(); 
+            	if(borrowTime==null){
+            		borrowState="未借出";
+            	}else if(returnTime==null){
+            		borrowState="已借出";
+            	}else{
+            		borrowState="已归还";
+            	}
+				Date maxBorrowTime=borrowApplyExpireExtend.getMaxBorrowTime();
+				 int i= compareDate.compare_date(new Date(),maxBorrowTime);
+				 if(i==1){//未超期
+					 validateState="有效";
+				 }else if(i==-1){//已超期
+					 validateState="无效";
+				 }else{
+					 System.out.println("error!");
+				 }
+			}
+            resultMap.put("borrowState", borrowState);
+            resultMap.put("validateState", validateState);
+			resultMap.put("resultList", resultList);// 数据
+			resultMap.put("pageSize", page.getPageSize());// 总页数
+			System.out.println("map:" + resultMap);
+			JsonConfig config = new JsonConfig();
+			// 转换时记得要导入util.date
+			config.registerJsonValueProcessor(Date.class, new DateJsonValueProcessor("yyyy-MM-dd hh:mm:ss"));
+			resultMap.put("pageIndex", pageIndex);
+
+			result = JSONObject.fromObject(resultMap, config).toString();
+			return result;
+		}else{
+			return "{\"message\":\"当前没有审核通过的借用申请记录！\"}";
+		}
+	}
+	
+	//删除已审核的借用记录
+	public void deleteAuditBorrowApply(String json){
+		JSONObject jsonObject=JSONObject.fromObject(json);
+		String id=jsonObject.optString("id");
+		borrowApplyDao.deleteBorrowApplyById(id);
+	}
+    
+	//获取所有未审核的借用申请记录
+	public String getUnAuditBorrowApplies(String json){
+		//json字符串转json对象
+		JSONObject jsonObject=JSONObject.fromObject(json);
+		//解析json中的数据
+		int pageIndex=jsonObject.optInt("pageIndex");
+		int pageCount=jsonObject.optInt("pageCount");
+		int count=0;
+		String result=null;
+		Map<String, Object> resultMap=new HashMap<>();
+		count=borrowApplyDao.selectBorrowApplyUnAuditCount();
+		if(count>0){
+			PageUtil<BrrowApplyExtend> page = new PageUtil<>(pageIndex, count, pageCount);
+			List<BrrowApplyExtend> resultList = borrowApplyDao.selectBorrowApplyUnAudit(page.getDataStart(), page.getDataEnd());
+			resultMap.put("resultList", resultList);// 数据
+			resultMap.put("pageSize", page.getPageSize());// 总页数
+			System.out.println("map:" + resultMap);
+			JsonConfig config = new JsonConfig();
+			// 转换时记得要导入util.date
+			config.registerJsonValueProcessor(Date.class, new DateJsonValueProcessor("yyyy-MM-dd hh:mm:ss"));
+			resultMap.put("pageIndex", pageIndex);
+
+			result = JSONObject.fromObject(resultMap, config).toString();
+			return result;
+		}else{
+			return "{\"message\":\"当前待审核的借用申请记录！\"}";
+		}
+	}
+	
+	//管理员进行审核操作，其结果可能是审核通过，有可能是不通过
+	//前端传入operate 其中0表示不通过，1表示通过
+	public void OperateBorrowAudit(String json){
+		//json字符串转json对象
+		JSONObject jsonObject=JSONObject.fromObject(json);
+		//解析json中的数据
+        int operate=jsonObject.optInt("operate");
+        String id=jsonObject.optString("id");
+        String auditId=jsonObject.optString("auditId");
+        if(operate==0){
+        	BorrowApply borrowApply=borrowApplyDao.selectBorrowApplyById(id);
+        	borrowApply.setState((short)3);
+        	SimpleDateFormat sp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");  
+            java.sql.Timestamp st = new java.sql.Timestamp(new java.util.Date().getTime());
+        	borrowApply.setAuditTime(st);
+        	borrowApply.setAuditor(auditId);
+        	borrowApplyDao.updateBorrowApply(borrowApply);
+        	System.out.println("0更新成功！");
+        }else if(operate==1){
+        	BorrowApply borrowApply=borrowApplyDao.selectBorrowApplyById(id);
+        	borrowApply.setState((short)2);
+        	SimpleDateFormat sp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");  
+        	java.sql.Timestamp st = new java.sql.Timestamp(new java.util.Date().getTime());
+        	borrowApply.setAuditTime(st);
+        	borrowApply.setAuditor(auditId);
+        	borrowApplyDao.updateBorrowApply(borrowApply);
+        	System.out.println("1更新成功！");
+        	
+        }
+	}
+
+}

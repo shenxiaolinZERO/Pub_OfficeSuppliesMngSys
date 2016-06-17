@@ -1,0 +1,141 @@
+package cn.fjnu.officeSystem.dao;
+
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+
+import cn.fjnu.officeSystem.entity.BorrowApply;
+import cn.fjnu.officeSystem.entity.Item;
+import cn.fjnu.officeSystem.entity.ItemClassificationSummary;
+import cn.fjnu.officeSystem.entity.RecipientApply;
+import cn.fjnu.officeSystem.extend.BrrowApplyExtend;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+@ContextConfiguration(locations = { "classpath*:springmvc.xml", "classpath*:applicationContext.xml" })
+@ActiveProfiles("production")
+public class TestAll {
+
+	@Resource
+	ItemDao itemDao;
+	@Resource
+	SupplierDao supplierDao;
+	@Resource 
+	BorrowApplyDao borrowApplyDao;
+	@Resource 
+	RecipientApplyDao recipientDao;
+	@Resource
+	ItemClassificationSummaryDao itemclidao;
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testInsertItem() {
+		Item item = new Item();
+		item.setItemTypeId("typeId");
+		item.setMaxInventory(50);
+		item.setMinInventory(10);
+		item.setItemName("商品名");
+		item.setSpec("spec");
+		item.setSupplierId("111");
+		item.setMeasureUnitId("measureUnitId");
+		itemDao.insertItem(item);
+
+	}
+	@Test
+	public void testselectMerchantsAvailabilityDetailBysupplierId() {
+		System.out.println(supplierDao.selectMerchantsAvailabilityDetailBySupplierId("1"));
+
+	}
+	@Test
+	public void testborrowApplyinsert(){
+		BorrowApply borrowApply=new BorrowApply();
+		borrowApply.setItemId("2");
+		borrowApply.setItemName("2");
+		borrowApply.setItemTypeId("2");
+		borrowApply.setBorrowDepartmentId(2);
+		borrowApply.setBorrowNum(new Long("2"));
+		borrowApply.setState(new Short("2"));
+		borrowApply.setAuditor("1");
+		borrowApply.setSpec("A型号");
+		borrowApply.setState(new Short("3"));
+		borrowApply.setBorrower("1");
+		borrowApply.setIsDisplay(new Short("0"));
+		borrowApply.setIsReturn(new Short("1"));
+		borrowApply.setIsValid(new Short("1"));
+	    System.out.println(borrowApply.getApplyTime());
+		borrowApplyDao.insertBorrowApply(borrowApply);
+		
+	}
+	
+	@Test
+	public void testBorrowApplyUpdate(){
+		BorrowApply borrowApply=borrowApplyDao.selectBorrowApplyById("1");
+		System.out.println(borrowApply);
+		borrowApply.setState(new Short("2"));
+		borrowApplyDao.updateBorrowApply(borrowApply);
+	}
+	
+	@Test
+	public void selectBorrowApply(){
+		List<BrrowApplyExtend> list=borrowApplyDao.selectBorrowApplyAuditAndPass(1,1);
+		System.out.println(list);
+		int count=borrowApplyDao.selectBorrowApplyAuditAndPassCount();
+		System.out.println(count);
+	}
+	
+	@Test
+	public void testRecipientApplyInsert() throws ParseException{
+		RecipientApply recipientApply=new RecipientApply();
+		recipientApply.setItemName("3");
+		recipientApply.setItemTypeId("3");
+		recipientApply.setRecipienter(new Long("1"));
+		recipientApply.setRecipientDepartmentId(1);
+//		SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		String time=tempDate.format(new Date().getTime());
+//        Date date=tempDate.parse(time);
+//        Timestamp date = Timestamp.valueOf(time);
+	//	recipientApply.setApplyTime((new java.sql.Date(new Date().getTime())));
+		recipientApply.setState(new Short("1"));
+		recipientApply.setIsDisplay(new Short("1"));
+		recipientApply.setIsValid(new Short("1"));
+		recipientDao.insertRecipientApply(recipientApply);
+	}
+	@Test
+	public void testRecipientApplyUpdate(){
+		RecipientApply recipientApply=recipientDao.selectRecipientApplyById("1");
+		System.out.println(recipientApply);
+		recipientApply.setPrice(120.0);
+		recipientDao.updateRecipientApply(recipientApply);
+	}
+	@Test
+	public void testRecipientApplyselect(){
+		int count=recipientDao.selectRecipientApplyAuditAndPassCount();
+		System.out.println(count);
+	}
+//	
+//	public void testItemClassificationSummaryInsert(){
+//		ItemClassificationSummary itemClassificationSummary=new ItemClassificationSummary();
+//		itemClassificationSummary.setId();
+//	}
+
+}

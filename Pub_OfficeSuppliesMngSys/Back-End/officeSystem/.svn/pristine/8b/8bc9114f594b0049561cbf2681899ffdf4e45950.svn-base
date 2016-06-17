@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.InStorageTypeDao">
+	<insert id="insertInStorageType" parameterType="cn.fjnu.officeSystem.entity.InStorageType">
+		insert into
+		t_in_storage_type(id,name,remark)
+		values(#{id},#{name},#{remark})
+	</insert>
+	<select id="selectAllInStrorageTypes" resultType="cn.fjnu.officeSystem.entity.InStorageType">
+		select * from
+		t_in_storage_type
+	</select>
+
+	<update id="updateInStorageType" parameterType="cn.fjnu.officeSystem.entity.InStorageType">
+		update t_in_storage_check_in
+		<set>
+			<if test="name!=null">
+				name=#{name},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+</mapper>

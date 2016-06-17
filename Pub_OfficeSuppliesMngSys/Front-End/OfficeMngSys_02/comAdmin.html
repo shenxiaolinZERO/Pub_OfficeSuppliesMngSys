@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <link href="css/public.css" type="text/css" rel="stylesheet">
         <link href="css/totalStyle.css" type="text/css" rel="stylesheet">
         <link href="css/smartMenu.css" type="text/css" rel="stylesheet">
@@ -9,6 +10,7 @@
     </head>
     <body onload="startTime()">
     	<div id="admin">
+            <!-- 左侧菜单部分-->
     		<div class="ad-menu" id="ad-menu">
                 <div class="ad-logo"><img src="image/top_logo.png" height="63" width="68"><br/>
                     <div><label style="color: white;font-size: 1.1em;">办公用品管理系统<br/>
@@ -28,24 +30,26 @@
                             </dd>
                         </dl>
                     </li>
+
                         <li>
                             <div class="li-item"><em class="scm li-ico ic2"></em>紧急通知<span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="#" class="dd-item">紧急通知<span class="scm dd-ar"></span></a>
+                                    <a href="comAdmin_emergynotice.html" class="dd-item" target="main-iframe">紧急通知<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="comAdmin_emergynotice.html" data-index="1">紧急通知</li>
+                                        <!--<li class="J_menuItem" href="comAdmin_emergynotice.html" data-index="1">紧急通知</li>-->
                                     </ul>
                                 </dd>
                             </dl>
                         </li>
+
                         <li>
                             <div class="li-item"><em class="scm li-ico ic3"></em>基本资料管理<span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="#" class="dd-item">基本资料管理<span class="scm dd-ar"></span></a>
+                                    <a href="comAdmin_basic.html" class="dd-item" target="main-iframe">基本资料管理<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="comAdmin_basic.html" data-index="1">基本资料管理</li>
+                                        <!--<li class="J_menuItem" href="comAdmin_basic.html" data-index="1">基本资料管理</li>-->
                                     </ul>
                                 </dd>
 
@@ -55,19 +59,20 @@
                             <div class="li-item"><em class="scm li-ico ic4"></em>办公用品管理<span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="#" class="dd-item">入库登记<span class="scm dd-ar"></span></a>
+                                    <a href="comAdmin_inregister.html" class="dd-item" target="main-iframe">入库登记<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="comAdmin_inregister.html" data-index="1">入库登记</li>
+                                        <!--<li class="J_menuItem" href="comAdmin_inregister.html" data-index="1">入库登记</li>-->
                                     </ul>
                                 </dd>
                                 <dd>
-                                    <a href="#" class="dd-item">出库登记<span class="scm dd-ar"></span></a><ul class="ad-item-list">
-                                    <li class="J_menuItem" href="comAdmin_outregister.html" data-index="1">出库登记</li>
-                                </ul>
+                                    <a href="comAdmin_outregister.html" class="dd-item" target="main-iframe">出库登记<span class="scm dd-ar" ></span></a>
+                                    <ul class="ad-item-list">
+                                       <!--<li class="J_menuItem" href="" data-index="1">出库登记</li>-->
+                                    </ul>
                                 </dd>
                                 <dd>
-                                    <a href="#" class="dd-item">借用申请查询<span class="scm dd-ar"></span></a><ul class="ad-item-list">
-                                    <li class="J_menuItem" href="comAdmin_borrowapplycheck.html" data-index="1">借用申请查询</li>
+                                    <a href="comAdmin_borrowapplycheck.html" class="dd-item" target="main-iframe">借用申请查询<span class="scm dd-ar"></span></a><ul class="ad-item-list">
+                                    <!--<li class="J_menuItem" href="comAdmin_borrowapplycheck.html" data-index="1">借用申请查询</li>-->
                                 </ul>
                                 </dd>
                             </dl>
@@ -76,18 +81,32 @@
                             <div class="li-item"><em class="scm li-ico ic5"></em>审核管理<span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="#" class="dd-item">领用申请<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="comAdmin_claimassess_yes.html" data-index="1">已审核</li>
-                                        <li class="J_menuItem" href="comAdmin_claimassess_not.html" data-index="2">未审核</li>
-                                    </ul>
+                                    <a href="comAdmin_claimassess_yes.html" class="dd-item" target="main-iframe">领用申请已审<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="comAdmin_claimassess_yes.html" data-index="1">已审核</li>-->
+                                        <!--<li class="J_menuItem" href="comAdmin_claimassess_not.html" data-index="2">未审核</li>-->
+                                    <!--</ul>-->
                                 </dd>
                                 <dd>
-                                    <a href="#" class="dd-item">借用申请<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="comAdmin_borrowassess_yes.html" data-index="1">已审核</li>
-                                        <li class="J_menuItem" href="comAdmin_borrowassess_yes.html" data-index="2">未审核</li>
-                                    </ul>
+                                    <a href="comAdmin_claimassess_not.html" class="dd-item" target="main-iframe">领用申请未审<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="comAdmin_claimassess_yes.html" data-index="1">已审核</li>-->
+                                        <!--<li class="J_menuItem" href="comAdmin_claimassess_not.html" data-index="2">未审核</li>-->
+                                    <!--</ul>-->
+                                </dd>
+                                <dd>
+                                    <a href="comAdmin_borrowassess_yes.html" class="dd-item" target="main-iframe">借用申请已审<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="comAdmin_claimassess_yes.html" data-index="1">已审核</li>-->
+                                        <!--<li class="J_menuItem" href="comAdmin_claimassess_not.html" data-index="2">未审核</li>-->
+                                    <!--</ul>-->
+                                </dd>
+                                <dd>
+                                    <a href="comAdmin_borrowassess_not.html" class="dd-item" target="main-iframe">借用申请未审<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="comAdmin_borrowassess_yes.html" data-index="1">已审核</li>-->
+                                        <!--<li class="J_menuItem" href="comAdmin_borrowassess_not.html" data-index="2">未审核</li>-->
+                                    <!--</ul>-->
                                 </dd>
 
                             </dl>
@@ -96,22 +115,22 @@
                             <div class="li-item"><em class="scm li-ico ic6"></em>报表中心<span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="#" class="dd-item">入库统计<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="comAdmin_statistic_in.html" data-index="1">入库统计</li>
-                                    </ul>
+                                    <a href="comAdmin_statistic_in.html" class="dd-item" target="main-iframe">入库统计<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="comAdmin_statistic_in.html" data-index="1">入库统计</li>-->
+                                    <!--</ul>-->
                                 </dd>
                                 <dd>
-                                    <a href="#" class="dd-item">出库统计<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="comAdmin_statistic_out.html" data-index="1">出库统计</li>
-                                    </ul>
+                                    <a href="comAdmin_statistic_out.html" class="dd-item" target="main-iframe">出库统计<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="comAdmin_statistic_out.html" data-index="1">出库统计</li>-->
+                                    <!--</ul>-->
                                 </dd>
                                 <dd>
-                                    <a href="#" class="dd-item">库存统计<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="comAdmin_statistic_total.html" data-index="1">库存统计</li>
-                                    </ul>
+                                    <a href="comAdmin_statistic_total.html" class="dd-item" target="main-iframe">库存统计<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="comAdmin_statistic_total.html" data-index="1">库存统计</li>-->
+                                    <!--</ul>-->
                                 </dd>
                             </dl>
                         </li>
@@ -119,25 +138,27 @@
                             <div class="li-item"><em class="scm li-ico ic7"></em>个人中心<span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="#" class="dd-item">修改信息<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="personalCenter.html" data-index="1">我要修改信息</li>
-                                    </ul>
+                                    <a href="personalCenter.html" class="dd-item" target="main-iframe">修改信息<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="personalCenter.html" data-index="1">我要修改信息</li>-->
+                                    <!--</ul>-->
                                 </dd>
                                 <dd>
-                                    <a href="#" class="dd-item">修改**<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="index_v1.html" data-index="1">我要修改**</li>
-                                    </ul>
+                                    <a href="index_v1.html" class="dd-item" target="main-iframe">修改**<span class="scm dd-ar"></span></a>
+                                    <!--<ul class="ad-item-list">-->
+                                        <!--<li class="J_menuItem" href="index_v1.html" data-index="1">我要修改**</li>-->
+                                    <!--</ul>-->
                                 </dd>
                             </dl>
                         </li>
                     </ul>
                 </div>
             </div>
+            <!-- 右侧内容部分-->
     		<div class="ad-comment-box" id="ad-comment">
                 <div class="ad-top-comment">
                     <div class="ad-message">
+                        <!-- 右侧左上角的搜索-->
                         <div class="ad-top-left">
                             <div class="ad-change-btn"><a id="ad-list" href="javascript:;" class="scm ad-list-btn"></a></div>
                             <div class="ad-search-box clear">
@@ -156,6 +177,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- 右侧右上角的通知及当前用户及时间-->
                         <div class="ad-top-right">
                             <div class="ad-notice">
                                 <ul>
@@ -228,7 +250,8 @@
                     </div>
                 </div>
                 <div class="ad-main-comment J_mainContent" id="ad-iframe">
-                    <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="index_v0.html" frameborder="0" data-id="index_v0.html" seamless></iframe>
+                    <iframe   name="main-iframe" width="100%" height="100%" src=" " frameborder="0"  seamless></iframe>
+                    <!--<iframe class="J_iframe"  name="iframe0" width="100%" height="100%" src="index_v0.html" frameborder="0" data-id="index_v0.html" seamless></iframe>-->
                 </div>
     		</div>
     	</div>

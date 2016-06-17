@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.MerchantsAvailabilitySummaryDao">
+	<insert id="insertMerchantsAvailabilitySummaryPl" parameterType="java.util.List">
+		insert into
+		t_merchants_availability_summary(id,supplier_id,in_storage_check_in_id,item_id,item_name,spec,
+		item_type_id,measure_unit_id,price,num,monney,remark)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.id},#{item.supplierId},#{item.inStorageCheckInId},#{item.itemId},
+			#{item.itemName},#{item.spec},#{item.itemTypeId},#{item.measureUnitId},
+			#{item.price},#{item.num},#{item.monney},#{item.remark})
+		</foreach>
+	</insert>
+	<update id="updateMerchantsAvailabilitySummary"
+		parameterType="cn.fjnu.officeSystem.entity.MerchantsAvailabilitySummary">
+		update t_merchants_availability_summary
+		<set>
+			<if test="itemName!=null">
+				item_name=#{itemName},
+			</if>
+			<if test="itemTypeId!=null">
+				item_type_id=#{itemTypeId},
+			</if>
+			<if test="spec!=null">
+				spec=#{spec},
+			</if>
+			<if test="measureUnitId!=null">
+				measure_unit_id=#{measureUnitId},
+			</if>
+			<if test="itemId!=null">
+				item_id=#{itemId},
+			</if>
+			<if test="inStorageCheckInId!=null">
+				in_storage_check_in_id=#{inStorageCheckInId},
+			</if>
+			<if test="supplierId!=null">
+				supplier_id=#{supplierId},
+			</if>
+			<if test="monney!=null">
+				monney=#{monney},
+			</if>
+			<if test="price!=null">
+				price=#{price},
+			</if>
+			<if test="num!=null">
+				num=#{num},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	<select id="selectMerchantsAvailabilitySummaryByMap" parameterType="java.util.Map" resultType="cn.fjnu.officeSystem.entity.MerchantsAvailabilitySummary" >
+	select * from t_merchants_availability_summary
+	<where>
+	<if test="supplierId!=null">
+	supplier_id=#{supplierId}
+	</if>
+	<if test="itemId!=null">
+	and item_id=#{itemId}
+	</if>
+	<if test="itemTypeId!=null">
+	and item_type_id=#{itemTypeId}
+	</if>
+	<if test="column=='num'.toString()">
+	order by num desc
+	</if>
+	<if test="column=='price'.toString()">
+	order by  price 
+	</if>
+	</where>
+	</select>
+	
+	<select id="selectMerchantsAvailabilityBysupplierId" parameterType="java.lang.String" resultType="cn.fjnu.officeSystem.entity.MerchantsAvailabilitySummary">
+	select * from t_merchants_availability_summary where supplier_id=#{supplierId}
+	order by price,num desc
+	</select>
+	
+	
+</mapper>

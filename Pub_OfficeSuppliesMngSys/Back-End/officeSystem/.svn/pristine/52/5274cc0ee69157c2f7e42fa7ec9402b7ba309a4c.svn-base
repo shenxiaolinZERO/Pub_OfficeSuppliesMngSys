@@ -1,0 +1,31 @@
+package cn.fjnu.officeSystem.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+import cn.fjnu.officeSystem.entity.TransfiniteInventoryWarning;
+@Repository
+public interface TransfiniteInventoryWarningDao {//库存预警
+	/**
+	 * 添加数据到库存预警表
+	 * @param transfiniteInventoryWarning
+	 * @return
+	 */
+	public int insertTransfiniteInventoryWarning(TransfiniteInventoryWarning transfiniteInventoryWarning);
+	/**
+	 * 动态更新库存预警表
+	 * @param transfiniteInventoryWarning
+	 * @return
+	 */
+	public int updateTransfiniteInventoryWarning(TransfiniteInventoryWarning transfiniteInventoryWarning);
+   /**
+    * 按以下查询出超上限或低于库存下限的库存预警信息
+    * @param itemTypeId
+    * @param state 1表示查低下限 2表示查超上限
+    * @return
+    */
+	public List<TransfiniteInventoryWarning> selectAllWarningByMap(@Param("itemTypeId") String itemTypeId,@Param("state") int state);
+	
+}

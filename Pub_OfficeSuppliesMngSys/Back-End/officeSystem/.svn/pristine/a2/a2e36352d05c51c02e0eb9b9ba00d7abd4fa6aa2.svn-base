@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.InStorageCheckInDao">
+	<sql id="cgwhere">
+		<if test="supplierId!=null">
+			supplier_id=#{supplierId}
+		</if>
+		<if test="agentId!=null">
+			and agent_id=#{agentId}
+		</if>
+		<if test="operaterId!=null">
+			and operater_id=#{operaterId}
+		</if>
+		<if test="itemProcurementId!=null">
+			and item_procurement_id=#{itemProcurementId}
+		</if>
+	</sql>
+	<insert id="insertInStorageCheckInPl" parameterType="java.util.List">
+		insert into
+		t_in_storage_check_in(id,in_storage_date,in_storage_id,supplier_id,agent_id,operater_id,item_procurement_id,total_number,total_monney,remark)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.id},#{item.inStorageDate},#{item.inStorageTypeId},#{item.supplierId},
+			#{item.agentId},#{item.operaterId},#{item.itemProcurementId},#{item.totalNumber},#{item.totalMonney},#{item.remark})
+		</foreach>
+
+	</insert>
+
+	<select id="selectInStorageCheckInsByMap" parameterType="java.util.Map"
+		resultType="cn.fjnu.officeSystem.entity.InStorageCheckIn">
+		select * from t_in_storage_check_in
+		<where>
+			<include refid="cgwhere" />
+		</where>
+		limit #{start},#{end}
+
+
+	</select>
+
+	<select id="selectInStorageCheckInsByMapCount" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		select count(*) from t_in_storage_check_in
+		<where>
+		<include refid="cgwhere" />
+		</where>
+	</select>
+
+
+
+
+
+</mapper>

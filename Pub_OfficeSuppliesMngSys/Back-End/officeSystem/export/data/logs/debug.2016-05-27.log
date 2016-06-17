@@ -1,0 +1,4 @@
+22:08:43.132 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@a68df9]]]
+22:08:43.144 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+22:08:43.158 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), null(String)
+22:08:43.498 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1

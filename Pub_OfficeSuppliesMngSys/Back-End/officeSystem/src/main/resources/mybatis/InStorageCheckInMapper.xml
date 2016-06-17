@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.InStorageCheckInDao">
+	<sql id="cgwhere">
+		<if test="supplierId!=null">
+			supplier_id=#{supplierId}
+		</if>
+		<if test="agentId!=null">
+			and agent_id=#{agentId}
+		</if>
+		<if test="operaterId!=null">
+			and operater_id=#{operaterId}
+		</if>
+		<if test="itemProcurementId!=null">
+			and item_procurement_id=#{itemProcurementId}
+		</if>
+	</sql>
+	<insert id="insertInStorageCheckIn" parameterType="cn.fjnu.officeSystem.entity.InStorageCheckIn">
+		insert into
+		t_in_storage_check_in(id,in_storage_date,in_storage_type_id,supplier_id,agent_id,operater_id,item_procurement_id,total_number,total_monney,remark)
+		values(#{id},#{inStorageDate},#{inStorageTypeId},#{supplierId},
+		#{agentId},#{operaterId},#{itemProcurementId},#{totalNumber},#{totalMonney},#{remark})
+	</insert>
+	<insert id="insertInStorageCheckInPl" parameterType="java.util.List">
+		insert into
+		t_in_storage_check_in(id,in_storage_date,in_storage_type_id,supplier_id,agent_id,operater_id,item_procurement_id,total_number,total_monney,remark)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.id},#{item.inStorageDate},#{item.inStorageTypeId},#{item.supplierId},
+			#{item.agentId},#{item.operaterId},#{item.itemProcurementId},#{item.totalNumber},#{item.totalMonney},#{item.remark})
+		</foreach>
+
+	</insert>
+
+	<select id="selectInStorageCheckInsByMap" parameterType="java.util.Map"
+		resultType="cn.fjnu.officeSystem.extend.InStorageCheckInExtend">
+		select
+		t_in_storage_check_in.*,t_item_procurement.item_id as itemId,t_item_procurement.item_name as itemName,
+		t_item_procurement.item_type_id as itemTypeId,t_item_procurement.spec as spec,
+		t_item_type.name as itemTypeName,
+		t_supplier.short_name as supplierName,t_staff.staff_name as agentName,
+		t_in_storage_type.name as inStorageTypeName from
+		t_in_storage_check_in,t_item_procurement,
+		t_item_type,t_staff,t_supplier,t_in_storage_type where 
+		t_item_procurement.id=t_in_storage_check_in.item_procurement_id
+		and t_item_type.name=(select name from t_item_type where id=t_item_procurement.item_type_id)
+		and t_supplier.short_name=(select short_name from t_supplier where id=t_in_storage_check_in.supplier_id)
+		and t_staff.staff_name=(select staff_name from t_staff where id=t_in_storage_check_in.agent_id)
+		and t_in_storage_type.name=(select name from t_in_storage_type where id=t_in_storage_check_in.in_storage_type_id)
+
+		<include refid="cgwhere" />
+
+		limit #{start},#{end}
+
+
+	</select>
+
+	<select id="selectInStorageCheckInsByMapCount" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		select count(*) from t_in_storage_check_in
+		<where>
+			<include refid="cgwhere" />
+		</where>
+	</select>
+
+
+
+
+
+</mapper>

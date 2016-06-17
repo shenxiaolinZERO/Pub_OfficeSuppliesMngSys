@@ -1,0 +1,52 @@
+package cn.fjnu.officeSystem.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import cn.fjnu.officeSystem.entity.RecipientApply;
+
+public interface RecipientApplyDao {
+
+	/**
+	 * 添加物品领用申请表记录
+	 * @param recipientApply
+	 * @return
+	 */
+	public int insertRecipientApply(RecipientApply recipientApply);
+	
+	/**
+	 * 删除物品领用申请表记录
+	 * @param id
+	 * @return
+	 */
+	public int deleteRecipientApplyById(String id);
+	
+	/**
+	 * 动态更新物品领用申请表
+	 * @param recipientApply
+	 * @return
+	 */
+	public int updateRecipientApply(RecipientApply recipientApply);
+	
+    /**
+     * 查询出所有审核通过，并且还没有出库登记的领用申请表记录
+     * @param start
+     * @param end
+     * @return
+     */
+	public List<RecipientApply> selectRecipientApplyAuditAndPass(@Param("start") int start,@Param("end") int end);
+	
+	/**
+	 * 查询出所有审核通过，并且还没有出库登记的领用申请表的总记录数
+	 * @return
+	 */
+	public int selectRecipientApplyAuditAndPassCount();
+	
+	/**
+	 * 查询所有有效（未过期）或所有无效（过期）的领用记录
+	 * @param isValidate
+	 * @return
+	 */
+	public List<RecipientApply> selectRecipientApplyByValidateState(int isValidate);
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.ItemProcurementDao">
+	<insert id="insertItemProcurement" parameterType="cn.fjnu.officeSystem.entity.ItemProcurement">
+		insert into
+		t_item_procurement(id,item_id,applier_id,staff_id,num,item_type_id,item_name,spec,price,monney,
+		time,remark)
+		values(#{id},#{itemId},#{applierId},#{staffId},#{num},#{itemTypeId},
+		#{itemName},#{spec},#{price},#{monney},#{time},#{remark})
+	</insert>
+	<delete id="deleteItemProcurementById" parameterType="java.lang.String">
+		delete from t_item_procurement
+		where id=#{id}
+
+	</delete>
+
+	<update id="updateItemProcurement" parameterType="cn.fjnu.officeSystem.entity.ItemProcurement">
+		update t_item_procurement
+		<set>
+			<if test="itemId!=null">
+				item_id=#{itemId},
+			</if>
+			<if test="applierId!=null">
+				applier_id=#{applierId},
+			</if>
+			<if test="staffId!=null">
+				staff_id=#{staffId},
+			</if>
+			<if test="num!=null">
+				num=#{num},
+			</if>
+			<if test="itemTypeId!=null">
+				item_type_id=#{itemTypeId},
+			</if>
+			<if test="itemName!=null">
+				item_name=#{itemName},
+			</if>
+			<if test="spec!=null">
+				spec=#{spec},
+			</if>
+			<if test="price!=null">
+				price=#{price},
+			</if>
+			<if test="monney!=null">
+				monney=#{monney},
+			</if>
+			<if test="time!=null">
+				time=#{time}
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+
+		</set>
+		where id=#{id}
+	</update>
+	
+	<select id="selectItemProcurementByItemId" parameterType="java.lang.String">
+	select * from t_item_procurement where item_id=#{itemId}
+	</select>
+	
+	<select id="selectItemProcurementBystaffId" parameterType="java.lang.String">
+	select * from t_item_procurement where staff_id=#{staffId}
+	</select>
+	
+</mapper>

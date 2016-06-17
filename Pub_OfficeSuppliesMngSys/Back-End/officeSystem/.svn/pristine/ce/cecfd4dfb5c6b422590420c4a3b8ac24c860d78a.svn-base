@@ -1,0 +1,43 @@
+package cn.fjnu.officeSystem.dao;
+
+import java.util.List;
+
+import cn.fjnu.officeSystem.entity.ItemClassificationSummary;
+
+public interface ItemClassificationSummaryDao {
+
+	/**
+	 * 添加物品分类汇总表记录
+	 * @param itemClassificationSummary
+	 * @return
+	 */
+	public int insertItemClassificationSummary(ItemClassificationSummary itemClassificationSummary);
+	
+	/**
+	 * 动态更新物品分类汇总表
+	 * @param itemClassificationSummary
+	 * @return
+	 */
+	public int updateItemClassificationSummary(ItemClassificationSummary itemClassificationSummary);
+	
+	/**
+	 * 查询所有的物品分类汇总表
+	 * @return
+	 */
+	public List<ItemClassificationSummary> selectAllItemClassificationSummaries();
+	
+	/**
+	 * 根据物品名称查询物品分类汇总表
+	 * @param itemName
+	 * @return
+	 */
+	public List<ItemClassificationSummary> selectItemClassificationSummaryByItemName(String itemName);
+	
+	/**
+	 * 根据物品分类查询物品分类汇总表
+	 * @param itemTypeName
+	 * @return
+	 */
+	public List<ItemClassificationSummary> selectItemClassificationSummaryByItemType(String itemTypeName);
+	
+}

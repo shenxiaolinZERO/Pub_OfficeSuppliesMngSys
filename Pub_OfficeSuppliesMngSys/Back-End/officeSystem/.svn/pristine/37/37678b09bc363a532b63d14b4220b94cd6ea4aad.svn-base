@@ -1,0 +1,59 @@
+package cn.fjnu.officeSystem.controller;
+
+import java.awt.print.PrinterException;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import cn.fjnu.officeSystem.serviceImpl.ItemProcurementService;
+import net.sf.json.JSONObject;
+@RequestMapping("/ItemProcurement")
+public class ItemProcurementController {
+	@Resource
+	ItemProcurementService itemProcurementService;
+	@RequestMapping(value="/PreItemProcurementHome",produces="application/json;charset=utf-8")
+	public String PreItemProcurementHome(@RequestBody String json,HttpServletResponse response) throws ParseException{
+		try{
+			json=URLDecoder.decode(json,"utf-8");
+			if(json.endsWith("=")){
+				json = json.substring(0, json.length()-1);
+			}
+		}catch(UnsupportedEncodingException e1){
+			e1.printStackTrace();
+			
+		}
+		System.out.println("check_apply_json:"+json);
+		//跨域
+		response.addHeader("Access-Control-Allow-Origin","*");
+		Map<String, Object> map=new HashMap<>();
+		JSONObject jsonObject=JSONObject.fromObject(json);
+		int pageIndex=jsonObject.optInt("pageIndex");//当前页
+		int pageCount=jsonObject.optInt("pageCount");//页大小
+		String itemId=jsonObject.optString("itemId");
+		String itemTypeId=jsonObject.optString("itemTypeId");
+		String itemName=jsonObject.optString("itemName");
+		String preStartTime=jsonObject.optString("preStartTime");
+		String preEndTime=jsonObject.optString("preEndTime");
+		String staffId=jsonObject.optString("staffId");
+		String preTimeSort=jsonObject.optString("preTimeSort");
+		String result=itemProcurementService.getPreItemProcurementHome(pageIndex, pageCount, staffId, itemTypeId, itemName, itemId,preTimeSort,preStartTime, preEndTime);
+		return result;
+		
+	}
+	
+	
+	
+	
+
+}

@@ -1,0 +1,67 @@
+package cn.fjnu.officeSystem.extend;
+
+import java.sql.Date;
+
+import cn.fjnu.officeSystem.entity.ItemProcurement;
+import cn.fjnu.officeSystem.entity.ItemType;
+
+public class ItemProcurementExtend extends ItemProcurement {
+	private String itemTypeName;//物品类型名字
+    private String supplierName;//供应商简称
+    private String staffName;//采购人员名字
+	public String getItemTypeName() {
+		return itemTypeName;
+	}
+	public void setItemTypeName(String itemTypeName) {
+		this.itemTypeName = itemTypeName;
+	}
+	public String getSupplierName() {
+		return supplierName;
+	}
+	public void setSupplierName(String supplierName) {
+		this.supplierName = supplierName;
+	}
+	public String getStaffName() {
+		return staffName;
+	}
+	public void setStaffName(String staffName) {
+		this.staffName = staffName;
+	}
+	public ItemProcurementExtend(String id, String itemId, String supplierId, String staffId, long num,
+			String itemTypeId, String itemName, String spec, Double price, Double monney, java.util.Date time,
+			Short isInStorage, String remark, String itemTypeName, String supplierName, String staffName) {
+		super(id, itemId, supplierId, staffId, num, itemTypeId, itemName, spec, price, monney, time, isInStorage,
+				remark);
+		this.itemTypeName = itemTypeName;
+		this.supplierName = supplierName;
+		this.staffName = staffName;
+	}
+	public ItemProcurementExtend() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public ItemProcurementExtend(String id, String itemId, String supplierId, String staffId, long num,
+			String itemTypeId, String itemName, String spec, Double price, Double monney, java.util.Date time,
+			Short isInStorage, String remark) {
+		super(id, itemId, supplierId, staffId, num, itemTypeId, itemName, spec, price, monney, time, isInStorage, remark);
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "ItemProcurementExtend [itemTypeName=" + itemTypeName + ", supplierName=" + supplierName + ", staffName="
+				+ staffName + "]";
+	}
+    
+	
+
+
+
+
+	
+	
+	
+
+
+	
+
+}

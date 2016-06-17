@@ -1,0 +1,62 @@
+package cn.fjnu.officeSystem.extend;
+
+import java.util.Date;
+
+import cn.fjnu.officeSystem.entity.BorrowApply;
+
+public class BorrowApplyExtend extends BorrowApply {
+	private String itemTypeName;//物品分类名称
+	
+	//private String borrowDepartmentName;//借用部门名称
+	
+	//private String borrowerName;//借用人姓名
+
+	public String getItemTypeName() {
+		return itemTypeName;
+	}
+
+	public void setItemTypeName(String itemTypeName) {
+		this.itemTypeName = itemTypeName;
+	}
+
+	public BorrowApplyExtend(String id, String itemId, String itemName, String itemTypeId, String spec,
+			Integer borrowNum, Double price, Double monney, Date borrowTime, Date applyTime, Integer borrowDepartmentId,
+			Long borrower, Date auditTime, Long auditor, Short state, Short isReturn, Date returnTime, Short isDisplay,
+			Short isValid, String reason, String remark, String itemTypeName) {
+		super(id, itemId, itemName, itemTypeId, spec, borrowNum, price, monney, borrowTime, applyTime,
+				borrowDepartmentId, borrower, auditTime, auditor, state, isReturn, returnTime, isDisplay, isValid,
+				reason, remark);
+		this.itemTypeName = itemTypeName;
+	}
+
+	public BorrowApplyExtend() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public BorrowApplyExtend(String id, String itemId, String itemName, String itemTypeId, String spec,
+			Integer borrowNum, Double price, Double monney, Date borrowTime, Date applyTime, Integer borrowDepartmentId,
+			Long borrower, Date auditTime, Long auditor, Short state, Short isReturn, Date returnTime, Short isDisplay,
+			Short isValid, String reason, String remark) {
+		super(id, itemId, itemName, itemTypeId, spec, borrowNum, price, monney, borrowTime, applyTime, borrowDepartmentId,
+				borrower, auditTime, auditor, state, isReturn, returnTime, isDisplay, isValid, reason, remark);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "BorrowApplyExtend [itemTypeName=" + itemTypeName + ", getId()=" + getId() + ", getItemId()="
+				+ getItemId() + ", getItemName()=" + getItemName() + ", getItemTypeId()=" + getItemTypeId()
+				+ ", getSpec()=" + getSpec() + ", getBorrowNum()=" + getBorrowNum() + ", getPrice()=" + getPrice()
+				+ ", getMonney()=" + getMonney() + ", getBorrowTime()=" + getBorrowTime() + ", getBorrowDepartmentId()="
+				+ getBorrowDepartmentId() + ", getBorrower()=" + getBorrower() + ", getAuditTime()=" + getAuditTime()
+				+ ", getAuditor()=" + getAuditor() + ", getState()=" + getState() + ", getIsReturn()=" + getIsReturn()
+				+ ", getReturnTime()=" + getReturnTime() + ", getRemark()=" + getRemark() + ", getIsDisplay()="
+				+ getIsDisplay() + ", getApplyTime()=" + getApplyTime() + ", getReason()=" + getReason()
+				+ ", getIsValid()=" + getIsValid() + ", toString()=" + super.toString() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + "]";
+	}
+	
+	
+
+}
