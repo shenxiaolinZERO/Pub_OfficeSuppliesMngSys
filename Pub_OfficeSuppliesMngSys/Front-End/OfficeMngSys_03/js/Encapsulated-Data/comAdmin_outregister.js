@@ -1,11 +1,13 @@
 /**
  * Created by user10 on 2016/6/1.
  */
-
+//$(function () {}  当文档载入完毕就执行,与下面这个效果是一样的。
 $(document).ready(function () {
       getOuttype();
 });
 
+
+<!--start-获取类型并让用户选择 -->
 function getOuttype(){
      $.ajax({
              type:"post",
@@ -24,3 +26,5 @@ function getOuttype(){
         }
     });
 }
+<!--end-获取类型并让用户选择 -->
+

@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <title>普通管理员-出库登记</title>
 </head>
 <body>
@@ -44,7 +43,7 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal -->
         </div>
-
+<!---->
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
@@ -65,12 +64,16 @@
         function goUrl(obj){
             if(obj.value==1){
                 window.location.href="comAdmin_out_borrow.html";
+                var outStorageTypeId=1;
             }
             if(obj.value==2){
                 window.location.href="comAdmin_out_claim.html";
+                var  outStorageTypeId=2;
+
             }
             if(obj.value==3){
                 window.location.href="comAdmin_out_donate.html";
+                var outStorageTypeId=3;
             }
         }
     </script>

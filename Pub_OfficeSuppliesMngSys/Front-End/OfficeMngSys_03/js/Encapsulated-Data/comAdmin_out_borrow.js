@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 //加载数据
 function loadDate(pn){
-
+    //var outStorageTypeId="1";
     $.ajax({
     type:"post",
     dataType:"json",
@@ -16,7 +16,8 @@ function loadDate(pn){
     data: JSON.stringify({"outStorageTypeId":"1","pageIndex":pn,"pageCount":"5"}),
     success:function(data){
         console.log(data);
-        if(1){
+
+            //start-加载分页
             var page =' ';
             page +='第<input type="text" id="pageIndex" style="border:0;width: 20px;text-align: center;" class="page-current" readonly="readonly" value="'+data.pageIndex+'"/>页';
             page +='共<input type="text" id="pageSize"  style="border:0;width: 20px;text-align: center;" class="page-total" readonly="readonly"value="'+data.pageSize+'"/>页';
@@ -26,14 +27,14 @@ function loadDate(pn){
             page +='<a class="btn" id="lastPage" onclick="lastPage()">最后一页</a>';
             page +='<input type="text" class="page-num" id="certian-page" style="width: 20px;text-align: center"/>';
             page +='<a class="btn" id="page-jump" onclick="jumpPage()">跳至此页</a>';
-
             $(".page").append(page);
+            //end-加载分页
+
 
             var html1 = "";
             console.log(data.resultList.length);
             for(var i=0;i<data.resultList.length;i++){
                 html1 +='<tr>';
-
                 var array=data.resultList[i];
                 html1 +='<td><input class="choose" type="checkbox"/></td>';
                 html1 +='<td>'+array.itemId+'</td>';
@@ -46,22 +47,21 @@ function loadDate(pn){
                 html1 +='<td>'+array.remark+'</td>';
                 html1 +='<td><button id="'+array.id+'" onclick="out(this)">出库</button></td>';
                 html1 +='</tr>';
-                $("tbody").append(html1);
             }
+            $("tbody").append(html1);
 
-        }
     },
 })
 }
 
-//点击入库按钮进行归还入库
+//点击出库按钮进行归还入库
 function out(element){
-    var idList=new Array();
-    var f={};
-    f.id=element.id;
-    idList.push(f);
-    console.log(JSON.stringify(idList));
-    //var id=element.id;
+    //var idList=new Array();
+    //var f={};
+    //f.id=element.id;
+    //idList.push(f);
+    //console.log(JSON.stringify(idList));
+    ////var id=element.id;
     //idList.push(id);
     //alert(idList[0]);
     var x = {

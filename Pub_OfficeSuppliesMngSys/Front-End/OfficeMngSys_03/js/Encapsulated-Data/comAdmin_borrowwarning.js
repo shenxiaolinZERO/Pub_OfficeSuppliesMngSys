@@ -13,11 +13,10 @@ function loadDate(pn){
     dataType:"json",
     url:"http://192.168.35.111:8080/officeSystem/OverTimeBorrowApply/getBorrowApplyWarningHome.do",
 
-    data: JSON.stringify({"inStorageTypeId":"1","pageIndex":pn,"pageCount":"5"}),
+    data: JSON.stringify({"pageIndex":pn,"pageCount":"5"}),
     success:function(data){
         console.log(data);
         if(1){
-
             var page =' ';
             page +='第<input type="text" id="pageIndex" style="border:0;width: 20px;text-align: center;" class="page-current" readonly="readonly" value="'+data.pageIndex+'"/>页';
             page +='共<input type="text" id="pageSize"  style="border:0;width: 20px;text-align: center;" class="page-total" readonly="readonly"value="'+data.pageSize+'"/>页';
@@ -39,71 +38,35 @@ function loadDate(pn){
                 html1 +='<td>'+array.itemId+'</td>';
                 html1 +='<td>'+array.itemName+'</td>';
                 html1 +='<td>'+array.itemTypeName+'</td>';
-                html1 +='<td>'+array.measureUnitName+'</td>';
-                html1 +='<td>'+array.num+'</td>';
-                html1 +='<td>'+array.staffName+'</td>';
-                html1 +='<td>'+array.time+'</td>';
-                html1 +='<td><button id="'+array.id+'" onclick="add(this)">入库</button></td>';
+                html1 +='<td>'+array.spec+'</td>';
+                html1 +='<td>'+array.borrowNum+'</td>';
+                html1 +='<td>'+array.borrowerName+'</td>';
+                html1 +='<td>'+array.telephone+'</td>';
+                html1 +='<td>'+array.borrowTime+'</td>';
+                html1 +='<td>'+array.preReturnTime+'</td>';
+                html1 +='<td>'+array.inventory+'</td>';
+                html1 +='<td>'+array.remark+'</td>';
+                //html1 +='<td><button id="'+array.id+'" onclick="add(this)">入库</button></td>';
                 html1 +='</tr>';
-                $("tbody").append(html1);
             }
+            $("tbody").append(html1);
 
         }
     },
 })
 }
 
-//点击入库按钮进行归还入库
-function add(element){
-    var idList=new Array();
-    var f={};
-    f.id=element.id;
-    idList.push(f);
-    console.log(JSON.stringify(idList));
-    //var id=element.id;
-    //idList.push(id);
-    //alert(idList[0]);
+//查找筛选已超期物品
+function overTime(){
+
     var x = {
-        "idList":idList,
-        "operaterId":"1",
+        "pageIndex":"1",
+        "pageCount":"5"
     };
     console.log(x);
     $.ajax({
         type:"post",
-        url:"http://192.168.35.111:8080/officeSystem/InstorageCheckIn/returnInStorage.do",
-        data:JSON.stringify(x),
-        dataType:"json",
-        header:{
-            "Content-Type":"application/json",
-            "Accept":"application/json"
-        },
-        success:function(data){
-            console.log(data.message);
-            if(data.message=="success"){
-                alert("成功添加入库");
-            }
-            if(data.message=="error"){
-                alert("添加入库失败");
-            }
-        }
-    })
-}
-
-
-
-//根据搜索条件搜索
-function search(){
-    var itemName=$("#itemName").val();
-    // var itemTypeId=$("input[value]).val();
-    var x = {
-        "itemName":itemName,
-        "itemTypeId":1,
-        "staffId":"1"
-    };
-    console.log(x);
-    $.ajax({
-        type:"post",
-        url:"http://192.168.35.111:8080/officeSystem/InstorageCheckIn/getBorrowApplyByMap.do",
+        url:"http://192.168.35.111:8080/officeSystem/OverTimeBorrowApply/getBorrowApplyWarningPassHome.do",
         data:JSON.stringify(x),
         dataType:"json",
         header:{
@@ -121,14 +84,61 @@ function search(){
                 html2 +='<td>'+array.itemId+'</td>';
                 html2 +='<td>'+array.itemName+'</td>';
                 html2 +='<td>'+array.itemTypeName+'</td>';
-                html2 +='<td>'+array.measureUnitName+'</td>';
-                html2 +='<td>'+array.num+'</td>';
-                html2 +='<td>'+array.staffName+'</td>';
-                html2 +='<td>'+array.time+'</td>';
-                html2 +='<td><button id="'+array.id+'" onclick="add(this)">入库</button></td>';
+                html2 +='<td>'+array.spec+'</td>';
+                html2 +='<td>'+array.borrowNum+'</td>';
+                html2 +='<td>'+array.borrowerName+'</td>';
+                html2 +='<td>'+array.telephone+'</td>';
+                html2 +='<td>'+array.borrowTime+'</td>';
+                html2 +='<td>'+array.preReturnTime+'</td>';
+                html2 +='<td>'+array.inventory+'</td>';
+                html2 +='<td>'+array.remark+'</td>';
                 html2 +='</tr>';
-                $("tbody").append(html2);
             }
+            $("tbody").append(html2);
+        }
+    })
+}
+
+
+//根据输入的ID搜索条件搜索
+function searchById(){
+
+    var itemId=$("input[name='itemId']").val();
+    var x = {
+        "itemId":itemId
+    };
+    console.log(x);
+    $.ajax({
+        type:"post",
+        url:"http://192.168.35.111:8080/officeSystem/OverTimeBorrowApply/getBorrowedXXAppliesByItemId.do",
+        data:JSON.stringify(x),
+        dataType:"json",
+        header:{
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+        },
+        success:function(data){
+            console.log(data.message);
+            var html3 = "";
+
+            for(var i=0;i<data.resultList.length;i++){
+                html3 +='<tr>';
+                var array=data.resultList[i];
+                html3 +='<td><input class="choose" type="checkbox"/></td>';
+                html3 +='<td>'+array.itemId+'</td>';
+                html3 +='<td>'+array.itemName+'</td>';
+                html3 +='<td>'+array.itemTypeName+'</td>';
+                html3 +='<td>'+array.spec+'</td>';
+                html3 +='<td>'+array.borrowNum+'</td>';
+                html3 +='<td>'+array.borrowerName+'</td>';
+                html3 +='<td>'+array.telephone+'</td>';
+                html3 +='<td>'+array.borrowTime+'</td>';
+                html3 +='<td>'+array.preReturnTime+'</td>';
+                html3 +='<td>'+array.inventory+'</td>';
+                html3 +='<td>'+array.remark+'</td>';
+                html3 +='</tr>';
+            }
+            $("tbody").append(html3);
         }
     })
 }

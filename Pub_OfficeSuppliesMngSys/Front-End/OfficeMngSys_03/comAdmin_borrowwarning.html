@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/jquery.dataTables.css">
     <title>普通管理员-借用预警</title>
 </head>
 <body>
    <!--<h4>借用申请清单</h4>-->
    <br>
-   <button>已超期物品</button>
-   <table id="borrrowapply-info" class="display" cellspacing="0"  width="100%">
+   <button class="btn" onclick="overTime()">已超期物品</button>
+   <span style="float:right; margin-right: 20px">
+       <input type="text" placeholder="请输入物品ID" name="itemId"/>
+   <!--采购人工号：-->
+   <button class="btn btn-sm" onclick="searchById()">查询</button></span><br/>
+   <table id="borrrowapply-info" class="table table-bordered table-hover table-striped" cellspacing="0"  width="100%">
        <thead>
        <tr>
            <th>物品编号</th>
@@ -27,47 +33,47 @@
        </thead>
 
        <tbody>
-       <tr>
-           <td>001</td>
-           <td>真彩水性笔</td>
-           <td>文具</td>
-           <th>盒（12支）</th>
-           <th>3</th>
-           <th>小王</th>
-           <th>18458392030</th>
-           <th>2016-03-29 10:30:00</th>
-           <th>2016-03-29 10:30:00</th>
-           <th>2</th>
-           <th>库存紧张</th>
+       <!--<tr>-->
+           <!--<td>001</td>-->
+           <!--<td>真彩水性笔</td>-->
+           <!--<td>文具</td>-->
+           <!--<th>盒（12支）</th>-->
+           <!--<th>3</th>-->
+           <!--<th>小王</th>-->
+           <!--<th>18458392030</th>-->
+           <!--<th>2016-03-29 10:30:00</th>-->
+           <!--<th>2016-03-29 10:30:00</th>-->
+           <!--<th>2</th>-->
+           <!--<th>库存紧张</th>-->
 
-       </tr>
-       <tr>
-           <td>001</td>
-           <td>真彩水性笔</td>
-           <td>文具</td>
-           <th>盒（12支）</th>
-           <th>3</th>
-           <th>小王</th>
-           <th>18458392030</th>
-           <th>2016-03-29 10:30:00</th>
-           <th>2016-03-29 10:30:00</th>
-           <th>2</th>
-           <th>库存紧张</th>
+       <!--</tr>-->
+       <!--<tr>-->
+           <!--<td>001</td>-->
+           <!--<td>真彩水性笔</td>-->
+           <!--<td>文具</td>-->
+           <!--<th>盒（12支）</th>-->
+           <!--<th>3</th>-->
+           <!--<th>小王</th>-->
+           <!--<th>18458392030</th>-->
+           <!--<th>2016-03-29 10:30:00</th>-->
+           <!--<th>2016-03-29 10:30:00</th>-->
+           <!--<th>2</th>-->
+           <!--<th>库存紧张</th>-->
 
-       </tr>
-       <tr>
-           <td>001</td>
-           <td>真彩水性笔</td>
-           <td>文具</td>
-           <th>盒（12支）</th>
-           <th>3</th>
-           <th>小王</th>
-           <th>18458392030</th>
-           <th>2016-03-29 10:30:00</th>
-           <th>2016-03-29 10:30:00</th>
-           <th>2</th>
-           <th>库存紧张</th>
-       </tr>
+       <!--</tr>-->
+       <!--<tr>-->
+           <!--<td>001</td>-->
+           <!--<td>真彩水性笔</td>-->
+           <!--<td>文具</td>-->
+           <!--<th>盒（12支）</th>-->
+           <!--<th>3</th>-->
+           <!--<th>小王</th>-->
+           <!--<th>18458392030</th>-->
+           <!--<th>2016-03-29 10:30:00</th>-->
+           <!--<th>2016-03-29 10:30:00</th>-->
+           <!--<th>2</th>-->
+           <!--<th>库存紧张</th>-->
+       <!--</tr>-->
        </tbody>
    </table>
 
@@ -78,8 +84,10 @@
    <script type="text/javascript">
            $(document).ready(function() {
                // DataTable
-               var table = $('#borrrowapply-info').dataTable();
+               //var table = $('#borrrowapply-info').dataTable();
            } );
    </script>
+   <script type="text/javascript" src="js/Encapsulated-Data/public.js"></script>
+   <script type="text/javascript" src="js/Encapsulated-Data/comAdmin_borrrowwarning.js"></script>
 </body>
 </html>

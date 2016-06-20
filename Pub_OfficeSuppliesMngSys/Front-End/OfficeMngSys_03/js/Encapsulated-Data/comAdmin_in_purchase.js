@@ -144,8 +144,8 @@ function loadPurchaseDate(pn){
                     html1 +='<td><button id="'+array.id+'" onclick="add(this)">入库</button></td>';
                     //html1 +='<td><button  onclick="add()">入库</button></td>';
                     html1 +='</tr>';
-                    $("tbody").append(html1);
             }
+            $("tbody").append(html1);
 
         }
     },

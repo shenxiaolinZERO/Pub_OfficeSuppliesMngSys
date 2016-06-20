@@ -31,7 +31,6 @@ function loadReturnDate(pn){
             $(".page").append(page);
 
             var html1 = "";
-
             for(var i=0;i<data.resultList.length;i++){
                 html1 +='<tr>';
                 var array=data.resultList[i];
@@ -45,8 +44,8 @@ function loadReturnDate(pn){
                 html1 +='<td>'+array.time+'</td>';
                 html1 +='<td><button id="'+array.id+'" onclick="add(this)">入库</button></td>';
                 html1 +='</tr>';
-                $("tbody").append(html1);
             }
+            $("tbody").append(html1);
 
         }
     },

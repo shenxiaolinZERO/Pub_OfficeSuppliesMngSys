@@ -13,7 +13,7 @@ function loadDate(pn){
     dataType:"json",
     url:"http://192.168.35.111:8080/officeSystem/OutstorageCheckIn/getOutstorageHome.do",
 
-    data: JSON.stringify({"outStorageTypeId":"1","pageIndex":pn,"pageCount":"5"}),
+    data: JSON.stringify({"outStorageTypeId":"2","pageIndex":pn,"pageCount":"5"}),
     success:function(data){
         console.log(data);
         if(1){
@@ -46,26 +46,27 @@ function loadDate(pn){
                 html1 +='<td>'+array.remark+'</td>';
                 html1 +='<td><button id="'+array.id+'" onclick="out(this)">出库</button></td>';
                 html1 +='</tr>';
-                $("tbody").append(html1);
+
             }
+            $("tbody").append(html1);
 
         }
     },
 })
 }
 
-//点击入库按钮进行归还入库
+//点击出库按钮进行归还入库yes
 function out(element){
-    var idList=new Array();
-    var f={};
-    f.id=element.id;
-    idList.push(f);
-    console.log(JSON.stringify(idList));
+    //var idList=new Array();
+    //var f={};
+    //f.id=element.id;
+    //idList.push(f);
+    //console.log(JSON.stringify(idList));
     //var id=element.id;
     //idList.push(id);
     //alert(idList[0]);
     var x = {
-        "outStorageTypeId":"1",
+        "outStorageTypeId":"2",
         //"idList":idList,
         "id":"8",
         "operaterId":"2",
@@ -124,14 +125,15 @@ function search(){
                 html2 +='<td>'+array.itemId+'</td>';
                 html2 +='<td>'+array.itemName+'</td>';
                 html2 +='<td>'+array.itemTypeName+'</td>';
-                html2 +='<td>'+array.measureUnitName+'</td>';
+                html2 +='<td>'+array.spec+'</td>';
                 html2 +='<td>'+array.num+'</td>';
                 html2 +='<td>'+array.staffName+'</td>';
                 html2 +='<td>'+array.time+'</td>';
+                html2 +='<td>'+array.remark+'</td>';
                 html2 +='<td><button id="'+array.id+'" onclick="add(this)">入库</button></td>';
                 html2 +='</tr>';
-                $("tbody").append(html2);
             }
+            $("tbody").append(html2);
         }
     })
 }
