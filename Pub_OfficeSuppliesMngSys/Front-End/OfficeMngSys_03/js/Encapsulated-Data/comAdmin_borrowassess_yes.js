@@ -12,7 +12,7 @@ function loadDate(pn){
     $.ajax({
     type:"post",
     dataType:"json",
-    url:"http://192.168.35.111:8080/officeSystem/OverTimeBorrowApply/getBorrowApplyWarningHome.do",
+    url:"http://192.168.35.111:8080/officeSystem/BorrowApply/getAuditBorrowApplies.do",
 
     data: JSON.stringify({"pageIndex":pn,"pageCount":"5"}),
     success:function(data){
@@ -41,12 +41,15 @@ function loadDate(pn){
                 html1 +='<td>'+array.spec+'</td>';
                 html1 +='<td>'+array.borrowNum+'</td>';
                 html1 +='<td>'+array.borrowerName+'</td>';
-                html1 +='<td>'+array.telephone+'</td>';
-                html1 +='<td>'+array.borrowTime+'</td>';
+                html1 +='<td>'+array.applyTime+'</td>';
+                //审核结果
+                //html
+                html1 +='<td>'+array.auditTime+'</td>';
+                //借用状态
                 html1 +='<td>'+array.preReturnTime+'</td>';
-                html1 +='<td>'+array.inventory+'</td>';
-                html1 +='<td>'+array.remark+'</td>';
-                //html1 +='<td><button id="'+array.id+'" onclick="add(this)">入库</button></td>';
+
+                html1 +='<td>'+array.isValid+'</td>';
+                html1 +='<td><button id="'+array.id+'" onclick="add(this)">删除</button></td>';
                 html1 +='</tr>';
             }
             $("tbody").append(html1);
