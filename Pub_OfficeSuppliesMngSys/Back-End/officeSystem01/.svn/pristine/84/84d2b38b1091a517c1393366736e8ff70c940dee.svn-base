@@ -1,0 +1,171 @@
+package cn.fjnu.officeSystem.entity;
+
+public class DepartmentRecipientSummary {//部门领用汇总表
+	
+    private String id;
+	
+	private String departmentId;//领用部门id
+	
+	private String outStrorageCheckInId;//登记编号(出库)
+	
+	private String itemId;//物品编号
+	
+	private String itemName;//物品名称
+	
+	private String spec;//规格型号
+	
+	private String item_type_id;//物品分类id
+	
+	private String measureUnitId;//单位id
+	
+	private Double price;//单价
+	
+	private Integer number;//数量
+	
+	private Double monney;//金额
+	
+	private String outStorageId;//出库类型id
+	
+	private String remark;//备注
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setDepartmentId(String departmentId) {
+		this.departmentId = departmentId;
+	}
+
+	public String getOutStrorageCheckInId() {
+		return outStrorageCheckInId;
+	}
+
+	public void setOutStrorageCheckInId(String outStrorageCheckInId) {
+		this.outStrorageCheckInId = outStrorageCheckInId;
+	}
+
+	public String getItemId() {
+		return itemId;
+	}
+
+	public void setItemId(String itemId) {
+		this.itemId = itemId;
+	}
+
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public String getSpec() {
+		return spec;
+	}
+
+	public void setSpec(String spec) {
+		this.spec = spec;
+	}
+
+	public String getMeasureUnitId() {
+		return measureUnitId;
+	}
+
+	public void setMeasureUnitId(String measureUnitId) {
+		this.measureUnitId = measureUnitId;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+
+	public Double getMonney() {
+		return monney;
+	}
+
+	public void setMonney(Double monney) {
+		this.monney = monney;
+	}
+
+	public String getOutStorageId() {
+		return outStorageId;
+	}
+
+	public void setOutStorageId(String outStorageId) {
+		this.outStorageId= outStorageId;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+
+	public String getItem_type_id() {
+		return item_type_id;
+	}
+
+	public void setItem_type_id(String item_type_id) {
+		this.item_type_id = item_type_id;
+	}
+
+	@Override
+	public String toString() {
+		return "DepartmentRecipientSummary [id=" + id + ", departmentId=" + departmentId + ", outStrorageCheckInId="
+				+ outStrorageCheckInId + ", itemId=" + itemId + ", itemName=" + itemName + ", spec=" + spec
+				+ ", item_type_id=" + item_type_id + ", measureUnitId=" + measureUnitId + ", price=" + price
+				+ ", number=" + number + ", monney=" + monney + ", outStorageId=" + outStorageId + ", remark=" + remark
+				+ "]";
+	}
+
+	public DepartmentRecipientSummary(String id, String departmentId, String outStrorageCheckInId, String itemId,
+			String itemName, String spec, String item_type_id, String measureUnitId, Double price, Integer number,
+			Double monney, String outStorageId, String remark) {
+		super();
+		this.id = id;
+		this.departmentId = departmentId;
+		this.outStrorageCheckInId = outStrorageCheckInId;
+		this.itemId = itemId;
+		this.itemName = itemName;
+		this.spec = spec;
+		this.item_type_id = item_type_id;
+		this.measureUnitId = measureUnitId;
+		this.price = price;
+		this.number = number;
+		this.monney = monney;
+		this.outStorageId = outStorageId;
+		this.remark = remark;
+	}
+
+	public DepartmentRecipientSummary() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+}

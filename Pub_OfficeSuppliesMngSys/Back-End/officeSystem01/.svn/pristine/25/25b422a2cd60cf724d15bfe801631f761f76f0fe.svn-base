@@ -1,0 +1,40 @@
+package cn.fjnu.officeSystem.dao;
+
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.springframework.stereotype.Repository;
+
+import cn.fjnu.officeSystem.entity.Staff;
+
+
+
+@Repository
+public interface IStaffDao {
+
+	/**
+	 * 添加员工信息
+	 * @param staff
+	 * @return
+	 */
+	public int insertStaff(Staff staff);
+
+	/**
+	 * 更改员工信息
+	 * @param staff
+	 * @return
+	 */
+	public int updateStaff(Staff staff);
+
+	/**
+	 * 通过id查询出员工信息
+	 * @param id
+	 * @return
+	 */
+	public Staff selectStaffById(String id);
+	
+	
+
+
+}

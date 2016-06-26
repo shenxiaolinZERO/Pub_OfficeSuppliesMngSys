@@ -1,0 +1,8 @@
+11:30:58.846 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@6f318c24]]]
+11:30:58.850 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==>  Preparing: select count(*) from t_item_procurement where is_in_storage=0 
+11:30:58.867 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==> Parameters: 
+11:30:58.877 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - <==      Total: 1
+11:30:58.885 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@6f318c24]]]
+11:30:58.886 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==>  Preparing: select t_item_procurement.*,t_item_type.name as itemTypeName,short_name as supplierName,t_staff.staff_name as staffName,t_measure_unit.name as measureUnitName FROM t_item_procurement,t_item_type,t_staff,t_supplier,t_measure_unit where is_in_storage=0 and t_item_type.name= (select name from t_item_type where id=item_type_id) and short_name=(select short_name from t_supplier where id=supplier_id)and t_staff.staff_name=(select staff_name from t_staff where id=staff_id)and t_measure_unit.name=(select name from t_measure_unit where id=measure_unit_id) order by time desc limit ?,? 
+11:30:58.886 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==> Parameters: 0(Integer), 5(Integer)
+11:30:58.893 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - <==      Total: 1

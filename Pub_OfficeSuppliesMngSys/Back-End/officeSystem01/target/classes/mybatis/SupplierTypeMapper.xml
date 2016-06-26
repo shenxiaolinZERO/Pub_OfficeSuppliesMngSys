@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.SupplierTypeDao">
+	<insert id="insertSupplierType" parameterType="cn.fjnu.officeSystem.entity.SupplierType">
+		insert into
+		t_supplier_type(id,name,remark)
+		values(#{id},#{name},#{remark})
+	</insert>
+	<select id="selectAllSupplierType" resultType="cn.fjnu.officeSystem.entity.SupplierType">
+		select * from
+		t_supplier_type
+	</select>
+
+	<update id="updateSupplierType" parameterType="cn.fjnu.officeSystem.entity.SupplierType">
+		update t_supplier_type
+		<set>
+			<if test="name!=null">
+				name=#{name},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+</mapper>

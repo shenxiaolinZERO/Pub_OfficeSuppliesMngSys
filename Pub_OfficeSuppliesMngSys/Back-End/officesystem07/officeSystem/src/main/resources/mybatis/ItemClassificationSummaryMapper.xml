@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.fjnu.officeSystem.dao.ItemClassificationSummaryDao">
+
+	<sql id="query_ics_where">
+		<if test="itemId!=null">
+			item_id=#{itemId}
+		</if>
+		<if test="itemName!=null">
+			and item_name like  CONCAT('%',#{itemName},'%')
+		</if>
+		<if test="itemTypeId!=null">
+			and item_type_id=#{itemTypeId} and t_item_type.name=(select name from t_item_type where
+		id=#{itemTypeId})
+		</if>
+	</sql>
+
+	<insert id="insertItemClassificationSummary" 
+		parameterType="cn.fjnu.officeSystem.entity.ItemClassificationSummary">
+		insert into
+		t_item_classification_summary(id,item_id,item_name,item_type_id,spec,measure_unit_id,price,
+		inventory,inventory_monney,remark)
+		values(#{id},#{itemId},#{itemName},#{itemTypeId},#{spec},#{measureUnitId},
+		#{price},#{inventory},#{inventoryMonney},#{remark})
+	</insert>
+
+	<update id="updateItemClassificationSummary"
+		parameterType="cn.fjnu.officeSystem.entity.ItemClassificationSummary">
+		update t_item_classification_summary
+		<set>
+			<if test="itemId!=null">
+				item_id=#{itemId},
+			</if>
+			<if test="itemName!=null">
+				item_name=#{itemName},
+			</if>
+			<if test="itemTypeId!=null">
+				item_type_id=#{itemTypeId},
+			</if>
+			<if test="spec!=null">
+				spec=#{spec},
+			</if>
+			<if test="measureUnitId!=null">
+				measure_unit_id=#{measureUnitId},
+			</if>
+			<if test="price!=null">
+				price=#{price},
+			</if>
+			<if test="inventory!=null">
+				inventory=#{inventory},
+			</if>
+			<if test="inventoryMonney!=null">
+				inventory_monney=#{inventoryMonney},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+
+		</set>
+		where id=#{id}
+	</update>
+
+	<update id="updateAddItemClassificationSummaryByItemIdAndPrice"
+		parameterType="java.util.Map">
+		update t_item_classification_summary set
+		inventory=inventory+#{addNum},inventory_monney=inventory_monney+price*#{addNum}
+		where item_id=#{itemId} and price=#{price}
+	</update>
+	
+	<update id="updateSubItemClassificationSummaryByItemIdAndPrice"
+		parameterType="java.util.Map">
+		update t_item_classification_summary set
+		inventory=inventory-#{addNum},inventory_monney=inventory_monney-price*#{addNum}
+		where item_id=#{itemId} and price=#{price}
+	</update>
+
+	<select id="selectItemClassificationSummaryByMap"
+		resultType="cn.fjnu.officeSystem.extend.ItemClassificationSummaryExtend"
+		parameterType="java.util.Map">
+		select t_item_classification_summary.*,t_item_type.name as itemTypeName
+		from t_item_classification_summary,t_item_type
+		<where>
+			<include refid="query_ics_where" />
+		</where>
+		
+		limit #{start},#{end}
+	</select>
+
+	<select id="selectItemClassificationSummaryByMapCount"
+		resultType="java.lang.Integer">
+		select count(*) from t_item_classification_summary
+		<where>
+			<include refid="query_ics_where" />
+		</where>
+	</select>
+
+	<select id="selectAllItemClassificationSummaries"
+		resultType="cn.fjnu.officeSystem.entity.ItemClassificationSummary">
+		SELECT * FROM t_item_classification_summary
+	</select>
+
+	<select id="selectAllItemClassificationSummaryCount" resultType="java.lang.Integer">
+		select count(*) FROM t_item_classification_summary
+	</select>
+
+	<select id="selectItemPriceByItemId" resultType="java.lang.Double" parameterType="java.lang.String">
+		select price FROM t_item_classification_summary where item_id=#{itemId}
+	</select>
+	
+	<select id="selectItemClassificationSummaryByItemId" resultType="cn.fjnu.officeSystem.entity.ItemClassificationSummary" 
+	parameterType="java.lang.String">
+		select * FROM t_item_classification_summary where item_id=#{itemId}
+	</select>
+
+	
+	<select id="selectItemClassificationSummaryById" resultType="cn.fjnu.officeSystem.entity.ItemClassificationSummary" 
+	parameterType="java.lang.String">
+		select * FROM t_item_classification_summary where id=#{id}
+	</select>
+
+
+	<select id="selectItemClassificationSummaryByIdList" resultType="cn.fjnu.officeSystem.entity.ItemClassificationSummary">
+		select * from t_item_classification_summary where id in
+		<foreach collection="list" index="index" item="item" open="("
+			close=")" separator=",">
+			#{item}
+		</foreach>
+	</select>
+	
+</mapper>

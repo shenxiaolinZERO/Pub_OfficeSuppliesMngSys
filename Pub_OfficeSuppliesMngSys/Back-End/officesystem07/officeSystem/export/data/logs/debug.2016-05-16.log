@@ -1,0 +1,12 @@
+23:39:09.265 [main] DEBUG c.f.o.d.R.insertRecipientApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1a9a3a95]]]
+23:39:09.294 [main] DEBUG c.f.o.d.R.insertRecipientApply - ==>  Preparing: insert into t_recipient_apply(id,item_name,item_type_id,spec,recipient_num,item_id,price,monney, recipient_time,recipient_department_id,recipienter,audit_time,auditor,state, is_display,is_valid,apply_time,reason,remark) values(?,?,?,?,?,?, ?,?,?,?,?,? ,?,?,?,? ,?,?,?) 
+23:39:09.342 [main] DEBUG c.f.o.d.R.insertRecipientApply - ==> Parameters: null, 3(String), 3(String), null, null, null, null, null, null, 1(Integer), 1(Long), null, null, 1(Short), 1(Short), 1(Short), null, null, null
+23:39:09.961 [main] DEBUG c.f.o.d.R.insertRecipientApply - <==    Updates: 1
+23:41:34.854 [main] DEBUG c.f.o.d.B.insertBorrowApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@6dbaef62]]]
+23:41:34.864 [main] DEBUG c.f.o.d.B.insertBorrowApply - ==>  Preparing: insert into t_borrow_apply(id,item_id,item_name,item_type_id,spec,borrow_num,price,monney, borrow_time,borrow_department_id,borrower,audit_time,auditor,state,is_return, return_time,is_display,is_valid,apply_time,reason,remark) values(?,?,?,?,?,?, ?,?,?,?,?,? ,?,?,?,?,?,? ,?,?,?) 
+23:41:34.909 [main] DEBUG c.f.o.d.B.insertBorrowApply - ==> Parameters: null, 2(String), 2(String), 2(String), A型号(String), 2(Integer), null, null, null, 2(Integer), 1(Long), null, 1(Long), 3(Short), 1(Short), null, 0(Short), 1(Short), null, null, null
+23:41:34.991 [main] DEBUG c.f.o.d.B.insertBorrowApply - <==    Updates: 1
+23:43:21.071 [main] DEBUG c.f.o.d.B.insertBorrowApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2e6dfd69]]]
+23:43:21.082 [main] DEBUG c.f.o.d.B.insertBorrowApply - ==>  Preparing: insert into t_borrow_apply(id,item_id,item_name,item_type_id,spec,borrow_num,price,monney, borrow_time,borrow_department_id,borrower,audit_time,auditor,state,is_return, return_time,is_display,is_valid,reason,remark) values(?,?,?,?,?,?, ?,?,?,?,?,? ,?,?,?,?,?,? ,?,?) 
+23:43:21.128 [main] DEBUG c.f.o.d.B.insertBorrowApply - ==> Parameters: null, 2(String), 2(String), 2(String), A型号(String), 2(Integer), null, null, null, 2(Integer), 1(Long), null, 1(Long), 3(Short), 1(Short), null, 0(Short), 1(Short), null, null
+23:43:21.148 [main] DEBUG c.f.o.d.B.insertBorrowApply - <==    Updates: 1

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.fjnu.officeSystem.dao.BorrowApplyDao">
+	<insert id="insertBorrowApply" parameterType="cn.fjnu.officeSystem.entity.BorrowApply">
+		insert into
+		t_borrow_apply(id,item_id,item_name,item_type_id,spec,borrow_num,price,monney,
+		borrow_time,borrow_department_id,borrower,audit_time,auditor,state,is_return,
+		return_time,is_display,is_valid,reason,remark)
+		values(#{id},#{itemId},#{itemName},#{itemTypeId},#{spec},#{borrowNum},
+		#{price},#{monney},#{borrowTime},#{borrowDepartmentId},#{borrower},#{auditTime}
+		,#{auditor},#{state},#{isReturn},#{returnTime},#{isDisplay},#{isValid}
+		,#{reason},#{remark})
+	</insert>
+
+	<delete id="deleteBorrowApplyById" parameterType="java.lang.String">
+		delete from
+		t_borrow_apply
+		where id=#{id}
+
+	</delete>
+
+	<update id="updateBorrowApply" parameterType="cn.fjnu.officeSystem.entity.BorrowApply">
+		update t_borrow_apply
+		<set>
+			<if test="itemId!=null">
+				item_id=#{itemId},
+			</if>
+			<if test="itemName!=null">
+				item_name=#{itemName},
+			</if>
+			<if test="itemTypeId!=null">
+				item_type_id=#{itemTypeId},
+			</if>
+			<if test="spec!=null">
+				spec=#{spec},
+			</if>
+			<if test="borrowNum!=null">
+				borrow_num=#{borrowNum},
+			</if>
+			<if test="price!=null">
+				price=#{price},
+			</if>
+			<if test="monney!=null">
+				monney=#{monney},
+			</if>
+			<if test="borrowTime!=null">
+				borrow_time=#{borrowTime},
+			</if>
+			<if test="borrowDepartmentId!=null">
+				borrow_department_id=#{borrowDepartmentId},
+			</if>
+			<if test="borrower!=null">
+				borrower=#{borrower},
+			</if>
+			<if test="auditTime!=null">
+				audit_time=#{auditTime},
+			</if>
+			<if test="auditor!=null">
+				auditor=#{auditor},
+			</if>
+			<if test="state!=null">
+				state=#{state},
+			</if>
+			<if test="isReturn!=null">
+				is_return=#{isReturn},
+			</if>
+			<if test="returnTime!=null">
+				return_time=#{returnTime},
+			</if>
+			<if test="isDisplay!=null">
+				is_display=#{isDisplay},
+			</if>
+			<if test="isValid!=null">
+				is_valid=#{isValid},
+			</if>
+			<if test="applyTime!=null">
+				apply_time=#{applyTime},
+			</if>
+			<if test="isReturn!=null">
+				is_return=#{isReturn},
+			</if>
+			<if test="reason!=null">
+				reason=#{reason},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+
+		</set>
+		where id=#{id}
+	</update>
+	<select id="selectBorrowApplyByIdList" resultType="cn.fjnu.officeSystem.entity.BorrowApply">
+		select * from t_borrow_apply where id in
+		<foreach collection="list" index="index" item="item" open="("
+			close=")" separator=",">
+			#{item}
+		</foreach>
+	</select>
+	<select id="selectBorrowApplyById" parameterType="java.lang.String"
+		resultType="cn.fjnu.officeSystem.entity.BorrowApply">
+		select * from t_borrow_apply where id=#{id}
+	</select>
+
+	<select id="selectBorrowApplyAuditAndPass" resultType="cn.fjnu.officeSystem.extend.BrrowApplyExtend"
+		parameterType="java.util.Map">
+		select t_borrow_apply.*,t_item_type.name as
+		itemTypeName,staff_name as
+		borrowerName,t_department.name as
+		departmentName from
+		t_borrow_apply,t_item_type,t_staff,t_department 
+		where state=2 and
+		borrow_time is null and audit_time is not null
+		and
+		t_item_type.name=(select name from t_item_type where id=item_type_id)
+		and staff_name=(select staff_name from t_staff where id=borrower) and
+		t_department.name=(select t_department.name from t_department where
+		id=borrow_department_id)
+		order by audit_time
+		limit #{start},#{end}
+	</select>
+	
+	<select id="selectBorrowApplyAudit" resultType="cn.fjnu.officeSystem.extend.BorrowApplyExpireExtend"
+		parameterType="java.util.Map">
+		select t_borrow_apply.*,t_item_type.name as
+		itemTypeName,staff_name as
+		borrowerName,t_department.name as
+		departmentName,cell_phone_number as telephone, 
+		DATE_ADD(borrow_time,INTERVAL 1 DAY) as maxBorrowTime from
+		t_borrow_apply,t_item_type,t_staff,t_department 
+		where 
+		audit_time is not null
+		and
+		t_item_type.name=(select name from t_item_type where id=item_type_id)
+		and staff_name=(select staff_name from t_staff where id=borrower) and
+		t_department.name=(select t_department.name from t_department where
+		id=borrow_department_id)
+		order by audit_time
+		limit #{start},#{end}
+	</select>
+
+	<select id="selectBorrowApplyAuditAndPassCount" resultType="java.lang.Integer">
+		select count(*) from t_borrow_apply where state=2 and borrow_time is
+		null and audit_time is not null
+	</select>
+	
+	<select id="selectBorrowApplyAuditCount" resultType="java.lang.Integer">
+		select count(*) from t_borrow_apply where audit_time is not null
+	</select>
+
+	<!-- <select id="selectInStorageBorrowApplies" resultType="cn.fjnu.officeSystem.extend.BorrowApplyExtend" 
+		parameterType="java.util.Map"> select t_borrow_apply.*,name as itemTypeName 
+		from t_borrow_apply,t_item_type where borrow_time is not null and return_time 
+		is null and name=(select name from t_item_type where id=item_type_id) order 
+		by borrow_time limit #{start},#{end} </select> -->
+
+	<select id="selectInStorageBorrowApplies" resultType="cn.fjnu.officeSystem.extend.BrrowApplyExtend"
+		parameterType="java.util.Map">
+		select t_borrow_apply.*,t_item_type.name as
+		itemTypeName,staff_name as
+		borrowerName,t_department.name as
+		departmentName from
+		t_borrow_apply,t_item_type,t_staff,t_department
+		where borrow_time is
+		not null and return_time is null
+		and
+		t_item_type.name=(select name from t_item_type where id=item_type_id)
+		and staff_name=(select staff_name from t_staff where id=borrower) and
+		t_department.name=(select t_department.name from t_department where
+		id=borrow_department_id)
+		order by borrow_time
+		limit #{start},#{end}
+	</select>
+
+	<select id="selectInStorageBorrowApplieCount" resultType="java.lang.Integer">
+		select
+		count(*) from t_borrow_apply where borrow_time is not null and
+		return_time is null
+	</select>
+
+
+	<select id="selectBorrowedXXApplies" resultType="cn.fjnu.officeSystem.extend.BrrowApplyXXExtend"
+		parameterType="java.util.Map">
+		select t_borrow_apply.*,t_item_type.name as
+		itemTypeName,staff_name as
+		borrowerName,t_department.name as
+		departmentName,cell_phone_number as telephone,inventory,
+		DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from
+		t_borrow_apply,t_item_type,t_department,t_staff,t_transfinite_inventory_warning
+		where borrow_time is
+		not null and return_time is null
+		and
+		t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id)
+		and staff_name=(select staff_name from t_staff where id=borrower) and
+		t_department.name=(select t_department.name from t_department where
+		id=borrow_department_id) and t_borrow_apply.item_id in(
+		select item_id
+		from t_transfinite_inventory_warning
+		where inventory &lt;min_inventory) and inventory=(
+		select inventory from
+		t_transfinite_inventory_warning
+		where inventory &lt;min_inventory) and cell_phone_number in(
+		select
+		cell_phone_number from t_staff where id=borrower)
+		order by borrow_time
+		limit #{start},#{end}
+	</select>
+
+	<select id="selectBorrowedXXAppliesCount" resultType="java.lang.Integer">
+		select
+		count(*) from t_borrow_apply where borrow_time is not null and
+		return_time is null and item_id in(
+		select item_id from
+		t_transfinite_inventory_warning
+		where inventory &lt;min_inventory)
+	</select>
+
+<select id="selectBorrowedXXPassApplies" resultType="cn.fjnu.officeSystem.extend.BrrowApplyXXExtend"
+		parameterType="java.util.Map">
+		select t_borrow_apply.*,t_item_type.name as
+		itemTypeName,staff_name as
+		borrowerName,t_department.name as
+		departmentName,cell_phone_number as telephone,inventory,
+		DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from
+		t_borrow_apply,t_item_type,t_department,t_staff,t_transfinite_inventory_warning
+		where borrow_time is
+		not null and return_time is null
+		and
+		t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id)
+		and staff_name=(select staff_name from t_staff where id=borrower) and
+		t_department.name=(select t_department.name from t_department where
+		id=borrow_department_id) and t_borrow_apply.item_id in(
+		select item_id
+		from t_transfinite_inventory_warning
+		where inventory &lt;min_inventory) and inventory=(
+		select inventory from
+		t_transfinite_inventory_warning
+		where inventory &lt;min_inventory) and cell_phone_number in(
+		select
+		cell_phone_number from t_staff where id=borrower) and DATE_ADD(borrow_time,INTERVAL 1 MONTH) &lt; NOW()
+		order by borrow_time
+		limit #{start},#{end}
+	</select>
+
+	<select id="selectBorrowedXXPassAppliesCount" resultType="java.lang.Integer">
+		select
+		count(*) from t_borrow_apply where borrow_time is not null and
+		return_time is null and item_id in(
+		select item_id from
+		t_transfinite_inventory_warning
+		where inventory &lt;min_inventory) and DATE_ADD(borrow_time,INTERVAL 1 MONTH) &lt; NOW()
+	</select>
+	
+	
+	<select id="selectBorrowedXXAppliesByItemId" resultType="cn.fjnu.officeSystem.extend.BrrowApplyXXExtend"
+		parameterType="java.lang.String">
+		select t_borrow_apply.*,t_item_type.name as
+		itemTypeName,staff_name as
+		borrowerName,t_department.name as
+		departmentName,cell_phone_number as telephone,inventory,
+		DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from
+		t_borrow_apply,t_item_type,t_department,t_staff,t_transfinite_inventory_warning
+		where borrow_time is
+		not null and return_time is null
+		and
+		t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id)
+		and staff_name=(select staff_name from t_staff where id=borrower) and
+		t_department.name=(select t_department.name from t_department where
+		id=borrow_department_id) and t_borrow_apply.item_id in(
+		select item_id
+		from t_transfinite_inventory_warning
+		where inventory &lt;min_inventory) and inventory=(
+		select inventory from
+		t_transfinite_inventory_warning
+		where inventory &lt;min_inventory) and cell_phone_number in(
+		select
+		cell_phone_number from t_staff where id=borrower)
+		and t_borrow_apply.item_id=#{itemId}
+		order by borrow_time
+		
+	</select>
+	
+	<select id="selectBorrowedXXPassAppliesByItemId" resultType="cn.fjnu.officeSystem.extend.BrrowApplyXXExtend"
+		parameterType="java.lang.String">
+		select t_borrow_apply.*,t_item_type.name as
+		itemTypeName,staff_name as
+		borrowerName,t_department.name as
+		departmentName,cell_phone_number as telephone,inventory,
+		DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from
+		t_borrow_apply,t_item_type,t_department,t_staff,t_transfinite_inventory_warning
+		where borrow_time is
+		not null and return_time is null
+		and
+		t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id)
+		and staff_name=(select staff_name from t_staff where id=borrower) and
+		t_department.name=(select t_department.name from t_department where
+		id=borrow_department_id) and t_borrow_apply.item_id in(
+		select item_id
+		from t_transfinite_inventory_warning
+		where inventory &lt;min_inventory) and inventory=(
+		select inventory from
+		t_transfinite_inventory_warning
+		where inventory &lt;min_inventory) and cell_phone_number in(
+		select
+		cell_phone_number from t_staff where id=borrower) and DATE_ADD(borrow_time,INTERVAL 1 MONTH) &lt; NOW()
+		and t_borrow_apply.item_id=#{itemId}
+		order by borrow_time
+		
+	</select>
+	
+	<select id="selectBorrowApplyUnAudit" resultType="cn.fjnu.officeSystem.extend.BrrowApplyExtend"
+		parameterType="java.util.Map">
+		select t_borrow_apply.*,t_item_type.name as
+		itemTypeName,staff_name as
+		borrowerName,t_department.name as
+		departmentName from
+		t_borrow_apply,t_item_type,t_staff,t_department 
+		where 
+		audit_time is null and apply_time is not null
+		and
+		t_item_type.name=(select name from t_item_type where id=item_type_id)
+		and staff_name=(select staff_name from t_staff where id=borrower) and
+		t_department.name=(select t_department.name from t_department where
+		id=borrow_department_id)
+		order by apply_time
+		limit #{start},#{end}
+	</select>
+
+	<select id="selectBorrowApplyUnAuditCount" resultType="java.lang.Integer">
+		select count(*) from t_borrow_apply where audit_time is null and apply_time is not null
+	</select>
+
+
+</mapper>

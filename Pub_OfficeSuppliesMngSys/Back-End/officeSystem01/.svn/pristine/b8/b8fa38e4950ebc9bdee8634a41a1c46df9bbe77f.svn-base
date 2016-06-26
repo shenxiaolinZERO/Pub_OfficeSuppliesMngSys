@@ -1,0 +1,28 @@
+14:11:34.576 [main] DEBUG c.f.o.d.S.selectAllSupplier - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1698fc68]]]
+14:11:34.580 [main] DEBUG c.f.o.d.S.selectAllSupplier - ==>  Preparing: select * from t_supplier 
+14:11:34.597 [main] DEBUG c.f.o.d.S.selectAllSupplier - ==> Parameters: 
+14:11:34.651 [main] DEBUG c.f.o.d.S.selectAllSupplier - <==      Total: 0
+14:28:12.382 [main] DEBUG c.f.o.d.S.selectMerchantsAvailabilityDetailBySupplierId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@65b3a85a]]]
+14:28:12.386 [main] DEBUG c.f.o.d.S.selectMerchantsAvailabilityDetailBySupplierId - ==>  Preparing: select * from t_supplier where id=? 
+14:28:12.416 [main] DEBUG c.f.o.d.S.selectMerchantsAvailabilityDetailBySupplierId - ==> Parameters: 1(String)
+14:28:12.425 [main] DEBUG c.f.o.d.M.selectMerchantsAvailabilityBysupplierId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@65b3a85a]]]
+14:28:12.425 [main] DEBUG c.f.o.d.M.selectMerchantsAvailabilityBysupplierId - ==>  Preparing: select * from t_merchants_availability_summary where supplier_id=? order by price,num desc 
+14:28:12.425 [main] DEBUG c.f.o.d.M.selectMerchantsAvailabilityBysupplierId - ==> Parameters: 1(String)
+14:28:12.554 [main] DEBUG c.f.o.d.M.selectMerchantsAvailabilityBysupplierId - <==      Total: 0
+14:28:12.555 [main] DEBUG c.f.o.d.S.selectMerchantsAvailabilityDetailBySupplierId - <==      Total: 1
+14:28:50.863 [main] DEBUG c.f.o.d.S.selectMerchantsAvailabilityDetailBySupplierId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@65b3a85a]]]
+14:28:50.867 [main] DEBUG c.f.o.d.S.selectMerchantsAvailabilityDetailBySupplierId - ==>  Preparing: select * from t_supplier where id=? 
+14:28:50.884 [main] DEBUG c.f.o.d.S.selectMerchantsAvailabilityDetailBySupplierId - ==> Parameters: 1(String)
+14:28:50.900 [main] DEBUG c.f.o.d.M.selectMerchantsAvailabilityBysupplierId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@65b3a85a]]]
+14:28:50.900 [main] DEBUG c.f.o.d.M.selectMerchantsAvailabilityBysupplierId - ==>  Preparing: select * from t_merchants_availability_summary where supplier_id=? order by price,num desc 
+14:28:50.901 [main] DEBUG c.f.o.d.M.selectMerchantsAvailabilityBysupplierId - ==> Parameters: 1(String)
+14:28:50.901 [main] DEBUG c.f.o.d.M.selectMerchantsAvailabilityBysupplierId - <==      Total: 0
+14:28:50.902 [main] DEBUG c.f.o.d.S.selectMerchantsAvailabilityDetailBySupplierId - <==      Total: 1
+15:02:08.404 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@57eda880]]]
+15:02:08.408 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ==>  Preparing: Insert into t_item(item_id,item_name,item_type_id,spec,measure_unit_id,max_inventory,min_inventory,supplier_id,remark) values(?,?,?,?,?,?,?,?,?) 
+15:02:08.426 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ==> Parameters: null, 商品名(String), typeId(String), spec(String), measureUnitId(String), 50(Integer), 10(Integer), 111(String), null
+15:02:08.485 [main] DEBUG c.f.o.dao.ItemDao.insertItem - <==    Updates: 1
+15:27:53.746 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7c209437]]]
+15:27:53.750 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ==>  Preparing: Insert into t_item(item_id,item_name,item_type_id,spec,measure_unit_id,max_inventory,min_inventory,supplier_id,remark) values(?,?,?,?,?,?,?,?,?) 
+15:27:53.771 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ==> Parameters: null, 商品名(String), typeId(String), spec(String), measureUnitId(String), 50(Integer), 10(Integer), 111(String), null
+15:27:53.788 [main] DEBUG c.f.o.dao.ItemDao.insertItem - <==    Updates: 1

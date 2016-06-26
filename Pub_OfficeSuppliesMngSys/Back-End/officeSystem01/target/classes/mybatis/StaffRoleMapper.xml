@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.IStaffRoleDao">
+
+
+	<insert id="inserStaffRole" parameterType="cn.fjnu.officeSystem.entity.StaffRole">
+		insert into t_staff_role(id,name,description,permissions,remark) values(#{id},#{name},#{description},
+		#{permissions},#{remark})
+	</insert>
+
+
+	<delete id="deleteStaffRoleById" parameterType="java.lang.String">
+		delete from t_staff_role where id=#{id}
+	</delete>
+
+
+	<update id="updateStaffRole" parameterType="cn.fjnu.officeSystem.entity.StaffRole">
+		update t_staff_role
+		<set>
+			<if test="name!=null">
+				name=#{name},
+			</if>
+			<if test="description!=null">
+				description=#{description},
+			</if>
+			<if test="permissions!=null">
+				permissions=#{permissions},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+
+		</set>
+		where id=#{id}
+	</update>
+
+
+	<select id="selectStaffRoleById" parameterType="java.lang.String"
+		resultType="cn.fjnu.officeSystem.entity.StaffRole">
+		select *from t_staff_role where id=#{id}
+	</select>
+	
+	<select id="selectPermissionsById" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select permissions from t_staff_role where id=#{id}
+	</select>
+	
+
+
+
+
+</mapper> 

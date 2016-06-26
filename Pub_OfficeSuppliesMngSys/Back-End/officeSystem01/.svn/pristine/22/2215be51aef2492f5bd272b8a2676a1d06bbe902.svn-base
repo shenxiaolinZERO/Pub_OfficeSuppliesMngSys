@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.fjnu.officeSystem.dao.DepartmentRecipientSummaryDao">
+	<insert id="insertDepartmentRecipientSummary"
+		parameterType="cn.fjnu.officeSystem.entity.DepartmentRecipientSummary">
+		insert into
+		t_department_recipient_summary(id,department_id,out_storage_check_in_id,item_id,
+		item_name,spec,item_type_id,measure_unit_id,number,price,monney,out_storage_id,remark)
+		values(#{id},#{departmentId},#{outStorageCheckInId},#{itemId},#{itemName},#{spec},#{itemTypeId},#{measureUnitId},
+		#{number},#{price},#{monney},#{outStorageId},#{remark})
+	</insert>
+
+	<update id="updateDepartmentRecipientSummary"
+		parameterType="cn.fjnu.officeSystem.entity.DepartmentRecipientSummary">
+		update t_department_recipient_summary
+		<set>
+			<if test="departmentId!=null">
+				department_id=#{departmentId},
+			</if>
+			<if test="outStorageCheckInId!=null">
+				out_storage_check_in_id=#{outStorageCheckInId},
+			</if>
+			<if test="itemId!=null">
+				item_id=#{itemId},
+			</if>
+			<if test="itemName!=null">
+				item_name=#{itemName},
+			</if>
+			<if test="spec!=null">
+				spec=#{spec},
+			</if>
+			<if test="itemTypeId!=null">
+				item_type_id=#{itemTypeId},
+			</if>
+			<if test="measureUnitId!=null">
+				measure_unit_id=#{measureUnitId},
+			</if>
+			<if test="number!=null">
+				number=#{number},
+			</if>
+			<if test="price!=null">
+				price=#{price},
+			</if>
+			<if test="monney!=null">
+				monney=#{monney},
+			</if>
+			<if test="outStorageId!=null">
+				out_storage_id=#{outStorageId},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<select id="selectDepartmentRecipientSummaryByMap"
+		parameterType="java.util.Map" resultType="cn.fjnu.officeSystem.entity.DepartmentRecipientSummary">
+		select * from t_department_recipient_summary
+		<where>
+			<include refid="query_drs_where"></include>
+		</where>
+		limit #{start},#{end}
+	</select>
+
+	<sql id="query_drs_where">
+		<if test="itemId!=null">
+			item_id=#{itemId}
+		</if>
+		<if test="itemName!=null">
+			and item_name=#{itemName}
+		</if>
+		<if test="outStorageId!=null">
+			and out_storage_id=#{outStorageId}
+		</if>
+		<if test="itemTypeId!=null">
+			and item_type_id=#{itemTypeId}
+		</if>
+		<if test="outStorageCheckInId!=null">
+			and out_storage_check_in_id=#{outStorageCheckInId}
+		</if>
+		<if test="departmentId!=null">
+			and department_id=#{departmentId}
+		</if>
+
+		order by
+		<if test="departmentId!=null">
+			department_id,
+		</if>
+		<if test="itemId!=null">
+			item_id 
+		</if>
+	</sql>
+</mapper>

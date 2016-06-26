@@ -1,0 +1,52 @@
+package cn.fjnu.officeSystem.dao;
+
+import java.util.Date;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import cn.fjnu.officeSystem.entity.OutStorageCheckIn;
+
+public interface OutStorageCheckInDao {
+
+	/**
+	 * 批量出库登记
+	 * 
+	 * @param outStorageCheckIns
+	 * @return
+	 */
+	public int insertOutStorageCheckInPl(List<OutStorageCheckIn> outStorageCheckIns);
+
+	/**
+	 * 动态根据出库日期、出库类型id、领用人id、领用部门id、借用或领用申请单id和制单人id查询出库登记表
+	 * @param outStorageDate
+	 * @param outStorageTypeId
+	 * @param recipienter
+	 * @param departmentId
+	 * @param applyId
+	 * @param operaterId
+	 * @return
+	 */
+	public List<OutStorageCheckIn> selectOutStorageCheckInByMap(@Param("outStorageDate") Date outStorageDate,
+			@Param("outStorageTypeId") Short outStorageTypeId, @Param("recipienter") String recipienter,
+			@Param("departmentId") String departmentId, @Param("applyId") String applyId,
+			@Param("operaterId") String operaterId,@Param("start") int start,
+			@Param("end")int end);
+	
+	
+	/**
+	 * 查询出库登记记录总数
+	 * @param outStorageDate
+	 * @param outStorageTypeId
+	 * @param recipienter
+	 * @param departmentId
+	 * @param applyId
+	 * @param operaterId
+	 * @return
+	 */
+	public int selectOutStorageCheckInByMapCount(@Param("outStorageDate") Date outStorageDate,
+			@Param("outStorageTypeId") Short outStorageTypeId, @Param("recipienter") String recipienter,
+			@Param("departmentId") String departmentId, @Param("applyId") String applyId,
+			@Param("operaterId") String operaterId);
+
+}

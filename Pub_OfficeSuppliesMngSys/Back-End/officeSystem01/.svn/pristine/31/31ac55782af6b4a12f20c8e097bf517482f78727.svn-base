@@ -1,0 +1,77 @@
+package cn.fjnu.officeSystem.dao;
+
+import java.util.List;
+
+import cn.fjnu.officeSystem.entity.RecipientApply;
+
+public interface RecipientApplyDao {
+
+	/**
+	 * 添加物品领用申请表记录
+	 * @param recipientApply
+	 * @return
+	 */
+	public int insertRecipientApply(RecipientApply recipientApply);
+	
+	/**
+	 * 删除物品领用申请表记录
+	 * @param id
+	 * @return
+	 */
+	public int deleteRecipientApplyById(String id);
+	
+	/**
+	 * 动态更新物品领用申请表
+	 * @param recipientApply
+	 * @return
+	 */
+	public int updateRecipientApply(RecipientApply recipientApply);
+	
+	/**
+	 * 查询所有领用申请表
+	 * @return
+	 */
+	public List<RecipientApply> selectAllRecipientApplies();
+	
+	/**
+	 * 根据物品id查询物品领用申请表
+	 * @param itemId
+	 * @return
+	 */
+	public List<RecipientApply> selectRecipientApplyByItemId(String itemId);
+	
+	/**
+	 * 根据物品名称查询物品领用申请表
+	 * @param itemName
+	 * @return
+	 */
+	public List<RecipientApply> selectRecipientApplyByItemName(String itemName);
+	
+	/**
+	 * 根据物品类型Id查询物品领用申请表
+	 * @param itemTypeName
+	 * @return
+	 */
+	public List<RecipientApply> selectRecipientApplyByItemTypeId(String itemTypeId);
+	
+	/**
+	 * 根据领用部门查询物品领用申请表
+	 * @param departmentId
+	 * @return
+	 */
+	public List<RecipientApply> selectRecipientApplyByRecipientDepartmentId(String departmentId);
+	
+	/**
+	 * 根据领用申请表中记录审核状态查询物品领用申请表
+	 * @param state
+	 * @return
+	 */
+	public List<RecipientApply> selectRecipientApplyByState(int state);
+	
+	/**
+	 * 查询所有有效（未过期）或所有无效（过期）的领用记录
+	 * @param isValidate
+	 * @return
+	 */
+	public List<RecipientApply> selectRecipientApplyByValidateState(int isValidate);
+}

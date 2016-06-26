@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.TransfiniteInventoryWarningDao">
+	<insert id="insertTransfiniteInventoryWarning"
+		parameterType="cn.fjnu.officeSystem.entity.TransfiniteInventoryWarning">
+		insert into
+		t_transfinite_inventory_warning(item_id,item_name,item_type_id,spec,measure_unit_id,price,inventory,max_inventory,min_inventory,
+		supplier_id,remark)values(#{itemId},#{itemName},#{itemTypeId},#{spec},#{measureUnitId},#{price},#{inventory},
+		#{maxInventory},#{minInventory},#{supplierId},#{remark})
+	</insert>
+
+	<update id="updateTransfiniteInventoryWarning"
+		parameterType="cn.fjnu.officeSystem.entity.TransfiniteInventoryWarning">
+		update t_transfinite_inventory_warning
+		<set>
+			<if test="itemName!=null">
+				item_name=#{itemName},
+			</if>
+			<if test="itemTypeId!=null">
+				item_type_id=#{itemTypeId},
+			</if>
+			<if test="spec!=null">
+				spec=#{spec},
+			</if>
+			<if test="measureUnitId!=null">
+				measure_unit_id=#{measureUnitId},
+			</if>
+			<if test="maxInventory!=null">
+				max_inventory=#{maxInventory},
+			</if>
+			<if test="minInventory!=null">
+				min_inventory=#{minInventory},
+			</if>
+			<if test="inventory!=null">
+				inventory=#{inventory},
+			</if>
+			<if test="supplierId!=null">
+				supplier_id=#{supplierId},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+			<if test="price!=null">
+				price=#{price},
+			</if>
+			where item_id=#{item_id}
+		</set>
+	</update>
+
+	<select id="selectAllWarningByMap" parameterType="java.util.Map"
+		resultType="cn.fjnu.officeSystem.entity.TransfiniteInventoryWarning">
+		select * from t_transfinite_inventory_warning
+		<where>
+			<if test="itemTypeId!=null">
+				item_type_id=#{itemTypeId}
+			</if>
+			<!-- 1表示查低下限 -->
+			<if test="state='1'.toString()">
+				and inventory &lt;=min_inventory
+				order by inventory
+
+			</if>
+			<!-- 2表示查超上限 -->
+			<if test="state='2'.toString()">
+				and inventory>=max_inventory
+				order by inventory desc
+			</if>
+			<if test="state==null">
+				and (inventory &lt;=min_inventory or inventory>=max_inventory)
+			</if>
+			<if test="itemName!=null">
+			and (item_name like CONCAT('%',#{itemName},'%')  )
+			</if>
+		</where>
+	</select>
+</mapper>

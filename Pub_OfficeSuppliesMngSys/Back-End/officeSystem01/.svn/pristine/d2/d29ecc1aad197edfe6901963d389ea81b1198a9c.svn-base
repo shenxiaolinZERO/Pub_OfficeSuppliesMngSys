@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.OutStorageTypeDao">
+	<insert id="insertOutStorageType" parameterType="cn.fjnu.officeSystem.entity.OutStorageType">
+		insert into
+		t_out_storage_type(id,name,remark)
+		values(#{id},#{name},#{remark})
+	</insert>
+	<select id="selectAllOutStorageTypes" resultType="cn.fjnu.officeSystem.entity.OutStorageType">
+		select * from
+		t_out_storage_type
+	</select>
+	
+</mapper>

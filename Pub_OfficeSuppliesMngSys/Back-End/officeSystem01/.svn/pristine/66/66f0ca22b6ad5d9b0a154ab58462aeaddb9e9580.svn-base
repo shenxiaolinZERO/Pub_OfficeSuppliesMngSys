@@ -1,0 +1,46 @@
+package cn.fjnu.officeSystem.dao;
+
+import java.util.Date;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import cn.fjnu.officeSystem.entity.PreItemProcurement;
+
+public interface PreItemProcurementDao {// 预采购清单
+	/**
+	 * 添加数据到与采购清单中
+	 * @param preItemProcurement
+	 * @return
+	 */
+	public int insertPreItemProcurement(PreItemProcurement preItemProcurement);
+    /**
+     * 通过id查找删除该预采购清单
+     * @param id
+     * @return
+     */
+	public int deletePreItemProcurementById(String id);
+    /**
+     * 动态更新预采购清单的信息
+     * @param preItemProcurement
+     * @return
+     */
+	public int updatePreItemProcurement(PreItemProcurement preItemProcurement);
+    /**
+     * 动态地按以下的map查找出相应的预采购单
+     * @param staffId
+     * @param itemTypeId
+     * @param itemName
+     * @param itemId
+     * @param preStartTime
+     * @param preEndTime
+     * @param auditStartTime
+     * @param auditEndTime
+     * @return
+     */
+	public List<PreItemProcurement> selectPreItemProcurementByMap(@Param("staffId") String staffId,
+			@Param("itemTypeId") String itemTypeId, @Param("itemName") String itemName, @Param("itemId") String itemId,
+			@Param("preStartTime") Date preStartTime, @Param("preEndTime") Date preEndTime,
+			@Param("auditStartTime") Date auditStartTime, @Param("auditEndTime") Date auditEndTime);
+
+}

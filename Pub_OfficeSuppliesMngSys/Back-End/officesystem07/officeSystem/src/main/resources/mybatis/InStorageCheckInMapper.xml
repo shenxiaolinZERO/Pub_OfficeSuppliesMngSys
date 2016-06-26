@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.InStorageCheckInDao">
+
+	<insert id="insertInStorageCheckIn" parameterType="cn.fjnu.officeSystem.entity.InStorageCheckIn">
+		insert into
+		t_in_storage_check_in(id,in_storage_date,in_storage_type_id,supplier_id,agent_id,operater_id,item_list_id,total_number,total_monney,remark)
+		values(#{id},#{inStorageDate},#{inStorageTypeId},#{supplierId},
+		#{agentId},#{operaterId},#{itemListId},#{totalNumber},#{totalMonney},#{remark})
+	</insert>
+	<insert id="insertInStorageCheckInPl" parameterType="java.util.List">
+		insert into
+		t_in_storage_check_in(id,in_storage_date,in_storage_type_id,supplier_id,agent_id,operater_id,item_list_id,total_number,total_monney,remark)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.id},#{item.inStorageDate},#{item.inStorageTypeId},#{item.supplierId},
+			#{item.agentId},#{item.operaterId},#{item.itemListId},#{item.totalNumber},#{item.totalMonney},#{item.remark})
+		</foreach>
+
+	</insert>
+
+	<!-- /** * 按以下条件查出相应的入库统计界面 * @param startTime * @param endTime * @param 
+		itemTypeId * @param itemName * @param inStorageTypeId * @param start * @param 
+		end * @return */ -->
+
+	<select id="selectInStorageCheckInsByMap" parameterType="java.util.Map"
+		resultType="cn.fjnu.officeSystem.extend.InStorageCheckInExtend">
+		<if test="inStorageTypeId=='-1'.toString()">
+			
+			select
+			t_in_storage_check_in.*,t_item_procurement.item_id as
+			itemId,t_item_procurement.item_name as itemName,
+			t_item_procurement.item_type_id as itemTypeId,t_item_procurement.spec
+			as spec,
+			t_item_type.name as itemTypeName,
+			t_supplier.short_name as
+			supplierName,t_staff.staff_name as agentName,
+			(select staff_name from t_staff where
+			id=t_in_storage_check_in.operater_id) as operaterName,
+			t_in_storage_type.name as
+			inStorageTypeName from
+			t_in_storage_check_in,t_item_procurement,
+			t_item_type,t_staff,t_supplier,t_in_storage_type where
+			t_item_procurement.id=t_in_storage_check_in.item_list_id
+			and
+			t_item_type.name=(select name from t_item_type where
+			id=t_item_procurement.item_type_id)
+			and t_supplier.short_name=(select
+			short_name from t_supplier where id=t_in_storage_check_in.supplier_id)
+			and t_staff.staff_name=(select staff_name from t_staff where
+			id=t_in_storage_check_in.agent_id)
+			and t_in_storage_type.name=(select
+			name from t_in_storage_type where
+			id=t_in_storage_check_in.in_storage_type_id)
+			and in_storage_type_id=1
+			<if test="startTime!='-1'.toString()">
+				and in_storage_date>=#{startTime}
+			</if>
+			<if test="endTime!='-1'.toString()">
+				and in_storage_date&lt;=#{endTime}
+			</if>
+
+			<if test="itemTypeId!='-1'.toString() or itemName!='-1'.toString()">
+				<!-- 采购 -->
+				and item_list_id in(
+				select id from t_item_procurement
+				where is_in_storage=1
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name  like CONCAT('%',#{itemName},'%')
+				</if>
+				)
+				and in_storage_type_id=1 
+
+			</if>
+			
+			union all
+			
+			<!-- 归还 -->
+			select
+			t_in_storage_check_in.*,t_borrow_apply.item_id as
+			itemId,t_borrow_apply.item_name as itemName,
+			t_borrow_apply.item_type_id as itemTypeId,t_borrow_apply.spec as spec,
+			t_item_type.name as itemTypeName,
+			t_supplier.short_name as
+			supplierName,t_staff.staff_name as agentName,(select staff_name from t_staff where
+			id=t_in_storage_check_in.operater_id) as operaterName,
+			t_in_storage_type.name as
+			inStorageTypeName from
+			t_in_storage_check_in,t_borrow_apply,
+			t_item_type,t_staff,t_supplier,t_in_storage_type where
+			t_borrow_apply.id=t_in_storage_check_in.item_list_id
+			and
+			t_item_type.name=(select name from t_item_type where
+			id=t_borrow_apply.item_type_id)
+			and t_supplier.short_name=(select
+			short_name from t_supplier where id=t_in_storage_check_in.supplier_id)
+			and t_staff.staff_name=(select staff_name from t_staff where
+			id=t_in_storage_check_in.agent_id)
+			and t_in_storage_type.name=(select
+			name from t_in_storage_type where
+			id=t_in_storage_check_in.in_storage_type_id)
+			and in_storage_type_id=2
+			<if test="startTime!='-1'.toString()">
+				and in_storage_date>=#{startTime}
+			</if>
+			<if test="endTime!='-1'.toString()">
+				and in_storage_date&lt;=#{endTime}
+			</if>
+			<if test="inStorageTypeId!='-1'.toString()">
+				and in_storage_type_id=#{inStorageTypeId}
+			</if>
+			<if test="itemTypeId!='-1'.toString() or itemName!='-1'.toString()">
+				and item_list_id in(
+				select id from t_borrow_apply
+				where borrow_time is not null
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name like CONCAT('%',#{itemName},'%')
+
+				</if>
+
+				)
+				and in_storage_type_id=2
+
+			</if>
+			
+
+			union all
+			
+			select
+			t_in_storage_check_in.*,t_item_send.item_id as
+			itemId,t_item_send.item_name as itemName,
+			t_item_send.item_type_id as
+			itemTypeId,t_item_send.spec as spec,'-1' AS agentName ,'-1' AS supplierName,
+			t_item_type.name as itemTypeName,
+			t_staff.staff_name as operaterName,
+			t_in_storage_type.name as
+			inStorageTypeName from
+			t_in_storage_check_in,t_item_send,
+			t_item_type,t_staff,t_supplier,t_in_storage_type where
+			t_item_send.id=t_in_storage_check_in.item_list_id
+			and t_item_send.flag=1 and 
+			t_item_type.name=(select name from t_item_type where
+			id=t_item_send.item_type_id)
+			and t_staff.staff_name=(select staff_name
+			from t_staff where id=t_in_storage_check_in.operater_id)
+			and
+			t_in_storage_type.name=(select name from t_in_storage_type where
+			id=t_in_storage_check_in.in_storage_type_id)
+			and in_storage_type_id=3
+			<if test="startTime!='-1'.toString()">
+				and in_storage_date>=#{startTime}
+			</if>
+			<if test="endTime!='-1'.toString()">
+				and in_storage_date&lt;=#{endTime}
+			</if>
+			<if test="inStorageTypeId!='-1'.toString()">
+				and in_storage_type_id=#{inStorageTypeId}
+			</if>
+			<if test="itemTypeId!='-1'.toString() or itemName!='-1'.toString()">
+				<!-- 受赠 -->
+				and item_list_id in(
+				select id from t_item_send
+				where is_in_storage=1 and flag=1
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name  like CONCAT('%',#{itemName},'%')
+				</if>
+            )
+
+				and in_storage_type_id=3
+			</if>
+			  
+			
+			
+			
+		</if>
+		<if test="inStorageTypeId=='1'.toString()">
+			select
+			t_in_storage_check_in.*,t_item_procurement.item_id as
+			itemId,t_item_procurement.item_name as itemName,(select staff_name from t_staff where
+			id=t_in_storage_check_in.operater_id) as operaterName,
+			t_item_procurement.item_type_id as itemTypeId,t_item_procurement.spec
+			as spec,
+			t_item_type.name as itemTypeName,
+			t_supplier.short_name as
+			supplierName,t_staff.staff_name as agentName,
+			t_in_storage_type.name
+			as inStorageTypeName from
+			t_in_storage_check_in,t_item_procurement,
+			t_item_type,t_staff,t_supplier,t_in_storage_type where
+			t_item_procurement.id=t_in_storage_check_in.item_list_id
+			and
+			t_item_type.name=(select name from t_item_type where
+			id=t_item_procurement.item_type_id)
+			and t_supplier.short_name=(select
+			short_name from t_supplier where
+			id=t_in_storage_check_in.supplier_id)
+			and t_staff.staff_name=(select
+			staff_name from t_staff where
+			id=t_in_storage_check_in.agent_id)
+			and
+			t_in_storage_type.name=(select name from t_in_storage_type where
+			id=t_in_storage_check_in.in_storage_type_id)
+			and in_storage_type_id=1
+			<if test="startTime!='-1'.toString()">
+				and in_storage_date>=#{startTime}
+			</if>
+			<if test="endTime!='-1'.toString()">
+				and in_storage_date&lt;=#{endTime}
+			</if>
+
+			<if test="itemTypeId!='-1'.toString() or itemName!='-1'.toString()">
+				<!-- 采购 -->
+				and item_list_id in(
+				select id from t_item_procurement
+				where
+				is_in_storage=1
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name  like CONCAT('%',#{itemName},'%')
+				</if>
+
+				)
+				and in_storage_type_id=1
+
+			</if>
+		</if>
+		<if test="inStorageTypeId=='2'.toString()">
+			<!-- 归还 -->
+			select
+			t_in_storage_check_in.*,t_borrow_apply.item_id as
+			itemId,t_borrow_apply.item_name as itemName,(select staff_name from t_staff where
+			id=t_in_storage_check_in.operater_id) as operaterName,
+			t_borrow_apply.item_type_id as itemTypeId,t_borrow_apply.spec as
+			spec,
+			t_item_type.name as itemTypeName,
+			t_supplier.short_name as
+			supplierName,t_staff.staff_name as agentName,
+			t_in_storage_type.name
+			as inStorageTypeName from
+			t_in_storage_check_in,t_borrow_apply,
+			t_item_type,t_staff,t_supplier,t_in_storage_type where
+			t_borrow_apply.id=t_in_storage_check_in.item_list_id
+			and
+			t_item_type.name=(select name from t_item_type where
+			id=t_borrow_apply.item_type_id)
+			and t_supplier.short_name=(select
+			short_name from t_supplier where
+			id=t_in_storage_check_in.supplier_id)
+			and t_staff.staff_name=(select
+			staff_name from t_staff where
+			id=t_in_storage_check_in.agent_id)
+			and
+			t_in_storage_type.name=(select name from t_in_storage_type where
+			id=t_in_storage_check_in.in_storage_type_id)
+			and in_storage_type_id=2
+			<if test="startTime!='-1'.toString()">
+				and in_storage_date>=#{startTime}
+			</if>
+			<if test="endTime!='-1'.toString()">
+				and in_storage_date&lt;=#{endTime}
+			</if>
+			<if test="inStorageTypeId!='-1'.toString()">
+				and in_storage_type_id=#{inStorageTypeId}
+			</if>
+			<if test="itemTypeId!='-1'.toString() or itemName!='-1'.toString()">
+				and item_list_id in(
+				select id from t_borrow_apply
+				where borrow_time
+				is not null
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name  like CONCAT('%',#{itemName},'%')
+
+				</if>
+
+				)
+				and in_storage_type_id=2
+
+			</if>
+		</if>
+		<if test="inStorageTypeId=='3'.toString()">
+			select
+			t_in_storage_check_in.*,t_item_send.item_id as
+			itemId,t_item_send.item_name as itemName,
+			t_item_send.item_type_id as
+			itemTypeId,t_item_send.spec as spec,
+			t_item_type.name as itemTypeName,
+			t_staff.staff_name as operaterName,
+			t_in_storage_type.name as
+			inStorageTypeName from
+			t_in_storage_check_in,t_item_send,
+			t_item_type,t_staff,t_supplier,t_in_storage_type where
+			t_item_send.id=t_in_storage_check_in.item_list_id
+			and t_item_send.flag=1 and
+			t_item_type.name=(select name from t_item_type where
+			id=t_item_send.item_type_id)
+			and t_staff.staff_name=(select staff_name
+			from t_staff where
+			id=t_in_storage_check_in.operater_id)
+			and
+			t_in_storage_type.name=(select name from t_in_storage_type where
+			id=t_in_storage_check_in.in_storage_type_id)
+			and in_storage_type_id=3
+			<if test="startTime!='-1'.toString()">
+				and in_storage_date>=#{startTime}
+			</if>
+			<if test="endTime!='-1'.toString()">
+				and in_storage_date&lt;=#{endTime}
+			</if>
+			<if test="inStorageTypeId!='-1'.toString()">
+				and in_storage_type_id=#{inStorageTypeId}
+			</if>
+			<if test="itemTypeId!='-1'.toString() or itemName!='-1'.toString()">
+				<!-- 受赠 -->
+				and  item_list_id in(
+				select id from t_item_send
+				where is_in_storage=1 and flag=1
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name like CONCAT('%',#{itemName},'%')
+				</if>
+				)
+
+
+				and in_storage_type_id=3
+			</if>
+			
+		</if>
+
+
+
+
+		limit #{start},#{end}
+
+
+	</select>
+	<!-- /** * 按以下条件统计总条数 * @param startTime * @param endTime * @param itemTypeId 
+		* @param itemName * @param inStorageTypeId * @return */ -->
+	<select id="selectInStorageCheckInsByMapCount" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		select count(*) from t_in_storage_check_in
+		<where>
+			<if test="startTime!='-1'.toString()">
+				in_storage_date>=#{startTime}
+			</if>
+			<if test="endTime!='-1'.toString()">
+				and in_storage_date&lt;=#{endTime}
+			</if>
+			<if test="inStorageTypeId!='-1'.toString()">
+				and in_storage_type_id=#{inStorageTypeId}
+			</if>
+			<if test="itemTypeId!='-1'.toString() or itemName!='-1'.toString()">
+				<!-- 采购 -->
+				and (item_list_id in(
+				select id from t_item_procurement
+				where
+				is_in_storage=1
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name  like CONCAT('%',#{itemName},'%')
+				</if>
+
+				)
+				and in_storage_type_id=1)
+				<!-- 归还 -->
+				or (item_list_id in(
+				select id from t_borrow_apply
+				where borrow_time
+				is not null
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name  like CONCAT('%',#{itemName},'%')
+
+				</if>
+
+				)
+				and in_storage_type_id=2)
+				<!-- 受赠 -->
+				or (item_list_id in(
+				select id from t_item_send
+				where is_in_storage=1 and flag=1
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name  like CONCAT('%',#{itemName},'%')
+				</if>
+
+				)
+				and in_storage_type_id=3)
+			</if>
+		</where>
+	</select>
+
+
+
+
+
+</mapper>

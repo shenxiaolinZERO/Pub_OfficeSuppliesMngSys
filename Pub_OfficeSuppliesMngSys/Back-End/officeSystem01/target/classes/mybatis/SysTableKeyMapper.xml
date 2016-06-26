@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.ISysTableKeyDao">
+
+	
+  
+  <select id="selectTableKeyByTableName" parameterType="java.lang.String" resultType="java.lang.String">
+  	select table_key from t_sys_table_key where table_name = #{tableName}
+  </select>
+  
+  <select id="selectByPrimaryKey"  parameterType="java.lang.String" resultType="cn.fjnu.officeSystem.entity.SysTableKey" >
+    select *
+    from t_sys_table_key
+    where table_name = #{tableName}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_sys_table_key
+    where table_name = #{tableName}
+  </delete>
+  
+  <insert id="insert" parameterType="cn.fjnu.officeSystem.entity.SysTableKey" >
+    insert into t_sys_table_key(table_name, table_key, remark
+      )
+    values (#{tableName}, #{tableKey}, #{remark}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.fjnu.officeSystem.entity.SysTableKey" >
+    insert into t_sys_table_key
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tableName != null" >
+        table_name,
+      </if>
+      <if test="tableKey != null" >
+        table_key,
+      </if>
+      <if test="remark != null" >
+       remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tableName != null" >
+        #{tableName},
+      </if>
+      <if test="tableKey != null" >
+        #{tableKey},
+      </if>
+      <if test="remark != null" >
+        #{remark},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.fjnu.officeSystem.entity.SysTableKey" >
+    update t_sys_table_key
+    <set >
+      <if test="tableKey != null" >
+        table_key = #{tableKey},
+      </if>
+      <if test="remark != null" >
+        remark= #{remark},
+      </if>
+    </set>
+    where table_name = #{tableName}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.fjnu.officeSystem.entity.SysTableKey" >
+    update t_sys_table_key
+    set table_key = #{tableKey},
+       remark= #{remark}
+    where table_name = #{tableName}
+  </update>
+
+</mapper> 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.MeasureUnitDao">
+	<insert id="insertMeasureUnit" parameterType="cn.fjnu.officeSystem.entity.MeasureUnit">
+		insert into
+		t_measure_unit(id,name,remark)
+		values(#{id},#{name},#{remark})
+	</insert>
+	<select id="selectAllMeasureUnit" resultType="cn.fjnu.officeSystem.entity.MeasureUnit">
+		select * from
+		t_measure_unit
+	</select>
+	<select id="selectMeasureUnitById" parameterType="java.lang.String" resultType="cn.fjnu.officeSystem.entity.MeasureUnit">
+	select * from t_measure_unit where id=#{id}
+	</select>
+
+	<update id="updateMeasureUnit" parameterType="cn.fjnu.officeSystem.entity.MeasureUnit">
+		update t_measure_unit
+		<set>
+			<if test="name!=null">
+				name=#{name},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+</mapper>

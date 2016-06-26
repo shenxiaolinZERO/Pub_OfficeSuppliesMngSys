@@ -1,0 +1,24 @@
+17:24:10.003 [main] DEBUG c.f.o.d.P.selectUnAuditProcurementApplyCountByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@4058e353]]]
+17:24:10.009 [main] DEBUG c.f.o.d.P.selectUnAuditProcurementApplyCountByMap - ==>  Preparing: select count(*) from t_procurement_apply where audit_time is null and staff_id=? and item_type_id=? and item_name like CONCAT('%',?,'%') and item_id=? and apply_time>=? and apply_time<=? 
+17:24:10.029 [main] DEBUG c.f.o.d.P.selectUnAuditProcurementApplyCountByMap - ==> Parameters: 1(String), 1(String), 物品名称(String), 1(String), 2016-05-15 00:00:00.0(Timestamp), 2016-05-30 00:00:00.0(Timestamp)
+17:24:10.171 [main] DEBUG c.f.o.d.P.selectUnAuditProcurementApplyCountByMap - <==      Total: 1
+19:11:31.661 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@538c90f8]]]
+19:11:31.666 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==>  Preparing: select table_key from t_sys_table_key where table_name = ? 
+19:11:31.683 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==> Parameters: item(String)
+19:11:31.739 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - <==      Total: 1
+19:11:31.767 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@538c90f8]]]
+19:11:31.767 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==>  Preparing: update t_sys_table_key SET table_key = ? where table_name = ? 
+19:11:31.768 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==> Parameters: it001605310000(String), item(String)
+19:11:31.952 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - <==    Updates: 1
+19:11:31.953 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@538c90f8]]]
+19:11:31.953 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ==>  Preparing: Insert into t_item(item_id,item_name,item_type_id,spec,measure_unit_id,max_inventory,min_inventory,supplier_id,remark) values(?,?,?,?,?,?,?,?,?) 
+19:11:31.953 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ==> Parameters: it001605310000(String), 物品名称(String), 1(String), 规格型号(String), 1(String), 50(Integer), 10(Integer), -1(String), 备注(String)
+19:11:32.012 [main] DEBUG c.f.o.dao.ItemDao.insertItem - <==    Updates: 1
+19:11:32.013 [main] DEBUG c.f.o.d.I.insertInStorageCheckIn - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@538c90f8]]]
+19:11:32.013 [main] DEBUG c.f.o.d.I.insertInStorageCheckIn - ==>  Preparing: insert into t_in_storage_check_in(id,in_storage_date,in_storage_type_id,supplier_id,agent_id,operater_id,item_procurement_id,total_number,total_monney,remark) values(?,?,?,?, ?,?,?,?,?,?) 
+19:11:32.014 [main] DEBUG c.f.o.d.I.insertInStorageCheckIn - ==> Parameters: null, null, 3(Short), -1(String), -1(String), 1(String), -1(String), 10(Long), 0.0(Double), 备注(String)
+19:11:32.029 [main] DEBUG c.f.o.d.I.insertInStorageCheckIn - <==    Updates: 1
+19:11:32.029 [main] DEBUG c.f.o.d.I.insertItemClassificationSummary - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@538c90f8]]]
+19:11:32.029 [main] DEBUG c.f.o.d.I.insertItemClassificationSummary - ==>  Preparing: insert into t_item_classification_summary(id,item_id,item_name,item_type_id,spec,measure_unit_id,price, inventory,inventory_monney,remark) values(?,?,?,?,?,?, ?,?,?,?) 
+19:11:32.030 [main] DEBUG c.f.o.d.I.insertItemClassificationSummary - ==> Parameters: null, it001605310000(String), 物品名称(String), 1(String), 规格型号(String), 1(String), 0.0(Double), 10(Long), 0.0(Double), null
+19:11:32.031 [main] DEBUG c.f.o.d.I.insertItemClassificationSummary - <==    Updates: 1

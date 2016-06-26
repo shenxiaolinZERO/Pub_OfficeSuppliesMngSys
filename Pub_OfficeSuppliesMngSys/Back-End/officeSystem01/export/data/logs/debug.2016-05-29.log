@@ -1,0 +1,222 @@
+10:44:14.216 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@894858]]]
+10:44:14.228 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==>  Preparing: select count(*) from t_item_procurement where is_in_storage=0 
+10:44:14.243 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==> Parameters: 
+10:44:14.357 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - <==      Total: 1
+10:47:46.840 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@894858]]]
+10:47:46.844 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==>  Preparing: select count(*) from t_item_procurement where is_in_storage=0 
+10:47:46.858 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==> Parameters: 
+10:47:46.866 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - <==      Total: 1
+11:16:01.707 [main] DEBUG c.f.o.d.I.selectAllInStrorageTypes - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@61a5b4ae]]]
+11:16:01.739 [main] DEBUG c.f.o.d.I.selectAllInStrorageTypes - ==>  Preparing: select * from t_in_storage_type 
+11:16:01.752 [main] DEBUG c.f.o.d.I.selectAllInStrorageTypes - ==> Parameters: 
+11:16:01.772 [main] DEBUG c.f.o.d.I.selectAllInStrorageTypes - <==      Total: 3
+11:23:30.303 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ecedf21]]]
+11:23:30.307 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==>  Preparing: select count(*) from t_item_procurement where is_in_storage=0 
+11:23:30.321 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==> Parameters: 
+11:23:30.328 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - <==      Total: 1
+11:23:30.334 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ecedf21]]]
+11:23:30.335 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==>  Preparing: select t_item_procurement.*,name as itemTypeName,short_name as supplierName,staff_name as staffName,t_measure_unit.name as measureUnitName t_item_procurement,t_item_type,t_staff,t_supplier,t_measure_unit where is_in_storage=0 and name= (select name from t_item_type where id=item_type_id) and short_name=(select short_name from t_supplier where id=supplier_id)and staff_name=(select staff_name from t_staff where id=staff_id)and t_measure_unit.name=(select name from t_measure_unit where id=measure_unit_id) order by time desc limit ?,? 
+11:23:30.335 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==> Parameters: 0(Integer), 1(Integer)
+11:29:38.614 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ecedf21]]]
+11:29:38.618 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==>  Preparing: select count(*) from t_item_procurement where is_in_storage=0 
+11:29:38.634 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==> Parameters: 
+11:29:38.642 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - <==      Total: 1
+11:29:38.648 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ecedf21]]]
+11:29:38.648 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==>  Preparing: select t_item_procurement.*,t_item_type.name as itemTypeName,short_name as supplierName,staff_name as staffName,t_measure_unit.name as measureUnitName FROM t_item_procurement,t_item_type,t_staff,t_supplier,t_measure_unit where is_in_storage=0 and t_item_type.name= (select name from t_item_type where id=item_type_id) and short_name=(select short_name from t_supplier where id=supplier_id)and staff_name=(select staff_name from t_staff where id=staff_id)and t_measure_unit.name=(select name from t_measure_unit where id=measure_unit_id) order by time desc limit ?,? 
+11:29:38.649 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==> Parameters: 0(Integer), 1(Integer)
+11:29:38.650 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - <==      Total: 0
+11:33:32.177 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ecedf21]]]
+11:33:32.180 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==>  Preparing: select count(*) from t_item_procurement where is_in_storage=0 
+11:33:32.195 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==> Parameters: 
+11:33:32.203 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - <==      Total: 1
+11:33:32.209 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ecedf21]]]
+11:33:32.210 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==>  Preparing: select t_item_procurement.*,t_item_type.name as itemTypeName,short_name as supplierName,staff_name as staffName,t_measure_unit.name as measureUnitName FROM t_item_procurement,t_item_type,t_staff,t_supplier,t_measure_unit where is_in_storage=0 and t_item_type.name= (select name from t_item_type where id=item_type_id) and short_name=(select short_name from t_supplier where id=supplier_id)and staff_name=(select staff_name from t_staff where id=staff_id)and t_measure_unit.name=(select name from t_measure_unit where id=measure_unit_id) order by time desc limit ?,? 
+11:33:32.210 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==> Parameters: 0(Integer), 1(Integer)
+11:33:32.212 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - <==      Total: 0
+11:36:09.892 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ecedf21]]]
+11:36:09.896 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==>  Preparing: select count(*) from t_item_procurement where is_in_storage=0 
+11:36:09.909 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==> Parameters: 
+11:36:09.917 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - <==      Total: 1
+11:36:09.924 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ecedf21]]]
+11:36:09.924 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==>  Preparing: select t_item_procurement.*,t_item_type.name as itemTypeName,short_name as supplierName,staff_name as staffName,t_measure_unit.name as measureUnitName FROM t_item_procurement,t_item_type,t_staff,t_supplier,t_measure_unit where is_in_storage=0 and t_item_type.name= (select name from t_item_type where id=item_type_id) and short_name=(select short_name from t_supplier where id=supplier_id)and staff_name=(select staff_name from t_staff where id=staff_id)and t_measure_unit.name=(select name from t_measure_unit where id=measure_unit_id) order by time desc limit ?,? 
+11:36:09.924 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==> Parameters: 0(Integer), 1(Integer)
+11:36:09.951 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - <==      Total: 1
+11:50:43.886 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2b27cc70]]]
+11:50:43.909 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==>  Preparing: select table_key from t_sys_table_key where table_name = ? 
+11:50:44.276 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==> Parameters: item(String)
+11:50:44.578 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - <==      Total: 1
+11:50:44.602 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2b27cc70]]]
+11:50:44.603 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==>  Preparing: update t_sys_table_key SET table_key = ? where table_name = ? 
+11:50:44.603 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==> Parameters: it001605290000(String), item(String)
+11:50:44.629 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - <==    Updates: 1
+11:50:44.629 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2b27cc70]]]
+11:50:44.629 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ==>  Preparing: Insert into t_item(item_id,item_name,item_type_id,spec,measure_unit_id,max_inventory,min_inventory,supplier_id,remark) values(?,?,?,?,?,?,?,?,?) 
+11:50:44.630 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ==> Parameters: it001605290000(String), 物品名称(String), 1(String), 规格型号(String), 1(String), 50(Integer), 10(Integer), -1(String), 备注(String)
+11:50:44.742 [main] DEBUG c.f.o.dao.ItemDao.insertItem - <==    Updates: 1
+11:50:44.743 [main] DEBUG c.f.o.d.I.insertInStorageCheckIn - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2b27cc70]]]
+11:50:44.743 [main] DEBUG c.f.o.d.I.insertInStorageCheckIn - ==>  Preparing: insert into t_in_storage_check_in(id,in_storage_date,in_storage_type_id,supplier_id,agent_id,operater_id,item_procurement_id,total_number,total_monney,remark) values(?,?,?,?, ?,?,?,?,?,?) 
+11:50:44.744 [main] DEBUG c.f.o.d.I.insertInStorageCheckIn - ==> Parameters: null, null, 3(Short), -1(String), -1(String), 1(String), -1(String), 10(Long), 0.0(Double), 备注(String)
+11:50:44.782 [main] DEBUG c.f.o.d.I.insertInStorageCheckIn - <==    Updates: 1
+11:50:44.783 [main] DEBUG c.f.o.d.I.insertItemClassificationSummary - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2b27cc70]]]
+11:50:44.783 [main] DEBUG c.f.o.d.I.insertItemClassificationSummary - ==>  Preparing: insert into t_item_classification_summary(id,item_id,item_name,item_type_id,spec,measure_unit_id,price, inventory,inventory_monney,remark) values(?,?,?,?,?,?, ?,?,?,?) 
+11:50:44.784 [main] DEBUG c.f.o.d.I.insertItemClassificationSummary - ==> Parameters: null, it001605290000(String), 物品名称(String), 1(String), 规格型号(String), 1(String), 0.0(Double), 10(Long), 0.0(Double), null
+11:50:44.802 [main] DEBUG c.f.o.d.I.insertItemClassificationSummary - <==    Updates: 1
+11:56:03.769 [main] DEBUG c.f.o.d.B.selectBorrowApplyByIdList - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1bdaa23d]]]
+11:56:03.772 [main] DEBUG c.f.o.d.B.selectBorrowApplyByIdList - ==>  Preparing: select * from t_borrow_apply where id in ( ? ) 
+11:56:03.787 [main] DEBUG c.f.o.d.B.selectBorrowApplyByIdList - ==> Parameters: 1(String)
+11:56:03.864 [main] DEBUG c.f.o.d.B.selectBorrowApplyByIdList - <==      Total: 1
+11:56:03.866 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1bdaa23d]]]
+11:56:03.866 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==>  Preparing: select * from t_item where item_id=? 
+11:56:03.867 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==> Parameters: 1(String)
+11:56:03.868 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - <==      Total: 1
+11:56:03.870 [main] DEBUG c.f.o.d.I.updateAddItemClassificationSummaryByItemIdAndPrice - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1bdaa23d]]]
+11:56:03.870 [main] DEBUG c.f.o.d.I.updateAddItemClassificationSummaryByItemIdAndPrice - ==>  Preparing: update t_item_classification_summary set inventory=inventory+?,inventory_monney=inventory_monney+price*? where item_id=? and price=? 
+11:56:03.871 [main] DEBUG c.f.o.d.I.updateAddItemClassificationSummaryByItemIdAndPrice - ==> Parameters: 1(Long), 1(Long), 1(String), 1.0(Double)
+11:56:03.899 [main] DEBUG c.f.o.d.I.updateAddItemClassificationSummaryByItemIdAndPrice - <==    Updates: 0
+12:52:43.298 [main] DEBUG c.f.o.d.I.selectItemProcurementByItemId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@271f18d3]]]
+12:52:43.322 [main] DEBUG c.f.o.d.I.selectItemProcurementByItemId - ==>  Preparing: select * from t_item_procurement where item_id=? 
+12:52:43.337 [main] DEBUG c.f.o.d.I.selectItemProcurementByItemId - ==> Parameters: 1(String)
+12:52:43.412 [main] DEBUG c.f.o.d.I.selectItemProcurementByItemId - <==      Total: 1
+14:05:16.198 [main] DEBUG c.f.o.d.I.selectInStorageCheckInsByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@4fbb001b]]]
+14:05:16.223 [main] DEBUG c.f.o.d.I.selectInStorageCheckInsByMapCount - ==>  Preparing: select count(*) from t_in_storage_check_in WHERE supplier_id=? and agent_id=? and operater_id=? and item_procurement_id=? 
+14:05:16.237 [main] DEBUG c.f.o.d.I.selectInStorageCheckInsByMapCount - ==> Parameters: 1(String), 1(String), 1(String), 1(String)
+14:05:16.253 [main] DEBUG c.f.o.d.I.selectInStorageCheckInsByMapCount - <==      Total: 1
+14:05:16.258 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@4fbb001b]]]
+14:05:16.258 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==>  Preparing: select t_item_procurement.*,t_item_type.name as itemTypeName,short_name as supplierName,staff_name as staffName,t_measure_unit.name as measureUnitName FROM t_item_procurement,t_item_type,t_staff,t_supplier,t_measure_unit where is_in_storage=0 and t_item_type.name= (select name from t_item_type where id=item_type_id) and short_name=(select short_name from t_supplier where id=supplier_id)and staff_name=(select staff_name from t_staff where id=staff_id)and t_measure_unit.name=(select name from t_measure_unit where id=measure_unit_id) order by time desc limit ?,? 
+14:05:16.259 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==> Parameters: 0(Integer), 1(Integer)
+14:05:16.364 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - <==      Total: 1
+15:17:48.807 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5d332969]]]
+15:17:48.833 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is null and apply_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) and item_name like CONCAT('%',?,'%') and item_type_id=? and borrower=? order by apply_time 
+15:17:48.848 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - ==> Parameters: 1(String), 1(String), 1(String)
+15:17:49.272 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - <==      Total: 0
+15:18:03.373 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5d332969]]]
+15:18:03.377 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is null and apply_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) and item_name like CONCAT('%',?,'%') and item_type_id=? and borrower=? order by apply_time 
+15:18:03.395 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - ==> Parameters: 1(String), 1(String), 1(String)
+15:18:03.403 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - <==      Total: 0
+15:19:08.128 [main] DEBUG c.f.o.d.I.selectItemProcurementByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5d332969]]]
+15:19:08.131 [main] DEBUG c.f.o.d.I.selectItemProcurementByMap - ==>  Preparing: select t_item_procurement.*,t_item_type.name as itemTypeName,short_name as supplierName,staff_name as staffName,t_measure_unit.name as measureUnitName FROM t_item_procurement,t_item_type,t_staff,t_supplier,t_measure_unit where is_in_storage=0 and t_item_type.name= (select name from t_item_type where id=item_type_id) and short_name=(select short_name from t_supplier where id=supplier_id)and staff_name=(select staff_name from t_staff where id=staff_id)and t_measure_unit.name=(select name from t_measure_unit where id=measure_unit_id) and item_name like CONCAT('%',?,'%') and item_type_id=? and borrower=? 
+15:19:08.145 [main] DEBUG c.f.o.d.I.selectItemProcurementByMap - ==> Parameters: 1(String), 1(String), 1(String)
+15:20:31.979 [main] DEBUG c.f.o.d.I.selectItemProcurementByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5d332969]]]
+15:20:31.983 [main] DEBUG c.f.o.d.I.selectItemProcurementByMap - ==>  Preparing: select t_item_procurement.*,t_item_type.name as itemTypeName,short_name as supplierName,staff_name as staffName,t_measure_unit.name as measureUnitName FROM t_item_procurement,t_item_type,t_staff,t_supplier,t_measure_unit where is_in_storage=0 and t_item_type.name= (select name from t_item_type where id=item_type_id) and short_name=(select short_name from t_supplier where id=supplier_id)and staff_name=(select staff_name from t_staff where id=staff_id)and t_measure_unit.name=(select name from t_measure_unit where id=measure_unit_id) and item_name like CONCAT('%',?,'%') and item_type_id=? and staff_id=? 
+15:20:31.998 [main] DEBUG c.f.o.d.I.selectItemProcurementByMap - ==> Parameters: 1(String), 1(String), 1(String)
+15:20:32.049 [main] DEBUG c.f.o.d.I.selectItemProcurementByMap - <==      Total: 1
+15:22:39.291 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5d332969]]]
+15:22:39.295 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is null and apply_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) and item_name like CONCAT('%',?,'%') and item_type_id=? and borrower=? order by apply_time 
+15:22:39.310 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - ==> Parameters: 1(String), 1(String), 1(String)
+15:22:39.628 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - <==      Total: 0
+15:24:57.672 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5d332969]]]
+15:24:57.676 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is not null and apply_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) and item_name like CONCAT('%',?,'%') and item_type_id=? and borrower=? order by apply_time 
+15:24:57.690 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - ==> Parameters: 1(String), 1(String), 1(String)
+15:24:57.727 [main] DEBUG c.f.o.d.B.selectBorrowApplyByMap - <==      Total: 1
+15:44:32.848 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7af707e0]]]
+15:44:32.852 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+15:44:32.867 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), null(String)
+15:44:33.099 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+15:49:33.201 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@894858]]]
+15:49:33.204 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+15:49:33.218 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), "null"(String)
+15:49:33.233 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+15:51:07.931 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@894858]]]
+15:51:07.936 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+15:51:07.950 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), "null"(String)
+15:51:07.959 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+15:51:18.482 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@894858]]]
+15:51:18.485 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+15:51:18.500 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String),  (String)
+15:51:18.507 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+15:51:49.456 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@894858]]]
+15:51:49.459 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+15:51:49.474 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), -1(String)
+15:51:49.481 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+15:52:19.062 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@894858]]]
+15:52:19.065 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+15:52:19.080 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), -1(String)
+15:52:19.088 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+15:53:06.916 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7af707e0]]]
+15:53:06.920 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+15:53:06.934 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), null(String)
+15:53:06.941 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+16:00:08.527 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@894858]]]
+16:00:08.531 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+16:00:08.546 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), -1(String)
+16:00:08.554 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+16:00:56.573 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@894858]]]
+16:00:56.576 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+16:00:56.592 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), -1(String)
+16:00:56.600 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+16:01:29.944 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@894858]]]
+16:01:29.948 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+16:01:29.965 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), 1(String)
+16:01:29.973 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+16:01:29.976 [main] DEBUG c.f.o.d.T.selectAllWarningByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@894858]]]
+16:01:29.977 [main] DEBUG c.f.o.d.T.selectAllWarningByMap - ==>  Preparing: select t_transfinite_inventory_warning.* ,name as itemTypeName,short_name as supplierName,if(inventory <=min_inventory,2,1) as state from t_transfinite_inventory_warning,t_item_type,t_supplier where name= (select name from t_item_type where id=item_type_id) and short_name=(select short_name from t_supplier where id=supplier_id) and item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) limit ?,? 
+16:01:29.977 [main] DEBUG c.f.o.d.T.selectAllWarningByMap - ==> Parameters: 1(String), 1(String), 0(Integer), 1(Integer)
+16:01:30.049 [main] DEBUG c.f.o.d.T.selectAllWarningByMap - <==      Total: 1
+16:02:57.478 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@420745d7]]]
+16:02:57.481 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==>  Preparing: select * from t_item where item_id=? 
+16:02:57.521 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==> Parameters: 1(String)
+16:02:57.776 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - <==      Total: 1
+16:02:57.779 [main] DEBUG c.f.o.d.P.insertPreItemProcurement - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@420745d7]]]
+16:02:57.779 [main] DEBUG c.f.o.d.P.insertPreItemProcurement - ==>  Preparing: insert into t_pre_item_procurement(id,item_id,item_type_id,item_name,num,staff_id, pre_time,audit_time,measure_unit_id,remark) values(?,?,?,?,?, ?,?,?,?,?) 
+16:02:57.780 [main] DEBUG c.f.o.d.P.insertPreItemProcurement - ==> Parameters: null, 1(String), 1(String), 物品名称(String), 1(Long), 1(String), null, null, 1(String), 备注(String)
+16:02:58.247 [main] DEBUG c.f.o.d.P.insertPreItemProcurement - <==    Updates: 1
+16:26:06.824 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5fa47fea]]]
+16:26:06.929 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesCount - ==>  Preparing: select count(*) from t_borrow_apply where borrow_time is not null and return_time is null and item_id in( select item_id from t_transfinite_inventory_warning where inventory <min_inventory) 
+16:26:06.962 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesCount - ==> Parameters: 
+16:26:06.995 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesCount - <==      Total: 1
+16:26:06.999 [main] DEBUG c.f.o.d.B.selectBorrowedXXApplies - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5fa47fea]]]
+16:26:06.999 [main] DEBUG c.f.o.d.B.selectBorrowedXXApplies - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName,cell_phone_number as telephone,inventory, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_department,t_staff,t_transfinite_inventory_warning where borrow_time is not null and return_time is null and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) and t_borrow_apply.item_id in( select item_id from t_transfinite_inventory_warning where inventory <min_inventory) and inventory=( select inventory from t_transfinite_inventory_warning where inventory <min_inventory) and cell_phone_number in( select cell_phone_number from t_staff where id=borrower) order by borrow_time limit ?,? 
+16:26:07.000 [main] DEBUG c.f.o.d.B.selectBorrowedXXApplies - ==> Parameters: 0(Integer), 1(Integer)
+16:26:07.113 [main] DEBUG c.f.o.d.B.selectBorrowedXXApplies - <==      Total: 1
+16:33:50.955 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@545f80bf]]]
+16:33:50.959 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesCount - ==>  Preparing: select count(*) from t_borrow_apply where borrow_time is not null and return_time is null and item_id in( select item_id from t_transfinite_inventory_warning where inventory <min_inventory) 
+16:33:50.978 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesCount - ==> Parameters: 
+16:33:50.989 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesCount - <==      Total: 1
+16:33:50.992 [main] DEBUG c.f.o.d.B.selectBorrowedXXApplies - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@545f80bf]]]
+16:33:50.993 [main] DEBUG c.f.o.d.B.selectBorrowedXXApplies - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName,cell_phone_number as telephone,inventory, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_department,t_staff,t_transfinite_inventory_warning where borrow_time is not null and return_time is null and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) and t_borrow_apply.item_id in( select item_id from t_transfinite_inventory_warning where inventory <min_inventory) and inventory=( select inventory from t_transfinite_inventory_warning where inventory <min_inventory) and cell_phone_number in( select cell_phone_number from t_staff where id=borrower) order by borrow_time limit ?,? 
+16:33:50.994 [main] DEBUG c.f.o.d.B.selectBorrowedXXApplies - ==> Parameters: 0(Integer), 1(Integer)
+16:33:51.002 [main] DEBUG c.f.o.d.B.selectBorrowedXXApplies - <==      Total: 1
+16:39:46.483 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@545f80bf]]]
+16:39:46.487 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesCount - ==>  Preparing: select count(*) from t_borrow_apply where borrow_time is not null and return_time is null and item_id in( select item_id from t_transfinite_inventory_warning where inventory <min_inventory) 
+16:39:46.501 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesCount - ==> Parameters: 
+16:39:46.509 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesCount - <==      Total: 1
+16:39:46.513 [main] DEBUG c.f.o.d.B.selectBorrowedXXApplies - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@545f80bf]]]
+16:39:46.513 [main] DEBUG c.f.o.d.B.selectBorrowedXXApplies - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName,cell_phone_number as telephone,inventory, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_department,t_staff,t_transfinite_inventory_warning where borrow_time is not null and return_time is null and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) and t_borrow_apply.item_id in( select item_id from t_transfinite_inventory_warning where inventory <min_inventory) and inventory=( select inventory from t_transfinite_inventory_warning where inventory <min_inventory) and cell_phone_number in( select cell_phone_number from t_staff where id=borrower) order by borrow_time limit ?,? 
+16:39:46.514 [main] DEBUG c.f.o.d.B.selectBorrowedXXApplies - ==> Parameters: 0(Integer), 1(Integer)
+16:39:46.522 [main] DEBUG c.f.o.d.B.selectBorrowedXXApplies - <==      Total: 1
+16:44:00.264 [main] DEBUG c.f.o.d.B.selectBorrowedXXPassAppliesCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@545f80bf]]]
+16:44:00.268 [main] DEBUG c.f.o.d.B.selectBorrowedXXPassAppliesCount - ==>  Preparing: select count(*) from t_borrow_apply where borrow_time is not null and return_time is null and item_id in( select item_id from t_transfinite_inventory_warning where inventory <min_inventory) and DATE_ADD(borrow_time,INTERVAL 1 MONTH) < NOW() 
+16:44:00.282 [main] DEBUG c.f.o.d.B.selectBorrowedXXPassAppliesCount - ==> Parameters: 
+16:44:00.353 [main] DEBUG c.f.o.d.B.selectBorrowedXXPassAppliesCount - <==      Total: 1
+16:44:00.360 [main] DEBUG c.f.o.d.B.selectBorrowedXXPassApplies - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@545f80bf]]]
+16:44:00.360 [main] DEBUG c.f.o.d.B.selectBorrowedXXPassApplies - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName,cell_phone_number as telephone,inventory, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_department,t_staff,t_transfinite_inventory_warning where borrow_time is not null and return_time is null and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) and t_borrow_apply.item_id in( select item_id from t_transfinite_inventory_warning where inventory <min_inventory) and inventory=( select inventory from t_transfinite_inventory_warning where inventory <min_inventory) and cell_phone_number in( select cell_phone_number from t_staff where id=borrower) and DATE_ADD(borrow_time,INTERVAL 1 MONTH) < NOW() order by borrow_time limit ?,? 
+16:44:00.361 [main] DEBUG c.f.o.d.B.selectBorrowedXXPassApplies - ==> Parameters: 0(Integer), 1(Integer)
+16:44:00.489 [main] DEBUG c.f.o.d.B.selectBorrowedXXPassApplies - <==      Total: 1
+16:46:20.508 [main] DEBUG c.f.o.d.B.selectBorrowedXXPassAppliesByItemId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3d526ad9]]]
+16:46:20.512 [main] DEBUG c.f.o.d.B.selectBorrowedXXPassAppliesByItemId - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName,cell_phone_number as telephone,inventory, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_department,t_staff,t_transfinite_inventory_warning where borrow_time is not null and return_time is null and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) and t_borrow_apply.item_id in( select item_id from t_transfinite_inventory_warning where inventory <min_inventory) and inventory=( select inventory from t_transfinite_inventory_warning where inventory <min_inventory) and cell_phone_number in( select cell_phone_number from t_staff where id=borrower) and DATE_ADD(borrow_time,INTERVAL 1 MONTH) < NOW() and t_borrow_apply.item_id=? order by borrow_time 
+16:46:20.542 [main] DEBUG c.f.o.d.B.selectBorrowedXXPassAppliesByItemId - ==> Parameters: 1(String)
+16:46:20.567 [main] DEBUG c.f.o.d.B.selectBorrowedXXPassAppliesByItemId - <==      Total: 1
+16:48:21.186 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesByItemId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3d526ad9]]]
+16:48:21.191 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesByItemId - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName,cell_phone_number as telephone,inventory, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_department,t_staff,t_transfinite_inventory_warning where borrow_time is not null and return_time is null and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) and t_borrow_apply.item_id in( select item_id from t_transfinite_inventory_warning where inventory <min_inventory) and inventory=( select inventory from t_transfinite_inventory_warning where inventory <min_inventory) and cell_phone_number in( select cell_phone_number from t_staff where id=borrower) and t_borrow_apply.item_id=? order by borrow_time 
+16:48:21.206 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesByItemId - ==> Parameters: 1(String)
+16:48:21.219 [main] DEBUG c.f.o.d.B.selectBorrowedXXAppliesByItemId - <==      Total: 1
+21:37:13.081 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@181d7f28]]]
+21:37:13.109 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==>  Preparing: select count(*) from t_item_procurement where is_in_storage=0 
+21:37:13.122 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - ==> Parameters: 
+21:37:13.229 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurementCount - <==      Total: 1
+21:37:13.261 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@181d7f28]]]
+21:37:13.261 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==>  Preparing: select t_item_procurement.*,t_item_type.name as itemTypeName,short_name as supplierName,staff_name as staffName,t_measure_unit.name as measureUnitName FROM t_item_procurement,t_item_type,t_staff,t_supplier,t_measure_unit where is_in_storage=0 and t_item_type.name= (select name from t_item_type where id=item_type_id) and short_name=(select short_name from t_supplier where id=supplier_id)and staff_name=(select staff_name from t_staff where id=staff_id)and t_measure_unit.name=(select name from t_measure_unit where id=measure_unit_id) order by time desc limit ?,? 
+21:37:13.262 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - ==> Parameters: 0(Integer), 1(Integer)
+21:37:13.361 [main] DEBUG c.f.o.d.I.selectUnInStorageItemProcurement - <==      Total: 1
+21:46:04.596 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@4fbb001b]]]
+21:46:04.600 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==>  Preparing: select count(*) from t_transfinite_inventory_warning WHERE item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) 
+21:46:04.616 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - ==> Parameters: 1(String), 1(String)
+21:46:04.695 [main] DEBUG c.f.o.d.T.selectAllWarningByMapCount - <==      Total: 1
+21:46:04.701 [main] DEBUG c.f.o.d.T.selectAllWarningByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@4fbb001b]]]
+21:46:04.702 [main] DEBUG c.f.o.d.T.selectAllWarningByMap - ==>  Preparing: select t_transfinite_inventory_warning.* ,name as itemTypeName,short_name as supplierName,if(inventory <=min_inventory,2,1) as state from t_transfinite_inventory_warning,t_item_type,t_supplier where name= (select name from t_item_type where id=item_type_id) and short_name=(select short_name from t_supplier where id=supplier_id) and item_type_id=? and item_name like CONCAT('%',?,'%') and (inventory <=min_inventory or inventory>=max_inventory) limit ?,? 
+21:46:04.703 [main] DEBUG c.f.o.d.T.selectAllWarningByMap - ==> Parameters: 1(String), 1(String), 0(Integer), 1(Integer)
+21:46:04.710 [main] DEBUG c.f.o.d.T.selectAllWarningByMap - <==      Total: 1
+21:58:12.574 [main] DEBUG c.f.o.d.I.selectAllInStrorageTypes - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3b65e559]]]
+21:58:12.578 [main] DEBUG c.f.o.d.I.selectAllInStrorageTypes - ==>  Preparing: select * from t_in_storage_type 
+21:58:12.592 [main] DEBUG c.f.o.d.I.selectAllInStrorageTypes - ==> Parameters: 
+21:58:12.713 [main] DEBUG c.f.o.d.I.selectAllInStrorageTypes - <==      Total: 3

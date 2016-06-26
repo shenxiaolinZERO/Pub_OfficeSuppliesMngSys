@@ -1,0 +1,44 @@
+package cn.fjnu.officeSystem.extend;
+
+import java.sql.Date;
+
+import cn.fjnu.officeSystem.entity.InStorageCheckIn;
+import cn.fjnu.officeSystem.entity.ItemType;
+import cn.fjnu.officeSystem.entity.MeasureUnit;
+
+public class InStorageCheckInExtend extends InStorageCheckIn{
+	private ItemType itemType;
+	private MeasureUnit measureUnit;
+	public ItemType getItemType() {
+		return itemType;
+	}
+	public void setItemType(ItemType itemType) {
+		this.itemType = itemType;
+	}
+	public MeasureUnit getMeasureUnit() {
+		return measureUnit;
+	}
+	public void setMeasureUnit(MeasureUnit measureUnit) {
+		this.measureUnit = measureUnit;
+	}
+	
+	public InStorageCheckInExtend() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	public String toString() {
+		return "InStorageCheckInExtend [itemType=" + itemType + ", measureUnit=" + measureUnit + ", getItemType()="
+				+ getItemType() + ", getMeasureUnit()=" + getMeasureUnit() + ", getId()=" + getId()
+				+ ", getInStorageDate()=" + getInStorageDate() + ", getInStorageTypeId()=" + getInStorageTypeId()
+				+ ", getSupplierId()=" + getSupplierId() + ", getAgentId()=" + getAgentId() + ", getOperaterId()="
+				+ getOperaterId() + ", getTotalNumber()=" + getTotalNumber() + ", getTotalMonney()=" + getTotalMonney()
+				+ ", getRemark()=" + getRemark() + ", getItemProcurementId()=" + getItemProcurementId()
+				+ ", toString()=" + super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ "]";
+	}
+	
+	
+
+}

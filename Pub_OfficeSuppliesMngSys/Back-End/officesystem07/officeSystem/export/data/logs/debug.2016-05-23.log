@@ -1,0 +1,216 @@
+18:43:40.806 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5aaf2690]]]
+18:43:40.819 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==>  Preparing: select table_key from t_sys_table_key where table_name = ? 
+18:43:40.864 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==> Parameters: outStorageCheckIn(String)
+18:43:40.931 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - <==      Total: 1
+18:43:40.987 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5aaf2690]]]
+18:43:40.988 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==>  Preparing: update t_sys_table_key SET table_key = ? where table_name = ? 
+18:43:40.988 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==> Parameters: os001605230000(String), outStorageCheckIn(String)
+18:43:40.989 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - <==    Updates: 1
+18:43:40.990 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5aaf2690]]]
+18:43:40.990 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==>  Preparing: insert into t_out_storage_check_in(id,out_storage_type_id,recipienter,department_id,operater_id,apply_id,total_number,total_monney,remark) values (?,?,?, ?,?,?,?,?,?) 
+18:43:40.992 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==> Parameters: os001605230000(String), 1(Short), 1(String), 1(String), 2(String), 1_2_3(String), 20(Long), 1000.0(Double), 备注(String)
+18:43:41.031 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - <==    Updates: 1
+18:43:41.038 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5aaf2690]]]
+18:43:41.038 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ==>  Preparing: insert into t_department_recipient_summary(id,department_id,out_storage_check_in_id,item_id, item_name,spec,item_type_id,measure_unit_id,number,price,monney,out_storage_id,remark) values(?,?,?,?,?,?,?,?, ?,?,?,?,?) 
+19:03:45.257 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@71ce24a5]]]
+19:03:45.268 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==>  Preparing: select table_key from t_sys_table_key where table_name = ? 
+19:03:45.319 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==> Parameters: outStorageCheckIn(String)
+19:03:45.347 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - <==      Total: 1
+19:03:45.418 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@71ce24a5]]]
+19:03:45.418 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==>  Preparing: update t_sys_table_key SET table_key = ? where table_name = ? 
+19:03:45.419 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==> Parameters: os001605230000(String), outStorageCheckIn(String)
+19:03:45.420 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - <==    Updates: 1
+19:03:45.421 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@71ce24a5]]]
+19:03:45.421 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==>  Preparing: insert into t_out_storage_check_in(id,out_storage_type_id,recipienter,department_id,operater_id,apply_id,total_number,total_monney,remark) values (?,?,?, ?,?,?,?,?,?) 
+19:03:45.423 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==> Parameters: os001605230000(String), 1(Short), 1(String), 1(String), 2(String), 1_2_3(String), 20(Long), 1000.0(Double), 备注(String)
+19:03:45.424 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - <==    Updates: 1
+19:03:45.432 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@71ce24a5]]]
+19:03:45.433 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ==>  Preparing: insert into t_department_recipient_summary(id,department_id,out_storage_check_in_id,item_id, item_name,spec,item_type_id,measure_unit_id,number,price,monney,out_storage_id,remark) values(?,?,?,?,?,?,?,?, ?,?,?,?,?) 
+19:10:06.802 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1f119706]]]
+19:10:06.812 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==>  Preparing: select table_key from t_sys_table_key where table_name = ? 
+19:10:06.856 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==> Parameters: outStorageCheckIn(String)
+19:10:06.886 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - <==      Total: 1
+19:10:06.962 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1f119706]]]
+19:10:06.962 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==>  Preparing: update t_sys_table_key SET table_key = ? where table_name = ? 
+19:10:06.963 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==> Parameters: os001605230000(String), outStorageCheckIn(String)
+19:10:06.964 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - <==    Updates: 1
+19:10:06.965 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1f119706]]]
+19:10:06.965 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==>  Preparing: insert into t_out_storage_check_in(id,out_storage_type_id,recipienter,department_id,operater_id,apply_id,total_number,total_monney,remark) values (?,?,?, ?,?,?,?,?,?) 
+19:10:06.968 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==> Parameters: os001605230000(String), 1(Short), 1(String), 1(String), 2(String), 1_2_3(String), 20(Long), 1000.0(Double), 备注(String)
+19:10:06.969 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - <==    Updates: 1
+19:10:06.979 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1f119706]]]
+19:10:06.979 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ==>  Preparing: insert into t_department_recipient_summary(id,department_id,out_storage_check_in_id,item_id, item_name,spec,item_type_id,measure_unit_id,number,price,monney,out_storage_id,remark) values(?,?,?,?,?,?,?,?, ?,?,?,?,?) 
+19:10:06.981 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ==> Parameters: null, 1(String), os001605230000(String), 1(String), 苹果(String), 规格(String), 1(String), null, 20(Long), 20.0(Double), 1000.0(Double), 1(Short), null
+19:14:23.960 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@37d08490]]]
+19:14:23.970 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==>  Preparing: select table_key from t_sys_table_key where table_name = ? 
+19:14:24.018 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==> Parameters: outStorageCheckIn(String)
+19:14:24.043 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - <==      Total: 1
+19:14:24.102 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@37d08490]]]
+19:14:24.102 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==>  Preparing: update t_sys_table_key SET table_key = ? where table_name = ? 
+19:14:24.104 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==> Parameters: os001605230000(String), outStorageCheckIn(String)
+19:14:24.105 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - <==    Updates: 1
+19:14:24.106 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@37d08490]]]
+19:14:24.107 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==>  Preparing: insert into t_out_storage_check_in(id,out_storage_type_id,recipienter,department_id,operater_id,apply_id,total_number,total_monney,remark) values (?,?,?, ?,?,?,?,?,?) 
+19:14:24.110 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==> Parameters: os001605230000(String), 1(Short), 1(String), 1(String), 2(String), 1_2_3(String), 20(Long), 1000.0(Double), 备注(String)
+19:14:24.111 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - <==    Updates: 1
+19:14:24.118 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@37d08490]]]
+19:14:24.118 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ==>  Preparing: insert into t_department_recipient_summary(id,department_id,out_storage_check_in_id,item_id, item_name,spec,item_type_id,measure_unit_id,number,price,monney,out_storage_id,remark) values(?,?,?,?,?,?,?,?, ?,?,?,?,?) 
+19:14:24.119 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ==> Parameters: null, 1(String), os001605230000(String), 1(String), 苹果(String), 规格(String), 1(String), null, 20(Long), 20.0(Double), 1000.0(Double), 1(Short), null
+19:27:28.866 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@502178e7]]]
+19:27:28.877 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==>  Preparing: select table_key from t_sys_table_key where table_name = ? 
+19:27:28.922 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==> Parameters: outStorageCheckIn(String)
+19:27:28.947 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - <==      Total: 1
+19:27:29.003 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@502178e7]]]
+19:27:29.003 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==>  Preparing: update t_sys_table_key SET table_key = ? where table_name = ? 
+19:27:29.004 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==> Parameters: os001605230000(String), outStorageCheckIn(String)
+19:27:29.004 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - <==    Updates: 1
+19:27:29.005 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@502178e7]]]
+19:27:29.005 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==>  Preparing: insert into t_out_storage_check_in(id,out_storage_type_id,recipienter,department_id,operater_id,apply_id,total_number,total_monney,remark) values (?,?,?, ?,?,?,?,?,?) 
+19:27:29.007 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==> Parameters: os001605230000(String), 1(Short), 1(String), 1(String), 2(String), 1_2_3(String), 20(Long), 1000.0(Double), 备注(String)
+19:27:29.008 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - <==    Updates: 1
+19:27:29.016 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@502178e7]]]
+19:27:29.016 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==>  Preparing: select * from t_item where item_id=? 
+19:27:29.016 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==> Parameters: 1(String)
+19:27:29.158 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - <==      Total: 1
+19:27:29.159 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@502178e7]]]
+19:27:29.160 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ==>  Preparing: insert into t_department_recipient_summary(id,department_id,out_storage_check_in_id,item_id, item_name,spec,item_type_id,measure_unit_id,number,price,monney,out_storage_id,remark) values(?,?,?,?,?,?,?,?, ?,?,?,?,?) 
+19:27:29.161 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ==> Parameters: null, 1(String), os001605230000(String), 1(String), 苹果(String), 规格(String), 1(String), 1(String), 20(Long), 20.0(Double), 1000.0(Double), 1(Short), null
+19:27:29.162 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - <==    Updates: 1
+19:37:18.215 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@66f27abe]]]
+19:37:18.230 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==>  Preparing: select table_key from t_sys_table_key where table_name = ? 
+19:37:18.277 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==> Parameters: outStorageCheckIn(String)
+19:37:18.300 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - <==      Total: 1
+19:37:18.358 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@66f27abe]]]
+19:37:18.358 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==>  Preparing: update t_sys_table_key SET table_key = ? where table_name = ? 
+19:37:18.359 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==> Parameters: os001605230000(String), outStorageCheckIn(String)
+19:37:18.360 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - <==    Updates: 1
+19:37:18.361 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@66f27abe]]]
+19:37:18.361 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==>  Preparing: insert into t_out_storage_check_in(id,out_storage_type_id,recipienter,department_id,operater_id,apply_id,total_number,total_monney,remark) values (?,?,?, ?,?,?,?,?,?) 
+19:37:18.363 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==> Parameters: os001605230000(String), 1(Short), 1(String), 1(String), 2(String), 1_2_3(String), 20(Long), 1000.0(Double), 备注(String)
+19:37:18.364 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - <==    Updates: 1
+19:37:18.372 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@66f27abe]]]
+19:37:18.373 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==>  Preparing: select * from t_item where item_id=? 
+19:37:18.373 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==> Parameters: 1(String)
+19:37:18.377 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - <==      Total: 1
+19:37:18.378 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@66f27abe]]]
+19:37:18.378 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ==>  Preparing: insert into t_department_recipient_summary(id,department_id,out_storage_check_in_id,item_id, item_name,spec,item_type_id,measure_unit_id,number,price,monney,out_storage_id,remark) values(?,?,?,?,?,?,?,?, ?,?,?,?,?) 
+19:37:18.380 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ==> Parameters: null, 1(String), os001605230000(String), 1(String), 苹果(String), 规格(String), 1(String), 1(String), 20(Long), 20.0(Double), 1000.0(Double), 1(Short), null
+19:37:18.381 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - <==    Updates: 1
+19:37:18.381 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@66f27abe]]]
+19:37:18.382 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==>  Preparing: select * from t_item where item_id=? 
+19:37:18.382 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==> Parameters: 1(String)
+19:37:18.386 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - <==      Total: 1
+19:37:18.387 [main] DEBUG c.f.o.d.S.insertStaffRecipientSummary - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@66f27abe]]]
+19:37:18.387 [main] DEBUG c.f.o.d.S.insertStaffRecipientSummary - ==>  Preparing: insert into t_staff_recipient_summary(id,staff_id,out_storage_check_in_id,item_id, item_name,spec,item_type_id,measure_unit_id,number,price,monney,out_storage_id,remark) values(?,?,?,?,?,?,?,?, ?,?,?,?,?) 
+19:37:18.389 [main] DEBUG c.f.o.d.S.insertStaffRecipientSummary - ==> Parameters: null, 1(String), os001605230000(String), 1(String), 苹果(String), 规格(String), 1(String), 1(String), 20(Long), 20.0(Double), 1000.0(Double), null, null
+19:42:44.530 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ae7ec25]]]
+19:42:44.543 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==>  Preparing: select table_key from t_sys_table_key where table_name = ? 
+19:42:44.587 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==> Parameters: outStorageCheckIn(String)
+19:42:44.617 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - <==      Total: 1
+19:42:44.692 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ae7ec25]]]
+19:42:44.692 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==>  Preparing: update t_sys_table_key SET table_key = ? where table_name = ? 
+19:42:44.693 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==> Parameters: os001605230000(String), outStorageCheckIn(String)
+19:42:44.694 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - <==    Updates: 1
+19:42:44.695 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ae7ec25]]]
+19:42:44.695 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==>  Preparing: insert into t_out_storage_check_in(id,out_storage_type_id,recipienter,department_id,operater_id,apply_id,total_number,total_monney,remark) values (?,?,?, ?,?,?,?,?,?) 
+19:42:44.697 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==> Parameters: os001605230000(String), 1(Short), 1(String), 1(String), 2(String), 1_2_3(String), 20(Long), 1000.0(Double), 备注(String)
+19:42:44.698 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - <==    Updates: 1
+19:42:44.710 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ae7ec25]]]
+19:42:44.710 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==>  Preparing: select * from t_item where item_id=? 
+19:42:44.711 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==> Parameters: 1(String)
+19:42:44.715 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - <==      Total: 1
+19:42:44.717 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ae7ec25]]]
+19:42:44.717 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ==>  Preparing: insert into t_department_recipient_summary(id,department_id,out_storage_check_in_id,item_id, item_name,spec,item_type_id,measure_unit_id,number,price,monney,out_storage_id,remark) values(?,?,?,?,?,?,?,?, ?,?,?,?,?) 
+19:42:44.720 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ==> Parameters: null, 1(String), os001605230000(String), 1(String), 苹果(String), 规格(String), 1(String), 1(String), 20(Long), 20.0(Double), 1000.0(Double), 1(Short), null
+19:42:44.721 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - <==    Updates: 1
+19:42:44.721 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ae7ec25]]]
+19:42:44.722 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==>  Preparing: select * from t_item where item_id=? 
+19:42:44.722 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==> Parameters: 1(String)
+19:42:44.727 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - <==      Total: 1
+19:42:44.728 [main] DEBUG c.f.o.d.S.insertStaffRecipientSummary - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3ae7ec25]]]
+19:42:44.728 [main] DEBUG c.f.o.d.S.insertStaffRecipientSummary - ==>  Preparing: insert into t_staff_recipient_summary(id,staff_id,out_storage_check_in_id,item_id, item_name,spec,item_type_id,measure_unit_id,number,price,monney,out_storage_id,remark) values(?,?,?,?,?,?,?,?, ?,?,?,?,?) 
+19:42:44.730 [main] DEBUG c.f.o.d.S.insertStaffRecipientSummary - ==> Parameters: null, 1(String), os001605230000(String), 1(String), 苹果(String), 规格(String), 1(String), 1(String), 20(Long), 20.0(Double), 1000.0(Double), null, null
+19:52:53.163 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@257ef391]]]
+19:52:53.176 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==>  Preparing: select table_key from t_sys_table_key where table_name = ? 
+19:52:53.221 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==> Parameters: outStorageCheckIn(String)
+19:52:53.248 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - <==      Total: 1
+19:52:53.304 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@257ef391]]]
+19:52:53.304 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==>  Preparing: update t_sys_table_key SET table_key = ? where table_name = ? 
+19:52:53.305 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==> Parameters: os001605230000(String), outStorageCheckIn(String)
+19:52:53.306 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - <==    Updates: 1
+19:52:53.307 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@257ef391]]]
+19:52:53.307 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==>  Preparing: insert into t_out_storage_check_in(id,out_storage_type_id,recipienter,department_id,operater_id,apply_id,total_number,total_monney,remark) values (?,?,?, ?,?,?,?,?,?) 
+19:52:53.309 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==> Parameters: os001605230000(String), 1(Short), 1(String), 1(String), 2(String), 1_2_3(String), 20(Long), 1000.0(Double), 备注(String)
+19:52:53.311 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - <==    Updates: 1
+19:52:53.317 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@257ef391]]]
+19:52:53.318 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==>  Preparing: select * from t_item where item_id=? 
+19:52:53.318 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==> Parameters: 1(String)
+19:52:53.321 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - <==      Total: 1
+19:52:53.322 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@257ef391]]]
+19:52:53.322 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ==>  Preparing: insert into t_department_recipient_summary(id,department_id,out_storage_check_in_id,item_id, item_name,spec,item_type_id,measure_unit_id,number,price,monney,out_storage_id,remark) values(?,?,?,?,?,?,?,?, ?,?,?,?,?) 
+19:52:53.324 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - ==> Parameters: null, 1(String), os001605230000(String), 1(String), 苹果(String), 规格(String), 1(String), 1(String), 20(Long), 20.0(Double), 1000.0(Double), 1(Short), null
+19:52:53.349 [main] DEBUG c.f.o.d.D.insertDepartmentRecipientSummary - <==    Updates: 1
+19:52:53.350 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@257ef391]]]
+19:52:53.350 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==>  Preparing: select * from t_item where item_id=? 
+19:52:53.350 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - ==> Parameters: 1(String)
+19:52:53.354 [main] DEBUG c.f.o.dao.ItemDao.selectItemById - <==      Total: 1
+19:52:53.354 [main] DEBUG c.f.o.d.S.insertStaffRecipientSummary - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@257ef391]]]
+19:52:53.355 [main] DEBUG c.f.o.d.S.insertStaffRecipientSummary - ==>  Preparing: insert into t_staff_recipient_summary(id,staff_id,out_storage_check_in_id,item_id, item_name,spec,item_type_id,measure_unit_id,number,price,monney,out_storage_id,remark) values(?,?,?,?,?,?,?,?, ?,?,?,?,?) 
+19:52:53.356 [main] DEBUG c.f.o.d.S.insertStaffRecipientSummary - ==> Parameters: null, 1(String), os001605230000(String), 1(String), 苹果(String), 规格(String), 1(String), 1(String), 20(Long), 20.0(Double), 1000.0(Double), null, null
+19:52:53.357 [main] DEBUG c.f.o.d.S.insertStaffRecipientSummary - <==    Updates: 1
+20:33:39.908 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5576e87d]]]
+20:33:39.919 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==>  Preparing: select count(*) from t_out_storage_check_in WHERE out_storage_type_id=? 
+20:33:39.962 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==> Parameters: 1(Short)
+20:33:39.992 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - <==      Total: 1
+20:33:40.000 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5576e87d]]]
+20:33:40.001 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==>  Preparing: select * from t_out_storage_check_in WHERE out_storage_type_id=? limit ?,? 
+20:33:40.001 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==> Parameters: 1(Short), 0(Integer), 2(Integer)
+20:33:40.014 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - <==      Total: 2
+20:38:05.093 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2d0da9f8]]]
+20:38:05.106 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==>  Preparing: select count(*) from t_out_storage_check_in WHERE out_storage_type_id=? 
+20:38:05.184 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==> Parameters: 1(Short)
+20:38:05.230 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - <==      Total: 1
+20:38:05.246 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2d0da9f8]]]
+20:38:05.246 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==>  Preparing: select * from t_out_storage_check_in WHERE out_storage_type_id=? limit ?,? 
+20:38:05.247 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==> Parameters: 1(Short), 0(Integer), 2(Integer)
+20:38:05.270 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - <==      Total: 2
+20:41:36.911 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@25d890d9]]]
+20:41:36.928 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==>  Preparing: select count(*) from t_out_storage_check_in WHERE out_storage_type_id=? 
+20:41:36.995 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==> Parameters: 1(Short)
+20:41:37.030 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - <==      Total: 1
+20:41:37.039 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@25d890d9]]]
+20:41:37.040 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==>  Preparing: select * from t_out_storage_check_in WHERE out_storage_type_id=? limit ?,? 
+20:41:37.040 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==> Parameters: 1(Short), 0(Integer), 2(Integer)
+20:41:37.054 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - <==      Total: 2
+20:46:33.707 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3bc59207]]]
+20:46:33.718 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==>  Preparing: select count(*) from t_out_storage_check_in WHERE out_storage_type_id=? 
+20:46:33.761 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==> Parameters: 1(Short)
+20:46:33.789 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - <==      Total: 1
+20:46:33.797 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3bc59207]]]
+20:46:33.798 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==>  Preparing: select * from t_out_storage_check_in WHERE out_storage_type_id=? limit ?,? 
+20:46:33.798 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==> Parameters: 1(Short), 0(Integer), 2(Integer)
+20:46:33.811 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - <==      Total: 2
+20:49:35.962 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7ddbaff1]]]
+20:49:35.973 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==>  Preparing: select count(*) from t_out_storage_check_in WHERE out_storage_type_id=? 
+20:49:36.028 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==> Parameters: 1(Short)
+20:49:36.054 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - <==      Total: 1
+20:49:36.064 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7ddbaff1]]]
+20:49:36.065 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==>  Preparing: select * from t_out_storage_check_in WHERE out_storage_type_id=? limit ?,? 
+20:49:36.066 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==> Parameters: 1(Short), 0(Integer), 2(Integer)
+20:49:36.079 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - <==      Total: 2
+23:53:07.654 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3bc59207]]]
+23:53:07.664 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==>  Preparing: select count(*) from t_out_storage_check_in WHERE out_storage_type_id=? 
+23:53:07.706 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==> Parameters: 1(Short)
+23:53:07.734 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - <==      Total: 1
+23:53:07.743 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3bc59207]]]
+23:53:07.743 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==>  Preparing: select * from t_out_storage_check_in WHERE out_storage_type_id=? limit ?,? 
+23:53:07.744 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==> Parameters: 1(Short), 0(Integer), 2(Integer)
+23:53:07.756 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - <==      Total: 2
+23:57:07.533 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1a6acadc]]]
+23:57:07.543 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==>  Preparing: select count(*) from t_out_storage_check_in WHERE out_storage_type_id=? 
+23:57:07.589 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==> Parameters: 1(Short)
+23:57:07.618 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - <==      Total: 1
+23:57:07.629 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1a6acadc]]]
+23:57:07.630 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==>  Preparing: select * from t_out_storage_check_in WHERE out_storage_type_id=? limit ?,? 
+23:57:07.631 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==> Parameters: 1(Short), 0(Integer), 2(Integer)
+23:57:07.646 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - <==      Total: 2

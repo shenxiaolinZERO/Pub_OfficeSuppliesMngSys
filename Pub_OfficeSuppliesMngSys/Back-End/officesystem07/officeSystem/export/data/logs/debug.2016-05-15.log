@@ -1,0 +1,50 @@
+17:39:14.171 [main] DEBUG c.f.o.d.B.insertBorrowApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@61fe38f3]]]
+17:39:14.182 [main] DEBUG c.f.o.d.B.insertBorrowApply - ==>  Preparing: insert into t_borrow_apply(id,item_id,item_name,item_type_id,spec,borrow_num,price,monney, borrow_time,borrow_department_id,borrower,audit_time,auditor,state,is_return, return_time,is_display,is_valid,apply_time,reason,remark) values(?,?,?,?,?,?, ?,?,?,?,?,? ,?,?,?,?,?,? ,?,?,?) 
+17:39:14.224 [main] DEBUG c.f.o.d.B.insertBorrowApply - ==> Parameters: null, 2(String), 2(String), 2(String), A型号(String), 2(Integer), null, null, null, 2(Integer), 1(Long), null, 1(Long), 3(Short), 1(Short), null, 0(Short), null, null, null, null
+17:40:03.573 [main] DEBUG c.f.o.d.B.insertBorrowApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5827233b]]]
+17:40:03.583 [main] DEBUG c.f.o.d.B.insertBorrowApply - ==>  Preparing: insert into t_borrow_apply(id,item_id,item_name,item_type_id,spec,borrow_num,price,monney, borrow_time,borrow_department_id,borrower,audit_time,auditor,state,is_return, return_time,is_display,is_valid,apply_time,reason,remark) values(?,?,?,?,?,?, ?,?,?,?,?,? ,?,?,?,?,?,? ,?,?,?) 
+17:40:03.625 [main] DEBUG c.f.o.d.B.insertBorrowApply - ==> Parameters: null, 2(String), 2(String), 2(String), A型号(String), 2(Integer), null, null, null, 2(Integer), 1(Long), null, 1(Long), 3(Short), 1(Short), null, 0(Short), 1(Short), null, null, null
+17:40:03.759 [main] DEBUG c.f.o.d.B.insertBorrowApply - <==    Updates: 1
+17:49:51.469 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@37c19d8]]]
+17:49:51.482 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ==>  Preparing: select * from t_borrow_apply where id=? 
+17:49:51.531 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ==> Parameters: 1(String)
+17:49:51.593 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - <==      Total: 1
+17:51:00.709 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@6aa27802]]]
+17:51:00.719 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ==>  Preparing: select * from t_borrow_apply where id=? 
+17:51:00.761 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ==> Parameters: 1(String)
+17:51:00.799 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - <==      Total: 1
+17:51:00.849 [main] DEBUG c.f.o.d.B.updateBorrowApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@6aa27802]]]
+17:51:00.849 [main] DEBUG c.f.o.d.B.updateBorrowApply - ==>  Preparing: update t_borrow_apply SET item_id=?, item_name=?, item_type_id=?, spec=?, borrow_num=?, price=?, borrow_time=?, borrow_department_id=?, borrower=?, audit_time=?, auditor=?, state=?, is_return=?, is_display=?, is_valid=?, apply_time=?, is_return=?, reason=? where id=? 
+17:51:00.852 [main] DEBUG c.f.o.d.B.updateBorrowApply - ==> Parameters: 1(String), 1(String), 1(String), 1(String), 1(Integer), 1.0(Double), 2016-05-13 17:20:57.0(Timestamp), 1(Integer), 1(Long), 2016-05-13 17:21:09.0(Timestamp), 1(Long), 2(Short), 1(Short), 1(Short), 1(Short), 2016-05-13 17:22:15.0(Timestamp), 1(Short), 111(String), 1(String)
+17:51:00.922 [main] DEBUG c.f.o.d.B.updateBorrowApply - <==    Updates: 1
+17:54:44.635 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditAndPass - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@4fb1cfeb]]]
+17:54:44.646 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditAndPass - ==>  Preparing: select * from t_borrow_apply where state=2 and borrow_time is null and audit_time is not null order by audit_time limit ?,? 
+17:54:44.689 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditAndPass - ==> Parameters: 1(Integer), 1(Integer)
+17:54:44.742 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditAndPass - <==      Total: 0
+17:54:44.745 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditAndPassCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@4fb1cfeb]]]
+17:54:44.745 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditAndPassCount - ==>  Preparing: select count(*) from t_borrow_apply where state=2 and borrow_time is null and audit_time is not null 
+17:54:44.746 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditAndPassCount - ==> Parameters: 
+17:54:44.770 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditAndPassCount - <==      Total: 1
+18:40:28.840 [main] DEBUG c.f.o.d.R.insertRecipientApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3568c7a1]]]
+18:40:28.850 [main] DEBUG c.f.o.d.R.insertRecipientApply - ==>  Preparing: insert into t_recipient_apply(id,item_name,item_type_id,spec,recipient_num,item_id,price,monney, recipient_time,recipient_department_id,recipienter,audit_time,auditor,state, is_display,is_valid,apply_time,reason,remark) values(?,?,?,?,?,?, ?,?,?,?,?,? ,?,?,?,? ,?,?,?) 
+18:40:28.912 [main] DEBUG c.f.o.d.R.insertRecipientApply - ==> Parameters: null, 1(String), 1(String), null, null, null, null, null, null, 1(Integer), 1(Long), null, null, 1(Short), 1(Short), 1(Short), 2016-05-15(Date), null, null
+18:40:29.001 [main] DEBUG c.f.o.d.R.insertRecipientApply - <==    Updates: 1
+19:26:52.460 [main] DEBUG c.f.o.d.R.selectRecipientApplyById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5dbcebe3]]]
+19:26:52.470 [main] DEBUG c.f.o.d.R.selectRecipientApplyById - ==>  Preparing: select * from t_recipient_apply where id=? 
+19:26:52.515 [main] DEBUG c.f.o.d.R.selectRecipientApplyById - ==> Parameters: 1(String)
+19:26:52.626 [main] DEBUG c.f.o.d.R.selectRecipientApplyById - <==      Total: 1
+19:30:03.258 [main] DEBUG c.f.o.d.R.selectRecipientApplyById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3718104f]]]
+19:30:03.273 [main] DEBUG c.f.o.d.R.selectRecipientApplyById - ==>  Preparing: select * from t_recipient_apply where id=? 
+19:30:03.327 [main] DEBUG c.f.o.d.R.selectRecipientApplyById - ==> Parameters: 1(String)
+19:30:03.379 [main] DEBUG c.f.o.d.R.selectRecipientApplyById - <==      Total: 1
+19:30:03.465 [main] DEBUG c.f.o.d.R.updateRecipientApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3718104f]]]
+19:30:03.465 [main] DEBUG c.f.o.d.R.updateRecipientApply - ==>  Preparing: update t_recipient_apply SET item_name=?, item_type_id=?, price=?, recipient_department_id=?, recipienter=?, state=?, is_display=?, is_valid=?, apply_time=? where id=? 
+19:30:03.470 [main] DEBUG c.f.o.d.R.updateRecipientApply - ==> Parameters: 1(String), 1(String), 120.0(Double), 1(Integer), 1(Long), 1(Short), 1(Short), 1(Short), 2016-05-15(Date), 1(String)
+19:30:04.339 [main] DEBUG c.f.o.d.R.updateRecipientApply - <==    Updates: 1
+19:31:57.462 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditAndPassCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@32bd3759]]]
+19:31:57.474 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditAndPassCount - ==>  Preparing: select count(*) fromt_recipient_apply where state=2 and recipient_time is null and audit_time is not null 
+19:31:57.533 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditAndPassCount - ==> Parameters: 
+19:33:32.963 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditAndPassCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2e746d70]]]
+19:33:32.975 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditAndPassCount - ==>  Preparing: select count(*) from t_recipient_apply where state=2 and recipient_time is null and audit_time is not null 
+19:33:33.031 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditAndPassCount - ==> Parameters: 
+19:33:33.122 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditAndPassCount - <==      Total: 1

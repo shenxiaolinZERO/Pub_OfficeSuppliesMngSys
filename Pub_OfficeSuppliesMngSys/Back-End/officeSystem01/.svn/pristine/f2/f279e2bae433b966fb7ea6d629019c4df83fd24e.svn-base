@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.ItemTypeDao">
+	<insert id="insertItemType" parameterType="cn.fjnu.officeSystem.entity.ItemType">
+		insert into
+		t_item_type(id,name,remark)
+		values(#{id},#{name},#{remark})
+	</insert>
+	<select id="selectAllItemType" resultType="cn.fjnu.officeSystem.entity.ItemType">
+		select * from
+		t_item_type
+	</select>
+	<select id="selectItemTypeById" parameterType="java.lang.String" resultType="cn.fjnu.officeSystem.entity.ItemType">
+	select * from t_item_type where id=#{id}
+	</select>
+
+	<update id="updateItemType" parameterType="cn.fjnu.officeSystem.entity.ItemType">
+		update t_item_type
+		<set>
+			<if test="name!=null">
+				name=#{name},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+</mapper>

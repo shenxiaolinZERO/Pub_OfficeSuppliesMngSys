@@ -1,0 +1,6 @@
+21:27:44.840 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@cc62a3b]]]
+21:27:44.862 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ==>  Preparing: Insert into t_item(item_id,item_name,item_type_id,spec,measure_unit_id,max_inventory,min_inventory,supplier_id,remark) values(?,?,?,?,?,?,?,?,?) 
+21:27:44.877 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ==> Parameters: null, 商品名(String), typeId(String), spec(String), measureUnitId(String), 50(Integer), 10(Integer), 111(String), null
+22:35:25.185 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@58dea0a5]]]
+22:35:25.207 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ==>  Preparing: Insert into t_item(item_id,item_name,item_type_id,spec,measure_unit_id,max_inventory,min_inventory,supplier_id,remark) values(?,?,?,?,?,?,?,?,?) 
+22:35:25.236 [main] DEBUG c.f.o.dao.ItemDao.insertItem - ==> Parameters: null, 商品名(String), typeId(String), spec(String), measureUnitId(String), 50(Integer), 10(Integer), 111(String), null

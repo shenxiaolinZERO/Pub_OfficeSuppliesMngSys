@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.BackgroundCategoriesMenuDao">
+
+
+	<insert id="insertBackgroundCategoriesMenu" parameterType="cn.fjnu.officeSystem.entity.BackgroundCategoriesMenu">
+		insert into t_background_categories_menu(id,name,target_url,permission_id,
+	    	parent_id,children_ids,is_valid,description,remark) values(#{id},#{name},#{targetUrl},#{permissionId},
+	    		#{parentId},#{childrenIds},#{isValid},#{description},#{remark})
+	</insert>
+
+
+	
+
+
+	<update id="updateBackgroundCategoriesMenu" parameterType="cn.fjnu.officeSystem.entity.BackgroundCategoriesMenu">
+		update t_background_categories_menu
+		<set>
+			<if test="name!=null">
+				name=#{name},
+			</if>
+			<if test="targetUrl!=null">
+				target_url=#{targetUrl},
+			</if>
+			<if test="permissionId!=null">
+				permission_id=#{permissionId},
+			</if>
+			<if test="parentId!=null">
+				parent_id=#{parentId},
+			</if>
+			<if test="childrenIds!=null">
+			children_ids=#{childrenIds},
+			</if>
+			<if test="isValid!=null">
+			is_valid=#{isValid},
+			</if>
+			<if test="description!=null">
+			description=#{description},
+			</if>
+			<if test="remark!=null">
+			remark=#{remark},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+
+
+	<select id="selectBackgroundCategoriesMenuById" parameterType="java.lang.String"
+		resultType="cn.fjnu.officeSystem.entity.BackgroundCategoriesMenu">
+		select * from t_background_categories_menu where id=#{id}
+	</select>
+
+<select id="selectBackgroundCategoriesMenusByPermissionIds" 
+		resultType="cn.fjnu.officeSystem.entity.BackgroundCategoriesMenu">
+		select * from t_background_categories_menu n where n.permission_id in
+		<foreach collection="list" index="index" item="item" open="("
+			separator="," close=")">
+			#{item} 
+		</foreach>
+	</select>
+
+
+</mapper> 

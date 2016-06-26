@@ -1,0 +1,220 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.fjnu.officeSystem.dao.RecipientApplyDao">
+	<insert id="insertRecipientApply" parameterType="cn.fjnu.officeSystem.entity.RecipientApply">
+		insert into
+		t_recipient_apply(id,item_name,item_type_id,spec,recipient_num,item_id,price,monney,
+		recipient_time,recipient_department_id,recipienter,audit_time,auditor,state,
+		is_display,is_valid,apply_time,reason,remark)
+		values(#{id},#{itemName},#{itemTypeId},#{spec},#{recipientNum},#{itemId},
+		#{price},#{monney},#{recipientTime},#{recipientDepartmentId},#{recipienter},#{auditTime}
+		,#{auditor},#{state},#{isDisplay},#{isValid}
+		,#{applyTime},#{reason},#{remark})
+	</insert>
+
+	<delete id="deleteRecipientApplyById" parameterType="java.lang.String">
+		delete from
+		t_recipient_apply
+		where id=#{id}
+
+	</delete>
+
+	<update id="updateRecipientApply" parameterType="cn.fjnu.officeSystem.entity.RecipientApply">
+		update t_recipient_apply
+		<set>
+			<if test="itemId!=null">
+				item_id=#{itemId},
+			</if>
+			<if test="itemName!=null">
+				item_name=#{itemName},
+			</if>
+			<if test="itemTypeId!=null">
+				item_type_id=#{itemTypeId},
+			</if>
+			<if test="spec!=null">
+				spec=#{spec},
+			</if>
+			<if test="recipientNum!=null">
+				recipient_num=#{recipientNum},
+			</if>
+			<if test="price!=null">
+				price=#{price},
+			</if>
+			<if test="monney!=null">
+				monney=#{monney},
+			</if>
+			<if test="recipientTime!=null">
+				recipient_time=#{recipientTime},
+			</if>
+			<if test="recipientDepartmentId!=null">
+				recipient_department_id=#{recipientDepartmentId},
+			</if>
+			<if test="recipienter!=null">
+				recipienter=#{recipienter},
+			</if>
+			<if test="auditTime!=null">
+				audit_time=#{auditTime},
+			</if>
+			<if test="auditor!=null">
+				auditor=#{auditor},
+			</if>
+			<if test="state!=null">
+				state=#{state},
+			</if>
+			<if test="isDisplay!=null">
+				is_display=#{isDisplay},
+			</if>
+			<if test="isValid!=null">
+				is_valid=#{isValid},
+			</if>
+			<if test="applyTime!=null">
+				apply_time=#{applyTime},
+			</if>
+			<if test="reason!=null">
+				reason=#{reason},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+
+		</set>
+		where id=#{id}
+	</update>
+
+	<select id="selectRecipientApplyById" parameterType="java.lang.String"
+		resultType="cn.fjnu.officeSystem.entity.RecipientApply">
+		select * from t_recipient_apply where id=#{id}
+	</select>
+	
+	<select id="selectRecipientApplyByIdList" resultType="cn.fjnu.officeSystem.entity.RecipientApply">
+		select * from t_recipient_apply where id in
+		<foreach collection="list" index="index" item="item" open="("
+			close=")" separator=",">
+			#{item}
+		</foreach>
+	</select>
+
+	<select id="selectRecipientApplyAuditAndPass" resultType="cn.fjnu.officeSystem.entity.RecipientApply"
+		parameterType="java.util.Map">
+		select t_recipient_apply.*,t_item_type.name as
+		itemTypeName,staff_name as
+		recipienterName,t_department.name as
+		departmentName from
+		t_recipient_apply,t_item_type,t_staff,t_department
+		where state=2 and
+		recipient_time is null and audit_time is not null
+		and
+		t_item_type.name=(select name from t_item_type where id=item_type_id)
+		and staff_name=(select staff_name from t_staff where id=recipienter)
+		and
+		t_department.name=(select t_department.name from t_department where
+		id=recipient_department_id)
+		order by audit_time
+		limit #{start},#{end}
+	</select>
+
+	<select id="selectRecipientApplyAudit"
+		resultType="cn.fjnu.officeSystem.extend.RecipientApplyExpireExtend"
+		parameterType="java.util.Map">
+		select t_recipient_apply.*,t_item_type.name as
+		itemTypeName,staff_name as
+		recipienterName,t_department.name as
+		departmentName,cell_phone_number as telephone,
+		DATE_ADD(audit_time,INTERVAL 1 DAY) as maxRecipientTime from
+		t_recipient_apply,t_item_type,t_staff,t_department
+		where audit_time is not null
+		and
+		t_item_type.name=(select name from
+		t_item_type where id=item_type_id)
+		and staff_name=(select staff_name
+		from t_staff where id=recipienter) and
+		t_department.name=(select
+		t_department.name from t_department where
+		id=recipient_department_id)
+		order by audit_time
+		limit #{start},#{end}
+	</select>
+
+	<select id="selectRecipientApplyUnAudit" resultType="cn.fjnu.officeSystem.extend.RecipientApplyExtend"
+		parameterType="java.util.Map">
+		select t_recipient_apply.*,t_item_type.name as
+		itemTypeName,staff_name as
+		recipienterName,t_department.name as
+		departmentName from
+		t_recipient_apply,t_item_type,t_staff,t_department
+		where audit_time is null and apply_time is not null
+		and
+		t_item_type.name=(select name from t_item_type where id=item_type_id)
+		and staff_name=(select staff_name from t_staff where id=recipienter)
+		and
+		t_department.name=(select t_department.name from t_department where
+		id=recipient_department_id)
+		order by apply_time
+		limit #{start},#{end}
+	</select>
+
+	<!-- select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name 
+		as borrowerName,t_department.name as departmentName from t_borrow_apply,t_item_type,t_staff,t_department 
+		where state=2 and borrow_time is null and audit_time is not null and t_item_type.name=(select 
+		name from t_item_type where id=item_type_id) and staff_name=(select staff_name 
+		from t_staff where id=borrower) and t_department.name=(select t_department.name 
+		from t_department where id=borrow_department_id) order by audit_time limit 
+		#{start},#{end} -->
+	<select id="selectRecipientApplyAuditAndPassCount" resultType="java.lang.Integer">
+		select count(*) from t_recipient_apply where state=2 and
+		recipient_time
+		is
+		null and audit_time is not null
+	</select>
+
+	<select id="selectRecipientApplyAuditCount" resultType="java.lang.Integer">
+		select
+		count(*) from t_recipient_apply where audit_time is not null
+	</select>
+
+	<select id="selectRecipientApplyUnAuditCount" resultType="java.lang.Integer">
+		select
+		count(*) from t_recipient_apply where audit_time is null and
+		apply_time is not null
+	</select>
+
+	<select id="selectRecipientApplyByValidateState" parameterType="int"
+		resultType="cn.fjnu.officeSystem.entity.RecipientApply">
+		select * from t_recipient_apply where is_valid=#{isValid}
+	</select>
+
+	<select id="selectRecipientAppliesByStaffId" parameterType="java.util.Map"
+		resultType="cn.fjnu.officeSystem.extend.RecipientApplyReturnExtend">
+		select t_recipient_apply.*,t_item_type.name as
+		itemTypeName,cell_phone_number as telephone,
+		staff_name as auditorName,
+		DATE_ADD(audit_time,INTERVAL 1 DAY) as maxRecipientTime
+		from t_recipient_apply,t_item_type,t_staff
+		where 
+		
+		t_item_type.name=(select name from t_item_type where
+		id=t_recipient_apply.item_type_id)
+		and cell_phone_number in(select
+		cell_phone_number from t_staff where id=recipienter)
+		and
+		staff_name=(select staff_name from t_staff where
+		id=t_recipient_apply.auditor)
+		<if test="recipienter!=null">
+		and recipienter=#{recipienter}
+		</if>
+		order by id
+		limit #{start},#{end}
+	</select>
+
+	<select id="selectRecipientAppliesByStaffIdCount" parameterType="java.lang.String"
+		resultType="java.lang.Integer">
+		select count(*) from t_recipient_apply 
+		<where>
+		<if test="recipienter!=null">
+		recipienter=#{recipienter}
+		</if>
+		</where>
+		
+		
+	</select>
+
+</mapper>

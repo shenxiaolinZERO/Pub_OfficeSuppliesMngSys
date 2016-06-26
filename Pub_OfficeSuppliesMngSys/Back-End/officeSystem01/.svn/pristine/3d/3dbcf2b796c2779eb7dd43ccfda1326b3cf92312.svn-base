@@ -1,0 +1,21 @@
+package cn.fjnu.officeSystem.dao;
+
+import java.util.List;
+
+import cn.fjnu.officeSystem.entity.OutStorageType;
+
+public interface OutStorageTypeDao {
+
+	/**
+	 * 添加出库类型
+	 * @param outStorageType
+	 * @return
+	 */
+	public int insertOutStorageType(OutStorageType outStorageType);
+	
+	/**
+	 * 查询所有出库类型
+	 * @return
+	 */
+	public List<OutStorageType> selectAllOutStorageTypes();
+}

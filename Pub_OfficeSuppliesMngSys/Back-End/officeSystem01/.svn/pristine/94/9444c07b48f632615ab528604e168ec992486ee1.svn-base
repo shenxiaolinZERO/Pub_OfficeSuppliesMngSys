@@ -1,0 +1,55 @@
+package cn.fjnu.officeSystem.extend;
+
+import java.sql.Date;
+
+import cn.fjnu.officeSystem.entity.ItemProcurement;
+import cn.fjnu.officeSystem.entity.ItemType;
+
+public class ItemProcurementExtend extends ItemProcurement {
+	private String itemTypeName;
+
+	public String getItemTypeName() {
+		return itemTypeName;
+	}
+
+	public void setItemTypeName(String itemTypeName) {
+		this.itemTypeName = itemTypeName;
+	}
+
+	public ItemProcurementExtend(String id, String itemId, String applierId, String staffId, long num,
+			String itemTypeId, String itemName, String spec, Double price, Double monney, Date time, Short isInStorage,
+			String remark, String itemTypeName) {
+		super(id, itemId, applierId, staffId, num, itemTypeId, itemName, spec, price, monney, time, isInStorage,
+				remark);
+		this.itemTypeName = itemTypeName;
+	}
+
+	public ItemProcurementExtend() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ItemProcurementExtend(String id, String itemId, String applierId, String staffId, long num,
+			String itemTypeId, String itemName, String spec, Double price, Double monney, Date time, Short isInStorage,
+			String remark) {
+		super(id, itemId, applierId, staffId, num, itemTypeId, itemName, spec, price, monney, time, isInStorage, remark);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "ItemProcurementExtend [itemTypeName=" + itemTypeName + ", toString()=" + super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ "]";
+	}
+
+
+
+
+	
+	
+	
+
+
+	
+
+}

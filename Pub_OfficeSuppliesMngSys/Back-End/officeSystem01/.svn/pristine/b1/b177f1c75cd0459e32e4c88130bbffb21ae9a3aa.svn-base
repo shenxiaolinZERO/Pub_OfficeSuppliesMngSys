@@ -1,0 +1,16 @@
+package cn.fjnu.officeSystem.serviceImpl;
+
+public class itemInventoryWarningService {//库存预警--紧急通知
+
+	//该页的查询条件有状态、物品分类Id、物品名称
+	
+
+	//获取超过上限的物品
+	
+	//获取低于下限的物品
+	
+	//对于超过上限的物品--清理出库
+	
+	//对于低于下限的物品--写入预采购单
+	
+}

@@ -1,0 +1,364 @@
+00:08:26.458 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@545b8d23]]]
+00:08:26.471 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==>  Preparing: select count(*) from t_out_storage_check_in 
+00:08:26.515 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==> Parameters: 
+00:08:26.545 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - <==      Total: 1
+00:08:26.558 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@545b8d23]]]
+00:08:26.558 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==>  Preparing: select t_out_storage_check_in.*,t_borrow_apply.item_id as itemId,t_borrow_apply.item_name as itemName, t_borrow_apply.item_type_id as itemTypeId, t_item_type.name as itemTypeName, t_borrow_apply.spec as spec, (select staff_name from t_staff where id=t_borrow_apply.borrower) as recipienterName, (select staff_name from t_staff where id=t_borrow_apply.auditor) as auditorName, (select staff_name from t_staff where id=t_out_storage_check_in.operater_id) as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_borrow_apply, t_item_type,t_staff,t_out_storage_type where t_borrow_apply.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.recipienter) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=1 union all select t_out_storage_check_in.*,t_recipient_apply.item_id as itemId,t_recipient_apply.item_name as itemName, t_recipient_apply.item_type_id as itemTypeId, t_item_type.name as itemTypeName, t_recipient_apply.spec as spec, (select staff_name from t_staff where id=t_recipient_apply.recipienter) as recipienterName, (select staff_name from t_staff where id=t_recipient_apply.auditor) as auditorName, (select staff_name from t_staff where id=t_out_storage_check_in.operater_id) as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_recipient_apply, t_item_type,t_staff,t_out_storage_type where t_recipient_apply.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_recipient_apply.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.recipienter) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=2 union all select t_out_storage_check_in.*,t_item_send.item_id as itemId,t_item_send.item_name as itemName, t_item_send.item_type_id as itemTypeId,t_item_send.spec as spec,(select staff_name from t_staff where id=t_item_send.staff_id) as auditorName, t_item_type.name as itemTypeName, t_staff.staff_name as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_item_send, t_item_type,t_staff,t_out_storage_type where t_item_send.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_item_send.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.operater_id) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=3 limit ?,? 
+00:08:26.562 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==> Parameters: 0(Integer), 5(Integer)
+00:10:25.696 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7177d276]]]
+00:10:25.713 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==>  Preparing: select count(*) from t_out_storage_check_in 
+00:10:25.779 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==> Parameters: 
+00:10:25.816 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - <==      Total: 1
+00:10:25.831 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7177d276]]]
+00:10:25.832 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==>  Preparing: select t_out_storage_check_in.*,t_borrow_apply.item_id as itemId,t_borrow_apply.item_name as itemName, t_borrow_apply.item_type_id as itemTypeId, t_item_type.name as itemTypeName, (select staff_name from t_staff where id=t_borrow_apply.borrower) as recipienterName, (select staff_name from t_staff where id=t_borrow_apply.auditor) as auditorName, (select staff_name from t_staff where id=t_out_storage_check_in.operater_id) as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_borrow_apply, t_item_type,t_staff,t_out_storage_type where t_borrow_apply.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.recipienter) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=1 union all select t_out_storage_check_in.*,t_recipient_apply.item_id as itemId,t_recipient_apply.item_name as itemName, t_recipient_apply.item_type_id as itemTypeId, t_item_type.name as itemTypeName, t_recipient_apply.spec as spec, (select staff_name from t_staff where id=t_recipient_apply.recipienter) as recipienterName, (select staff_name from t_staff where id=t_recipient_apply.auditor) as auditorName, (select staff_name from t_staff where id=t_out_storage_check_in.operater_id) as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_recipient_apply, t_item_type,t_staff,t_out_storage_type where t_recipient_apply.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_recipient_apply.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.recipienter) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=2 union all select t_out_storage_check_in.*,t_item_send.item_id as itemId,t_item_send.item_name as itemName, t_item_send.item_type_id as itemTypeId,t_item_send.spec as spec,(select staff_name from t_staff where id=t_item_send.staff_id) as auditorName, t_item_type.name as itemTypeName, t_staff.staff_name as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_item_send, t_item_type,t_staff,t_out_storage_type where t_item_send.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_item_send.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.operater_id) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=3 limit ?,? 
+00:10:25.836 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==> Parameters: 0(Integer), 5(Integer)
+00:14:10.720 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1184c313]]]
+00:14:10.731 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==>  Preparing: select count(*) from t_out_storage_check_in 
+00:14:10.775 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==> Parameters: 
+00:14:10.799 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - <==      Total: 1
+00:14:10.817 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1184c313]]]
+00:14:10.818 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==>  Preparing: select t_out_storage_check_in.*,t_borrow_apply.item_id as itemId,t_borrow_apply.item_name as itemName, t_borrow_apply.item_type_id as itemTypeId, t_item_type.name as itemTypeName, t_borrow_apply.spec as spec, (select staff_name from t_staff where id=t_borrow_apply.borrower) as recipienterName, (select staff_name from t_staff where id=t_borrow_apply.auditor) as auditorName, (select staff_name from t_staff where id=t_out_storage_check_in.operater_id) as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_borrow_apply, t_item_type,t_staff,t_out_storage_type where t_borrow_apply.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.recipienter) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=1 union all select t_out_storage_check_in.*,t_recipient_apply.item_id as itemId,t_recipient_apply.item_name as itemName, t_recipient_apply.item_type_id as itemTypeId, t_item_type.name as itemTypeName, t_recipient_apply.spec as spec, (select staff_name from t_staff where id=t_recipient_apply.recipienter) as recipienterName, (select staff_name from t_staff where id=t_recipient_apply.auditor) as auditorName, (select staff_name from t_staff where id=t_out_storage_check_in.operater_id) as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_recipient_apply, t_item_type,t_staff,t_out_storage_type where t_recipient_apply.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_recipient_apply.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.recipienter) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=2 union all select t_out_storage_check_in.*,t_item_send.item_id as itemId,t_item_send.item_name as itemName, t_item_send.item_type_id as itemTypeId,t_item_send.spec as spec,(select staff_name from t_staff where id=t_item_send.staff_id) as auditorName, t_item_type.name as itemTypeName, t_staff.staff_name as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_item_send, t_item_type,t_staff,t_out_storage_type where t_item_send.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_item_send.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.operater_id) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=3 limit ?,? 
+00:14:10.822 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==> Parameters: 0(Integer), 5(Integer)
+00:24:26.251 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@e7f068c]]]
+00:24:26.267 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==>  Preparing: select count(*) from t_out_storage_check_in 
+00:24:26.335 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==> Parameters: 
+00:24:26.377 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - <==      Total: 1
+00:24:26.398 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@e7f068c]]]
+00:24:26.399 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==>  Preparing: select t_out_storage_check_in.*,t_borrow_apply.item_id as itemId,t_borrow_apply.item_name as itemName, t_borrow_apply.item_type_id as itemTypeId, t_item_type.name as itemTypeName, t_borrow_apply.spec as spec, (select staff_name from t_staff where id=t_borrow_apply.borrower) as recipienterName, (select staff_name from t_staff where id=t_borrow_apply.auditor) as auditorName, (select staff_name from t_staff where id=t_out_storage_check_in.operater_id) as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_borrow_apply, t_item_type,t_staff,t_out_storage_type where t_borrow_apply.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.recipienter) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=1 union all select t_out_storage_check_in.*,t_recipient_apply.item_id as itemId,t_recipient_apply.item_name as itemName, t_recipient_apply.item_type_id as itemTypeId, t_item_type.name as itemTypeName, t_recipient_apply.spec as spec, (select staff_name from t_staff where id=t_recipient_apply.recipienter) as recipienterName, (select staff_name from t_staff where id=t_recipient_apply.auditor) as auditorName, (select staff_name from t_staff where id=t_out_storage_check_in.operater_id) as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_recipient_apply, t_item_type,t_staff,t_out_storage_type where t_recipient_apply.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_recipient_apply.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.recipienter) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=2 union all select t_out_storage_check_in.*,t_item_send.item_id as itemId,t_item_send.item_name as itemName, t_item_send.item_type_id as itemTypeId,t_item_send.spec as spec,(select staff_name from t_staff where id=t_item_send.staff_id) as auditorName, -1 as recipienterName, t_item_type.name as itemTypeName, t_staff.staff_name as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_item_send, t_item_type,t_staff,t_out_storage_type where t_item_send.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_item_send.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.operater_id) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=3 limit ?,? 
+00:24:26.404 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==> Parameters: 0(Integer), 5(Integer)
+00:24:26.439 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - <==      Total: 4
+00:43:34.956 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@6a4dd7e0]]]
+00:43:34.973 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==>  Preparing: select count(*) from t_out_storage_check_in 
+00:43:35.059 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - ==> Parameters: 
+00:43:35.114 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMapCount - <==      Total: 1
+00:43:35.140 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@6a4dd7e0]]]
+00:43:35.141 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==>  Preparing: select t_out_storage_check_in.*,t_borrow_apply.item_id as itemId,t_borrow_apply.item_name as itemName, t_borrow_apply.item_type_id as itemTypeId, t_item_type.name as itemTypeName, t_borrow_apply.spec as spec, (select staff_name from t_staff where id=t_borrow_apply.borrower) as recipienterName, (select staff_name from t_staff where id=t_borrow_apply.auditor) as auditorName, (select staff_name from t_staff where id=t_out_storage_check_in.operater_id) as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_borrow_apply, t_item_type,t_staff,t_out_storage_type where t_borrow_apply.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.recipienter) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=1 union all select t_out_storage_check_in.*,t_recipient_apply.item_id as itemId,t_recipient_apply.item_name as itemName, t_recipient_apply.item_type_id as itemTypeId, t_item_type.name as itemTypeName, t_recipient_apply.spec as spec, (select staff_name from t_staff where id=t_recipient_apply.recipienter) as recipienterName, (select staff_name from t_staff where id=t_recipient_apply.auditor) as auditorName, (select staff_name from t_staff where id=t_out_storage_check_in.operater_id) as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_recipient_apply, t_item_type,t_staff,t_out_storage_type where t_recipient_apply.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_recipient_apply.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.recipienter) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=2 union all select t_out_storage_check_in.*,t_item_send.item_id as itemId,t_item_send.item_name as itemName, t_item_send.item_type_id as itemTypeId,t_item_send.spec as spec,(select staff_name from t_staff where id=t_item_send.staff_id) as auditorName, -1 as recipienterName, t_item_type.name as itemTypeName, t_staff.staff_name as operaterName, t_out_storage_type.name as outStorageTypeName from t_out_storage_check_in,t_item_send, t_item_type,t_staff,t_out_storage_type where t_item_send.id=t_out_storage_check_in.apply_id and t_item_type.name=(select name from t_item_type where id=t_item_send.item_type_id) and t_staff.staff_name=(select staff_name from t_staff where id=t_out_storage_check_in.operater_id) and t_out_storage_type.name=(select name from t_out_storage_type where id=t_out_storage_check_in.out_storage_type_id) and out_storage_type_id=3 and t_item_send.flag=0 limit ?,? 
+00:43:35.149 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - ==> Parameters: 0(Integer), 5(Integer)
+00:43:35.189 [main] DEBUG c.f.o.d.O.selectOutStorageCheckInByMap - <==      Total: 4
+00:45:49.133 [main] DEBUG c.f.o.d.I.selectAllItemClassificationSummaryCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1e1c44f3]]]
+00:45:49.146 [main] DEBUG c.f.o.d.I.selectAllItemClassificationSummaryCount - ==>  Preparing: select count(*) FROM t_item_classification_summary 
+00:45:49.196 [main] DEBUG c.f.o.d.I.selectAllItemClassificationSummaryCount - ==> Parameters: 
+00:45:49.224 [main] DEBUG c.f.o.d.I.selectAllItemClassificationSummaryCount - <==      Total: 1
+00:45:49.227 [main] DEBUG c.f.o.d.I.selectAllItemClassificationSummaries - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1e1c44f3]]]
+00:45:49.228 [main] DEBUG c.f.o.d.I.selectAllItemClassificationSummaries - ==>  Preparing: SELECT * FROM t_item_classification_summary 
+00:45:49.228 [main] DEBUG c.f.o.d.I.selectAllItemClassificationSummaries - ==> Parameters: 
+00:45:49.239 [main] DEBUG c.f.o.d.I.selectAllItemClassificationSummaries - <==      Total: 5
+00:47:15.524 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@115faadb]]]
+00:47:15.541 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ==>  Preparing: select * FROM t_item_classification_summary where id=? 
+00:47:15.590 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ==> Parameters: 2(String)
+00:47:15.660 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - <==      Total: 1
+00:47:15.661 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@115faadb]]]
+00:47:15.662 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==>  Preparing: select table_key from t_sys_table_key where table_name = ? 
+00:47:15.662 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==> Parameters: outStorageCheckIn(String)
+00:47:15.664 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - <==      Total: 1
+00:47:15.723 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@115faadb]]]
+00:47:15.724 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==>  Preparing: update t_sys_table_key SET table_key = ? where table_name = ? 
+00:47:15.724 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==> Parameters: os001606240000(String), outStorageCheckIn(String)
+00:47:15.744 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - <==    Updates: 1
+00:47:15.745 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@115faadb]]]
+00:47:15.745 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==>  Preparing: insert into t_out_storage_check_in(id,out_storage_type_id,recipienter,department_id,operater_id,apply_id,total_number,total_monney,remark) values (?,?,?, ?,?,?,?,?,?) 
+00:47:15.749 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - ==> Parameters: os001606240000(String), 3(Short), 1(String), null, 2(String), it001605150001(String), 1(Long), 0.0(Double), null
+00:47:15.750 [main] DEBUG c.f.o.d.O.insertOutStorageCheckIn - <==    Updates: 1
+00:47:15.751 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@115faadb]]]
+00:47:15.751 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==>  Preparing: select table_key from t_sys_table_key where table_name = ? 
+00:47:15.752 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - ==> Parameters: itemSend(String)
+00:47:15.753 [main] DEBUG c.f.o.d.I.selectTableKeyByTableName - <==      Total: 1
+00:47:15.755 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@115faadb]]]
+00:47:15.755 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==>  Preparing: update t_sys_table_key SET table_key = ? where table_name = ? 
+00:47:15.756 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - ==> Parameters: is001606240000(String), itemSend(String)
+00:47:15.758 [main] DEBUG c.f.o.d.I.updateByPrimaryKeySelective - <==    Updates: 1
+00:47:15.759 [main] DEBUG c.f.o.dao.ItemSendDao.insertItemSend - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@115faadb]]]
+00:47:15.759 [main] DEBUG c.f.o.dao.ItemSendDao.insertItemSend - ==>  Preparing: insert into t_item_send(id,item_id,staff_id,num,item_type_id,item_name,measure_unit_id,spec,time,is_in_storage,flag,remark) values(?,?,?,?,?,?,?,?,?,?,?,?) 
+00:47:15.772 [main] DEBUG c.f.o.dao.ItemSendDao.insertItemSend - ==> Parameters: is001606240000(String), it001605150001(String), 2(String), 1(Long), 1(String), 物品名称(String), 1(String), 规格型号(String), 2016-06-24 00:47:15.758(Timestamp), 3(Short), 1(Integer), null
+00:47:15.774 [main] DEBUG c.f.o.dao.ItemSendDao.insertItemSend - <==    Updates: 1
+00:47:15.779 [main] DEBUG c.f.o.d.I.updateSubItemClassificationSummaryByItemIdAndPrice - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@115faadb]]]
+00:47:15.780 [main] DEBUG c.f.o.d.I.updateSubItemClassificationSummaryByItemIdAndPrice - ==>  Preparing: update t_item_classification_summary set inventory=inventory-?,inventory_monney=inventory_monney-price*? where item_id=? and price=? 
+00:47:15.781 [main] DEBUG c.f.o.d.I.updateSubItemClassificationSummaryByItemIdAndPrice - ==> Parameters: 1(Long), 1(Long), it001605150001(String), 0.0(Double)
+00:47:15.792 [main] DEBUG c.f.o.d.I.updateSubItemClassificationSummaryByItemIdAndPrice - <==    Updates: 1
+00:47:15.794 [main] DEBUG c.f.o.d.T.updateSubTransfiniteInventoryByItemId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@115faadb]]]
+00:47:15.794 [main] DEBUG c.f.o.d.T.updateSubTransfiniteInventoryByItemId - ==>  Preparing: update t_transfinite_inventory_warning set inventory=inventory-? where item_id=? 
+00:47:15.795 [main] DEBUG c.f.o.d.T.updateSubTransfiniteInventoryByItemId - ==> Parameters: 1(Long), it001605150001(String)
+00:47:15.796 [main] DEBUG c.f.o.d.T.updateSubTransfiniteInventoryByItemId - <==    Updates: 0
+00:50:01.925 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@45e1feaf]]]
+00:50:01.939 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ==>  Preparing: select count(*) from t_borrow_apply where audit_time is not null 
+00:50:01.986 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ==> Parameters: 
+00:50:02.054 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - <==      Total: 1
+00:50:02.061 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@45e1feaf]]]
+00:50:02.062 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName,cell_phone_number as telephone, DATE_ADD(audit_time,INTERVAL 1 DAY) as maxBorrowTime from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) order by audit_time limit ?,? 
+00:50:02.064 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ==> Parameters: 0(Integer), 5(Integer)
+00:50:02.118 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - <==      Total: 5
+01:05:28.949 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@3851d75f]]]
+01:05:28.962 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ==>  Preparing: select count(*) from t_borrow_apply where audit_time is null and apply_time is not null 
+01:05:29.017 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ==> Parameters: 
+01:05:29.049 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - <==      Total: 1
+01:07:46.666 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@10bbf022]]]
+01:07:46.681 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==>  Preparing: select count(*) from t_item_classification_summary 
+01:07:46.731 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==> Parameters: 
+01:07:46.763 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - <==      Total: 1
+01:07:46.776 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@10bbf022]]]
+01:07:46.776 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==>  Preparing: select * from t_item_classification_summary WHERE item_id=? and item_name like CONCAT('%',?,'%') and item_type_id=? limit ?,? 
+01:07:46.779 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==> Parameters: it001605150000(String), 物品名称(String), 1(String), 0(Integer), 2(Integer)
+01:07:46.788 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - <==      Total: 1
+01:18:48.565 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@46d61712]]]
+01:18:48.579 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==>  Preparing: select count(*) from t_item_classification_summary 
+01:18:48.629 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==> Parameters: 
+01:18:48.662 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - <==      Total: 1
+01:18:48.672 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@46d61712]]]
+01:18:48.673 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==>  Preparing: select * from t_item_classification_summary WHERE item_id=? and item_name like CONCAT('%',?,'%') and item_type_id=? limit ?,? 
+01:18:48.674 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==> Parameters: it001605150000(String), 物品名称(String), 1(String), 0(Integer), 2(Integer)
+01:18:48.683 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - <==      Total: 1
+01:29:46.883 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@65012192]]]
+01:29:46.897 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==>  Preparing: select count(*) from t_item_classification_summary 
+01:29:46.948 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==> Parameters: 
+01:29:46.981 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - <==      Total: 1
+01:29:46.995 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@65012192]]]
+01:29:46.995 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==>  Preparing: select t_item_classification_summary.*,t_item_type.name as itemTypeName from t_item_classification_summary,t_item_type WHERE item_id=? and item_name like CONCAT('%',?,'%') and item_type_id=? and limit ?,? 
+01:29:46.996 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==> Parameters: it001605150000(String), 物品名称(String), 1(String), 0(Integer), 2(Integer)
+01:36:38.182 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1184c313]]]
+01:36:38.196 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==>  Preparing: select count(*) from t_item_classification_summary 
+01:36:38.248 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==> Parameters: 
+01:36:38.289 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - <==      Total: 1
+01:36:38.304 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1184c313]]]
+01:36:38.305 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==>  Preparing: select t_item_classification_summary.*,t_item_type.name as itemTypeName from t_item_classification_summary,t_item_type WHERE item_id=? and item_name like CONCAT('%',?,'%') and item_type_id=? and t_item_type.name=(select name from t_item_type where id=?) limit ?,? 
+01:36:38.307 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==> Parameters: it001605150000(String), 物品名称(String), 1(String), 1(String), 0(Integer), 2(Integer)
+01:36:38.315 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - <==      Total: 1
+09:34:51.231 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@49ea2734]]]
+09:34:51.247 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==>  Preparing: select count(*) from t_item_classification_summary 
+09:34:51.303 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==> Parameters: 
+09:34:51.351 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - <==      Total: 1
+09:34:51.367 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@49ea2734]]]
+09:34:51.368 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==>  Preparing: select t_item_classification_summary.*,t_item_type.name as itemTypeName from t_item_classification_summary,t_item_type WHERE item_id=? and item_name like CONCAT('%',?,'%') and item_type_id=? and t_item_type.name=(select name from t_item_type where id=?) limit ?,? 
+09:34:51.370 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==> Parameters: it001605150000(String), 物品名称(String), 1(String), 1(String), 0(Integer), 5(Integer)
+09:34:51.385 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - <==      Total: 1
+09:36:21.147 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@61fc37c4]]]
+09:36:21.161 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ==>  Preparing: select * FROM t_item_classification_summary where id=? 
+09:36:21.212 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ==> Parameters: (String)
+09:36:21.243 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - <==      Total: 0
+09:38:26.594 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@466e7f96]]]
+09:38:26.607 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ==>  Preparing: select * FROM t_item_classification_summary where id=? 
+09:38:26.658 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ==> Parameters: 1(String)
+09:38:26.687 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - <==      Total: 1
+09:38:26.690 [main] DEBUG c.f.o.d.I.selectItemPriceByItemId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@466e7f96]]]
+09:38:26.691 [main] DEBUG c.f.o.d.I.selectItemPriceByItemId - ==>  Preparing: select price FROM t_item_classification_summary where item_id=? 
+09:38:26.692 [main] DEBUG c.f.o.d.I.selectItemPriceByItemId - ==> Parameters: it001605150000(String)
+09:38:26.693 [main] DEBUG c.f.o.d.I.selectItemPriceByItemId - <==      Total: 1
+09:38:26.694 [main] DEBUG c.f.o.d.I.getDepartmentIdByStaffId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@466e7f96]]]
+09:38:26.695 [main] DEBUG c.f.o.d.I.getDepartmentIdByStaffId - ==>  Preparing: select department_id from t_staff where id=? 
+09:38:26.695 [main] DEBUG c.f.o.d.I.getDepartmentIdByStaffId - ==> Parameters: 2(String)
+09:38:26.696 [main] DEBUG c.f.o.d.I.getDepartmentIdByStaffId - <==      Total: 1
+09:38:26.699 [main] DEBUG c.f.o.d.B.insertBorrowApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@466e7f96]]]
+09:38:26.700 [main] DEBUG c.f.o.d.B.insertBorrowApply - ==>  Preparing: insert into t_borrow_apply(id,item_id,item_name,item_type_id,spec,borrow_num,price,monney, borrow_time,borrow_department_id,borrower,audit_time,auditor,state,is_return, return_time,is_display,is_valid,reason,remark) values(?,?,?,?,?,?, ?,?,?,?,?,? ,?,?,?,?,?,? ,?,?) 
+09:38:26.703 [main] DEBUG c.f.o.d.B.insertBorrowApply - ==> Parameters: null, it001605150000(String), 物品名称(String), 1(String), 规格型号(String), 1(Long), 10.0(Double), 10.0(Double), null, 2(Integer), 2(String), null, null, 1(Short), 0(Short), null, 1(Short), 1(Short), null, null
+09:38:26.756 [main] DEBUG c.f.o.d.B.insertBorrowApply - <==    Updates: 1
+09:40:13.057 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@6d0f2ab8]]]
+09:40:13.072 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ==>  Preparing: select * FROM t_item_classification_summary where id=? 
+09:40:13.123 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ==> Parameters: 2(String)
+09:40:13.157 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - <==      Total: 1
+09:40:13.162 [main] DEBUG c.f.o.d.I.selectItemPriceByItemId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@6d0f2ab8]]]
+09:40:13.162 [main] DEBUG c.f.o.d.I.selectItemPriceByItemId - ==>  Preparing: select price FROM t_item_classification_summary where item_id=? 
+09:40:13.163 [main] DEBUG c.f.o.d.I.selectItemPriceByItemId - ==> Parameters: it001605150001(String)
+09:40:13.165 [main] DEBUG c.f.o.d.I.selectItemPriceByItemId - <==      Total: 1
+09:40:13.167 [main] DEBUG c.f.o.d.I.getDepartmentIdByStaffId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@6d0f2ab8]]]
+09:40:13.167 [main] DEBUG c.f.o.d.I.getDepartmentIdByStaffId - ==>  Preparing: select department_id from t_staff where id=? 
+09:40:13.168 [main] DEBUG c.f.o.d.I.getDepartmentIdByStaffId - ==> Parameters: 2(String)
+09:40:13.170 [main] DEBUG c.f.o.d.I.getDepartmentIdByStaffId - <==      Total: 1
+09:40:13.174 [main] DEBUG c.f.o.d.B.insertBorrowApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@6d0f2ab8]]]
+09:40:13.175 [main] DEBUG c.f.o.d.B.insertBorrowApply - ==>  Preparing: insert into t_borrow_apply(id,item_id,item_name,item_type_id,spec,borrow_num,price,monney, borrow_time,borrow_department_id,borrower,audit_time,auditor,state,is_return, return_time,is_display,is_valid,reason,remark) values(?,?,?,?,?,?, ?,?,?,?,?,? ,?,?,?,?,?,? ,?,?) 
+09:40:13.178 [main] DEBUG c.f.o.d.B.insertBorrowApply - ==> Parameters: null, it001605150001(String), 物品名称(String), 1(String), 规格型号(String), 1(Long), 0.0(Double), 0.0(Double), null, 2(Integer), 2(String), null, null, 1(Short), 0(Short), null, 1(Short), 1(Short), null, null
+09:40:13.180 [main] DEBUG c.f.o.d.B.insertBorrowApply - <==    Updates: 1
+09:41:54.253 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@4ec065f7]]]
+09:41:54.266 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ==>  Preparing: select count(*) from t_borrow_apply where audit_time is null and apply_time is not null 
+09:41:54.310 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ==> Parameters: 
+09:41:54.339 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - <==      Total: 1
+09:41:54.345 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@4ec065f7]]]
+09:41:54.345 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is null and apply_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) order by apply_time limit ?,? 
+09:41:54.347 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ==> Parameters: 0(Integer), 2(Integer)
+09:41:54.375 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - <==      Total: 2
+10:08:16.315 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1a6209fb]]]
+10:08:16.327 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==>  Preparing: select count(*) from t_borrow_apply where borrower=? 
+10:08:16.376 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==> Parameters: 1(String)
+10:08:16.410 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - <==      Total: 1
+10:08:16.419 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1a6209fb]]]
+10:08:16.420 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,cell_phone_number as telephone, staff_name as auditorName, DATE_ADD(audit_time,INTERVAL 1 DAY) as maxBorrowTime, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_staff where borrower=? and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and cell_phone_number in(select cell_phone_number from t_staff where id=borrower) and staff_name=(select staff_name from t_staff where id=t_borrow_apply.auditor) order by item_id limit ?,? 
+10:08:16.421 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==> Parameters: 1(String), 0(Integer), 5(Integer)
+10:08:16.442 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - <==      Total: 2
+10:09:16.944 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1e4e4f3f]]]
+10:09:16.957 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==>  Preparing: select count(*) from t_borrow_apply where borrower=? 
+10:09:17.010 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==> Parameters: 1(String)
+10:09:17.040 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - <==      Total: 1
+10:09:17.050 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1e4e4f3f]]]
+10:09:17.050 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,cell_phone_number as telephone, staff_name as auditorName, DATE_ADD(audit_time,INTERVAL 1 DAY) as maxBorrowTime, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_staff where borrower=? and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and cell_phone_number in(select cell_phone_number from t_staff where id=borrower) and staff_name=(select staff_name from t_staff where id=t_borrow_apply.auditor) order by item_id limit ?,? 
+10:09:17.052 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==> Parameters: 1(String), 0(Integer), 5(Integer)
+10:09:17.082 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - <==      Total: 2
+10:10:38.885 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7219d4b4]]]
+10:10:38.897 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==>  Preparing: select count(*) from t_borrow_apply where borrower=? 
+10:10:38.949 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==> Parameters: 1(String)
+10:10:38.978 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - <==      Total: 1
+10:10:38.986 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7219d4b4]]]
+10:10:38.987 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,cell_phone_number as telephone, staff_name as auditorName, DATE_ADD(audit_time,INTERVAL 1 DAY) as maxBorrowTime, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_staff where borrower=? and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and cell_phone_number in(select cell_phone_number from t_staff where id=borrower) and staff_name=(select staff_name from t_staff where id=t_borrow_apply.auditor) order by item_id limit ?,? 
+10:10:38.989 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==> Parameters: 1(String), 0(Integer), 5(Integer)
+10:10:39.028 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - <==      Total: 3
+10:17:21.575 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1e4e4f3f]]]
+10:17:21.588 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==>  Preparing: select count(*) from t_borrow_apply where borrower=? 
+10:17:21.639 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==> Parameters: 1(String)
+10:17:21.668 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - <==      Total: 1
+10:20:59.210 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1a7d4b45]]]
+10:20:59.226 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==>  Preparing: select count(*) from t_borrow_apply where borrower=? 
+10:20:59.284 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==> Parameters: 1(String)
+10:20:59.320 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - <==      Total: 1
+10:20:59.331 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1a7d4b45]]]
+10:20:59.332 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,cell_phone_number as telephone, (select staff_name from t_staff where id=t_borrow_apply.auditor) as auditorName, DATE_ADD(audit_time,INTERVAL 1 DAY) as maxBorrowTime, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_staff where borrower=? and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and cell_phone_number in(select cell_phone_number from t_staff where id=borrower) order by item_id limit ?,? 
+10:20:59.334 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==> Parameters: 1(String), 0(Integer), 5(Integer)
+10:20:59.368 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - <==      Total: 5
+10:23:04.651 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1e04d31e]]]
+10:23:04.663 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==>  Preparing: select count(*) from t_borrow_apply where borrower=? 
+10:23:04.714 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==> Parameters: 1(String)
+10:23:04.746 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - <==      Total: 1
+10:23:04.754 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1e04d31e]]]
+10:23:04.755 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,cell_phone_number as telephone, staff_name as auditorName, DATE_ADD(audit_time,INTERVAL 1 DAY) as maxBorrowTime, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_staff where borrower=? and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and cell_phone_number in(select cell_phone_number from t_staff where id=borrower) and staff_name=(select staff_name from t_staff where id=t_borrow_apply.auditor) order by item_id limit ?,? 
+10:23:04.756 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==> Parameters: 1(String), 0(Integer), 5(Integer)
+10:23:04.780 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - <==      Total: 3
+10:26:40.425 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@343b79ee]]]
+10:26:40.437 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ==>  Preparing: select * from t_borrow_apply where id=? 
+10:26:40.486 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ==> Parameters: 10(String)
+10:26:40.529 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - <==      Total: 1
+10:26:40.593 [main] DEBUG c.f.o.d.B.updateBorrowApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@343b79ee]]]
+10:26:40.593 [main] DEBUG c.f.o.d.B.updateBorrowApply - ==>  Preparing: update t_borrow_apply SET item_id=?, item_name=?, item_type_id=?, spec=?, borrow_num=?, price=?, monney=?, borrow_department_id=?, borrower=?, audit_time=?, auditor=?, state=?, is_return=?, is_display=?, is_valid=?, apply_time=?, is_return=? where id=? 
+10:26:40.596 [main] DEBUG c.f.o.d.B.updateBorrowApply - ==> Parameters: it001605150000(String), 物品名称(String), 1(String), 规格型号(String), 1(Long), 10.0(Double), 10.0(Double), 1(Integer), 1(String), 2016-06-24 10:26:40.532(Timestamp), 1(String), 3(Short), 0(Short), 1(Short), 1(Short), 2016-06-24 09:38:26.0(Timestamp), 0(Short), 10(String)
+10:26:40.597 [main] DEBUG c.f.o.d.B.updateBorrowApply - <==    Updates: 1
+10:31:03.044 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@651e24d7]]]
+10:31:03.055 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ==>  Preparing: select * from t_borrow_apply where id=? 
+10:31:03.104 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ==> Parameters: 11(String)
+10:31:03.143 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - <==      Total: 1
+10:31:03.211 [main] DEBUG c.f.o.d.B.updateBorrowApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@651e24d7]]]
+10:31:03.211 [main] DEBUG c.f.o.d.B.updateBorrowApply - ==>  Preparing: update t_borrow_apply SET item_id=?, item_name=?, item_type_id=?, spec=?, borrow_num=?, price=?, monney=?, borrow_department_id=?, borrower=?, audit_time=?, auditor=?, state=?, is_return=?, is_display=?, is_valid=?, apply_time=?, is_return=? where id=? 
+10:31:03.215 [main] DEBUG c.f.o.d.B.updateBorrowApply - ==> Parameters: it001605150001(String), 物品名称(String), 1(String), 规格型号(String), 1(Long), 0.0(Double), 0.0(Double), 1(Integer), 1(String), 2016-06-24 10:31:03.147(Timestamp), 1(String), 2(Short), 0(Short), 1(Short), 1(Short), 2016-06-24 09:40:13.0(Timestamp), 0(Short), 11(String)
+10:31:03.216 [main] DEBUG c.f.o.d.B.updateBorrowApply - <==    Updates: 1
+10:34:49.627 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@559ea684]]]
+10:34:49.640 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==>  Preparing: select count(*) from t_borrow_apply where borrower=? 
+10:34:49.691 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==> Parameters: 1(String)
+10:34:49.719 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - <==      Total: 1
+10:34:49.728 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@559ea684]]]
+10:34:49.728 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,cell_phone_number as telephone, staff_name as auditorName, DATE_ADD(audit_time,INTERVAL 1 DAY) as maxBorrowTime, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_staff where borrower=? and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and cell_phone_number in(select cell_phone_number from t_staff where id=borrower) and staff_name=(select staff_name from t_staff where id=t_borrow_apply.auditor) order by item_id limit ?,? 
+10:34:49.730 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==> Parameters: 1(String), 0(Integer), 5(Integer)
+10:34:49.765 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - <==      Total: 5
+10:58:42.094 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@562c4ce5]]]
+10:58:42.106 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==>  Preparing: select count(*) from t_borrow_apply where borrower=? 
+10:58:42.159 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==> Parameters: 1(String)
+10:58:42.193 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - <==      Total: 1
+10:58:42.202 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@562c4ce5]]]
+10:58:42.203 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,cell_phone_number as telephone, staff_name as auditorName, DATE_ADD(audit_time,INTERVAL 1 DAY) as maxBorrowTime, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_staff where borrower=? and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and cell_phone_number in(select cell_phone_number from t_staff where id=borrower) and staff_name=(select staff_name from t_staff where id=t_borrow_apply.auditor) order by item_id limit ?,? 
+10:58:42.204 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==> Parameters: 1(String), 0(Integer), 5(Integer)
+10:58:42.238 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - <==      Total: 5
+11:04:07.507 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@50d32527]]]
+11:04:07.520 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==>  Preparing: select count(*) from t_borrow_apply where borrower=? 
+11:04:07.583 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==> Parameters: 1(String)
+11:04:07.625 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - <==      Total: 1
+11:04:07.633 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@50d32527]]]
+11:04:07.634 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,cell_phone_number as telephone, staff_name as auditorName, DATE_ADD(audit_time,INTERVAL 1 DAY) as maxBorrowTime, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_staff where borrower=? and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and cell_phone_number in(select cell_phone_number from t_staff where id=borrower) and staff_name=(select staff_name from t_staff where id=t_borrow_apply.auditor) order by id limit ?,? 
+11:04:07.635 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==> Parameters: 1(String), 0(Integer), 5(Integer)
+11:04:07.675 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - <==      Total: 5
+11:13:46.394 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@73e3c928]]]
+11:13:46.415 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditCount - ==>  Preparing: select count(*) from t_recipient_apply where audit_time is not null 
+11:13:46.482 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditCount - ==> Parameters: 
+11:13:46.517 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditCount - <==      Total: 1
+11:13:46.544 [main] DEBUG c.f.o.d.R.selectRecipientApplyAudit - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@73e3c928]]]
+11:13:46.545 [main] DEBUG c.f.o.d.R.selectRecipientApplyAudit - ==>  Preparing: select t_recipient_apply.*,t_item_type.name as itemTypeName,staff_name as recipienterName,t_department.name as departmentName,cell_phone_number as telephone, DATE_ADD(audit_time,INTERVAL 1 DAY) as maxRecipientTime from t_recipient_apply,t_item_type,t_staff,t_department where audit_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=recipienter) and t_department.name=(select t_department.name from t_department where id=recipient_department_id) order by audit_time limit ?,? 
+11:13:46.547 [main] DEBUG c.f.o.d.R.selectRecipientApplyAudit - ==> Parameters: 0(Integer), 3(Integer)
+11:13:46.580 [main] DEBUG c.f.o.d.R.selectRecipientApplyAudit - <==      Total: 3
+11:13:46.587 [main] DEBUG c.f.o.d.I.updateAddItemClassificationSummaryByItemIdAndPrice - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@73e3c928]]]
+11:13:46.587 [main] DEBUG c.f.o.d.I.updateAddItemClassificationSummaryByItemIdAndPrice - ==>  Preparing: update t_item_classification_summary set inventory=inventory+?,inventory_monney=inventory_monney+price*? where item_id=? and price=? 
+11:13:46.589 [main] DEBUG c.f.o.d.I.updateAddItemClassificationSummaryByItemIdAndPrice - ==> Parameters: 1(Long), 1(Long), it001605150000(String), 10.0(Double)
+11:13:46.599 [main] DEBUG c.f.o.d.I.updateAddItemClassificationSummaryByItemIdAndPrice - <==    Updates: 1
+11:13:46.600 [main] DEBUG c.f.o.d.T.updateAddTransfiniteInventoryByItemId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@73e3c928]]]
+11:13:46.601 [main] DEBUG c.f.o.d.T.updateAddTransfiniteInventoryByItemId - ==>  Preparing: update t_transfinite_inventory_warning set inventory=inventory+? where item_id=? 
+11:13:46.602 [main] DEBUG c.f.o.d.T.updateAddTransfiniteInventoryByItemId - ==> Parameters: 1(Long), it001605150000(String)
+11:13:46.653 [main] DEBUG c.f.o.d.T.updateAddTransfiniteInventoryByItemId - <==    Updates: 1
+11:13:46.654 [main] DEBUG c.f.o.d.R.selectRecipientApplyById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@73e3c928]]]
+11:13:46.654 [main] DEBUG c.f.o.d.R.selectRecipientApplyById - ==>  Preparing: select * from t_recipient_apply where id=? 
+11:13:46.656 [main] DEBUG c.f.o.d.R.selectRecipientApplyById - ==> Parameters: 3(String)
+11:13:46.662 [main] DEBUG c.f.o.d.R.selectRecipientApplyById - <==      Total: 1
+11:13:46.744 [main] DEBUG c.f.o.d.R.updateRecipientApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@73e3c928]]]
+11:13:46.745 [main] DEBUG c.f.o.d.R.updateRecipientApply - ==>  Preparing: update t_recipient_apply SET item_id=?, item_name=?, item_type_id=?, spec=?, recipient_num=?, price=?, monney=?, recipient_department_id=?, recipienter=?, audit_time=?, auditor=?, state=?, is_display=?, is_valid=?, apply_time=? where id=? 
+11:13:46.748 [main] DEBUG c.f.o.d.R.updateRecipientApply - ==> Parameters: it001605150000(String), 物品名称(String), 2(String), O(∩_∩)O哈哈哈~(String), 1(Long), 10.0(Double), 10.0(Double), 2(Integer), 2(String), 2016-06-19 19:58:37.0(Timestamp), 2(String), 2(Short), 1(Short), 0(Short), 2016-06-19 19:58:54.0(Timestamp), 3(String)
+11:13:46.749 [main] DEBUG c.f.o.d.R.updateRecipientApply - <==    Updates: 1
+11:22:20.616 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@434ddac5]]]
+11:22:20.635 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditCount - ==>  Preparing: select count(*) from t_recipient_apply where audit_time is not null 
+11:22:20.717 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditCount - ==> Parameters: 
+11:22:20.756 [main] DEBUG c.f.o.d.R.selectRecipientApplyAuditCount - <==      Total: 1
+11:22:20.764 [main] DEBUG c.f.o.d.R.selectRecipientApplyAudit - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@434ddac5]]]
+11:22:20.765 [main] DEBUG c.f.o.d.R.selectRecipientApplyAudit - ==>  Preparing: select t_recipient_apply.*,t_item_type.name as itemTypeName,staff_name as recipienterName,t_department.name as departmentName,cell_phone_number as telephone, DATE_ADD(audit_time,INTERVAL 1 DAY) as maxRecipientTime from t_recipient_apply,t_item_type,t_staff,t_department where audit_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=recipienter) and t_department.name=(select t_department.name from t_department where id=recipient_department_id) order by audit_time limit ?,? 
+11:22:20.767 [main] DEBUG c.f.o.d.R.selectRecipientApplyAudit - ==> Parameters: 0(Integer), 3(Integer)
+11:22:20.821 [main] DEBUG c.f.o.d.R.selectRecipientApplyAudit - <==      Total: 3
+11:27:53.374 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@483f635e]]]
+11:27:53.385 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==>  Preparing: select count(*) from t_item_classification_summary 
+11:27:53.431 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==> Parameters: 
+11:27:53.462 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - <==      Total: 1
+11:27:53.474 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@483f635e]]]
+11:27:53.474 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==>  Preparing: select t_item_classification_summary.*,t_item_type.name as itemTypeName from t_item_classification_summary,t_item_type WHERE item_id=? and item_name like CONCAT('%',?,'%') and item_type_id=? and t_item_type.name=(select name from t_item_type where id=?) limit ?,? 
+11:27:53.476 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==> Parameters: it001605150000(String), 物品名称(String), 1(String), 1(String), 0(Integer), 2(Integer)
+11:27:53.486 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - <==      Total: 1
+11:28:32.320 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@182969a2]]]
+11:28:32.334 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==>  Preparing: select count(*) from t_item_classification_summary 
+11:28:32.379 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==> Parameters: 
+11:28:32.406 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - <==      Total: 1
+11:28:32.419 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@182969a2]]]
+11:28:32.420 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==>  Preparing: select t_item_classification_summary.*,t_item_type.name as itemTypeName from t_item_classification_summary,t_item_type WHERE item_id=? and item_name like CONCAT('%',?,'%') and item_type_id=? and t_item_type.name=(select name from t_item_type where id=?) limit ?,? 
+11:28:32.422 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==> Parameters: it001605150000(String), 物品名称(String), 1(String), 1(String), 0(Integer), 5(Integer)
+11:28:32.430 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - <==      Total: 1
+11:33:12.886 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@48137e4e]]]
+11:33:12.898 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ==>  Preparing: select * FROM t_item_classification_summary where id=? 
+11:33:12.948 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - ==> Parameters: 2(String)
+11:33:12.985 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryById - <==      Total: 1
+11:33:12.988 [main] DEBUG c.f.o.d.I.selectItemPriceByItemId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@48137e4e]]]
+11:33:12.989 [main] DEBUG c.f.o.d.I.selectItemPriceByItemId - ==>  Preparing: select price FROM t_item_classification_summary where item_id=? 
+11:33:12.989 [main] DEBUG c.f.o.d.I.selectItemPriceByItemId - ==> Parameters: it001605150001(String)
+11:33:12.990 [main] DEBUG c.f.o.d.I.selectItemPriceByItemId - <==      Total: 1
+11:33:12.992 [main] DEBUG c.f.o.d.I.getDepartmentIdByStaffId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@48137e4e]]]
+11:33:12.992 [main] DEBUG c.f.o.d.I.getDepartmentIdByStaffId - ==>  Preparing: select department_id from t_staff where id=? 
+11:33:12.993 [main] DEBUG c.f.o.d.I.getDepartmentIdByStaffId - ==> Parameters: 2(String)
+11:33:12.994 [main] DEBUG c.f.o.d.I.getDepartmentIdByStaffId - <==      Total: 1
+11:33:12.997 [main] DEBUG c.f.o.d.R.insertRecipientApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@48137e4e]]]
+11:33:12.998 [main] DEBUG c.f.o.d.R.insertRecipientApply - ==>  Preparing: insert into t_recipient_apply(id,item_name,item_type_id,spec,recipient_num,item_id,price,monney, recipient_time,recipient_department_id,recipienter,audit_time,auditor,state, is_display,is_valid,apply_time,reason,remark) values(?,?,?,?,?,?, ?,?,?,?,?,? ,?,?,?,? ,?,?,?) 
+11:33:13.001 [main] DEBUG c.f.o.d.R.insertRecipientApply - ==> Parameters: null, 物品名称(String), 1(String), 规格型号(String), 1(Long), it001605150001(String), 0.0(Double), 0.0(Double), null, 2(Integer), 2(String), null, null, 1(Short), 1(Short), 1(Short), null, null, null
+11:33:13.002 [main] DEBUG c.f.o.d.R.insertRecipientApply - <==    Updates: 1
+11:35:47.301 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@182969a2]]]
+11:35:47.312 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==>  Preparing: select count(*) from t_item_classification_summary 
+11:35:47.357 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - ==> Parameters: 
+11:35:47.389 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMapCount - <==      Total: 1
+11:35:47.401 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@182969a2]]]
+11:35:47.401 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==>  Preparing: select t_item_classification_summary.*,t_item_type.name as itemTypeName from t_item_classification_summary,t_item_type WHERE item_id=? and item_name like CONCAT('%',?,'%') and item_type_id=? and t_item_type.name=(select name from t_item_type where id=?) limit ?,? 
+11:35:47.403 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - ==> Parameters: it001605150000(String), 物品名称(String), 1(String), 1(String), 0(Integer), 5(Integer)
+11:35:47.411 [main] DEBUG c.f.o.d.I.selectItemClassificationSummaryByMap - <==      Total: 1
+11:40:02.835 [main] DEBUG c.f.o.d.R.selectRecipientApplyUnAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2219e046]]]
+11:40:02.849 [main] DEBUG c.f.o.d.R.selectRecipientApplyUnAuditCount - ==>  Preparing: select count(*) from t_recipient_apply where audit_time is null and apply_time is not null 
+11:40:02.894 [main] DEBUG c.f.o.d.R.selectRecipientApplyUnAuditCount - ==> Parameters: 
+11:40:02.923 [main] DEBUG c.f.o.d.R.selectRecipientApplyUnAuditCount - <==      Total: 1
+11:40:02.931 [main] DEBUG c.f.o.d.R.selectRecipientApplyUnAudit - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2219e046]]]
+11:40:02.931 [main] DEBUG c.f.o.d.R.selectRecipientApplyUnAudit - ==>  Preparing: select t_recipient_apply.*,t_item_type.name as itemTypeName,staff_name as recipienterName,t_department.name as departmentName from t_recipient_apply,t_item_type,t_staff,t_department where audit_time is null and apply_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=recipienter) and t_department.name=(select t_department.name from t_department where id=recipient_department_id) order by apply_time limit ?,? 
+11:40:02.933 [main] DEBUG c.f.o.d.R.selectRecipientApplyUnAudit - ==> Parameters: 0(Integer), 2(Integer)
+11:40:02.958 [main] DEBUG c.f.o.d.R.selectRecipientApplyUnAudit - <==      Total: 1
+11:46:28.852 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffIdCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@50d32527]]]
+11:46:28.864 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffIdCount - ==>  Preparing: select count(*) from t_recipient_apply where recipienter=? 
+11:46:28.915 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffIdCount - ==> Parameters: 1(String)
+11:46:28.947 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffIdCount - <==      Total: 1
+11:46:28.956 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@50d32527]]]
+11:46:28.956 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffId - ==>  Preparing: select t_recipient_apply.*,t_item_type.name as itemTypeName,cell_phone_number as telephone, staff_name as auditorName, DATE_ADD(audit_time,INTERVAL 1 DAY) as maxRecipientTime from t_recipient_apply,t_item_type,t_staff where recipienter=? and t_item_type.name=(select name from t_item_type where id=t_recipient_apply.item_type_id) and cell_phone_number in(select cell_phone_number from t_staff where id=recipienter) and staff_name=(select staff_name from t_staff where id=t_recipient_apply.auditor) order by id limit ?,? 
+11:46:28.958 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffId - ==> Parameters: 1(String), 0(Integer), 3(Integer)
+11:46:28.984 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffId - <==      Total: 2
+11:51:40.514 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1a7d4b45]]]
+11:51:40.526 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==>  Preparing: select count(*) from t_borrow_apply where borrower=? 
+11:51:40.576 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - ==> Parameters: 1(String)
+11:51:40.605 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffIdCount - <==      Total: 1
+11:51:40.613 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1a7d4b45]]]
+11:51:40.614 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,cell_phone_number as telephone, staff_name as auditorName, DATE_ADD(audit_time,INTERVAL 1 DAY) as maxBorrowTime, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_staff where borrower=? and t_item_type.name=(select name from t_item_type where id=t_borrow_apply.item_type_id) and cell_phone_number in(select cell_phone_number from t_staff where id=borrower) and staff_name=(select staff_name from t_staff where id=t_borrow_apply.auditor) order by id limit ?,? 
+11:51:40.615 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - ==> Parameters: 1(String), 0(Integer), 5(Integer)
+11:51:40.653 [main] DEBUG c.f.o.d.B.selectBorrowAppliesByStaffId - <==      Total: 5
+11:53:19.905 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffIdCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2219e046]]]
+11:53:19.919 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffIdCount - ==>  Preparing: select count(*) from t_recipient_apply where recipienter=? 
+11:53:19.968 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffIdCount - ==> Parameters: 1(String)
+11:53:19.994 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffIdCount - <==      Total: 1
+11:53:20.002 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffId - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@2219e046]]]
+11:53:20.002 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffId - ==>  Preparing: select t_recipient_apply.*,t_item_type.name as itemTypeName,cell_phone_number as telephone, staff_name as auditorName, DATE_ADD(audit_time,INTERVAL 1 DAY) as maxRecipientTime from t_recipient_apply,t_item_type,t_staff where recipienter=? and t_item_type.name=(select name from t_item_type where id=t_recipient_apply.item_type_id) and cell_phone_number in(select cell_phone_number from t_staff where id=recipienter) and staff_name=(select staff_name from t_staff where id=t_recipient_apply.auditor) order by id limit ?,? 
+11:53:20.004 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffId - ==> Parameters: 1(String), 0(Integer), 3(Integer)
+11:53:20.030 [main] DEBUG c.f.o.d.R.selectRecipientAppliesByStaffId - <==      Total: 2

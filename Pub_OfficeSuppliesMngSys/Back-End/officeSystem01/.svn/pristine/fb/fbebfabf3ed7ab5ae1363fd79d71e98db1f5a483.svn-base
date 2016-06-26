@@ -1,0 +1,19 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.PreItemProcurementDao">
+	<insert id="insertPreItemProcurement" parameterType="cn.fjnu.officeSystem.entity.PreItemProcurement">
+		insert into
+		t_pre_item_procurement(id,item_id,item_type_id,item_name,num,staff_id,
+		pre_time,audit_time,remark)
+		values(#{id},#{itemId},#{itemTypeId},#{itemName},#{num},
+		#{staffId},#{preTime},#{auditTime},#{remark})
+	</insert>
+	<delete id="deletePreItemProcurementById" parameterType="java.lang.String">
+	delete from t_pre_item_procurement where id=#{id}
+	</delete>
+	<update id="updatePreItemProcurement" parameterType="cn.fjnu.officeSystem.entity.PreItemProcurement">
+	
+	
+	</update>
+	<select id=""></select>
+</mapper>

@@ -1,0 +1,79 @@
+11:40:26.576 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1afc14d6]]]
+11:40:26.588 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ==>  Preparing: select count(*) from t_borrow_apply where audit_time is not null 
+11:40:26.629 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ==> Parameters: 
+11:40:26.715 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - <==      Total: 1
+11:40:26.722 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1afc14d6]]]
+11:40:26.722 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName,cell_phone_number as telephone, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) order by audit_time limit ?,? 
+11:40:26.723 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ==> Parameters: 0(Integer), 2(Integer)
+11:40:26.746 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - <==      Total: 2
+11:49:25.256 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7d299ca1]]]
+11:49:25.266 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ==>  Preparing: select count(*) from t_borrow_apply where audit_time is not null 
+11:49:25.309 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ==> Parameters: 
+11:49:25.335 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - <==      Total: 1
+11:49:25.341 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7d299ca1]]]
+11:49:25.341 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName,cell_phone_number as telephone, DATE_ADD(borrow_time,INTERVAL 1 MONTH) as preReturnTime from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) order by audit_time limit ?,? 
+11:49:25.342 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ==> Parameters: 0(Integer), 2(Integer)
+11:49:25.367 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - <==      Total: 2
+14:35:51.095 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@18814b1b]]]
+14:35:51.111 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ==>  Preparing: select count(*) from t_borrow_apply where audit_time is not null 
+14:35:51.170 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ==> Parameters: 
+14:35:51.201 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - <==      Total: 1
+14:35:51.208 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@18814b1b]]]
+14:35:51.209 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName,cell_phone_number as telephone, DATE_ADD(borrow_time,INTERVAL 1 DATE) as maxBorrowTime from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) order by audit_time limit ?,? 
+14:35:51.210 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ==> Parameters: 0(Integer), 2(Integer)
+14:36:33.581 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@187931e0]]]
+14:36:33.596 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ==>  Preparing: select count(*) from t_borrow_apply where audit_time is not null 
+14:36:33.658 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ==> Parameters: 
+14:36:33.692 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - <==      Total: 1
+14:36:33.702 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@187931e0]]]
+14:36:33.703 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName,cell_phone_number as telephone, DATE_ADD(borrow_time,INTERVAL 1 DAY) as maxBorrowTime from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) order by audit_time limit ?,? 
+14:36:33.704 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ==> Parameters: 0(Integer), 2(Integer)
+14:36:33.736 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - <==      Total: 2
+19:28:57.285 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1a731362]]]
+19:28:57.296 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ==>  Preparing: select count(*) from t_borrow_apply where audit_time is not null 
+19:28:57.341 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - ==> Parameters: 
+19:28:57.371 [main] DEBUG c.f.o.d.B.selectBorrowApplyAuditCount - <==      Total: 1
+19:28:57.378 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@1a731362]]]
+19:28:57.379 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName,cell_phone_number as telephone, DATE_ADD(borrow_time,INTERVAL 1 DAY) as maxBorrowTime from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) order by audit_time limit ?,? 
+19:28:57.381 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - ==> Parameters: 0(Integer), 2(Integer)
+19:28:57.406 [main] DEBUG c.f.o.d.B.selectBorrowApplyAudit - <==      Total: 2
+19:34:51.821 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5beaeb81]]]
+19:34:51.834 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ==>  Preparing: select count(*) from t_borrow_apply where audit_time is null and apply_time is not null 
+19:34:51.887 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ==> Parameters: 
+19:34:51.918 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - <==      Total: 1
+19:34:51.926 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5beaeb81]]]
+19:34:51.927 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is null and apply_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) order by apply_time limit ?,? 
+19:34:51.928 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ==> Parameters: 0(Integer), 2(Integer)
+19:34:51.949 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - <==      Total: 1
+19:41:39.540 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@139bd881]]]
+19:41:39.553 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ==>  Preparing: select count(*) from t_borrow_apply where audit_time is null and apply_time is not null 
+19:41:39.598 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ==> Parameters: 
+19:41:39.625 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - <==      Total: 1
+19:41:39.630 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@139bd881]]]
+19:41:39.631 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is null and apply_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) order by apply_time limit ?,? 
+19:41:39.632 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ==> Parameters: 0(Integer), 2(Integer)
+19:41:39.656 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - <==      Total: 1
+19:45:02.921 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5456b77e]]]
+19:45:02.934 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ==>  Preparing: select count(*) from t_borrow_apply where audit_time is null and apply_time is not null 
+19:45:02.981 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ==> Parameters: 
+19:45:03.009 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - <==      Total: 1
+19:45:03.017 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@5456b77e]]]
+19:45:03.017 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is null and apply_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) order by apply_time limit ?,? 
+19:45:03.018 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ==> Parameters: 0(Integer), 2(Integer)
+19:45:03.045 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - <==      Total: 1
+19:46:41.358 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7f6e78b2]]]
+19:46:41.370 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ==>  Preparing: select count(*) from t_borrow_apply where audit_time is null and apply_time is not null 
+19:46:41.423 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - ==> Parameters: 
+19:46:41.455 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAuditCount - <==      Total: 1
+19:46:41.461 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7f6e78b2]]]
+19:46:41.462 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ==>  Preparing: select t_borrow_apply.*,t_item_type.name as itemTypeName,staff_name as borrowerName,t_department.name as departmentName from t_borrow_apply,t_item_type,t_staff,t_department where audit_time is null and apply_time is not null and t_item_type.name=(select name from t_item_type where id=item_type_id) and staff_name=(select staff_name from t_staff where id=borrower) and t_department.name=(select t_department.name from t_department where id=borrow_department_id) order by apply_time limit ?,? 
+19:46:41.464 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - ==> Parameters: 0(Integer), 2(Integer)
+19:46:41.487 [main] DEBUG c.f.o.d.B.selectBorrowApplyUnAudit - <==      Total: 1
+19:48:52.585 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7af74377]]]
+19:48:52.596 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ==>  Preparing: select * from t_borrow_apply where id=? 
+19:48:52.642 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - ==> Parameters: 7(String)
+19:48:52.680 [main] DEBUG c.f.o.d.B.selectBorrowApplyById - <==      Total: 1
+19:48:52.754 [main] DEBUG c.f.o.d.B.updateBorrowApply - ooo Using Connection [ProxyConnection[PooledConnection[com.mysql.jdbc.JDBC4Connection@7af74377]]]
+19:48:52.754 [main] DEBUG c.f.o.d.B.updateBorrowApply - ==>  Preparing: update t_borrow_apply SET item_id=?, item_name=?, item_type_id=?, spec=?, borrow_num=?, price=?, monney=?, borrow_department_id=?, borrower=?, audit_time=?, auditor=?, state=?, is_return=?, is_display=?, is_valid=?, apply_time=?, is_return=? where id=? 
+19:48:52.758 [main] DEBUG c.f.o.d.B.updateBorrowApply - ==> Parameters: 1(String), 铅笔(String), 1(String), 支(String), 3(Long), 1.0(Double), 3.0(Double), 1(Integer), 1(String), 2016-05-24 19:48:52.682(Timestamp), 1(String), 3(Short), 0(Short), 1(Short), 1(Short), 2016-05-24 14:47:51.0(Timestamp), 0(Short), 7(String)
+19:48:52.760 [main] DEBUG c.f.o.d.B.updateBorrowApply - <==    Updates: 1

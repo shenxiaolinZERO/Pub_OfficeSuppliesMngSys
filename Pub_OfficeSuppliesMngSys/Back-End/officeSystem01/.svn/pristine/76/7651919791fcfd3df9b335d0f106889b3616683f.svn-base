@@ -1,0 +1,27 @@
+package cn.fjnu.officeSystem.dao;
+
+import java.util.List;
+
+import cn.fjnu.officeSystem.entity.ItemType;
+
+public interface ItemTypeDao {
+	
+	/**
+	 * 添加物品类型
+	 * @param itemType
+	 * @return
+	 */
+	public int insertItemType(ItemType itemType);
+	/**
+	 * 查看所有的物品类型
+	 * @return
+	 */
+	public List<ItemType> selectAllItemType();
+	/**
+	 * 动态更改物品类型
+	 * @param itemType
+	 * @return
+	 */
+	public int updateItemType(ItemType itemType);
+
+}

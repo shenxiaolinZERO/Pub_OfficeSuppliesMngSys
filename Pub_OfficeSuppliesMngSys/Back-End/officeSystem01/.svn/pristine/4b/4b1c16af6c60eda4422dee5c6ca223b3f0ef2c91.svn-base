@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.IStaffDao">
+
+
+	<insert id="insertStaff" parameterType="cn.fjnu.officeSystem.entity.Staff">
+		insert into
+		table_staff(id,name,phone,department_id,cell_phone_number,Email,sex,
+		native_place,role,address,birthday,graduate_school,highest_record,is_working,remark)
+		values(#{id},#{name},#{phone},
+		#{departmentId},#{cellPhoneNumber},#{Email},#{sex},#{nativePlace},#{role},#{address},#{birthday},
+		#{graduateSchool},#{highestRecord},1,#{remark})
+		
+	</insert>
+
+
+
+
+	<update id="updateStaff" parameterType="cn.fjnu.officeSystem.entity.Staff">
+		update table_staff
+		<set>
+	
+			<if test="name!=null">
+				name=#{name},
+			</if>
+			<if test="phone!=null">
+				phone=#{phone},
+			</if>
+			<if test="departmentId!=null">
+				department_id=#{departmentId},
+			</if>
+			<if test="cellPhoneNumber!=null">
+			cell_phone_number=#{cellPhoneNumber},
+			</if>
+			<if test="Email!=null">
+			Email=#{Email},
+			</if>
+			<if test="sex!=null">
+			sex=#{sex},
+			</if>
+			<if test="nativePlace!=null">
+			native_place=#{nativePlace},
+			</if>
+			<if test="role!=null">
+			role=#{role},
+			</if>
+			<if test="address!=null">
+			address=#{address},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+			<if test="birthday">
+			  birthday=#{birthday},
+			</if>
+			<if test="graduateSchool!=null">
+			graduate_school=#{graduateSchool},
+			</if>
+			<if test="isWorking!=null">
+			is_working=#{isWorking},
+			</if>
+			<if test="highestRecord!=null">
+			highest_record=#{highestRecord},
+			</if>
+			
+
+		</set>
+		where id=#{id}
+	</update>
+
+
+	<select id="selectStaffById" parameterType="java.lang.String"
+		resultType="cn.fjnu.officeSystem.entity.Staff">
+		select *from table_staff where id=#{id}
+	</select>
+	
+	<update id="updateStaffRoleBydepartment" parameterType="java.util.Map">
+	update table_staff
+	set role=#{role}
+	where department_id  in 
+	<foreach collection="departmentIds" item="item" index="index" separator="," open="(" close=")">
+		#{item}
+	</foreach>
+	</update>
+
+
+
+</mapper> 

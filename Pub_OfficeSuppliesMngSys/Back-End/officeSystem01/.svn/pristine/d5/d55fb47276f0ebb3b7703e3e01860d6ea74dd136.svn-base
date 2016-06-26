@@ -1,0 +1,15 @@
+package cn.fjnu.officeSystem.dao;
+
+import java.util.List;
+
+import cn.fjnu.officeSystem.entity.InStorageType;
+
+public interface InStorageTypeDao {
+	
+	public int insertInStorageType(InStorageType inStorageType);
+	
+	public List<InStorageType> selectAllInStrorageTypes();
+	
+	
+
+}

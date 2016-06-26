@@ -1,0 +1,42 @@
+package cn.fjnu.officeSystem.dao;
+
+import org.springframework.stereotype.Repository;
+
+import cn.fjnu.officeSystem.entity.Item;
+
+@Repository
+public interface ItemDao {
+	/**
+	 * 添加物品表的数据
+	 * @param item
+	 * @return
+	 */
+	public int insertItem(Item item);
+	
+	/**
+	 * 根据id删除物品
+	 * @param id
+	 * @return
+	 */
+	public int deleteItemById(String id);
+	/**
+	 * 动态更改物品的信息
+	 * @param item
+	 * @return
+	 */
+	
+	public int updateItem(Item item);
+	
+	/**
+	 * 根据物品id查询物品
+	 * @param id
+	 * @return
+	 */
+	public int selectItemById(String id);
+	
+	
+	
+	 
+	
+
+}

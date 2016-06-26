@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.ItemProcurementDao">
+<sql id="cgInStorage">
+from t_item_procurement where is_in_storage=0 
+</sql>
+	<insert id="insertItemProcurement" parameterType="cn.fjnu.officeSystem.entity.ItemProcurement">
+		insert into
+		t_item_procurement(id,item_id,supplier_id,staff_id,num,item_type_id,item_name,spec,price,monney,
+		time,is_in_storage,remark)
+		values(#{id},#{itemId},#{supplierId},#{staffId},#{num},#{itemTypeId},
+		#{itemName},#{spec},#{price},#{monney},#{time},0,#{remark})
+	</insert>
+	
+	<update id="updateItemProcurement" parameterType="cn.fjnu.officeSystem.entity.ItemProcurement">
+		update t_item_procurement
+		<set>
+			<if test="itemId!=null">
+				item_id=#{itemId},
+			</if>
+			<if test="supplierId!=null">
+				supplier_id=#{supplierId},
+			</if>
+			<if test="staffId!=null">
+				staff_id=#{staffId},
+			</if>
+			<if test="num!=null">
+				num=#{num},
+			</if>
+			<if test="itemTypeId!=null">
+				item_type_id=#{itemTypeId},
+			</if>
+			<if test="itemName!=null">
+				item_name=#{itemName},
+			</if>
+			<if test="spec!=null">
+				spec=#{spec},
+			</if>
+			<if test="price!=null">
+				price=#{price},
+			</if>
+			<if test="monney!=null">
+				monney=#{monney},
+			</if>
+			<if test="time!=null">
+				time=#{time}
+			</if>
+			<if test="isInStorage!=null">
+			is_in_storage=#{isInStorage},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+
+		</set>
+		where id=#{id}
+	</update>
+	
+	<select id="selectItemProcurementByItemId" parameterType="java.lang.String" resultType="cn.fjnu.officeSystem.entity.ItemProcurement">
+	select * from t_item_procurement where item_id=#{itemId}
+	</select>
+	
+	<select id="selectItemProcurementBystaffId" parameterType="java.lang.String" resultType="cn.fjnu.officeSystem.entity.ItemProcurement">
+	select * from t_item_procurement where staff_id=#{staffId}
+	</select>
+	<select id="selectUnInStorageItemProcurement" parameterType="java.util.Map" resultType="cn.fjnu.officeSystem.extend.ItemProcurementExtend">
+	select t_item_procurement.*,name as itemTypeName,short_name as supplierName,staff_name as staffName from t_item_procurement,t_item_type where is_in_storage=0 and name=
+	(select name from t_item_type where id=item_type_id) and short_name=(select short_name from t_supplier
+	where id=supplier_id)and staff_name=(select staff_name from staff where id=staff_id)
+	 order by time limit #{start},#{end}
+	</select>
+	<select id="selectUnInStorageItemProcurementCount" resultType="java.lang.Integer">
+	select count(*) <include refid="cgInStorage"/> 
+	</select>
+	
+</mapper>

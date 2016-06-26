@@ -1,0 +1,149 @@
+package cn.fjnu.officeSystem.serviceImpl;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import cn.fjnu.officeSystem.dao.RecipientApplyDao;
+import cn.fjnu.officeSystem.entity.RecipientApply;
+import cn.fjnu.officeSystem.extend.RecipientApplyExpireExtend;
+import cn.fjnu.officeSystem.extend.RecipientApplyExtend;
+import cn.fjnu.officeSystem.utils.CompareDate;
+import cn.fjnu.officeSystem.utils.DateJsonValueProcessor;
+import cn.fjnu.officeSystem.utils.PageUtil;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+
+@Service
+public class RecipientApplyService {
+
+	@Resource
+	RecipientApplyDao recipientApplyDao;
+	@Resource
+	CompareDate compareDate;
+
+	// 获取所有已审核的领用申请记录
+	// 审核状态通过读取state字段判断（1.待审核，2.审核通过，3.审核不通过）
+	public String getAuditRecipientApplies(String json) {
+		// json字符串转json对象
+		JSONObject jsonObject = JSONObject.fromObject(json);
+		// 解析json中的数据
+		int pageIndex = jsonObject.optInt("pageIndex");
+		int pageCount = jsonObject.optInt("pageCount");
+		int count = 0;
+		String result = null;
+		String recipientState = null;
+		String validateState = null;
+		Map<String, Object> resultMap = new HashMap<>();
+		count = recipientApplyDao.selectRecipientApplyAuditCount();
+		if (count > 0) {
+			PageUtil<RecipientApplyExpireExtend> page = new PageUtil<>(pageIndex, count, pageCount);
+			List<RecipientApplyExpireExtend> resultList = recipientApplyDao
+					.selectRecipientApplyAudit(page.getDataStart(), page.getDataEnd());
+			for (RecipientApplyExpireExtend recipientApplyExpireExtend : resultList) {
+				Date recipientTime = recipientApplyExpireExtend.getRecipientTime();
+				if (recipientTime == null) {
+					recipientState = "未领用";
+				} else {
+					recipientState = "已领用";
+				}
+				Date maxRecipientTime = recipientApplyExpireExtend.getMaxRecipientTime();
+				int i = compareDate.compare_date(new Date(), maxRecipientTime);
+				if (i == 1) {// 未超期
+					validateState = "有效";
+				} else if (i == -1) {// 已超期
+					validateState = "无效";
+				} else {
+					System.out.println("error!");
+				}
+			}
+			resultMap.put("recipientState", recipientState);
+			resultMap.put("validateState", validateState);
+			resultMap.put("resultList", resultList);// 数据
+			resultMap.put("pageSize", page.getPageSize());// 总页数
+			System.out.println("map:" + resultMap);
+			JsonConfig config = new JsonConfig();
+			config.registerJsonValueProcessor(Date.class, new DateJsonValueProcessor("yyyy-MM-dd hh:mm:ss"));
+			resultMap.put("pageIndex", pageIndex);
+
+			result = JSONObject.fromObject(resultMap, config).toString();
+			return result;
+		} else {
+			return "{\"message\":\"当前没有审核通过的领用申请记录！\"}";
+		}
+	}
+
+	// 删除已审核的领用记录
+	public void deleteAuditRecipientApply(String json) {
+		JSONObject jsonObject = JSONObject.fromObject(json);
+		String id = jsonObject.optString("id");
+		recipientApplyDao.deleteRecipientApplyById(id);
+	}
+
+	// 获取所有未审核的领用申请记录
+	public String getUnAuditRecipientApplies(String json) {
+		// json字符串转json对象
+		JSONObject jsonObject = JSONObject.fromObject(json);
+		// 解析json中的数据
+		int pageIndex = jsonObject.optInt("pageIndex");
+		int pageCount = jsonObject.optInt("pageCount");
+		int count = 0;
+		String result = null;
+		Map<String, Object> resultMap = new HashMap<>();
+		count = recipientApplyDao.selectRecipientApplyUnAuditCount();
+		if (count > 0) {
+			PageUtil<RecipientApplyExtend> page = new PageUtil<>(pageIndex, count, pageCount);
+			List<RecipientApplyExtend> resultList = recipientApplyDao.selectRecipientApplyUnAudit(page.getDataStart(),
+					page.getDataEnd());
+			resultMap.put("resultList", resultList);// 数据
+			resultMap.put("pageSize", page.getPageSize());// 总页数
+			System.out.println("map:" + resultMap);
+			JsonConfig config = new JsonConfig();
+			// 转换时记得要导入util.date
+			config.registerJsonValueProcessor(Date.class, new DateJsonValueProcessor("yyyy-MM-dd hh:mm:ss"));
+			resultMap.put("pageIndex", pageIndex);
+
+			result = JSONObject.fromObject(resultMap, config).toString();
+			return result;
+		} else {
+			return "{\"message\":\"当前待审核的借用申请记录！\"}";
+		}
+	}
+
+	// 管理员进行审核操作，其结果可能是审核通过，有可能是不通过
+	// 前端传入operate 其中0表示不通过，1表示通过
+	public void OperateRecipientAudit(String json) {
+		// json字符串转json对象
+		JSONObject jsonObject = JSONObject.fromObject(json);
+		// 解析json中的数据
+		int operate = jsonObject.optInt("operate");
+		String id = jsonObject.optString("id");
+		String auditId = jsonObject.optString("auditId");
+		RecipientApply recipientApply=recipientApplyDao.selectRecipientApplyById(id);
+		if (operate == 0) {
+			recipientApply.setState((short) 3);
+			SimpleDateFormat sp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			java.sql.Timestamp st = new java.sql.Timestamp(new java.util.Date().getTime());
+			recipientApply.setAuditTime(st);
+			recipientApply.setAuditor(auditId);
+			recipientApplyDao.updateRecipientApply(recipientApply);
+			System.out.println("0更新成功！");
+		} else if (operate == 1) {
+			recipientApply.setState((short) 2);
+			SimpleDateFormat sp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			java.sql.Timestamp st = new java.sql.Timestamp(new java.util.Date().getTime());
+			recipientApply.setAuditTime(st);
+			recipientApply.setAuditor(auditId);
+			recipientApplyDao.updateRecipientApply(recipientApply);
+			System.out.println("1更新成功！");
+
+		}
+	}
+
+}

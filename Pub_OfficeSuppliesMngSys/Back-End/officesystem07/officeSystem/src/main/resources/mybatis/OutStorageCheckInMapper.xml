@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.fjnu.officeSystem.dao.OutStorageCheckInDao">
+<!-- 	<sql id="query_isci_where">
+		<if test="outStorageDate!=null">
+			out_storage_date=#{outStorageDate}
+		</if>
+		<if test="outStorageTypeId!=null">
+			and out_storage_type_id=#{outStorageTypeId}
+		</if>
+		<if test="operaterId!=null">
+			and operater_id=#{operaterId}
+		</if>
+		<if test="recipienter!=null">
+			and recipienter=#{recipienter}
+		</if>
+		<if test="departmentId!=null">
+			and department_id=#{departmentId}
+		</if>
+		<if test="applyId!=null">
+			and apply_id=#{applyId}
+		</if>
+	</sql> -->
+	<insert id="insertOutStorageCheckInPl" parameterType="java.util.List">
+		insert into
+		t_out_storage_check_in(id,out_storage_date,out_storage_type_id,recipienter,department_id,operater_id,apply_id,total_number,total_monney,remark)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.id},#{item.outStorageDate},#{item.outStorageTypeId},#{item.recipienter},
+			#{item.departmentId},#{item.operaterId},#{item.applyId},#{item.totalNumber},#{item.totalMonney},#{item.remark})
+		</foreach>
+
+	</insert>
+
+	<insert id="insertOutStorageCheckIn" parameterType="cn.fjnu.officeSystem.entity.OutStorageCheckIn">
+		insert into
+		t_out_storage_check_in(id,out_storage_type_id,recipienter,department_id,operater_id,apply_id,total_number,total_monney,remark)
+		values
+		(#{id},#{outStorageTypeId},#{recipienter},
+		#{departmentId},#{operaterId},#{applyId},#{totalNumber},#{totalMonney},#{remark})
+	</insert>
+
+	<!-- * @param startTime* @param endTime* @param itemTypeId* @param itemName* @param inStorageTypeId
+	 		* @param start* @param end -->
+	<select id="selectOutStorageCheckInByMap" parameterType="java.util.Map"
+		resultType="cn.fjnu.officeSystem.extend.OutStorageCheckInExtend">
+		<if test="outStorageTypeId=='-1'.toString()">
+			<!-- 借用 -->
+			select t_out_storage_check_in.*,t_borrow_apply.item_id as
+			itemId,t_borrow_apply.item_name as itemName,
+			t_borrow_apply.item_type_id as itemTypeId,
+			t_item_type.name as itemTypeName,
+			t_borrow_apply.spec as spec,
+			(select staff_name from t_staff where
+			id=t_borrow_apply.borrower) as recipienterName,
+			(select staff_name from t_staff where
+			id=t_borrow_apply.auditor) as auditorName,
+			(select staff_name from t_staff where
+			id=t_out_storage_check_in.operater_id) as operaterName,
+			t_out_storage_type.name as outStorageTypeName
+			from t_out_storage_check_in,t_borrow_apply,
+			t_item_type,t_staff,t_out_storage_type where
+			
+			t_borrow_apply.id=t_out_storage_check_in.apply_id
+			and
+			t_item_type.name=(select name from t_item_type where
+			id=t_borrow_apply.item_type_id)
+			and t_staff.staff_name=(select staff_name from t_staff where
+			id=t_out_storage_check_in.recipienter)
+			and t_out_storage_type.name=(select
+			name from t_out_storage_type where
+			id=t_out_storage_check_in.out_storage_type_id)
+			and out_storage_type_id=1
+			<if test="startTime!='-1'.toString()">
+				and out_storage_date>=#{startTime}
+			</if>
+			<if test="endTime!='-1'.toString()">
+				and out_storage_date&lt;=#{endTime}
+			</if>
+			<!-- <if test="outStorageTypeId!='-1'.toString()">
+				and out_storage_type_id=#{outStorageTypeId}
+			</if> -->
+			<if test="itemTypeId!='-1'.toString() or itemName!='-1'.toString()">
+				and apply_id in(
+				select id from t_borrow_apply
+				where borrow_time is not null
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name like CONCAT('%',#{itemName},'%')
+	
+				</if>
+	
+				)
+				and out_storage_type_id=1
+	
+			</if>
+		
+			union all
+			
+			<!-- 领用 -->
+			select t_out_storage_check_in.*,t_recipient_apply.item_id as
+			itemId,t_recipient_apply.item_name as itemName,
+			t_recipient_apply.item_type_id as itemTypeId,
+			t_item_type.name as itemTypeName,
+			t_recipient_apply.spec as spec,
+			(select staff_name from t_staff where
+			id=t_recipient_apply.recipienter) as recipienterName,
+			(select staff_name from t_staff where
+			id=t_recipient_apply.auditor) as auditorName,
+			(select staff_name from t_staff where
+			id=t_out_storage_check_in.operater_id) as operaterName,
+			t_out_storage_type.name as outStorageTypeName
+			from t_out_storage_check_in,t_recipient_apply,
+			t_item_type,t_staff,t_out_storage_type where
+			
+			t_recipient_apply.id=t_out_storage_check_in.apply_id
+			and
+			t_item_type.name=(select name from t_item_type where
+			id=t_recipient_apply.item_type_id)
+			and t_staff.staff_name=(select staff_name from t_staff where
+			id=t_out_storage_check_in.recipienter)
+			and t_out_storage_type.name=(select
+			name from t_out_storage_type where
+			id=t_out_storage_check_in.out_storage_type_id)
+			and out_storage_type_id=2
+			<if test="startTime!='-1'.toString()">
+				and out_storage_date>=#{startTime}
+			</if>
+			<if test="endTime!='-1'.toString()">
+				and out_storage_date&lt;=#{endTime}
+			</if>
+	
+			<if test="itemTypeId!='-1'.toString() or itemName!='-1'.toString()">
+				and apply_id in(
+				select id from t_recipient_apply
+				where recipient_time is not null
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name  like CONCAT('%',#{itemName},'%')
+				</if>
+				)
+				and out_storage_type_id=2 
+	
+			</if>
+			
+			union all
+			
+			<!-- 赠与 -->
+			select
+			t_out_storage_check_in.*,t_item_send.item_id as
+			itemId,t_item_send.item_name as itemName,
+			t_item_send.item_type_id as
+			itemTypeId,t_item_send.spec as spec,(select staff_name from t_staff where
+			id=t_item_send.staff_id) as auditorName,
+			-1 as recipienterName,
+			t_item_type.name as itemTypeName,
+			t_staff.staff_name as operaterName,
+			t_out_storage_type.name as outStorageTypeName from
+			t_out_storage_check_in,t_item_send,
+			t_item_type,t_staff,t_out_storage_type where
+			t_item_send.id=t_out_storage_check_in.apply_id
+			and
+			t_item_type.name=(select name from t_item_type where
+			id=t_item_send.item_type_id)
+			and t_staff.staff_name=(select staff_name
+			from t_staff where id=t_out_storage_check_in.operater_id)
+			and
+			t_out_storage_type.name=(select name from t_out_storage_type where
+			id=t_out_storage_check_in.out_storage_type_id)
+			and out_storage_type_id=3
+			<if test="startTime!='-1'.toString()">
+				and out_storage_date>=#{startTime}
+			</if>
+			<if test="endTime!='-1'.toString()">
+				and out_storage_date&lt;=#{endTime}
+			</if>
+			<!-- <if test="inStorageTypeId!='-1'.toString()">
+				and in_storage_type_id=#{inStorageTypeId}
+			</if> -->
+			<if test="itemTypeId!='-1'.toString() or itemName!='-1'.toString()">
+				and apply_id in(
+				select id from t_item_send
+				where is_in_storage=3 and flag=0
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name  like CONCAT('%',#{itemName},'%')
+				</if>
+	           )
+	
+				and out_storage_type_id=3
+			</if>	
+		</if>
+			
+		<if test="outStorageTypeId=='1'.toString()">
+			select t_out_storage_check_in.*,t_borrow_apply.item_id as
+			itemId,t_borrow_apply.item_name as itemName,
+			t_borrow_apply.item_type_id as itemTypeId,
+			t_item_type.name as itemTypeName,
+			t_borrow_apply.spec as spec,
+			(select staff_name from t_staff where
+			id=t_borrow_apply.borrower) as recipienterName,
+			(select staff_name from t_staff where
+			id=t_borrow_apply.auditor) as auditorName,
+			(select staff_name from t_staff where
+			id=t_out_storage_check_in.operater_id) as operaterName,
+			t_out_storage_type.name as outStorageTypeName
+			from t_out_storage_check_in,t_borrow_apply,
+			t_item_type,t_staff,t_out_storage_type where
+			
+			t_borrow_apply.id=t_out_storage_check_in.apply_id
+			and
+			t_item_type.name=(select name from t_item_type where
+			id=t_borrow_apply.item_type_id)
+			and t_staff.staff_name=(select staff_name from t_staff where
+			id=t_out_storage_check_in.recipienter)
+			and t_out_storage_type.name=(select
+			name from t_out_storage_type where
+			id=t_out_storage_check_in.out_storage_type_id)
+			and out_storage_type_id=1
+			<if test="startTime!='-1'.toString()">
+				and out_storage_date>=#{startTime}
+			</if>
+			<if test="endTime!='-1'.toString()">
+				and out_storage_date&lt;=#{endTime}
+			</if>
+			<!-- <if test="inStorageTypeId!='-1'.toString()">
+				and in_storage_type_id=#{inStorageTypeId}
+			</if> -->
+			<if test="itemTypeId!='-1'.toString() or itemName!='-1'.toString()">
+				and apply_id in(
+				select id from t_borrow_apply
+				where borrow_time is not null
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name like CONCAT('%',#{itemName},'%')
+	
+				</if>
+	
+				)
+				and out_storage_type_id=1
+	
+			</if>
+		</if>	
+		
+		<if test="outStorageTypeId=='2'.toString()">
+			select t_out_storage_check_in.*,t_recipient_apply.item_id as
+			itemId,t_recipient_apply.item_name as itemName,
+			t_recipient_apply.item_type_id as itemTypeId,
+			t_item_type.name as itemTypeName,
+			t_recipient_apply.spec as spec,
+			(select staff_name from t_staff where
+			id=t_recipient_apply.recipienter) as recipienterName,
+			(select staff_name from t_staff where
+			id=t_recipient_apply.auditor) as auditorName,
+			(select staff_name from t_staff where
+			id=t_out_storage_check_in.operater_id) as operaterName,
+			t_out_storage_type.name as outStorageTypeName
+			from t_out_storage_check_in,t_recipient_apply,
+			t_item_type,t_staff,t_out_storage_type where
+			
+			t_recipient_apply.id=t_out_storage_check_in.apply_id
+			and
+			t_item_type.name=(select name from t_item_type where
+			id=t_recipient_apply.item_type_id)
+			and t_staff.staff_name=(select staff_name from t_staff where
+			id=t_out_storage_check_in.recipienter)
+			and t_out_storage_type.name=(select
+			name from t_out_storage_type where
+			id=t_out_storage_check_in.out_storage_type_id)
+			and out_storage_type_id=2
+			<if test="startTime!='-1'.toString()">
+				and out_storage_date>=#{startTime}
+			</if>
+			<if test="endTime!='-1'.toString()">
+				and out_storage_date&lt;=#{endTime}
+			</if>
+	
+			<if test="itemTypeId!='-1'.toString() or itemName!='-1'.toString()">
+				and apply_id in(
+				select id from t_recipient_apply
+				where recipient_time is not null
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name  like CONCAT('%',#{itemName},'%')
+				</if>
+				)
+				and out_storage_type_id=2 
+	
+			</if>
+		</if>
+		
+		<if test="outStorageTypeId=='3'.toString()">
+			select
+			t_out_storage_check_in.*,t_item_send.item_id as
+			itemId,t_item_send.item_name as itemName,
+			t_item_send.item_type_id as
+			itemTypeId,t_item_send.spec as spec,(select staff_name from t_staff where
+			id=t_item_send.staff_id) as auditorName,
+			t_item_type.name as itemTypeName,
+			t_staff.staff_name as operaterName,
+			t_out_storage_type.name as outStorageTypeName from
+			t_out_storage_check_in,t_item_send,
+			t_item_type,t_staff,t_out_storage_type where
+			t_item_send.id=t_out_storage_check_in.apply_id
+			and
+			t_item_type.name=(select name from t_item_type where
+			id=t_item_send.item_type_id)
+			and t_staff.staff_name=(select staff_name
+			from t_staff where id=t_out_storage_check_in.operater_id)
+			and
+			t_out_storage_type.name=(select name from t_out_storage_type where
+			id=t_out_storage_check_in.out_storage_type_id)
+			and out_storage_type_id=3
+			<if test="startTime!='-1'.toString()">
+				and out_storage_date>=#{startTime}
+			</if>
+			<if test="endTime!='-1'.toString()">
+				and out_storage_date&lt;=#{endTime}
+			</if>
+			<!-- <if test="inStorageTypeId!='-1'.toString()">
+				and in_storage_type_id=#{inStorageTypeId}
+			</if> -->
+			<if test="itemTypeId!='-1'.toString() or itemName!='-1'.toString()">
+				and apply_id in(
+				select id from t_item_send
+				where is_in_storage=3 and flag=0
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name  like CONCAT('%',#{itemName},'%')
+				</if>
+	           )
+	
+				and out_storage_type_id=3
+			</if>	
+		</if>
+		
+		limit #{start},#{end}
+	</select>
+	
+
+	<select id="selectOutStorageCheckInByMapCount" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+				select count(*) from t_out_storage_check_in
+		<where>
+			<if test="startTime!='-1'.toString()">
+				out_storage_date>=#{startTime}
+			</if>
+			<if test="endTime!='-1'.toString()">
+				and out_storage_date&lt;=#{endTime}
+			</if>
+			<if test="outStorageTypeId!='-1'.toString()">
+				and out_storage_type_id=#{outStorageTypeId}
+			</if>
+			<if test="itemTypeId!='-1'.toString() or itemName!='-1'.toString()">
+				<!-- 领用 -->
+				and (apply_id in(
+				select id from t_recipient_apply
+				where recipient_time is not null
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name  like CONCAT('%',#{itemName},'%')
+				</if>
+
+				)
+				and out_storage_type_id=2)
+				<!-- 借用 -->
+				or (apply_id in(
+				select id from t_borrow_apply
+				where borrow_time is not null
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name  like CONCAT('%',#{itemName},'%')
+
+				</if>
+
+				)
+				and out_storage_type_id=1)
+				<!-- 赠与 -->
+				or (apply_id in(
+				select id from t_item_send
+				where is_in_storage=3 and flag=0
+				<if test="itemTypeId!='-1'.toString()">
+					and item_type_id=#{itemTypeId}
+				</if>
+				<if test="itemName!='-1'.toString()">
+					and item_name  like CONCAT('%',#{itemName},'%')
+				</if>
+
+				)
+				and out_storage_type_id=3)
+			</if>
+		</where>
+	</select>
+
+
+
+</mapper>

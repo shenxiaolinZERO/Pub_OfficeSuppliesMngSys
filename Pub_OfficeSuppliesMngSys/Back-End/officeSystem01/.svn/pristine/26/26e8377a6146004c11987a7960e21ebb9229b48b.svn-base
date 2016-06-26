@@ -1,0 +1,8 @@
+package cn.fjnu.officeSystem.serviceImpl;
+
+public class InStorageService {
+	//根据物品采购清单，对物品进行分类汇总
+	
+	
+
+}
