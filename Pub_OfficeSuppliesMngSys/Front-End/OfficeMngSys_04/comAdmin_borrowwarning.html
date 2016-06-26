@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.css">
+    <title>普通管理员-借用预警</title>
+</head>
+<body>
+   <!--<h4>借用申请清单</h4>-->
+   <br>
+   <button class="btn" onclick="overTime()">已超期物品</button>
+   <span style="float:right; margin-right: 20px">
+       <input type="text" placeholder="请输入物品ID" name="itemId"/>
+   <!--采购人工号：-->
+   <button class="btn btn-sm" onclick="searchById()">查询</button></span><br/>
+   <table id="borrrowapply-info" class="table table-bordered table-hover table-striped" cellspacing="0"  width="100%">
+       <thead>
+       <tr>
+           <th>物品编号</th>
+           <th>物品名称</th>
+           <th>物品分类</th>
+           <th>规格型号</th>
+           <th>借用数量</th>
+           <th>借用人</th>
+           <th>联系电话</th>
+           <th>借用时间</th>
+           <th>应还时间</th>
+           <th>现存库存</th>
+           <th>备注</th>
+       </tr>
+       </thead>
+
+       <tbody>
+       <!--<tr>-->
+           <!--<td>001</td>-->
+           <!--<td>真彩水性笔</td>-->
+           <!--<td>文具</td>-->
+           <!--<th>盒（12支）</th>-->
+           <!--<th>3</th>-->
+           <!--<th>小王</th>-->
+           <!--<th>18458392030</th>-->
+           <!--<th>2016-03-29 10:30:00</th>-->
+           <!--<th>2016-03-29 10:30:00</th>-->
+           <!--<th>2</th>-->
+           <!--<th>库存紧张</th>-->
+
+       <!--</tr>-->
+       <!--<tr>-->
+           <!--<td>001</td>-->
+           <!--<td>真彩水性笔</td>-->
+           <!--<td>文具</td>-->
+           <!--<th>盒（12支）</th>-->
+           <!--<th>3</th>-->
+           <!--<th>小王</th>-->
+           <!--<th>18458392030</th>-->
+           <!--<th>2016-03-29 10:30:00</th>-->
+           <!--<th>2016-03-29 10:30:00</th>-->
+           <!--<th>2</th>-->
+           <!--<th>库存紧张</th>-->
+       <!--</tr>-->
+       <!--<tr>-->
+           <!--<td>001</td>-->
+           <!--<td>真彩水性笔</td>-->
+           <!--<td>文具</td>-->
+           <!--<th>盒（12支）</th>-->
+           <!--<th>3</th>-->
+           <!--<th>小王</th>-->
+           <!--<th>18458392030</th>-->
+           <!--<th>2016-03-29 10:30:00</th>-->
+           <!--<th>2016-03-29 10:30:00</th>-->
+           <!--<th>2</th>-->
+           <!--<th>库存紧张</th>-->
+       <!--</tr>-->
+       </tbody>
+   </table>
+   <div class="page pull-right">
+
+       <!--第<input type="text" id="pageIndex" style="border:0;width: 20px;text-align: center;" class="page-current" readonly="readonly"/>页-->
+       <!--共<input type="text" id="pageSize"  style="border:0;width: 20px;text-align: center;" class="page-total" readonly="readonly"/>页-->
+       <!--<a class="btn" id="firstPage" onclick="firstPage()">首页</a>-->
+       <!--<a class="btn" id="previous" onclick="previousPage()">上一页</a>-->
+       <!--<a class="btn" id="next" onclick="nextPage()">下一页</a>-->
+       <!--<a class="btn" id="lastPage" onclick="lastPage()">最后一页</a>-->
+       <!--<input type="text" class="page-num" id="page-num" style="width: 20px;text-align: center"/>-->
+       <!--<a class="btn" id="page-jump" onclick="jumpPage()">跳至此页</a>-->
+
+   </div>
+
+
+   <script type="text/javascript" src="js/jquery.js"></script>
+   <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+   <script type="text/javascript">
+           $(document).ready(function() {
+               // DataTable
+               //var table = $('#borrrowapply-info').dataTable();
+           } );
+   </script>
+   <script type="text/javascript" src="js/Encapsulated-Data/public.js"></script>
+   <script type="text/javascript" src="js/Encapsulated-Data/comAdmin_borrowwarning.js"></script>
+</body>
+</html>

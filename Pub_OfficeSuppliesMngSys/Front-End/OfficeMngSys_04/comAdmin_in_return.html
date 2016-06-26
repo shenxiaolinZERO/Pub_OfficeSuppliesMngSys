@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.css">
+    <title>普通管理员-入库-归还</title>
+</head>
+<body>
+    <br>
+    <div class="search-wrap" style="display: block;">
+        <div class="search-content">
+            <form action="/jscss/admin/design/index" method="post">
+                <button class="btn">批量入库</button>
+                   <span style="float:right; margin-right: 20px">物品分类ID:<select name="search-sort" id="">
+                       <option value="">全部</option>
+                       <option value="19">1</option>
+                       <option value="20">2</option>
+                   </select> 	&nbsp; 	&nbsp;
+                   <!--采购人工号：-->
+                   <button class="btn btn-sm">查询</button></span>
+            </form>
+        </div>
+    </div>
+   <table id="return-info" class="table table-bordered table-hover table-striped" cellspacing="0"  width="100%" >
+       <caption>归还清单</caption>
+       <thead>
+       <tr>
+           <td><input class="allChoose" type="checkbox" onclick="selectAll()"></td>
+           <th>物品编号</th>
+           <th>物品名称</th>
+           <th>物品分类</th>
+           <th>规格型号</th>
+           <th>借用数量</th>
+           <th>借用人</th>
+           <th>借用时间</th>
+           <th>入库操作</th>
+       </tr>
+       </thead>
+
+       <tbody id="return-item">
+       <!-- 以下已封装至 comAdmin_in_return.js -->
+       <!--<tr>-->
+           <!--<td><input type="checkbox"/></td>-->
+           <!--<td>001</td>-->
+           <!--<td>真彩水性笔</td>-->
+           <!--<td>文具</td>-->
+           <!--<th>盒（12支）</th>-->
+           <!--<th>3</th>-->
+           <!--<th>小王</th>-->
+           <!--<th>2016.04.19</th>-->
+           <!--<td><button>入库</button></td>-->
+       <!--</tr>-->
+       <!--<tr>-->
+           <!--<td><input type="checkbox"/></td>-->
+           <!--<td>001</td>-->
+           <!--<td>真彩水性笔</td>-->
+           <!--<td>文具</td>-->
+           <!--<th>盒（12支）</th>-->
+           <!--<th>3</th>-->
+           <!--<th>小王</th>-->
+           <!--<th>2016.04.19</th>-->
+           <!--<td><button>入库</button></td>-->
+       <!--</tr>-->
+       <!--<tr>-->
+           <!--<td><input type="checkbox"/></td>-->
+           <!--<td>001</td>-->
+           <!--<td>真彩水性笔</td>-->
+           <!--<td>文具</td>-->
+           <!--<th>盒（12支）</th>-->
+           <!--<th>3</th>-->
+           <!--<th>小王</th>-->
+           <!--<th>2016.04.19</th>-->
+           <!--<td><button>入库</button></td>-->
+       <!--</tr>-->
+       </tbody>
+   </table>
+    <div class="page pull-right">
+
+        <!--第<input type="text" id="pageIndex" style="border:0;width: 20px;text-align: center;" class="page-current" readonly="readonly"/>页-->
+        <!--共<input type="text" id="pageSize"  style="border:0;width: 20px;text-align: center;" class="page-total" readonly="readonly"/>页-->
+        <!--<a class="btn" id="firstPage" onclick="firstPage()">首页</a>-->
+        <!--<a class="btn" id="previous" onclick="previousPage()">上一页</a>-->
+        <!--<a class="btn" id="next" onclick="nextPage()">下一页</a>-->
+        <!--<a class="btn" id="lastPage" onclick="lastPage()">最后一页</a>-->
+        <!--<input type="text" class="page-num" id="page-num" style="width: 20px;text-align: center"/>-->
+        <!--<a class="btn" id="page-jump" onclick="jumpPage()">跳至此页</a>-->
+
+    </div>
+
+
+   <script type="text/javascript" src="js/jquery.js"></script>
+   <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+   <script type="text/javascript">
+           $(document).ready(function() {
+               // DataTable
+              // var table = $('#return-info').dataTable();
+           } );
+   </script>
+    <script type="text/javascript" src="js/Encapsulated-Data/public.js"></script>
+   <script type="text/javascript" src="js/Encapsulated-Data/comAdmin_in_return.js"></script>
+</body>
+</html>

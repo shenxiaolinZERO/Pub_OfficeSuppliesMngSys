@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <form id="lzform" name="lzform" method="post"><div style="display:none;"><input type="hidden" name="ck" value="P4Va"/></div>
+        <table style="clear:both" width="100%" align="center" cellpadding="5">
+            <tr>
+                <td class="m" valign="top" align="right">我的姓名:</td>
+                <td valign="top">
+                    科比布莱恩特
+                </td>
+            </tr>
+
+            <tr><td class="m" valign="top" align="right">头　像:</td>
+
+                <td valign="top"><img src="https://img3.doubanio.com/icon/u124417758-2.jpg" style="margin:10px;float:left"/>
+                    <div style="margin:10px;float:left"><img src="https://img3.doubanio.com/icon/ul124417758-2.jpg"/><br/>头像图标</div>
+                    <a href="/accounts/user_icon/"  style="margin:10px;float:left">更新</a></p>
+                    <br/><br/></td></tr>
+            <tr>
+                <td class="m" align="right">登录密码: </td>
+                <td valign="top">
+                    <a href="/accounts/editpassword">更改</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="m" valign="top" align="right">联系电话:</td>
+                <td valign="top">18459122345<a href="#" id="tele">更换</a>
+                    <br/><br/>
+                </td>
+            </tr>
+            <tr>
+                <td class="m" align="right">电子邮箱: </td>
+                <td valign="top">
+                    <span>2311513185@qq.com</span>
+                    <a href="/accounts/pre_emailchange">更改</a>
+                </td>
+            </tr>
+            <tr><td class="m" valign="top" align="right">常居地址:</td>
+                <td valign="top">
+                    福建福州 <a href="https://www.douban.com/location/fuzhou/?move=away&amp;ck=P4Va" id="edloc">搬家</a>
+                    <br/><br/>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><span class="bn-flat"><input name="pf_submit" type="submit" value="更新设置" tabindex="8"></span></td>
+            </tr>
+
+        </table>
+
+
+        <!--<style type="text/css">-->
+            <!--/* for pop dialog */-->
+            <!--.loading { font-size: 14px; margin: 12px; color: #888; background-position: left center; padding: 0 0 0 20px; float: none; width: auto; height: auto }-->
+            <!--#l_tabs li { display: inline-block; padding: 0px 12px }-->
+            <!--#l_tabs li { *display: inline }-->
+            <!--.selected { background: #93b77b;  border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; color: #ffffff }-->
+            <!--.selected a, .selected a:link { color: #fff!important; background: none; cursor: default; }-->
+            <!--.panel ul { border-top: 1px solid #cccccc; padding: 12px 0 0 12px; margin: 10px 0 }-->
+            <!--.panel a { font-size: 14px }-->
+            <!--.panel ul li { display: inline-block; padding: 0 3px ; margin-right: 15px }-->
+            <!--.panel ul li { *display: inline }-->
+            <!--.off { display: none }-->
+            <!--.panel li.on , .panel li.off { margin-right: 8px }-->
+            <!--.panel li.on a , .panel li.off a { font-size: 12px; line-height: 15px }-->
+            <!--.expand , .contract { margin: 0; text-align: right; padding-right: 10px }-->
+            <!--.panel .expand a , .panel .contract a { font-size: 12px }-->
+            <!--.panel .expand { background: url(https://img3.doubanio.com/f/shire/479b9d6dcc35cd548d9cd1a2d826f23213f5868c/pics/icon/tongcheng_tab_down.gif) no-repeat right 2px }-->
+            <!--.panel .contract { background: url(https://img3.doubanio.com/f/shire/0badd8bb59652acb2f2823388150bdf1c02502f8/pics/icon/tongcheng_tab_up.gif) no-repeat right 2px }-->
+        <!--</style>-->
+
+        <!--<script type="text/javascript">-->
+            <!--;(function(){-->
+                <!--Do.add('dialog-css',{path: 'https://img3.doubanio.com/f/shire/8377b9498330a2e6f056d863987cc7a37eb4d486/css/ui/dialog.css',type:'css'});-->
+                <!--Do.add('dialog',{path: 'https://img3.doubanio.com/f/shire/4b3bad5e25de78678d700dd5353570dce3e6bbcc/js/ui/dialog.js',type:'js',requires:['dialog-css']});-->
+                <!--Do('dialog',function(){-->
+                    <!--var where = 'profile';-->
+                    <!--var dlg=dui.Dialog();dlg.set({title:"选择你的常居地",url:"/j/misc/location_form",width:(/device-mobile/i).test(document.documentElement.className)?document.documentElement.offsetWidth*0.9:560,cache:true,callback:function(a,b){$(".selected .loc-type").each(function(){getLocations($(this))});$("body").delegate("a.habitable","click",function(c){c.preventDefault();if(where=="register"){$("#l_tabs").nextAll(".loading").show();$("input[name='loc']").val($(this).attr("id"));$("em#location").html("<strong>"+$(this).text()+"</strong>");$("em#location").next().html("重新选择");b.close();$(".loc-item .validate-error").hide()}else{$.post("/j/location/move",{loc:$(this).attr("id"),ck:get_cookie("ck")},function(d){if(d.r){b.close();window.location.reload()}else{alert("请求失败，请重试。")}})}});$("body").delegate("a.unhabitable, a.loc-type","click",function(f){f.preventDefault();var d=$.trim($(this).attr("id")).substring($.trim($(this).attr("id")).indexOf("_")+1);var c="#p_"+d;$("#l_tabs").nextAll(".loading").show();if($(this).hasClass("unhabitable")){getChildren($(this))}if($(this).hasClass("loc-type")){getLocations($(this))}$(this).parent().siblings("li.selected").removeClass("selected");$(this).parent().addClass("selected");$(c).siblings("div").remove();dlg.updateSize();dlg.updatePosition()})}});function getLocations(f){var e=f.attr("id");var c=$.trim(e).substring($.trim(e).indexOf("_")+1);var d="/j/location/"+c+"/";var b="p_"+c;var g=$("<div></div>").insertAfter(f.parent().parent()).attr("id",b);var a=$("<ul></ul>").appendTo(g).wrapAll("<div></div>");a.parent().addClass("panel");$.getJSON(d,function(i){$("#l_tabs").nextAll(".loading").hide();$.each(i.locations,function(k,j){var l=$('<a href="#"></a>');if(!j.habitable){l.addClass("unhabitable")}else{l.addClass("habitable")}l.text(j.name).attr({id:j.id,title:j.population+"人"}).appendTo(a).wrapAll("<li></li>");if(j.population<=100){l.parent().hide().addClass("off")}});$("<li></li>").css({display:"block",height:"10px"}).insertBefore(a.children("li.off:first"));if(a.children(".off").length){var h=$("<p></p>").addClass("expand");h.appendTo(a);$("<a></a>").appendTo(h).text("更多")}dlg.updateSize();dlg.updatePosition()})}function getChildren(f){var e=f.attr("id");var c=$.trim(e).substring($.trim(e).indexOf("_")+1);var d="/j/location/"+c+"/";var b="p_"+c;var g=$("<div></div>").insertAfter(f.parent().parent()).attr("id",b);var a=$("<ul></ul>").appendTo(g).wrapAll("<div></div>");a.parent().addClass("panel");$.getJSON(d,function(h){$("#l_tabs").nextAll(".loading").hide();$.each(h.locations,function(k,j){if(!j.has_child){alert("此地区不能作为常居地，请选择其他城市");g.remove();return false}$.each(j.children,function(m,l){var n=$('<a href="#"></a>');if(!l.habitable){n.addClass("unhabitable")}else{n.addClass("habitable")}n.text(l.name).attr({id:l.id,title:l.population+"人"}).appendTo(a).wrapAll("<li></li>")})});dlg.updateSize();dlg.updatePosition()})}$("body").delegate("p.expand a","click",function(a){a.preventDefault();$("li.off").show().addClass("on").removeClass("off");$(this).text("收起").parent().removeClass("expand").addClass("contract");dlg.updateSize();dlg.updatePosition()});$("body").delegate("p.contract a","click",function(a){a.preventDefault();$("li.on").hide().addClass("off").removeClass("on");$(this).text("更多").parent().removeClass("contract").addClass("expand");dlg.updateSize();dlg.updatePosition()});$("#edloc,#btnLocation").click(function(a){a.preventDefault();$(".loading").hide();dlg.open();dlg.updateSize();dlg.updatePosition()});-->
+                <!--});-->
+            <!--})();-->
+        <!--</script>-->
+
+
+    </form>
+
+</body>
+</html>

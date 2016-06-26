@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.css">
+
+    <title>普通管理员-报表中心-出库统计</title>
+</head>
+<body>
+    <br/>
+    <br/>
+
+    <!--//给后台分类id--> 起止时间：<input type="text"/> 至 <input type="text"/>
+    物品分类：
+    <select>
+        <option>请选择</option>
+        <option>纸张</option>
+        <option>笔</option>
+        <option>打印机</option>
+    </select>
+    <!--//给后台类型id-->
+    出库类型：
+    <select>
+        <option>请选择</option>
+        <option>借用</option>
+        <option>领用</option>
+        <option>赠予</option>
+    </select>
+    物品名称：<input type="text">
+    <button>搜索</button>
+    <br/>
+    <br/>
+    <table id="statistic_in-info" class="table table-bordered table-hover table-striped" cellspacing="0"  width="100%">
+        <thead>
+        <tr>
+            <td><input class="allChoose" type="checkbox" onclick="selectAll()"/></td>
+            <th>编号</th>
+            <th>名称</th>
+            <th>类型</th>
+            <th>规格型号</th>
+            <th>出库类型</th>
+            <th>出库数量</th>
+            <th>总金额</th>
+            <th>出库时间</th>
+            <th>经办人</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--<tr>-->
+            <!--<th>001</th>-->
+            <!--<th>复印纸</th>-->
+            <!--<th>办公纸</th>-->
+            <!--<th>套</th>-->
+            <!--<th>4</th>-->
+            <!--<th>采购</th>-->
+            <!--<th>2016年4月23日</th>-->
+            <!--<th>约翰</th>-->
+            <!--<th>&#45;&#45;</th>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<th>002</th>-->
+            <!--<th>复印纸</th>-->
+            <!--<th>办公纸</th>-->
+            <!--<th>套</th>-->
+            <!--<th>4</th>-->
+            <!--<th>归还</th>-->
+            <!--<th>2016年4月23日</th>-->
+            <!--<th>约翰</th>-->
+            <!--<th>&#45;&#45;</th>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<th>001</th>-->
+            <!--<th>复印纸</th>-->
+            <!--<th>办公纸</th>-->
+            <!--<th>套</th>-->
+            <!--<th>4</th>-->
+            <!--<th>受赠</th>-->
+            <!--<th>2016年4月23日</th>-->
+            <!--<th>约翰</th>-->
+            <!--<th>&#45;&#45;</th>-->
+        <!--</tr>-->
+        </tbody>
+    </table>
+
+    <div class="page pull-right">
+
+        <!--第<input type="text" id="pageIndex" style="border:0;width: 20px;text-align: center;" class="page-current" readonly="readonly"/>页-->
+        <!--共<input type="text" id="pageSize"  style="border:0;width: 20px;text-align: center;" class="page-total" readonly="readonly"/>页-->
+        <!--<a class="btn" id="firstPage" onclick="firstPage()">首页</a>-->
+        <!--<a class="btn" id="previous" onclick="previousPage()">上一页</a>-->
+        <!--<a class="btn" id="next" onclick="nextPage()">下一页</a>-->
+        <!--<a class="btn" id="lastPage" onclick="lastPage()">最后一页</a>-->
+        <!--<input type="text" class="page-num" id="page-num" style="width: 20px;text-align: center"/>-->
+        <!--<a class="btn" id="page-jump" onclick="jumpPage()">跳至此页</a>-->
+
+    </div>
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // DataTable
+           // var table = $('#statistic_in-info').dataTable();
+        } );
+    </script>
+    <script type="text/javascript" src="js/Encapsulated-Data/public.js"></script>
+    <script type="text/javascript" src="js/Encapsulated-Data/comAdmin_statistic_out.js"></script>
+</body>
+</html>

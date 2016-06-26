@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link href="css/jquery.dataTables.css" type="text/css" rel="stylesheet">
+
+    <title>用户-借用申请</title>
+</head>
+<body>
+<br/>
+    物品类型：<select>
+        <option>请选择</option>
+        <option>复印纸</option>
+        <option>水性笔</option>
+        <option>---</option>
+    </select>
+    物品名称<input type="text">
+    <button>搜索</button>
+    <button style="margin-left: 10px">申请采购</button>
+    <br/>
+    <br/>
+    <table id="borrowapply_now-info" class="table table-bordered table-hover table-striped" cellspacing="0"  width="100%">
+
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>类型</th>
+            <th>规格型号</th>
+            <th>库存数量</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--<tr>-->
+            <!--<th>001</th>-->
+            <!--<th>复印纸</th>-->
+            <!--<th>办公纸</th>-->
+            <!--<th>套</th>-->
+            <!--<th>4</th>-->
+            <!--<th><button class="btn btn-primary btn-md" data-toggle="modal" data-target="#apply">申请</button></th>-->
+            <!--<div class="modal fade" id="apply" tabindex="-1" role="dialog"-->
+                 <!--aria-labelledby="myModalLabel" aria-hidden="true">-->
+                <!--<div class="modal-dialog" >-->
+                    <!--<div class="modal-content">-->
+                        <!--<div class="modal-header" >-->
+                            <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: red;">-->
+                                <!--&times;-->
+                            <!--</button>-->
+                            <!--<h3 class="modal-title" id="myModalLabel" style="text-align: left;">-->
+                                <!--填写借用申请-->
+                            <!--</h3>-->
+                        <!--</div>-->
+                        <!--<div class="modal-body">-->
+                            <!--物品类型：<input type="text"><br/>-->
+                            <!--物品名称：<input type="text"><br/>-->
+                            <!--申请数量：<input type="text"><br/>-->
+                        <!--</div>-->
+                        <!--<div class="modal-footer">-->
+                            <!--<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#urgent">提交</button>-->
+                            <!--<button type="button" class="btn btn-default"-->
+                                    <!--data-dismiss="modal">取消-->
+                            <!--</button>-->
+                        <!--</div>-->
+                    <!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+                <!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->
+            <!--</div>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<th>001</th>-->
+            <!--<th>复印纸</th>-->
+            <!--<th>办公纸</th>-->
+            <!--<th>套</th>-->
+            <!--<th>4</th>-->
+            <!--<th><button>申请</button></th>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<th>001</th>-->
+            <!--<th>复印纸</th>-->
+            <!--<th>办公纸</th>-->
+            <!--<th>套</th>-->
+            <!--<th>4</th>-->
+            <!--<th><button>申请</button></th>-->
+        <!--</tr>-->
+        </tbody>
+    </table>
+    <div class="page pull-right">
+
+        <!--第<input type="text" id="pageIndex" style="border:0;width: 20px;text-align: center;" class="page-current" readonly="readonly"/>页-->
+        <!--共<input type="text" id="pageSize"  style="border:0;width: 20px;text-align: center;" class="page-total" readonly="readonly"/>页-->
+        <!--<a class="btn" id="firstPage" onclick="firstPage()">首页</a>-->
+        <!--<a class="btn" id="previous" onclick="previousPage()">上一页</a>-->
+        <!--<a class="btn" id="next" onclick="nextPage()">下一页</a>-->
+        <!--<a class="btn" id="lastPage" onclick="lastPage()">最后一页</a>-->
+        <!--<input type="text" class="page-num" id="page-num" style="width: 20px;text-align: center"/>-->
+        <!--<a class="btn" id="page-jump" onclick="jumpPage()">跳至此页</a>-->
+
+    </div>
+
+
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // DataTable
+            //var table = $('#borrowapply_now-info').dataTable();
+        } );
+    </script>
+    <script type="text/javascript" src="js/Encapsulated-Data/public.js"></script>
+    <script type="text/javascript" src="js/Encapsulated-Data/user_borrowapply.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+/*--------紧挨浏览器显示--------*/
+*{
+    margin-top: 0px;
+    padding: 0px;
+}
+
+/*----------------管理审核员,接单员----------------------*/
+/*--------顶部标题部分（审核员、接单员、故障类型）--------*/
+.manageAss_title,.managePro_title,.manageFault_title,.manageExe_title{
+    border: 1px solid #e5e5e5;
+    background-color: #FAFAFA;
+    position: relative;
+    text-align: left;
+    height: 75px;
+    line-height: 70px;
+    color: #333;
+    font-family: "Microsoft YaHei";
+    font-size: x-large;
+    margin-bottom: 30px;
+}
+/*-------查看审核员，接单员----------*/
+.lookAss_tab_title,.lookPro_tab_title,.lookFau_tab_title,.lookExeBranchs_tab_title{
+    border: 1px solid #e5e5e5;
+    background-color: #FAFAFA;
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #333;
+    font-family: "Microsoft YaHei";
+    font-size: large;
+    margin-bottom: 30px;
+}
+.lookAss_tab_detail ,.lookPro_tab_detail,.lookFau_tab_detail{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #EEEEEE;
+    overflow:auto;
+    text-align: center;
+}
+/*----------添加审核员，接单员，故障类型---------*/
+.form-group{
+    text-align:left;
+    /*padding: inherit;*/
+    margin-top: 35px;
+}
+.col-sm-2{
+    width: 120px;
+}
+.col-sm-10{
+    width: 20%;
+}
+.ass_add_btn,.pro_add_btn,.fau_add_btn{
+    margin-left: 40px;
+}
+
+
+/*--------------------整合页---------------------*/
+/*--------------页中部分-------------*/
+.page-middle{
+    height: inherit;
+    background-color: #bce8f1;
+}
+
+/*----------左侧操作选项-----------*/
+.bg {
+    text-align: center;
+    background-color: #bce8f1;
+    margin-left: auto;
+    margin-right: auto;
+    height: inherit;
+    width: auto;
+}
+
+.operation {
+    width: 15%;
+    float: left;
+    background-color: #5bc0de;
+
+}
+.mana1,.mana2,.mana3,.mana4,.mana5 {
+    padding:20px 5px 5px ;
+}
+.title{
+    padding: 20px 5px 10px;
+    font-size: x-large;
+    font-family: "Microsoft YaHei";
+    overflow: auto;
+    border-bottom: 3px solid #adadad;
+}
+div {
+    display: block;
+}
+ul, li {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    text-align: -webkit-match-parent;
+
+}
+/*----------右侧具体内容-----------*/
+.operation_content {
+    width: 75%;
+    /*margin-left: 20px; */
+    float: left;
+    height: inherit;
+    /*background-color: #EEF3F5;*/
+
+}
+
+
+/*----------------登录界面-------------*/
+/*pre{*/
+    /*height: 600px;*/
+/*}*/
+
+.loginbody{
+
+}
+.login{
+   margin: 10px 10px 20px 10px;
+    padding: 10px 10px 500px 10px;
+
+}
+.col-md-6 {
+    width: 50%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+img{
+    ;
+}
+label{
+    font-size: x-large;
+}
+.login-left h3,.login-right h3 {
+    color: #213CC8;
+    font-size: x-large;
+    margin-left: 20px;
+    /*font-size: 1em;*/
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-bottom: 0.5em;
+}
+.login-right{
+    /*border: 8px  ridge ;*/
+            /*solid 10px #23527c*/
+    height: 390px;
+    padding-left: 30px;
+    border: 1px ridge blue;
+    -webkit-box-shadow: green 0px 0px 30px;
+}
+.login-right form {
+    padding: 1em 0;
+
+}
+.login-right form div {
+    padding: 0 0 1.5em 0;
+}
+.login-right input[type="text"] {
+    border: 1px solid #DDDBDB;
+    outline-color: #fb4d01;
+    width: 70%;
+    font-size: 0.8125em;
+    padding: 10px;
+    -webkit-appearance: none;
+}
+body a, input {
+    text-decoration: none;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    color: #555555;
+}
+.msg {
+    float: left;
+    height: 39px;
+    line-height: 39px;
+    font-size: 12px;
+    color: #666;
+}
+.login-right input[type="password"] {
+    border: 1px solid #DDDBDB;
+    outline-color: #fb4d01;
+    width: 70%;
+    font-size: 0.8125em;
+    padding: 10px;
+    -webkit-appearance: none;
+}
+
+.fr {
+    float: right;
+}
+a.forgot {
+    font-size: 1.4em ;
+    color: #213CC8;
+    padding-bottom: 50px;
+    padding-top: 20px;
+}
+/*.radio_status{*/
+    /*padding: 20px 10px 20px 5px;*/
+/*}*/
+/*.login-right input[type="radio"] {*/
+    /*padding-right: 20px;*/
+/*}*/
+.login-right input[type="button"] {
+    background:#66afe9;
+    color: #FFF;
+    font-size: 1.2em;
+    padding: 0.7em 1.2em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    display: inline-block;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    /*margin: 20px;*/
+    width: 100px;
+}

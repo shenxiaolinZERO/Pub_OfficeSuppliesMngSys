@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <title>基本资料管理</title>
+</head>
+<body>
+        <!------------ 标签标题-------------------->
+
+       <ul id="myTab" class="nav nav-tabs">
+            <li class="active"><a href="#depart" data-toggle="tab">部门管理</a></li>
+            <li><a href="#goodssorts" data-toggle="tab">物品分类管理</a></li>
+            <li><a href="#measurement" data-toggle="tab">计量单位管理</a></li>
+            <li><a href="#input" data-toggle="tab">入库类型管理</a></li>
+            <li><a href="#outtype" data-toggle="tab">出库类型管理</a></li>
+            <li><a href="#suppliertype" data-toggle="tab">供应商类型管理</a></li>
+       </ul>
+
+        <!------------ 标签内容-------------------->
+
+        <div id="myTabContent" class="tab-content">
+            <!-- 部门-->
+            <div class="tab-pane fade in active" id="depart">
+                <IFRAME SRC="comAdmin_basic_depart.html" frameborder="0"  width="800px" height="800px"></IFRAME>
+            </div>
+            <!-- 物品分类-->
+            <div class="tab-pane fade" id="goodssorts" >
+                <IFRAME SRC="comAdmin_basic_goodssorts.html" frameborder="0"  width="800px" height="800px"></IFRAME>
+            </div>
+            <!-- 计量单位-->
+            <div class="tab-pane fade" id="measurement" >
+                <IFRAME SRC="comAdmin_basic_measurement.html" frameborder="0"  width="800px" height="800px"></IFRAME>
+            </div>
+            <!-- 入库类型-->
+            <div class="tab-pane fade" id="intype">
+                <IFRAME SRC="comAdmin_basic_intype.html" frameborder="0"  width="800px" height="800px"></IFRAME>
+            </div>
+            <!-- 出库类型-->
+            <div class="tab-pane fade" id="outtype">
+                <IFRAME SRC="comAdmin_basic_outtype.html" frameborder="0"  width="800px" height="800px"></IFRAME>
+            </div>
+            <!-- 供应商类型-->
+            <div class="tab-pane fade" id="suppliertype">
+                <IFRAME SRC="comAdmin_basic_suppliertype.html" frameborder="0"  width="800px" height="800px"></IFRAME>
+            </div>
+
+        </div>
+
+      <script src="js/jquery-2.1.4.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

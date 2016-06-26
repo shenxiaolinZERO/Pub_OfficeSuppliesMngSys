@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>树形</title>
+    <link rel="stylesheet" href="css/jquery.lightTreeview.css">
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <!--树形插件 -->
+    <!--<script src="js/jquery.lightTreeview.js"></script>-->
+    <!--<script src="js/jquery.lightTreeview.min.js"></script>-->
+    <script src="js/jquery.lightTreeview.pack.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#demo1').lightTreeview();
+            $('#demo2').lightTreeview({
+                collapse: true,
+                line: true,
+                nodeEvent: false,
+                unique: true,
+                style: 'red',
+                animate: 0
+            });
+            $('#demo3').lightTreeview({
+                collapse: true,
+                line: true,
+                nodeEvent: true,
+                unique: true,
+                style: 'black',
+                animate: 400
+            });
+            $('#demo4').lightTreeview({
+                collapse: true,
+                line: true,
+                nodeEvent: true,
+                unique: false,
+                style: 'gray',
+                animate: 100,
+                fileico: true,
+                folderico: true
+            });
+        });
+    </script>
+    <style type="text/css">
+        body {
+            font-size: 12px;
+            font-family: "宋体";
+        }
+        pre {
+            font-family: Courier New;
+            font-size: 14px;
+            border:#CCCCCC 1px solid;
+            padding:3px;
+            background-color: #E0FBFA;
+        }
+        p {
+            line-height: 150%;
+            margin: 0;
+        }
+        .btn {
+            cursor: pointer;
+            color: #0066FF;
+        }
+        .exp {
+            font-family: "Courier New","宋体";
+            font-size: 12px;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Demo1</h2>
+<p class="description">
+    默认的样式</p>
+<pre>$('#demo1').lightTreeview();</pre>
+<ul id="demo1" class="lightTreeview">
+    <li><div>北京</div></li>
+    <li>
+        <!--<span class="flex-ico"></span>-->
+        <div>浙江</div>
+        <ol>
+            <li class="node-normal" style="cursor: pointer;">
+                <div>杭州</div>
+                <ul>
+                    <li><div>上城区</div></li>
+                    <li><div>下城区</div></li>
+                    <li><div>江干区</div></li>
+                    <li><div>西湖区</div></li>
+                </ul>
+            </li>
+            <li><div>宁波</div></li>
+            <li><div>绍兴</div></li>
+        </ol>
+    </li>
+    <li>
+        <div>广东</div>
+        <ul>
+            <li><div>广州</div></li>
+            <li><div>湛江</div></li>
+            <li><div>佛山</div></li>
+        </ul>
+    </li>
+    <li><div>上海</div></li>
+</ul>
+
+<h2>Demo2</h2>
+<p class="description">
+    通过style值换风格,该值对应css里“treeview-xxx”中的xxx，您可以自己在CSS中建立新的风格。
+    同时您可以直接对列表的根节点上加上一个class，值为treeview-red。</p>
+<p class="description">同级节点互斥。<br />
+    事件只响应在“+”或“-”上。</p>
+<pre>$('#demo2').lightTreeview({
+	collapse: true,
+	line: true,
+	nodeEvent: false,
+	unique: true,
+	style: 'red',
+	animate: 0
+});</pre>
+<ul id="demo2" class="lightTreeview">
+    <li>北京</li>
+    <li>
+        <div>浙江</div>
+        <ol style="display:none">
+            <li>
+                <div>杭州</div>
+                <ul>
+                    <li>上城区</li>
+                    <li>下城区</li>
+                    <li>江干区</li>
+                    <li>西湖区</li>
+                </ul>
+            </li>
+            <li>宁波</li>
+            <li>绍兴</li>
+        </ol>
+    </li>
+    <li>
+        <div>广东</div>
+        <ul>
+            <li>广州</li>
+            <li>湛江</li>
+            <li>佛山</li>
+        </ul>
+    </li>
+    <li>上海</li>
+</ul>
+
+
+
+<h2>Demo3</h2>
+<p class="description">您可以直接在列表里把需要隐藏的列表设为隐藏</p>
+<pre>$('#demo3').lightTreeview({
+	collapse: true,
+	line: true,
+	nodeEvent: true,
+	unique: true,
+	animate: 400
+});</pre>
+<ul id="demo3" class="lightTreeview treeview-black">
+    <li><div class="treeview-file">北京</div></li>
+    <li>
+        <div class="treeview-folder">浙江</div>
+        <ol>
+            <li>
+                <div class="treeview-folder">杭州</div>
+                <ul style="display:none">
+                    <li><div class="treeview-file">上城区</div></li>
+                    <li><div class="treeview-file">下城区</div></li>
+                    <li><div class="treeview-file">江干区</div></li>
+                    <li><div class="treeview-file">西湖区</div></li>
+                </ul>
+            </li>
+            <li><div class="treeview-file">宁波</div></li>
+            <li><div class="treeview-file">绍兴</div></li>
+        </ol>
+    </li>
+    <li>
+        <div class="treeview-folder">广东</div>
+        <ul style="display:none">
+            <li><div class="treeview-file">广州</div></li>
+            <li><div class="treeview-file">湛江</div></li>
+            <li><div class="treeview-file">佛山</div></li>
+        </ul>
+    </li>
+    <li><div class="treeview-file">上海</div></li>
+</ul>
+
+
+<h2>Demo4</h2>
+<p class="description">通过Plugin提供的$.lightTreeview.open(selector);$.lightTreeview.close(selector);$.lightTreeview.toggle(selector);三个函数，您可以自己收缩或展开需要的节点</p>
+
+<span class="btn" onclick="$.lightTreeview.open('#demo4 ol,#demo4 ul')">展开全部</span> |
+<span class="btn" onclick="$.lightTreeview.close('#demo4 ol,#demo4 ul')">收缩全部</span> |
+<span class="btn" onclick="$.lightTreeview.toggle('#demo4 ol,#demo4 ul')">切换全部</span> |
+<span class="btn" onclick="$.lightTreeview.toggle('#demo4 ul:last')">切换广东节点</span>
+
+<ul id="demo4">
+    <li><div>北京</div></li>
+    <li>
+        <div>浙江</div>
+        <ol>
+            <li>
+                <div>杭州</div>
+                <ul style="display:none">
+                    <li><div>上城区</div></li>
+                    <li><div>下城区</div></li>
+                    <li><div>江干区</div></li>
+                    <li><div>西湖区</div></li>
+                </ul>
+            </li>
+            <li><div>宁波</div></li>
+            <li><div>绍兴</div></li>
+        </ol>
+    </li>
+    <li>
+        <div>广东</div>
+        <ul style="display:none">
+            <li><div>广州</div></li>
+            <li><div>湛江</div></li>
+            <li><div>佛山</div></li>
+        </ul>
+    </li>
+    <li><div>上海</div></li>
+</ul>
+</body>
+</html>

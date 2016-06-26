@@ -1,0 +1,43 @@
+@charset "utf-8";
+table{
+    border-collapse:collapse;  //折叠边框，单线
+    border-spacing:0;
+    border: 1px solid #ddd;
+    display: table;
+
+}
+table thead{
+    background-color: #eaeaea;
+    text-align: center;
+}
+table caption{
+    text-align:center;
+    background-color:#f9f9f9 ;
+    font-size:1.5em;
+}
+.allChoose,.choose{
+    vertical-align:middle;
+    padding: 4px;
+    margin-left: 2px;
+}
+table tbody{
+   vertical-align: middle;
+}
+button {
+
+}
+.page input,a{
+     margin-right: 5px;
+}
+.page .btn{
+    background-color: #d1d1d1;
+    /*width: 65px;*/
+    height: 30px;
+
+
+
+}
+#return-item input[type="text"]{
+    width:100px;
+    height: 20px;
+}

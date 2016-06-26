@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <title>普通管理员-出库登记</title>
+</head>
+<body>
+        <!-- 模态框（Modal） -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                                data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            请选择出库类型
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        出库类型是：
+                        <select id="select-out" onchange="goUrl(this.options[this.selectedIndex])">
+                            <!--<option value="0">请选择</option>-->
+                            <!--<option value="comAdmin_out_borrow.html">借用</option>-->
+                            <!--<option value="comAdmin_out_claim.html">领用</option>-->
+                            <!--<option value="comAdmin_out_donate.html">赠与</option>-->
+                        </select>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <!--<div id="thediv" align="left">你选择的出库类型是：<p></p></div>-->
+                        <!--<button type="button" class="btn btn-default"-->
+                                <!--data-dismiss="modal">关闭-->
+                        <!--</button>-->
+                        <!--<button type="button" class="btn btn-primary">-->
+                           <!--确定-->
+                        <!--</button>-->
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+<!---->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+         //加载模态框
+         $('#myModal').modal();
+
+//         $(document).ready(function () {
+//             $("#select").bind("change",function(){
+//                 if($(this).val()==0){
+//                     return;
+//                 }
+//                 else{
+//                     $("p").text($(this).val());
+//                 }
+//             });
+//         });
+         //选择触发事件
+        function goUrl(obj){
+            if(obj.value==1){
+                window.location.href="comAdmin_out_borrow.html";
+                var outStorageTypeId=1;
+            }
+            if(obj.value==2){
+                window.location.href="comAdmin_out_claim.html";
+                var  outStorageTypeId=2;
+
+            }
+            if(obj.value==3){
+                window.location.href="comAdmin_out_donate.html";
+                var outStorageTypeId=3;
+            }
+        }
+    </script>
+    <script type="text/javascript" src="js/Encapsulated-Data/comAdmin_outregister.js"></script>
+</body>
+</html>

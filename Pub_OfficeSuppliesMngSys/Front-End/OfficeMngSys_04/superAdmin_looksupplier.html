@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/jquery.dataTables.css" type="text/css" rel="stylesheet">
+    <title>管理员查看供应商信息</title>
+
+</head>
+<body>
+    <table id="supplier-info" class="table table-bordered table-hover table-striped" cellspacing="0"  width="100%">
+        <caption>查看所有供应商</caption>
+        <thead>
+          <tr>
+             <th>编号</th>
+             <th>全称</th>
+             <th>简称</th>
+             <th>类型</th>
+             <th>联系人</th>
+             <th>手机号码</th>
+             <th>联系电话</th>
+             <th>传真</th>
+             <th>邮编</th>
+             <th>地址</th>
+             <th>备注</th>
+             <th>操作</th>
+          </tr>
+       </thead>
+        <!--<tfoot>-->
+        <!--<tr>-->
+            <!--<th>编号</th>-->
+            <!--<th>全称</th>-->
+            <!--<th>简称</th>-->
+            <!--<th>类型</th>-->
+            <!--<th>联系人</th>-->
+            <!--<th>手机号码</th>-->
+            <!--<th>联系电话</th>-->
+            <!--<th>传真</th>-->
+            <!--<th>邮编</th>-->
+            <!--<th>地址</th>-->
+            <!--<th>备注</th>-->
+            <!--<th>操作</th>-->
+        <!--</tr>-->
+        <!--</tfoot>-->
+       <tbody>
+          <!--<tr>-->
+              <!--<td>001</td>-->
+              <!--<td>上海真彩文具店</td>-->
+              <!--<td>真彩</td>-->
+              <!--<td>文具</td>-->
+              <!--<th>吴杰</th>-->
+              <!--<th>18223456789</th>-->
+              <!--<th>22896789</th>-->
+              <!--<th>010-12345678</th>-->
+              <!--<th>350108</th>-->
+              <!--<th>上海宝山</th>-->
+              <!--<th>—</th>-->
+              <!--<td>[编辑][设为无效]</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+              <!--<td>002</td>-->
+              <!--<td>上海真彩文具店</td>-->
+              <!--<td>真彩</td>-->
+              <!--<td>文具</td>-->
+              <!--<th>吴杰</th>-->
+              <!--<th>18223456789</th>-->
+              <!--<th>22896789</th>-->
+              <!--<th>010-12345678</th>-->
+              <!--<th>350108</th>-->
+              <!--<th>上海宝山</th>-->
+              <!--<th>—</th>-->
+              <!--<td>[编辑][设为无效]</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+              <!--<td>003</td>-->
+              <!--<td>上海真彩文具店</td>-->
+              <!--<td>真彩</td>-->
+              <!--<td>文具</td>-->
+              <!--<th>吴杰</th>-->
+              <!--<th>18223456789</th>-->
+              <!--<th>22896789</th>-->
+              <!--<th>010-12345678</th>-->
+              <!--<th>350108</th>-->
+              <!--<th>上海宝山</th>-->
+              <!--<th>—</th>-->
+              <!--<td>[编辑][设为无效]</td>-->
+          <!--</tr>-->
+       </tbody>
+    </table>
+    <div class="page pull-right">
+
+        <!--第<input type="text" id="pageIndex" style="border:0;width: 20px;text-align: center;" class="page-current" readonly="readonly"/>页-->
+        <!--共<input type="text" id="pageSize"  style="border:0;width: 20px;text-align: center;" class="page-total" readonly="readonly"/>页-->
+        <!--<a class="btn" id="firstPage" onclick="firstPage()">首页</a>-->
+        <!--<a class="btn" id="previous" onclick="previousPage()">上一页</a>-->
+        <!--<a class="btn" id="next" onclick="nextPage()">下一页</a>-->
+        <!--<a class="btn" id="lastPage" onclick="lastPage()">最后一页</a>-->
+        <!--<input type="text" class="page-num" id="page-num" style="width: 20px;text-align: center"/>-->
+        <!--<a class="btn" id="page-jump" onclick="jumpPage()">跳至此页</a>-->
+
+    </div>
+
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+//        $(document).ready(function() {
+//            // Setup - add a text input to each footer cell
+//            $('#staff-info tfoot th').each( function () {
+//                var title = $('#staff-info thead th').eq( $(this).index() ).text();
+//                $(this).html( '<input  type="text" placeholder="Search" />' );
+//            } );
+//
+//            // DataTable
+//            var table = $('#staff-info').dataTable();
+//
+//            // Apply the search
+//            table.columns().every( function () {
+//               var that = this;
+//
+//               $( 'input', this.footer() ).on( 'keyup change', function () {
+//                   that
+//                            .search( this.value )
+//                            .draw();
+//               } );
+//           } );
+//            $('#supplier-info').dataTable( {
+//                initComplete: function () {
+//                    this.api().columns().every( function () {
+//                        var column = this;
+//                        var select = $('<select><option value=""></option></select>')
+//                                .appendTo( $(column.footer()).empty() )
+//                                .on( 'change', function () {
+//                                    var val = $.fn.dataTable.util.escapeRegex(
+//                                            $(this).val()
+//                                    );
+//
+//                                    column
+//                                            .search( val ? '^'+val+'$' : '', true, false )
+//                                            .draw();
+//                                } );
+//
+//                        column.data().unique().sort().each( function ( d, j ) {
+//                            select.append( '<option value="'+d+'">'+d+'</option>' )
+//                        } );
+//                    } );
+//                }
+//            } );
+//        } );
+    </script>
+    <script type="text/javascript" src="js/Encapsulated-Data/public.js"></script>
+    <script type="text/javascript" src="js/Encapsulated-Data/superAdmin_looksupplier.js"></script>
+</body>
+</html>
